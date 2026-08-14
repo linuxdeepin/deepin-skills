@@ -41,7 +41,10 @@ sudo apt install dtk6widget-examples    # DTK6
 
 **源码路径：** `dtkwidget/examples/collections/`，随 dtkwidget 主项目编译（cmake option `BUILD_EXAMPLES`，默认 ON）。
 
-## QML 示例
+## v25 QML 示例
+
+> 仅适用于 v25。v20 没有 DTK QML 示例，QML 应直接参考 Qt Quick 与
+> Qt Quick Controls 2 示例。
 
 dtkdeclarative 提供 `exhibition` 应用，一个完整的 DTK QML 控件画廊，带源代码查看功能。
 

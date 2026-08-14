@@ -1,5 +1,27 @@
 # DConfig 调试
 
+## 版本与服务差异
+
+服务由 `dde-app-services` 提供。v20 常见 daemon 使用默认 dtkcore
+缓存布局；v25 的 unit 可能设置 `StateDirectory` 和 cache prefix。以下路径只
+用于定位问题，不得写入应用代码；最终以 `systemctl cat/show`、DBus introspection
+和 daemon 实际打开的文件为准。
+
+| 项目 | v20 常见值 | v25 常见值 |
+|------|------------|------------|
+| daemon 用户 | `root` | `deepin-daemon` |
+| 用户缓存 | `~/.config/dsg/configs/{appId}/...` | `/var/lib/dde-dconfig-daemon/.config/{uid}/{appId}/...` |
+| global 缓存 | `/var/dsg/appdata/configs/{appId}/...` | `/var/lib/dde-dconfig-daemon/.config/global/{appId}/...` |
+
+确认实际状态目录和进程文件：
+
+```bash
+systemctl show dde-dconfig-daemon.service -p User -p Environment -p StateDirectory
+busctl --system introspect org.desktopspec.ConfigManager /
+pid=$(pidof dde-dconfig-daemon)
+sudo lsof -p "$pid" | grep -E '/(dsg/configs|dde-dconfig-daemon/.config)/'
+```
+
 ## 1. 概述与适用场景
 
 DConfig 调试包括服务管理、日志查看、配置文件检查等，用于排查配置相关问题。
@@ -44,7 +66,8 @@ systemd 服务日志通过 journal 查看，文件日志路径由 `LOGS_DIRECTOR
 
 ## 2. 热加载更新
 
-配置描述文件变更后，可通过 DBus 热加载，无需重启服务。
+配置描述文件变更后，可通过当前 daemon 暴露的 DBus 接口热加载，无需重启服务。
+v20/v25 的方法签名和扫描目录以 introspection 与当前服务实现为准。
 
 ### 2.1 全量 reload
 

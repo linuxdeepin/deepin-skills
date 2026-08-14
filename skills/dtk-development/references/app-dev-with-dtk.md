@@ -4,6 +4,33 @@
 
 ---
 
+## 0. 版本前置检查
+
+检查目标工程实际使用的 Qt/DTK 和构建系统。以下 DTK6 模板面向 v25；v20
+不得使用 `Qt6`、`Dtk6*` 包或 v25 专有 API。
+
+v20 应用使用 Qt 5.11/DTK5：
+
+```cmake
+find_package(Qt5 REQUIRED COMPONENTS Core Widgets)
+find_package(DtkCore REQUIRED)
+find_package(DtkGui REQUIRED)
+find_package(DtkWidget REQUIRED)
+
+target_link_libraries(myapp PRIVATE
+    Qt5::Core Qt5::Widgets
+    Dtk::Core Dtk::Gui Dtk::Widget
+)
+```
+
+如果现有 v20 工程使用 qmake，保留其 `.pro`/`.pri` 结构和已有模块名。DConfig
+与 DCI 使用 v20 档案的接口。v20 QML 不添加任何 DTK Declarative 依赖，直接使用：
+
+```qml
+import QtQuick 2.11
+import QtQuick.Controls 2.4
+```
+
 ## 1. 项目 CMake 配置
 
 ### 1.1 标准 CMakeLists.txt 模板

@@ -2,7 +2,8 @@
 
 ## 1. 概述与适用场景
 
-`DGuiApplicationHelper`（dtkgui）和 `DApplicationHelper`（dtkgui，QML 绑定）是 DTK 主题系统的核心入口。所有主题感知操作都通过它完成。
+`DGuiApplicationHelper`（dtkgui）是 DTK C++ 主题系统的核心入口。v25 的
+dtkdeclarative 另提供 `DApplicationHelper` QML 绑定；v20 不提供 DTK QML 绑定。
 
 **适用场景：**
 - 获取/切换亮暗主题

@@ -8,8 +8,8 @@
 #include <DConfig>
 
 // CMake（详见 [app-dev-with-dtk.md](../app-dev-with-dtk.md)）
-find_package(Dtk6Core REQUIRED)
-target_link_libraries(your_target Dtk6::Core)
+// v20/v25 DTK5: find_package(DtkCore) + Dtk::Core
+// v25 DTK6: find_package(Dtk6Core) + Dtk6::Core
 ```
 
 ### 1.2 基本用法

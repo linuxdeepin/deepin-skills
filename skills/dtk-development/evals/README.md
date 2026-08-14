@@ -17,7 +17,8 @@ evals/
 ├── custom-controls/   # 自定义控件测试 (X-001 ~ X-006)
 ├── project-setup/     # 工程配置测试 (P-001)
 ├── architecture/      # 架构理解测试 (A-001 ~ A-004)
-└── platform/          # 平台抽象测试 (L-001 ~ L-003)
+├── platform/          # 平台抽象测试 (L-001 ~ L-003)
+└── compatibility/     # v20/v25 版本与能力测试 (V-001 ~ V-006)
 ```
 
 ## Evals 列表
@@ -57,7 +58,9 @@ evals/
 | W-029 | 下拉选择框 | [widgets/eval-029-combobox.md](widgets/eval-029-combobox.md) |
 | W-030 | 应用身份与翻译加载 | [widgets/eval-030-application-translation.md](widgets/eval-030-application-translation.md) |
 
-### declarative/ - QML 控件
+### declarative/ - v25 DTK QML 控件
+
+本组 eval 仅适用于 v25；v20 QML 的禁止项由 compatibility eval 覆盖。
 
 | 编号 | 测试场景 | 文件 |
 |------|----------|------|
@@ -152,6 +155,17 @@ evals/
 | L-002 | 窗口模糊效果 | [platform/eval-002-window-blur.md](platform/eval-002-window-blur.md) |
 | L-003 | 窗口动效设置 | [platform/eval-003-window-effect.md](platform/eval-003-window-effect.md) |
 
+### compatibility/ - v20/v25 兼容
+
+| 编号 | 测试场景 | 文件 |
+|------|----------|------|
+| V-001 | 未指定目标时按 DSysInfo 规则判断系统版本 | [compatibility/eval-001-system-version.md](compatibility/eval-001-system-version.md) |
+| V-002 | 显式 v20 目标覆盖 v25 宿主环境 | [compatibility/eval-002-explicit-target.md](compatibility/eval-002-explicit-target.md) |
+| V-003 | v20 CMake/qmake 构建系统选择 | [compatibility/eval-003-build-system.md](compatibility/eval-003-build-system.md) |
+| V-004 | v20 DConfig/DCI 能力与缓存定位 | [compatibility/eval-004-dconfig-dci.md](compatibility/eval-004-dconfig-dci.md) |
+| V-005 | v20 QML 仅使用 Qt，并通过 C++ 读取 DConfig | [compatibility/eval-005-v20-qml-dconfig.md](compatibility/eval-005-v20-qml-dconfig.md) |
+| V-006 | 同一源码的编译期与运行时兼容策略 | [compatibility/eval-006-single-source-compat.md](compatibility/eval-006-single-source-compat.md) |
+
 ## 运行测试
 
 使用 Codex 运行 evals 测试：
@@ -163,7 +177,7 @@ codex --eval dtk-development/evals/widgets/eval-001-dialog-warning.md
 或批量运行：
 
 ```bash
-for dir in widgets declarative theme config utilities debugging custom-controls project-setup architecture platform; do
+for dir in widgets declarative theme config utilities debugging custom-controls project-setup architecture platform compatibility; do
   for eval in dtk-development/evals/$dir/eval-*.md; do
     codex --eval "$eval"
   done

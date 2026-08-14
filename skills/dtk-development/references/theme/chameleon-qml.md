@@ -1,6 +1,6 @@
 # QML Chameleon（仅 v25）
 
-本页只适用于 v25 的 dtkdeclarative。
+本页只适用于 v25 的 dtkdeclarative。v20 QML 使用 Qt Quick/Qt Quick Controls 2 及 Qt 提供的 style，不加载本页。
 
 具体 QML 类型、URI、import 版本和插件能力以目标构建环境实际安装的 QML module、`qmldir`、插件元数据及公开接口为准。
 

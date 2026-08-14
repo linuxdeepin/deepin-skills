@@ -1,5 +1,8 @@
 # QML 控件
 
+> 本目录全部文档仅适用于 v25 的 dtkdeclarative。v20 不支持 DTK QML；
+> v20 QML 必须使用 Qt Quick/Qt Quick Controls 2，不导入 `org.deepin.dtk`。
+
 ## 触发关键词
 
 本文档适用于以下任务场景：
@@ -23,12 +26,12 @@ dtkdeclarative 对 Qt Quick Controls 进行 DTK 主题封装并提供自定义�
 
 **适用场景：** DDE Shell 插件、QML 应用、需要动态 UI 的场景。
 
-## 快速决策树
-
-```
 本文控件集只以 v25 的 dtkdeclarative 为基线。先确认目标工程使用 DTK5/Qt5
 还是 DTK6/Qt6，再核对 QML module、import 版本和实际类型。
 
+## 快速决策树
+
+```
 需要什么类型的 QML 控件？
     │
     ├─ 窗口 → ApplicationWindow / DialogWindow

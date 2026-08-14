@@ -21,3 +21,4 @@
 - [ ] dtkwidget：QWidget 控件实现
 - [ ] dtkdeclarative：QML 控件实现
 - [ ] 依赖方向：dtkgui 提供抽象，dtkwidget/dtkdeclarative 使用
+- [ ] 明确 dtkdeclarative 仅用于 v25；v20 QML 使用 Qt 提供的模块

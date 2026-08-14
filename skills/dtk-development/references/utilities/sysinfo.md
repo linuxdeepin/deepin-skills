@@ -120,6 +120,10 @@ QString build = DSysInfo::buildVersion();
 QString sp = DSysInfo::spVersion();           // "SP1" 等
 ```
 
+`majorVersion()` 和 `minorVersion()` 按 Desktop Entry/INI 语义读取 `/etc/os-version` 的 `[Version]` 节中的 `MajorVersion`、`MinorVersion`。在 `dtk-development` 中，任务未明确目标系统时使用这两个字段判断 v20/v25；`/etc/os-release` 的 `VERSION_ID` 对应 `productVersion()`，不替代这里的判断。
+
+`productVersion()` 与上述判断不同，它从 `/etc/os-release`（失败时 `/usr/lib/os-release`）读取 `VERSION_ID`，用于发行版产品信息而不是 DTK v20/v25 目标选择。
+
 ### 3.3 版本名称
 
 ```cpp

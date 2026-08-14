@@ -1,5 +1,16 @@
 # DTK 核心架构
 
+## 版本边界
+
+本文的共用架构适用于 v20 和 v25。两者都可使用 dtkcore、dtkgui、
+dtkwidget 的 C++/QWidget 能力；v20 不提供 `dtkdeclarative`，QML 应用使用 Qt
+Quick/Qt Quick Controls 2。v25 才使用 DTK QML 控件、`D.DTK` 全局对象和
+`ColorSelector`。平台集成项目的当前名称为 `dde-qtintegration` 和
+`dde-qtplatform-plugins`。
+
+同一源码需要分别按目标系统和 Qt/DTK ABI 构建；`DTK_VERSION_MAJOR` 或
+`QT_VERSION_MAJOR` 只用于 ABI 分支，不能单独判断 v20/v25。
+
 ## 1. 概述
 
 DTK 围绕四个核心系统构建，每个系统遵循相同的架构模式：

@@ -2,11 +2,31 @@
 
 > 适用场景：修改 DTK 自身源码（dtkcore/dtkgui/dtkwidget/dtkdeclarative/dtklog 及平台插件）后，需要编译、运行和调试。
 
+## 版本与模块分工
+
+DTK5/DTK6 双 ABI 构建规则仅属于 v25；v20 使用自己的 Qt 5.11/DTK5 构建
+路径：
+
+| 模块 | v20 | v25 |
+|------|-----|-----|
+| dtkcore/dtkgui/dtkwidget/dtklog | Qt 5.11、DTK5；普通 Qt5 CMake | 按 `DTK5` option 分别构建 Qt5/DTK5 或 Qt6/DTK6 |
+| dtkdeclarative | 不支持，不编译 | 仅 v25；按目标工程构建 DTK QML 模块 |
+| Qt 集成/平台插件 | 工程为 `.pro` 时使用 Qt 5.11 qmake；按项目实际名称和依赖构建 | 使用 `dde-qtintegration`、`dde-qtplatform-plugins`，按 `DTK5` 构建两个 ABI |
+
+公共源码若同时支持 v20 和 v25，应在最小 API 适配点使用能力宏、头文件/符号探测或完整
+`DTK_VERSION_CHECK()`；运行时 daemon、缓存和显示后端则使用 `DSysInfo`、DBus
+introspection 与实际环境判断。
+
 ---
 
 ## 1. v25：DTK5/DTK6 同一套代码
 
-DTK 各项目（dtkcore、dtkgui、dtkwidget、dtkdeclarative、dtklog）以及两个平台插件的 DTK5 和 DTK6 是**同一套代码**，通过 CMake option `DTK5` 切换编译目标。修改代码时需**同时保证 DTK5 和 DTK6 都能编译运行**。
+本章仅适用于 v25。v25 的 DTK 各项目（dtkcore、dtkgui、dtkwidget、
+dtkdeclarative、dtklog）以及两个平台插件的 DTK5 和 DTK6 是**同一套代码**，
+通过 CMake option `DTK5` 切换编译目标。修改代码时需**同时保证 DTK5 和 DTK6
+都能编译运行**。
+
+v20 不使用本章的双 ABI 模型，也不存在 `DTK5` CMake option。
 
 `dtkcommon` 是唯一的例外——它不区分 DTK5/DTK6。
 
@@ -89,15 +109,33 @@ DTK6 移除了 `gsettings-qt` 和 `libxdg` 依赖。
 
 ## 2. 安装编译依赖
 
-DTK 项目通过 `debian/control` 声明编译依赖，使用 `apt build-dep` 自动安装，无需手动列出包名。
+v20 和 v25 都可从各自源码包的 `debian/control` 安装编译依赖，但必须使用目标
+系统对应的软件源和源码包元数据，不能在一个系统上直接套用另一个系统解析出的
+依赖集合。
 
-### 2.1 安装编译依赖
+### 2.1 v20 安装编译依赖
+
+```bash
+cd <dtk-project-path>
+sudo apt build-dep .
+```
+
+使用 v20 的软件源和 Qt 5.11/DTK5 开发包。v20 不使用 Debian Build Profile，
+也不向 `apt build-dep` 或 `dpkg-buildpackage` 传入 `nodtk5`、`nodtk6`。
+
+### 2.2 v25 安装编译依赖
 
 ```bash
 cd <dtk-project-path>
 
-# 自动安装 debian/control 中声明的所有编译依赖
+# 同时安装 DTK5 和 DTK6 构建依赖
 sudo apt build-dep .
+
+# 只安装 DTK5 构建依赖（跳过 DTK6）
+sudo apt-get build-dep -Pnodtk6 .
+
+# 只安装 DTK6 构建依赖（跳过 DTK5）
+sudo apt-get build-dep -Pnodtk5 .
 ```
 
 使用 v25 的软件源。仅 v25 的 `debian/control` 使用 `nodtk5`、`nodtk6` 标注两套
@@ -121,25 +159,43 @@ dpkg-buildpackage -b -Pnodoc
 # 组合使用：仅 DTK5 + 跳过文档
 dpkg-buildpackage -b -Pnodtk6,nodoc
 ```
-sudo apt build-dep .
-```
 
-如果只是本地 cmake 编译调试，直接用 `-DDTK5=ON` 或 `-DDTK5=OFF` 即可（见第 3 节）。
+如果只是本地 CMake 编译调试，v25 可用 `-DDTK5=ON` 或 `-DDTK5=OFF`（见第
+3 节）。`DTK5` CMake option 只存在于 v25，不适用于 v20。
 
 ---
 
 ## 3. 编译命令
 
-### 3.1 DTK 项目编译
+### 3.1 v20 CMake 项目
+
+```bash
+cmake -S . -B build \
+    -DCMAKE_BUILD_TYPE=Debug \
+    -DCMAKE_INSTALL_PREFIX=/usr
+cmake --build build -j"$(nproc)"
+ctest --test-dir build --output-on-failure
+```
+
+只传入目标 v20 工程实际声明的 option。不要传 `-DDTK5=ON` 或
+`-DDTK5=OFF`，也不要构建 `dtkdeclarative`。
+
+### 3.2 v20 qmake 项目
+
+顶层存在 `.pro` 的 v20 Qt 集成项目使用目标 Qt 5.11 qmake：
+
+```bash
+qmake -query QT_VERSION
+mkdir -p build
+cd build
+qmake ../<project>.pro CONFIG+=debug
+make -j"$(nproc)"
+```
+
+### 3.3 v25 DTK 项目
 
 ```bash
 mkdir -p build && cd build
-
-# 只安装 DTK5 构建依赖（跳过 DTK6）
-sudo apt-get build-dep -Pnodtk6 .
-
-# 只安装 DTK6 构建依赖（跳过 DTK5）
-sudo apt-get build-dep -Pnodtk5 .
 
 # 编译 DTK5
 cmake .. -DDTK5=ON -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=/usr

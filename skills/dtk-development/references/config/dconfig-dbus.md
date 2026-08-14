@@ -1,5 +1,11 @@
 # DConfig DBus 方式
 
+## 版本边界
+
+v20 和 v25 都通过 `dde-dconfig-daemon` 提供 `org.desktopspec.ConfigManager`
+接口。具体方法、参数和可选能力必须以目标环境的 DBus introspection 为准。
+取得 manager path 后要保持持有连接的 DBus 客户端存活。
+
 ## 1. 概述与适用场景
 
 通过 DBus 接口操作配置，适用于非 C++ 环境（如脚本、其他语言）或需要直接访问配置服务的场景。

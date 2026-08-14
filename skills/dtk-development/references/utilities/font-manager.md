@@ -16,7 +16,7 @@ DTK 提供两级字体管理：`DFontManager`（dtkgui）和 `DFontSizeManager`�
 | 访问方式 | `DGuiApplicationHelper::instance()->fontManager()` | `DFontSizeManager::instance()` |
 | 继承 QObject | 是 | 否 |
 | bind()/unbind() | 不支持 | 支持（自动更新 QWidget 字体） |
-| QML 访问 | `D.DTK.fontManager` | 无直接 QML 绑定 |
+| QML 访问 | v25：`D.DTK.fontManager`；v20 无 DTK QML 绑定 | 无直接 QML 绑定 |
 | 基准字体 | baseFont()/setBaseFont() | setFontGenericPixelSize() |
 | 字体变化信号 | fontChanged() | 无（不是 QObject） |
 
@@ -155,6 +155,8 @@ Text {
     │
     ├─ v25 DTK QML 应用？
     │   └─ 使用 D.DTK.fontManager.tN
+    ├─ v20 QML 应用？
+    │   └─ 使用 Qt font 属性或应用自建桥接
     │
     ├─ 需要自定义基准字体？
     │   └─ DFontManager::setBaseFont() 或 DFontSizeManager::setFontGenericPixelSize()
