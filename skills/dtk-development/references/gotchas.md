@@ -236,7 +236,19 @@ bool canExit = config->isValid()
 - `configId`（配置 ID）：DConfig 的配置标识，采用倒置域名格式如 `org.deepin.example.settings`
 - 避免使用 `settings`、`example` 等全局泛化名称
 
-详见 [config/concepts.md](config/concepts.md) 第 3 节。
+**插件特别注意**：插件不是独立应用，必须使用**宿主应用**的 `appId`
+（宿主是独立进程时以该进程自身为宿主应用，如 dde-tray-loader 的 appId
+为 `org.deepin.dde.tray-loader`）。`appId` 会被 `dde-dconfig-daemon`
+用于权限认证，随意构造会导致配置读写失败。
+
+详见 [config/index.md](config/index.md) 步骤 1 和。
+
+**插件 appId 检查清单**：
+1. 确认代码运行在哪个宿主进程内（谁加载了这个模块）
+2. 查找宿主应用的 desktop 文件 basename 或 `DSG_APP_ID`，作为 `appId`
+3. 不确定时参见 [config/index.md](config/index.md) 步骤 1 的 appId 确定流程
+4. 插件的 `configId` 在宿主命名空间下增加插件后缀，如
+   `org.deepin.dde.control-center.myplugin`
 
 ### 4.4 版本升级缓存失效
 

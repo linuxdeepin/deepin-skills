@@ -11,7 +11,7 @@ evals/
 ├── widgets/           # QWidget 控件测试 (W-001 ~ W-030)
 ├── declarative/       # 仅 v25 DTK QML 控件测试 (Q-001 ~ Q-012)
 ├── theme/             # 主题系统测试 (T-001 ~ T-008)
-├── config/            # DConfig 配置测试 (C-001 ~ C-005)
+├── config/            # DConfig 配置测试 (C-001 ~ C-006)
 ├── utilities/         # 工具类测试 (U-001 ~ U-006)
 ├── debugging/         # 调试场景测试 (D-001 ~ D-005)
 ├── custom-controls/   # 自定义控件测试 (X-001 ~ X-006)
@@ -96,6 +96,7 @@ evals/
 | C-003 | DConfig 覆盖机制 | [config/eval-003-dconfig-override.md](config/eval-003-dconfig-override.md) |
 | C-004 | DConfig 调试 | [config/eval-004-dconfig-debug.md](config/eval-004-dconfig-debug.md) |
 | C-005 | 区分 appId 与配置 ID | [config/eval-005-dconfig-identifiers.md](config/eval-005-dconfig-identifiers.md) |
+| C-006 | 插件场景 DConfig appId 与 configId 命名 | [config/eval-006-dconfig-plugin.md](config/eval-006-dconfig-plugin.md) |
 
 ### utilities/ - 工具类
 
@@ -196,4 +197,4 @@ done
 
 ## 总计
 
-共 **81** 个 output-quality evals（含 eval-template.md），覆盖 DTK 开发的核心场景。
+共 **82** 个 output-quality evals（含 eval-template.md），覆盖 DTK 开发的核心场景。
