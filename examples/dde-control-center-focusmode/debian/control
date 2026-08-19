@@ -1,0 +1,27 @@
+Source: dde-control-center-focusmode
+Section: admin
+Priority: optional
+Maintainer: Your Name <you@example.com>
+Build-Depends:
+ debhelper-compat (= 13),
+ cmake,
+ pkg-config,
+ qt6-base-dev,
+ qt6-declarative-dev,
+ qt6-tools-dev,
+ libdtk6core-dev,
+ dde-control-center-dev
+Standards-Version: 4.6.0
+Homepage: https://github.com/your-name/dde-control-center-focusmode
+
+Package: dde-control-center-focusmode
+Architecture: any
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+ dde-control-center
+Description: Focus Mode plugin for the DDE Control Center
+ A control center plugin example that demonstrates the full development
+ workflow of a DDE Control Center plugin. It manages the focus mode state,
+ persists it via DConfig, and notifies the user when the state changes.
+ Other services can subscribe to the persisted state to apply focus behavior.

@@ -1,0 +1,17 @@
+{
+    "magic": "dsg.config.meta",
+    "version": "1.0",
+    "contents": {
+        "enabled": {
+            "value": false,
+            "serial": 0,
+            "flags": [],
+            "name": "Focus Mode Enabled",
+            "name[zh_CN]": "专注模式开关",
+            "description": "Whether focus mode is enabled. Other services subscribe to this key to apply focus behavior.",
+            "description[zh_CN]": "专注模式是否开启。其它服务监听此配置项以应用专注行为。",
+            "permissions": "readwrite",
+            "visibility": "public"
+        }
+    }
+}

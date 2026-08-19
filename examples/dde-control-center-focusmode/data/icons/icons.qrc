@@ -1,0 +1,7 @@
+<RCC>
+    <!-- 内置 DCI 图标：编译进插件资源 /dsg/built-in-icons/，
+         由 DIconTheme 的内置兜底路径解析，无需安装到系统，避免与其它应用冲突 -->
+    <qresource prefix="/dsg/built-in-icons">
+        <file alias="deepin-dde.dci">deepin-dde.dci</file>
+    </qresource>
+</RCC>
