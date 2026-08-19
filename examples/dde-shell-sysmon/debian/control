@@ -1,0 +1,25 @@
+Source: dde-shell-sysmon
+Section: admin
+Priority: optional
+Maintainer: Deepin Packages Builder <packages@deepin.com>
+Build-Depends:
+ debhelper-compat (= 13),
+ cmake,
+ libdde-shell-dev (>= 0.0.10),
+ libdtk6core-dev,
+ libdtk6declarative,
+ qt6-declarative-dev,
+ qt6-declarative-private-dev,
+ systemd,
+Standards-Version: 4.6.2
+Homepage: https://github.com/linuxdeepin/dde-shell-sysmon
+
+Package: dde-shell-sysmon
+Architecture: any
+Depends:
+ dde-shell (>= 2.0),
+ ${misc:Depends},
+ ${shlibs:Depends},
+Description: DDE Shell system monitor panel plugin
+ A right-side LayerShell panel that displays real-time system status
+ including CPU, memory, disk usage and system information.

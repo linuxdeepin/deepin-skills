@@ -1,0 +1,4 @@
+usr/lib/*/dde-shell/plugins/*
+usr/share/dde-shell/org.deepin.ds.sysmon/*
+usr/share/dbus-1/services/org.deepin.ds.sysmon.service
+usr/share/dsg/configs/org.deepin.dde.shell/org.deepin.ds.sysmon.json

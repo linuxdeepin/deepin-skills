@@ -1,0 +1,7 @@
+dde-shell-sysmon (1.0.0) unstable; urgency=medium
+
+  * Initial release of dde-shell-sysmon plugin.
+  * Right-side LayerShell panel for real-time system monitoring.
+  * Display CPU, memory, disk usage and system information.
+
+ -- Deepin Packages Builder <packages@deepin.com>  Tue, 19 Aug 2026 00:00:00 +0800

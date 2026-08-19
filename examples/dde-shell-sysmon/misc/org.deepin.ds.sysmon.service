@@ -1,0 +1,4 @@
+[D-BUS Service]
+Name=org.deepin.ds.sysmon
+Exec=/usr/bin/dde-shell -p org.deepin.ds.sysmon
+SystemdService=dde-shell-sysmon.service

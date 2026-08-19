@@ -1,0 +1,15 @@
+{
+    "magic": "dsg.config.meta",
+    "version": "1.0",
+    "contents": {
+        "refreshInterval": {
+            "value": 2000,
+            "serial": 0,
+            "flags": [],
+            "name": "Refresh interval (ms)",
+            "name[zh_CN]": "刷新间隔（毫秒）",
+            "permissions": "readwrite",
+            "visibility": "public"
+        }
+    }
+}
