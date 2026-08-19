@@ -17,10 +17,6 @@ DTK 是深度桌面环境的核心开发框架，覆盖应用界面与交互、�
 - 先确定 Qt/DTK 主版本，再选择包名、target、头文件、库和安装路径；同一构建链路中不要混用 DTK5/Qt 5 与 DTK6/Qt 6。
 - 修改 DTK 框架源码后，要确认应用实际加载的是构建产物，而不是只验证编译成功后继续运行系统安装库。
 
-## 关联 Skill
-
-本 skill 是 DDE 组件开发的基础 skill。`$dde-control-center-development`、`$dde-shell-development` 和 `$dde-tray-development` 在涉及 DTK 通用 API（DConfig、DPalette、DCI 图标、DBlurEffectWidget 等）时会通过交叉引用加载本 skill。若本 skill 已加载，优先使用本 skill 的 DTK API 参考文档。
-
 ## 默认工作流
 
 1. 检查目标工程的 Qt/DTK 主版本、QWidget 或 QML 技术栈、应用 ID、构建方式和现有代码约定。
