@@ -1,0 +1,28 @@
+Source: dde-tray-merge-apps-plugin
+Section: utils
+Priority: optional
+Maintainer: Deepin Packages Builder <packages@deepin.org>
+Build-Depends:
+ debhelper-compat (= 13),
+ cmake,
+ qt6-base-dev,
+ qt6-svg-dev,
+ qt6-tools-dev,
+ qt6-l10n-tools,
+ libdtk6widget-dev,
+ libdtk6gui-dev,
+ libdtk6core-dev,
+ dde-tray-loader-dev,
+Standards-Version: 4.6.2
+Homepage: https://github.com/linuxdeepin/dde-tray-loader
+
+Package: dde-tray-merge-apps-plugin
+Architecture: any
+Depends:
+ ${shlibs:Depends},
+ ${misc:Depends},
+ dde-tray-loader (>= 6.0.0),
+Description: Merge application icons quick toggle dock plugin
+ A dock plugin that toggles the "merge application icons" option of the
+ control center personalization -> desktop and taskbar module, shown both
+ in the tray and the quick panel.
