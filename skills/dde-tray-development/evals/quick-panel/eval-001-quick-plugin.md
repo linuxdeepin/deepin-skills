@@ -20,8 +20,8 @@
 - [ ] Quick_Panel_Single/Multi/Full 布局标志
 - [ ] itemWidget(Dock::QUICK_ITEM_KEY) 返回快捷面板控件
 - [ ] setFixedHeight(Dock::QUICK_ITEM_HEIGHT)
-- [ ] 配置元数据路径为 `/usr/share/dsg/configs/org.deepin.ds.dock/org.deepin.ds.dock.tray.json`
-- [ ] 使用 App ID `org.deepin.ds.dock`、Resource `org.deepin.ds.dock.tray` 和 Key `quickPlugins`
+- [ ] 配置元数据路径为 `/usr/share/dsg/configs/org.deepin.dde.shell/org.deepin.ds.dock.tray.json`
+- [ ] 使用 App ID `org.deepin.dde.shell`、Resource `org.deepin.ds.dock.tray` 和 Key `quickPlugins`
 - [ ] 使用 `dde-dconfig` 读取现有列表，并在保留已有值的前提下添加 `pluginName()`
 
 ## 评分标准
@@ -35,3 +35,4 @@
 ## 反模式检查
 - [ ] Type_Tray 与 Type_Quick 未互斥使用
 - [ ] 快捷面板未选 Quick_Panel_* 布局标志
+- [ ] 未将 App ID 误写为 `org.deepin.ds.dock`（正确为 `org.deepin.dde.shell`，写错时注册静默无效）

@@ -207,11 +207,11 @@ public:
 
 配置元数据路径：
 
-`/usr/share/dsg/configs/org.deepin.ds.dock/org.deepin.ds.dock.tray.json`
+`/usr/share/dsg/configs/org.deepin.dde.shell/org.deepin.ds.dock.tray.json`
 
 对应的 DConfig 参数：
 
-- App ID：`org.deepin.ds.dock`
+- App ID：`org.deepin.dde.shell`
 - Resource：`org.deepin.ds.dock.tray`
 - Key：`quickPlugins`
 
@@ -224,7 +224,7 @@ public:
 
 ```bash
 dde-dconfig get \
-    -a org.deepin.ds.dock \
+    -a org.deepin.dde.shell \
     -r org.deepin.ds.dock.tray \
     -k quickPlugins
 ```
@@ -233,7 +233,7 @@ dde-dconfig get \
 
 ```bash
 dde-dconfig set \
-    -a org.deepin.ds.dock \
+    -a org.deepin.dde.shell \
     -r org.deepin.ds.dock.tray \
     -k quickPlugins \
     -v '["network", "bluetooth", "my-plugin"]'
@@ -262,7 +262,7 @@ dde-dconfig set \
 排查步骤：
 1. 确认 `flags()` 返回 `Type_Quick | Quick_Panel_Full`（或其他 `Quick_Panel_*`）
 2. 确认 `itemWidget(Dock::QUICK_ITEM_KEY)` 返回了有效控件
-3. 使用 `dde-dconfig get -a org.deepin.ds.dock -r org.deepin.ds.dock.tray -k quickPlugins`
+3. 使用 `dde-dconfig get -a org.deepin.dde.shell -r org.deepin.ds.dock.tray -k quickPlugins`
    确认插件名称已注册
 4. 确认快捷面板控件只使用了 `setFixedHeight()`，没有使用 `setFixedSize()`
 
