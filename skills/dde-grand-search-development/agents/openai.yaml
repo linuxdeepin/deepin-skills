@@ -1,0 +1,4 @@
+interface:
+  display_name: "DDE 全局搜索插件开发"
+  short_description: "开发 v25 dde-grand-search 扩展搜索插件"
+  default_prompt: "使用 $dde-grand-search-development 开发或维护 deepin/UOS v25 的 dde-grand-search 扩展搜索插件（DBus 搜索服务）。"

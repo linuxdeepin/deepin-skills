@@ -1,0 +1,21 @@
+Source: my-search-plugin
+Section: utils
+Priority: optional
+Maintainer: Deepin Packages Builder <packages@linuxdeepin.com>
+Build-Depends: debhelper (>= 11),
+               cmake,
+               qt6-base-dev | qtbase5-dev,
+               qt6-base-dev-tools | qtbase5-dev-tools
+Standards-Version: 4.5.1
+
+Package: my-search-plugin
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends},
+         dde-grand-search
+Description: My search plugin for DDE Grand Search
+ A DDE Grand Search extension search plugin. It registers a DBus
+ service on the session bus and implements the V1.0 search plugin
+ protocol (Search / Stop / Action), so that its results can be
+ displayed in the global search window.
+ .
+ Replace this description with the actual capability of the plugin.

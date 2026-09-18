@@ -1,0 +1,8 @@
+[D-BUS Service]
+# Trigger 模式所需的 D-Bus 自动启动文件。
+# 安装位置：/usr/share/dbus-1/services/my-search.service
+#
+# 仅 Mode=Trigger 的插件需要此文件；Auto/Manual 模式不需要。
+# Name 必须与 .conf 的 DBusService 一致，Exec 必须是可执行文件绝对路径。
+Name=com.example.MySearch
+Exec=@PLUGIN_EXEC_PATH@

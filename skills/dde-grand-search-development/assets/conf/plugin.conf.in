@@ -1,0 +1,32 @@
+# DDE 全局搜索扩展搜索插件配置模板
+#
+# 安装位置（由 CMake 决定）：
+#   /usr/lib/<arch>/dde-grand-search-daemon/plugins/searcher/my-search.conf
+#
+# 修改后必须重启 dde-grand-search-daemon 才会生效：
+#   sudo systemctl restart dde-grand-search-daemon
+#
+# 注意：INI 中 ';' 为注释起始符，字段值中不要出现分号。
+
+[Grand Search]
+# 插件唯一标识。必须全局唯一，且不能与内置搜索项冲突。
+# 该值同时是结果项 searcher 字段的值，也是 OpenWithPlugin 路由插件的依据。
+Name=com.example.MySearch
+
+# 运行模式：Auto（daemon 管理进程）/ Manual（外部控制）/ Trigger（DBus 自启动）
+Mode=Auto
+
+# 优先级，仅 Auto 模式有效：0=High 常驻启动，1=Middle 搜索时启动并守护，2=Low 不守护
+Priority=1
+
+# DBus 三要素：必须与插件代码中的注册调用完全一致
+DBusService=com.example.MySearch
+DBusAddress=/com/example/MySearch
+DBusInterface=com.example.MySearch.SearchPlugin
+
+# 接口协议版本，当前仅支持 1.0。必须与插件 JSON 报文中的 ver 字段一致。
+InterfaceVersion=1.0
+
+# 插件可执行文件路径，仅 Auto 模式需要。
+# 由 CMake configure_file 注入绝对路径，不要手写架构相关目录。
+Exec=@PLUGIN_EXEC_PATH@

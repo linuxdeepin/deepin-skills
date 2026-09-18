@@ -1,0 +1,153 @@
+[
+  {
+    "query": "给全局搜索开发一个插件，让我自己的数据也能被搜到。",
+    "should_trigger": true,
+    "expected_skill": "dde-grand-search-development"
+  },
+  {
+    "query": "实现全局搜索插件的 Search 接口并返回结果 JSON。",
+    "should_trigger": true,
+    "expected_skill": "dde-grand-search-development"
+  },
+  {
+    "query": "dde-grand-search-daemon 没有加载我的搜索插件配置文件。",
+    "should_trigger": true,
+    "expected_skill": "dde-grand-search-development"
+  },
+  {
+    "query": "全局搜索插件的 conf 文件应该放在哪个目录，Mode 该怎么选。",
+    "should_trigger": true,
+    "expected_skill": "dde-grand-search-development"
+  },
+  {
+    "query": "全局搜索插件有结果但界面不显示，日志里是 Invalid result format from plugin。",
+    "should_trigger": true,
+    "expected_skill": "dde-grand-search-development"
+  },
+  {
+    "query": "全局搜索插件怎么实现可中断的搜索，Stop 接口怎么写。",
+    "should_trigger": true,
+    "expected_skill": "dde-grand-search-development"
+  },
+  {
+    "query": "搜索结果项里的 item、name、type 字段分别是什么含义。",
+    "should_trigger": true,
+    "expected_skill": "dde-grand-search-development"
+  },
+  {
+    "query": "全局搜索插件的分组名和结果名怎么做多语言。",
+    "should_trigger": true,
+    "expected_skill": "dde-grand-search-development"
+  },
+  {
+    "query": "Trigger 模式的全局搜索插件需要安装 D-Bus service 文件吗。",
+    "should_trigger": true,
+    "expected_skill": "dde-grand-search-development"
+  },
+  {
+    "query": "用 dbus-send 手动测试全局搜索插件的接口。",
+    "should_trigger": true,
+    "expected_skill": "dde-grand-search-development"
+  },
+  {
+    "query": "全局搜索插件 Auto 模式进程反复重启，日志出现 Too many failures。",
+    "should_trigger": true,
+    "expected_skill": "dde-grand-search-development"
+  },
+  {
+    "query": "全局搜索插件点击结果后要打开对应文件，Action 接口怎么实现。",
+    "should_trigger": true,
+    "expected_skill": "dde-grand-search-development"
+  },
+  {
+    "query": "全局搜索插件的 CMake 安装路径怎么写，Exec 路径怎么自动生成。",
+    "should_trigger": true,
+    "expected_skill": "dde-grand-search-development"
+  },
+  {
+    "query": "全局搜索插件最多能返回多少条搜索结果。",
+    "should_trigger": true,
+    "expected_skill": "dde-grand-search-development"
+  },
+  {
+    "query": "全局搜索插件的 Name 和内置搜索项冲突了会怎么样。",
+    "should_trigger": true,
+    "expected_skill": "dde-grand-search-development"
+  },
+  {
+    "query": "为全局搜索插件编写 debian 打包文件。",
+    "should_trigger": true,
+    "expected_skill": "dde-grand-search-development"
+  },
+  {
+    "query": "把已有笔记应用的搜索能力接入 deepin 全局搜索。",
+    "should_trigger": true,
+    "expected_skill": "dde-grand-search-development"
+  },
+  {
+    "query": "全局搜索插件用 DConfig 保存开关，结果图标用 DIconTheme 加载。",
+    "should_trigger": true,
+    "expected_skill": "dde-grand-search-development",
+    "cross_skill": "dtk-development"
+  },
+  {
+    "query": "给 dde-shell 写一个顶栏 Panel 插件。",
+    "should_trigger": false,
+    "expected_skill": "dde-shell-development"
+  },
+  {
+    "query": "托盘插件右键菜单增加一个可勾选的静音选项。",
+    "should_trigger": false,
+    "expected_skill": "dde-tray-development"
+  },
+  {
+    "query": "控制中心增加蓝牙设置页面。",
+    "should_trigger": false,
+    "expected_skill": "dde-control-center-development"
+  },
+  {
+    "query": "DIconButton 的 dci 图标不随主题切换。",
+    "should_trigger": false,
+    "expected_skill": "dtk-development"
+  },
+  {
+    "query": "DConfig 的 meta 文件覆盖没有生效。",
+    "should_trigger": false,
+    "expected_skill": "dtk-development"
+  },
+  {
+    "query": "创建一个 LayerShell 侧边栏窗口。",
+    "should_trigger": false,
+    "expected_skill": "dde-shell-development"
+  },
+  {
+    "query": "普通 Qt 程序解析一个 JSON 文件。",
+    "should_trigger": false,
+    "expected_skill": null
+  },
+  {
+    "query": "QSystemTrayIcon 的菜单需要支持勾选项。",
+    "should_trigger": false,
+    "expected_skill": "dtk-development"
+  },
+  {
+    "query": "用 DAppletBridge 实现两个 Shell 插件通信。",
+    "should_trigger": false,
+    "expected_skill": "dde-shell-development"
+  },
+  {
+    "query": "全局搜索窗口的快捷键怎么修改。",
+    "should_trigger": false,
+    "expected_skill": null
+  },
+  {
+    "query": "控制中心插件怎么注册到模块树。",
+    "should_trigger": false,
+    "expected_skill": "dde-control-center-development"
+  },
+  {
+    "query": "写一个 DTK6 的 DMainWindow 应用。",
+    "should_trigger": false,
+    "expected_skill": "dtk-development"
+  }
+]

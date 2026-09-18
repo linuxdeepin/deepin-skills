@@ -48,6 +48,7 @@ bash <(curl -fsSL https://raw.githubusercontent.com/linuxdeepin/deepin-skills/ma
 | [`dde-shell-development`](skills/dde-shell-development/SKILL.md) | deepin/UOS v25 | 用于扩展 DDE Shell 的桌面能力，例如 Dock、顶栏、侧栏和其他面板区域。该 skill 指导开发者选择并实现 Applet、Containment 或 Panel 插件，处理 QML 与 C++ 集成、插件生命周期和加载机制，并支持使用 LayerShell 创建贴靠屏幕边缘的 Wayland 窗口。 |
 | [`dde-control-center-development`](skills/dde-control-center-development/SKILL.md) | deepin/UOS v25 | 用于为 DDE 控制中心开发系统设置模块和插件。适合需要理解模块树、导航和搜索机制，使用控制中心的 C++ 或 QML API 构建设置页面，处理 D-Bus 与数据交互，以及完成插件构建、翻译、打包、安装和本地调试的开发任务。 |
 | [`dde-tray-development`](skills/dde-tray-development/SKILL.md) | deepin/UOS v25 | 用于开发符合 DDE 桌面交互方式的任务栏托盘插件、快捷面板控件及相关交互功能。该 skill 覆盖托盘插件接口和加载行为、状态与消息协议、右键菜单、快捷面板详情页，以及任务栏位置变化等集成场景，帮助开发者实现稳定、规范的任务栏插件。 |
+| [`dde-grand-search-development`](skills/dde-grand-search-development/SKILL.md) | deepin/UOS v25 | 用于为全局搜索开发扩展搜索插件，让第三方应用的数据和搜索结果出现在 deepin 全局搜索界面中。该 skill 覆盖插件以 DBus 服务接入的机制、`.conf` 配置与 Auto/Manual/Trigger 运行模式、V1.0 协议的 Search/Stop/Action 接口与结果 JSON 格式、分组与结果名国际化、CMake 构建与 Debian 打包，以及插件未加载、搜索无结果等常见故障的排查方法。 |
 
 ## 示例项目
 
@@ -77,7 +78,8 @@ deepin-skills/
 │   ├── dtk-development/
 │   ├── dde-shell-development/
 │   ├── dde-control-center-development/
-│   └── dde-tray-development/
+│   ├── dde-tray-development/
+│   └── dde-grand-search-development/
 ├── examples/
 │   └── dtk-codeviewer/
 └── scripts/

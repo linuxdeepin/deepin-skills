@@ -1,0 +1,31 @@
+<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN" "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
+<!--
+  DDE 全局搜索扩展搜索插件 V1.0 接口定义。
+
+  用法一（推荐）：手写 Adaptor，参考 assets/src/searchpluginadaptor.h，
+                  把下面的 interface name 改为你自己的 DBusInterface。
+  用法二：用 qdbusxml2cpp 生成 Adaptor（注意用 -a 生成 Adaptor，不是 -p）：
+      qdbusxml2cpp -a searchpluginadaptor -c SearchPluginAdaptor \
+        com.deepin.dde.grandsearch.searchplugin.xml
+
+  说明：
+    - interface name 只是默认值，插件可使用自定义接口名，
+      但必须与 .conf 的 DBusInterface 字段完全一致。
+    - 方法名大小写敏感，签名固定为 Search(s)->s、Stop(s)->b、Action(s)->b。
+-->
+<node>
+  <interface name="com.deepin.dde.GrandSearch.SearchPlugin">
+    <method name="Search">
+      <arg type="s" direction="out"/>
+      <arg name="json" type="s" direction="in"/>
+    </method>
+    <method name="Action">
+      <arg type="b" direction="out"/>
+      <arg name="json" type="s" direction="in"/>
+    </method>
+    <method name="Stop">
+      <arg type="b" direction="out"/>
+      <arg name="json" type="s" direction="in"/>
+    </method>
+  </interface>
+</node>
