@@ -1,0 +1,88 @@
+[
+  {
+    "query": "给全局搜索开发一个插件，让我自己的数据也能被搜到。",
+    "should_trigger": true,
+    "expected_skill": "dde-grand-search-development"
+  },
+  {
+    "query": "dde-grand-search-daemon 没有加载我的搜索插件配置文件。",
+    "should_trigger": true,
+    "expected_skill": "dde-grand-search-development"
+  },
+  {
+    "query": "全局搜索插件有结果但界面不显示，日志里是 Invalid result format from plugin。",
+    "should_trigger": true,
+    "expected_skill": "dde-grand-search-development"
+  },
+  {
+    "query": "搜索结果项里的 item、name、type 字段分别是什么含义。",
+    "should_trigger": true,
+    "expected_skill": "dde-grand-search-development"
+  },
+  {
+    "query": "Trigger 模式的全局搜索插件需要安装 D-Bus service 文件吗。",
+    "should_trigger": true,
+    "expected_skill": "dde-grand-search-development"
+  },
+  {
+    "query": "全局搜索插件 Auto 模式进程反复重启，日志出现 Too many failures。",
+    "should_trigger": true,
+    "expected_skill": "dde-grand-search-development"
+  },
+  {
+    "query": "全局搜索插件的 CMake 安装路径怎么写，Exec 路径怎么自动生成。",
+    "should_trigger": true,
+    "expected_skill": "dde-grand-search-development"
+  },
+  {
+    "query": "全局搜索插件的 Name 和内置搜索项冲突了会怎么样。",
+    "should_trigger": true,
+    "expected_skill": "dde-grand-search-development"
+  },
+  {
+    "query": "把已有笔记应用的搜索能力接入 deepin 全局搜索。",
+    "should_trigger": true,
+    "expected_skill": "dde-grand-search-development"
+  },
+  {
+    "query": "全局搜索插件用 DConfig 保存开关，结果图标用 DIconTheme 加载。",
+    "should_trigger": true,
+    "expected_skill": "dde-grand-search-development",
+    "cross_skill": "dtk-development"
+  },
+  {
+    "query": "给 dde-shell 写一个顶栏 Panel 插件。",
+    "should_trigger": false,
+    "expected_skill": "dde-shell-development"
+  },
+  {
+    "query": "控制中心增加蓝牙设置页面。",
+    "should_trigger": false,
+    "expected_skill": "dde-control-center-development"
+  },
+  {
+    "query": "DConfig 的 meta 文件覆盖没有生效。",
+    "should_trigger": false,
+    "expected_skill": "dtk-development"
+  },
+  {
+    "query": "普通 Qt 程序解析一个 JSON 文件。",
+    "should_trigger": false,
+    "expected_skill": null
+  },
+  {
+    "query": "用 DAppletBridge 实现两个 Shell 插件通信。",
+    "should_trigger": false,
+    "expected_skill": "dde-shell-development"
+  },
+  {
+    "query": "控制中心插件怎么注册到模块树。",
+    "should_trigger": false,
+    "expected_skill": "dde-control-center-development"
+  },
+  {
+    "query": "写一个 DTK6 的 DMainWindow 应用。",
+    "should_trigger": false,
+    "expected_skill": "dtk-development"
+  }
+]

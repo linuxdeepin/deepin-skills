@@ -48,6 +48,7 @@ Choose a skill according to the target system version:
 | [`dde-shell-development`](skills/dde-shell-development/SKILL.md) | deepin/UOS v25 | Use this skill to extend DDE Shell desktop surfaces such as the Dock, top bar, sidebars, and other panels. It guides the selection and implementation of Applet, Containment, and Panel plugins; QML and C++ integration; plugin lifecycle and loading; and LayerShell windows anchored to screen edges on Wayland. |
 | [`dde-control-center-development`](skills/dde-control-center-development/SKILL.md) | deepin/UOS v25 | Use this skill to build system settings modules and plugins for DDE Control Center. It covers the module tree, navigation, and search architecture; C++ and QML APIs for settings pages; D-Bus and data interactions; plus plugin builds, translations, packaging, installation, and local debugging. |
 | [`dde-tray-development`](skills/dde-tray-development/SKILL.md) | deepin/UOS v25 | Use this skill to create DDE taskbar tray plugins, quick-panel controls, and related interactions that follow DDE desktop conventions. It covers tray plugin interfaces and loading behavior, status and messaging protocols, context menus, quick-panel detail pages, and integration points such as taskbar position changes for stable, well-integrated taskbar plugins. |
+| [`dde-grand-search-development`](skills/dde-grand-search-development/SKILL.md) | deepin/UOS v25 | Use this skill to build extension search plugins for Grand Search, so that third-party application data and results appear in the deepin global search window. It covers the DBus-service integration model, `.conf` configuration and the Auto/Manual/Trigger run modes, the V1.0 Search/Stop/Action protocol and result JSON format, group and item name internationalization, CMake builds and Debian packaging, and troubleshooting for plugins that are not loaded or return no results. |
 
 ## Community Events
 
@@ -67,7 +68,8 @@ deepin-skills/
 │   ├── dtk-development/
 │   ├── dde-shell-development/
 │   ├── dde-control-center-development/
-│   └── dde-tray-development/
+│   ├── dde-tray-development/
+│   └── dde-grand-search-development/
 └── scripts/
     └── install.sh
 ```
