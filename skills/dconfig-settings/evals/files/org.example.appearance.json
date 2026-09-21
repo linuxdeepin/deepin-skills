@@ -1,0 +1,44 @@
+{
+  "magic": "dsg.config.meta",
+  "version": "1.0",
+  "contents": {
+    "defaultColorMode": {
+      "value": "color",
+      "name": "Default color mode",
+      "description": "Allowed values: color, mono. mono means grayscale.",
+      "visibility": "public",
+      "permissions": "readwrite",
+      "flags": [
+        "global"
+      ]
+    },
+    "colorMode": {
+      "value": "",
+      "name": "色彩模式",
+      "visibility": "private",
+      "permissions": "readwrite"
+    },
+    "disableAnimations": {
+      "value": false,
+      "name": "Disable animations",
+      "description": "true disables animation; false enables animation.",
+      "visibility": "public",
+      "permissions": "readwrite"
+    },
+    "locked": {
+      "value": 1,
+      "visibility": "public",
+      "permissions": "readonly"
+    },
+    "hidden": {
+      "value": true,
+      "permissions": "readwrite"
+    },
+    "jsonText": {
+      "value": "plain",
+      "name": "Literal template text",
+      "visibility": "public",
+      "permissions": "readwrite"
+    }
+  }
+}

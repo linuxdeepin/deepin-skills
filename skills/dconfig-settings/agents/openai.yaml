@@ -1,0 +1,4 @@
+interface:
+  display_name: "DConfig 配置管理"
+  short_description: "通过自然语言查找公开配置，使用 dde-dconfig 读写并验证配置值"
+  default_prompt: "使用 $dconfig-settings 查找我想调整的公开配置；需要读取或修改值时检查运行时环境，修改后报告实际执行的命令。"

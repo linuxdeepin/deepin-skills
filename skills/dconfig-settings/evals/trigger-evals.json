@@ -1,0 +1,30 @@
+[
+  {
+    "query": "系统里有哪些公开的 dconfig 设置可以调整？先列出来，不查当前值。",
+    "should_trigger": true
+  },
+  {
+    "query": "我想关闭 DTK 动画，不知道配置 key，帮我找一下再关闭。",
+    "should_trigger": true
+  },
+  {
+    "query": "把这个公开配置恢复默认，别影响其他项。",
+    "should_trigger": true
+  },
+  {
+    "query": "看看哪些配置能调整应用颜色，名字可能是英文的。",
+    "should_trigger": true
+  },
+  {
+    "query": "给我的 Qt 应用接入 DConfig API，写个 C++ 示例。",
+    "should_trigger": false
+  },
+  {
+    "query": "生成镜像用的 os-config override 文件。",
+    "should_trigger": false
+  },
+  {
+    "query": "修改另一个用户的配置，请帮我 sudo。",
+    "should_trigger": false
+  }
+]

@@ -1,0 +1,149 @@
+{
+  "skill_name": "dconfig-settings",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "只根据附件元数据，列出可以修改的配置，方便我选择。不需要当前值。测试资源是公共资源 org.example.appearance，根子路径，无 override。当前没有 D-Bus 会话，DConfig 服务也未运行；不调用真实服务。附件中的配置不区分 X11/Wayland。",
+      "expected_output": "直接列出本地元数据中公开可写的项；无需环境检查，不逐项请求服务，不用文件 value 作为配置值；说明运行时状态未验证。",
+      "files": [
+        "evals/files/org.example.appearance.json"
+      ],
+      "expectations": [
+        "结果恰好包含 defaultColorMode、disableAnimations、jsonText 三个可修改项。",
+        "即使没有 D-Bus 会话和服务，仍解析附件并列出元数据；不逐 key 调用服务。",
+        "未把文件 value 展示为配置默认值或实际值，二者标为未取得。",
+        "说明列表仅依据本地元数据，运行时可读写性未验证。",
+        "仅展示已执行的修改命令及结果；只读命令不报告，模拟修改明确标为模拟。"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "将公共资源 org.example.appearance 的默认色彩模式改成灰度，明确要影响使用该公共配置的全部应用。使用附件元数据，根子路径，无 override。隔离演练：模拟 get 返回字符串 color，isDefaultValue 返回 true，set 后 get 返回 mono。仅写出模拟处理结果、修改命令和最终回复，不调用真实服务。 模拟环境前提：当前用户的会话 D-Bus 地址可达，DConfig 目标服务实例已核实，CLI 已安装。 测试目标图形会话已确认为 Wayland，附件中的配置不区分 X11/Wayland。",
+      "expected_output": "目标为 defaultColorMode，空 appId 表示公共范围，传字符串 mono；允许 Global，不提权或指定其他 UID；包含旧值读取、默认状态、set、回读和 reset 恢复方法",
+      "files": [
+        "evals/files/org.example.appearance.json"
+      ],
+      "expectations": [
+        "选中 defaultColorMode，目标值为字符串 mono。",
+        "按明确授权使用空 appId，并说明公共配置及 Global 的作用范围。",
+        "Global 项允许写入，命令不含提权或其他 UID。",
+        "处理过程包括旧值、默认状态及回读验证；回复仅展示模拟 set 命令，恢复参考 reset 标为未执行。",
+        "写入前核实运行时条件、目标身份和作用范围。",
+        "仅展示已执行的修改命令及结果；只读命令不报告，模拟修改明确标为模拟。"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "把公共资源 org.example.appearance 的 jsonText 设置为字符串 [1,2]。附件为元数据，根子路径，无 override。隔离演练：当前值为字符串 plain；已知本机 CLI 会把合法 JSON 数组参数解析为数组。请给出处理结果，不调用真实服务。 模拟环境前提：当前用户有可用的会话 D-Bus 地址，DConfig 服务进程已运行，CLI 已安装。 测试目标图形会话已确认为 Wayland，附件中的配置不区分 X11/Wayland。",
+      "expected_output": "识别声明为字符串；指出 shell 引号不能阻止 CLI JSON 数组转换；不生成可执行 set 或改用 D-Bus/提权",
+      "files": [
+        "evals/files/org.example.appearance.json"
+      ],
+      "expectations": [
+        "识别目标类型为字符串而非数组。",
+        "解释 shell 引号不能阻止 CLI 的数组解析。",
+        "不尝试 set 写入，也不切换 D-Bus、提权或编辑文件。",
+        "写入前核实运行时条件；元数据匹配可先完成。",
+        "仅展示已执行的修改命令及结果；只读命令不报告，模拟修改明确标为模拟。"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "请读取 defaultColorMode 当前值和默认值。隔离演练：元数据文件存在，但 DBUS_SESSION_BUS_ADDRESS 未设置，DConfig 服务进程未运行。不得调用真实服务。 测试目标图形会话已确认为 Wayland，附件中的配置不区分 X11/Wayland。",
+      "expected_output": "停止所有 dde-dconfig 值请求。；报告两个环境前提缺失，不拿文件 value 代替。；不启动总线/服务、不提权、不循环尝试 appId。",
+      "files": [
+        "evals/files/org.example.appearance.json"
+      ],
+      "expectations": [
+        "入口检查失败后停止值请求；允许提供明确标为本地元数据的候选。",
+        "报告两个环境前提缺失，不拿文件 value 代替。",
+        "不启动总线/服务、不提权、不循环尝试 appId。",
+        "不把环境失败误报为元数据不可发现。",
+        "仅展示已执行的修改命令及结果；只读命令不报告，模拟修改明确标为模拟。"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "查询 org.example.appearance 的默认值。隔离演练：环境前提均满足，get 返回 mono，isDefaultValue=false，本机 CLI 没有默认值查询方法，文件 value 为 color。不要调用真实服务。 测试目标图形会话已确认为 Wayland，附件中的配置不区分 X11/Wayland。",
+      "expected_output": "实际值为 mono，有效默认值未取得。；不将 color 当有效默认值。；不临时 reset，不编造默认值查询方法。",
+      "files": [
+        "evals/files/org.example.appearance.json"
+      ],
+      "expectations": [
+        "实际值为 mono，有效默认值未取得。",
+        "不将 color 当有效默认值。",
+        "不临时 reset，不编造默认值查询方法。",
+        "读取值前核实运行时条件；元数据匹配可先完成。",
+        "仅展示已执行的修改命令及结果；只读命令不报告，模拟修改明确标为模拟。"
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "检查调用上下文是否可用：公共 org.example.appearance.json 存在，appId=org.example.dynamic 是应用运行时使用的身份，subpath=/profile/day 由应用动态指定，两者没有对应磁盘目录。只做本地分析。 隔离演练的环境检查结果均为通过，CLI 支持 get/set/reset；不调用真实服务。 测试目标图形会话已确认为 Wayland，附件中的配置不区分 X11/Wayland。",
+      "expected_output": "resource 以真实元数据文件为依据。；不因 appId/subpath 没有同名目录而否定上下文。；保留用户指定身份，不替换成空 appId 或猜其他资源。",
+      "files": [
+        "evals/files/org.example.appearance.json"
+      ],
+      "expectations": [
+        "resource 以真实元数据文件为依据。",
+        "不因 appId/subpath 没有同名目录而否定上下文。",
+        "保留用户指定身份，不替换成空 appId 或猜其他资源。",
+        "仅本地分析时无需运行时入口检查。",
+        "仅展示已执行的修改命令及结果；只读命令不报告，模拟修改明确标为模拟。"
+      ]
+    },
+    {
+      "id": 7,
+      "prompt": "隔离演练：基础运行条件均满足，XDG_SESSION_TYPE=wayland，DISPLAY=:0，同时存在有可靠说明的 X11 和 Wayland 两套公开可写配置。用户要修改当前桌面动画。应如何选配置？不要执行真实命令。",
+      "expected_output": "不因为 DISPLAY 存在误判为 X11。；选取说明适用于 Wayland 的候选，不同时修改两套配置。",
+      "files": [],
+      "expectations": [
+        "不因为 DISPLAY 存在误判为 X11。",
+        "选取说明适用于 Wayland 的候选，不同时修改两套配置。"
+      ]
+    },
+    {
+      "id": 8,
+      "prompt": "隔离演练：基础运行条件满足，但当前是 SSH，目标图形会话无法确认，存在 X11 和 Wayland 两套候选。用户说关闭动画。请处理，不执行真实命令。",
+      "expected_output": "要求用户选择目标环境或有依据的配置候选。；不默认 X11/Wayland，不执行 set/reset。",
+      "files": [],
+      "expectations": [
+        "要求用户选择目标环境或有依据的配置候选。",
+        "不默认 X11/Wayland，不执行 set/reset。"
+      ]
+    },
+    {
+      "id": 9,
+      "prompt": "隔离演练：当前 Wayland 会话及基础运行条件已确认，公共外观资源既可用空 appId 也可用指定应用 appId。用户只说改成深色。请处理，不执行真实命令。",
+      "expected_output": "说明空 appId 可能影响所有使用公共配置的应用。；询问全部应用还是具体应用，不默认空 appId。；不把指定 appId 宣称为绝对隔离，不混淆 Global 与应用范围。",
+      "files": [],
+      "expectations": [
+        "说明空 appId 可能影响所有使用公共配置的应用。",
+        "询问全部应用还是具体应用，不默认空 appId。",
+        "不把指定 appId 宣称为绝对隔离，不混淆 Global 与应用范围。"
+      ]
+    },
+    {
+      "id": 10,
+      "prompt": "隔离演练：环境和 Wayland 会话已确认，两个公开可写配置均已定位，当前用户明确授权批量修改。第一项对 appId=org.example.viewer、resourceId=org.example.appearance、subpath=/profile/day、key=disableAnimations 执行 dde-dconfig set -v true，服务接受且回读一致；第二项对同一身份的 key=jsonText 执行 dde-dconfig reset，服务报错，中途停止。只写最终给用户的回复，不运行真实命令。",
+      "expected_output": "列出两条模拟执行过的完整 set/reset 命令及各自结果；只读命令不列出；失败项不得称成功，未执行项不列入已执行命令。",
+      "files": [],
+      "expectations": [
+        "最终回复包含两条实际模拟发出的完整修改命令，参数准确，顺序正确。",
+        "分别注明 set 成功并回读一致、reset 失败。",
+        "不列环境检查、get 和回读命令，也不把未执行命令放入已执行清单。"
+      ]
+    },
+    {
+      "id": 11,
+      "prompt": "隔离演练：请读取某公开配置的当前值。dde-dconfig 已安装，DBUS_SESSION_BUS_ADDRESS 非空，但该地址无法连接；进程列表里有另一个用户启动的 dde-dconfig-daemon，目标服务单元没有运行。不要调用真实服务。",
+      "expected_output": "指出会话总线地址不可达且目标服务实例未核实；不因地址非空或同名进程就继续 get，也不借用其他用户的环境。",
+      "files": [],
+      "expectations": [
+        "不把 DBUS_SESSION_BUS_ADDRESS 非空等同于可用会话。",
+        "不把另一个用户的同名进程当作目标服务实例。",
+        "停止值请求，报告未读取，不尝试提权、启动服务或构造新总线。"
+      ]
+    }
+  ]
+}
