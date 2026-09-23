@@ -1,6 +1,6 @@
 # org.deepin.dde.Appearance1 接口参考
 
-该接口提供外观设置能力，包括字体、主题、壁纸、光标、缩放、深色模式、窗口圆角、不透明度和窗口模糊效果的读写。
+该接口提供外观设置能力，包括主题、字体、壁纸、光标、缩放、窗口圆角、不透明度、活动色的读写和查询。
 
 ## 接口信息
 
@@ -11,7 +11,6 @@
 | Interface | `org.deepin.dde.Appearance1` |
 | Bus | Session |
 
-> **待核验声明**：本文档接口信息基于源码静态分析，未经运行时 D-Bus 内省验证，标记为待核验。
 
 ### 通用设置
 
@@ -19,26 +18,10 @@
 
 设置指定类型的外观值。
 
-- **输入参数**: `type`（string, 类型 `s`）：类型名称；`value`（string, 类型 `s`）：值
+- **输入参数**: `ty`（string, 类型 `s`）：类型名称；`value`（string, 类型 `s`）：值
 - **返回值**: 无
 
-**`type` 支持的选项**（来源于 dde-appearance 源码 `appearancemanager.cpp` 的 `doSetByType()` 及 `commondefine.h`）:
-- `gtk` — GTK 主题
-- `icon` — 图标主题
-- `cursor` — 光标主题
-- `cursorSize` — 光标大小
-- `background` — 背景
-- `greeterbackground` — 登录背景
-- `standardfont` — 标准字体
-- `monospacefont` — 等宽字体
-- `fontsize` — 字体大小
-- `globaltheme` — 全局主题
-- `activecolor` — 活动色
-- `windowradius` — 窗口圆角
-- `windowopacity` — 窗口不透明度
-- `wallpaper` — 壁纸
-- `dtksizemode` — DTK 缩放模式
-- `qtscrollbarpolicy` — Qt 滚动条策略
+`ty` 支持的选项：`gtk`（GTK 主题）、`icon`（图标主题）、`cursor`（光标主题）、`cursorSize`（光标大小）、`background`（背景）、`greeterbackground`（登录背景）、`standardfont`（标准字体）、`monospacefont`（等宽字体）、`fontsize`（字体大小）、`globaltheme`（全局主题）、`activecolor`（活动色）、`windowradius`（窗口圆角）、`windowopacity`（窗口不透明度）、`wallpaper`（壁纸）、`dtksizemode`（DTK 缩放模式）、`qtscrollbarpolicy`（Qt 滚动条策略）
 
 ```bash
 gdbus call --session \
@@ -47,365 +30,306 @@ gdbus call --session \
   --method org.deepin.dde.Appearance1.Set "standardfont" "Sans"
 ```
 
-#### Get
-
-获取指定类型的外观值。
-
-> **待核验**: 该方法在当前源码的 D-Bus 接口定义中未找到，待核验是否在其他版本中存在或由客户端封装。
-
-- **输入参数**: `type`（string, 类型 `s`）：类型名称
-- **返回值**: `s`（string）：当前值
-
-```bash
-gdbus call --session \
-  --dest org.deepin.dde.Appearance1 \
-  --object-path /org/deepin/dde/Appearance1 \
-  --method org.deepin.dde.Appearance1.Get "standardfont"
-```
-
-#### GetSchema
-
-获取指定类型的默认外观值。
-
-> **待核验**: 该方法在当前源码的 D-Bus 接口定义中未找到，待核验是否在其他版本中存在或由客户端封装。
-
-- **输入参数**: `type`（string, 类型 `s`）：类型名称
-- **返回值**: `s`（string）：默认值
-
-```bash
-gdbus call --session \
-  --dest org.deepin.dde.Appearance1 \
-  --object-path /org/deepin/dde/Appearance1 \
-  --method org.deepin.dde.Appearance1.GetSchema "standardfont"
-```
-
 #### List
 
 列出指定类型的所有可用值。
 
-- **输入参数**: `type`（string, 类型 `s`）：类型名称
-- **返回值**: `as`（string 数组）：可用值列表
+- **输入参数**: `ty`（string, 类型 `s`）：类型名称
+- **返回值**: `list`（string, 类型 `s`）：可用值 JSON 列表
 
-**`type` 支持的选项**（来源于 dde-appearance 源码 `appearancemanager.cpp` 的 `doList()`）:
-- `gtk` — GTK 主题
-- `icon` — 图标主题
-- `cursor` — 光标主题
-- `background` — 背景
-- `standardfont` — 标准字体
-- `monospacefont` — 等宽字体
-- `globaltheme` — 全局主题
+`ty` 支持的选项：`gtk`、`icon`、`cursor`、`background`、`standardfont`、`monospacefont`、`globaltheme`
 
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.Appearance1 \
   --object-path /org/deepin/dde/Appearance1 \
-  --method org.deepin.dde.Appearance1.List "standardfont"
+  --method org.deepin.dde.Appearance1.List "icon"
 ```
 
+#### Delete
 
-### 字体设置
+删除指定类型和名称的主题项。
 
-#### SetFont
-
-设置字体及大小。
-
-- **输入参数**: `value`（string, 类型 `s`）：字体名称；`size`（double, 类型 `d`）：字体大小
+- **输入参数**: `ty`（string, 类型 `s`）：类型名称；`name`（string, 类型 `s`）：主题项名称
 - **返回值**: 无
 
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.Appearance1 \
   --object-path /org/deepin/dde/Appearance1 \
-  --method org.deepin.dde.Appearance1.SetFont "Sans" 11.0
+  --method org.deepin.dde.Appearance1.Delete "icon" "MyIconTheme"
 ```
 
-#### GetFont
+#### Show
 
-获取当前字体名称。
+显示指定类型和名称列表的主题详情。
 
-- **输入参数**: 无
-- **返回值**: `s`（string）：字体名称
+- **输入参数**: `ty`（string, 类型 `s`）：类型名称；`names`（string 数组, 类型 `as`）：主题项名称列表
+- **返回值**: `detail`（string, 类型 `s`）：主题详情 JSON
 
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.Appearance1 \
   --object-path /org/deepin/dde/Appearance1 \
-  --method org.deepin.dde.Appearance1.GetFont
+  --method org.deepin.dde.Appearance1.Show "icon" "['bloom']"
 ```
 
-#### GetFontSize
+#### Thumbnail
 
-获取当前字体大小。
+获取指定类型和名称的主题缩略图路径。
 
-- **输入参数**: 无
-- **返回值**: `d`（double）：字体大小
+- **输入参数**: `ty`（string, 类型 `s`）：类型名称；`name`（string, 类型 `s`）：主题项名称
+- **返回值**: `file`（string, 类型 `s`）：缩略图文件路径
 
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.Appearance1 \
   --object-path /org/deepin/dde/Appearance1 \
-  --method org.deepin.dde.Appearance1.GetFontSize
+  --method org.deepin.dde.Appearance1.Thumbnail "icon" "bloom"
+```
+
+#### Reset
+
+重置所有外观设置为默认值。
+
+- **输入参数**: 无
+- **返回值**: 无
+
+```bash
+gdbus call --session \
+  --dest org.deepin.dde.Appearance1 \
+  --object-path /org/deepin/dde/Appearance1 \
+  --method org.deepin.dde.Appearance1.Reset
 ```
 
 
 ### 缩放设置
 
-#### SetScale
-
-设置缩放比例。
-
-- **输入参数**: `ratio`（double, 类型 `d`）：缩放比例
-- **返回值**: 无
-
-```bash
-gdbus call --session \
-  --dest org.deepin.dde.Appearance1 \
-  --object-path /org/deepin/dde/Appearance1 \
-  --method org.deepin.dde.Appearance1.SetScale 1.25
-```
-
-#### GetScale
-
-获取缩放比例。
-
-- **输入参数**: 无
-- **返回值**: `d`（double）：缩放比例
-
-```bash
-gdbus call --session \
-  --dest org.deepin.dde.Appearance1 \
-  --object-path /org/deepin/dde/Appearance1 \
-  --method org.deepin.dde.Appearance1.GetScale
-```
-
-#### SetGlobalScale
-
-设置全局缩放比例。
-
-- **输入参数**: `scale`（double, 类型 `d`）：全局缩放比例
-- **返回值**: 无
-
-```bash
-gdbus call --session \
-  --dest org.deepin.dde.Appearance1 \
-  --object-path /org/deepin/dde/Appearance1 \
-  --method org.deepin.dde.Appearance1.SetGlobalScale 1.25
-```
-
-#### GetGlobalScale
+#### GetScaleFactor
 
 获取全局缩放比例。
 
 - **输入参数**: 无
-- **返回值**: `d`（double）：全局缩放比例
+- **返回值**: `scaleFactor`（double, 类型 `d`）：缩放比例
 
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.Appearance1 \
   --object-path /org/deepin/dde/Appearance1 \
-  --method org.deepin.dde.Appearance1.GetGlobalScale
+  --method org.deepin.dde.Appearance1.GetScaleFactor
 ```
 
+#### SetScaleFactor
 
-### 壁纸设置
+设置全局缩放比例。
 
-#### SetWallpaper
-
-设置壁纸。
-
-> **待核验**: 该方法在当前 dde-appearance 源码的 D-Bus 接口定义（`appearance1.h` / `org.deepin.dde.Appearance1.xml`）中未找到。实际的壁纸设置方法为 `SetCurrentWorkspaceBackground(uri)`，不带 `type` 参数。`type` 参数支持的选项待核验。
-
-- **输入参数**: `type`（string, 类型 `s`）：壁纸类型；`uri`（string, 类型 `s`）：壁纸 URI
+- **输入参数**: `scale`（double, 类型 `d`）：缩放比例
 - **返回值**: 无
 
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.Appearance1 \
   --object-path /org/deepin/dde/Appearance1 \
-  --method org.deepin.dde.Appearance1.SetWallpaper "picture" "file:///usr/share/wallpapers/default.jpg"
+  --method org.deepin.dde.Appearance1.SetScaleFactor 1.25
 ```
 
-#### GetWallpaper
+#### GetScreenScaleFactors
 
-获取当前壁纸。
+获取各显示器的缩放比例。
 
-> **待核验**: 该方法在当前 dde-appearance 源码的 D-Bus 接口定义（`appearance1.h` / `org.deepin.dde.Appearance1.xml`）中未找到。实际的壁纸获取方法为 `GetCurrentWorkspaceBackground()`，不带 `type` 参数。`type` 参数支持的选项待核验。
-
-- **输入参数**: `type`（string, 类型 `s`）：壁纸类型
-- **返回值**: `s`（string）：壁纸 URI
+- **输入参数**: 无
+- **返回值**: `scaleFactor`（字典, 类型 `a{sd}`）：显示器名称到缩放比例的映射
 
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.Appearance1 \
   --object-path /org/deepin/dde/Appearance1 \
-  --method org.deepin.dde.Appearance1.GetWallpaper "picture"
+  --method org.deepin.dde.Appearance1.GetScreenScaleFactors
 ```
 
-#### SetWallpaperSlideShow
+#### SetScreenScaleFactors
 
-设置幻灯片壁纸。
+设置各显示器的缩放比例。
 
-- **输入参数**: `type`（string, 类型 `s`）：壁纸类型；`uri`（string, 类型 `s`）：壁纸 URI
+- **输入参数**: `scaleFactor`（字典, 类型 `a{sd}`）：显示器名称到缩放比例的映射
 - **返回值**: 无
 
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.Appearance1 \
   --object-path /org/deepin/dde/Appearance1 \
-  --method org.deepin.dde.Appearance1.SetWallpaperSlideShow "wallpaper" "/usr/share/wallpapers/"
+  --method org.deepin.dde.Appearance1.SetScreenScaleFactors "{'eDP-1': <1.25>}"
+```
+
+
+### 壁纸与背景
+
+#### SetMonitorBackground
+
+设置指定显示器的背景。
+
+- **输入参数**: `monitorName`（string, 类型 `s`）：显示器名称；`imageGile`（string, 类型 `s`）：图片路径
+- **返回值**: 无
+
+```bash
+gdbus call --session \
+  --dest org.deepin.dde.Appearance1 \
+  --object-path /org/deepin/dde/Appearance1 \
+  --method org.deepin.dde.Appearance1.SetMonitorBackground "eDP-1" "/usr/share/wallpapers/deepin/desktop.jpg"
 ```
 
 #### GetWallpaperSlideShow
 
-获取当前幻灯片壁纸。
+获取指定显示器的壁纸轮播配置。
 
-- **输入参数**: `type`（string, 类型 `s`）：壁纸类型
-- **返回值**: `s`（string）：壁纸 URI
+- **输入参数**: `monitorName`（string, 类型 `s`）：显示器名称
+- **返回值**: `slideShow`（string, 类型 `s`）：轮播配置（间隔时间，单位秒）
 
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.Appearance1 \
   --object-path /org/deepin/dde/Appearance1 \
-  --method org.deepin.dde.Appearance1.GetWallpaperSlideShow "wallpaper"
+  --method org.deepin.dde.Appearance1.GetWallpaperSlideShow "eDP-1"
 ```
 
+#### SetWallpaperSlideShow
 
-### 光标与图标主题
+设置指定显示器的壁纸轮播配置。
 
-#### SetCursor
-
-设置光标主题。
-
-- **输入参数**: `value`（string, 类型 `s`）：光标主题名称
+- **输入参数**: `monitorName`（string, 类型 `s`）：显示器名称；`slideShow`（string, 类型 `s`）：轮播配置（间隔时间，单位秒）
 - **返回值**: 无
 
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.Appearance1 \
   --object-path /org/deepin/dde/Appearance1 \
-  --method org.deepin.dde.Appearance1.SetCursor "bloom"
+  --method org.deepin.dde.Appearance1.SetWallpaperSlideShow "eDP-1" "300"
 ```
 
-#### GetCursor
 
-获取当前光标主题。
+### 工作区背景
+
+#### SetCurrentWorkspaceBackground
+
+设置当前工作区背景。
+
+- **输入参数**: `uri`（string, 类型 `s`）：背景 URI
+- **返回值**: 无
+
+```bash
+gdbus call --session \
+  --dest org.deepin.dde.Appearance1 \
+  --object-path /org/deepin/dde/Appearance1 \
+  --method org.deepin.dde.Appearance1.SetCurrentWorkspaceBackground "file:///usr/share/wallpapers/deepin/desktop.jpg"
+```
+
+#### GetCurrentWorkspaceBackground
+
+获取当前工作区背景。
 
 - **输入参数**: 无
-- **返回值**: `s`（string）：光标主题名称
+- **返回值**: `uri`（string, 类型 `s`）：背景 URI
 
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.Appearance1 \
   --object-path /org/deepin/dde/Appearance1 \
-  --method org.deepin.dde.Appearance1.GetCursor
+  --method org.deepin.dde.Appearance1.GetCurrentWorkspaceBackground
 ```
 
-#### SetIconTheme
+#### SetCurrentWorkspaceBackgroundForMonitor
 
-设置图标主题。
+设置指定显示器的当前工作区背景。
 
-- **输入参数**: `value`（string, 类型 `s`）：图标主题名称
+- **输入参数**: `uri`（string, 类型 `s`）：背景 URI；`strMonitorName`（string, 类型 `s`）：显示器名称
 - **返回值**: 无
 
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.Appearance1 \
   --object-path /org/deepin/dde/Appearance1 \
-  --method org.deepin.dde.Appearance1.SetIconTheme "bloom"
+  --method org.deepin.dde.Appearance1.SetCurrentWorkspaceBackgroundForMonitor "file:///usr/share/wallpapers/deepin/desktop.jpg" "eDP-1"
 ```
 
-#### GetIconTheme
+#### GetCurrentWorkspaceBackgroundForMonitor
 
-获取当前图标主题。
+获取指定显示器的当前工作区背景。
+
+- **输入参数**: `strMonitorName`（string, 类型 `s`）：显示器名称
+- **返回值**: `uri`（string, 类型 `s`）：背景 URI
+
+```bash
+gdbus call --session \
+  --dest org.deepin.dde.Appearance1 \
+  --object-path /org/deepin/dde/Appearance1 \
+  --method org.deepin.dde.Appearance1.GetCurrentWorkspaceBackgroundForMonitor "eDP-1"
+```
+
+#### SetWorkspaceBackgroundForMonitor
+
+设置指定工作区和显示器的背景。
+
+- **输入参数**: `index`（int32, 类型 `i`）：工作区索引；`strMonitorName`（string, 类型 `s`）：显示器名称；`uri`（string, 类型 `s`）：背景 URI
+- **返回值**: 无
+
+```bash
+gdbus call --session \
+  --dest org.deepin.dde.Appearance1 \
+  --object-path /org/deepin/dde/Appearance1 \
+  --method org.deepin.dde.Appearance1.SetWorkspaceBackgroundForMonitor 1 "eDP-1" "file:///usr/share/wallpapers/deepin/desktop.jpg"
+```
+
+#### GetWorkspaceBackgroundForMonitor
+
+获取指定工作区和显示器的背景。
+
+- **输入参数**: `index`（int32, 类型 `i`）：工作区索引；`strMonitorName`（string, 类型 `s`）：显示器名称
+- **返回值**: `uri`（string, 类型 `s`）：背景 URI
+
+```bash
+gdbus call --session \
+  --dest org.deepin.dde.Appearance1 \
+  --object-path /org/deepin/dde/Appearance1 \
+  --method org.deepin.dde.Appearance1.GetWorkspaceBackgroundForMonitor 1 "eDP-1"
+```
+
+
+### 活动色
+
+#### SetActiveColors
+
+设置活动色。
+
+- **输入参数**: `activeColors`（string, 类型 `s`）：活动色 JSON
+- **返回值**: 无
+
+```bash
+gdbus call --session \
+  --dest org.deepin.dde.Appearance1 \
+  --object-path /org/deepin/dde/Appearance1 \
+  --method org.deepin.dde.Appearance1.SetActiveColors "#2CA7F8"
+```
+
+#### GetActiveColors
+
+获取活动色。
 
 - **输入参数**: 无
-- **返回值**: `s`（string）：图标主题名称
+- **返回值**: `activeColors`（string, 类型 `s`）：活动色 JSON
 
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.Appearance1 \
   --object-path /org/deepin/dde/Appearance1 \
-  --method org.deepin.dde.Appearance1.GetIconTheme
-```
-
-
-### 主题与深色模式
-
-#### SetTheme
-
-设置 GTK 主题。
-
-- **输入参数**: `value`（string, 类型 `s`）：主题名称
-- **返回值**: 无
-
-```bash
-gdbus call --session \
-  --dest org.deepin.dde.Appearance1 \
-  --object-path /org/deepin/dde/Appearance1 \
-  --method org.deepin.dde.Appearance1.SetTheme "deepin"
-```
-
-#### GetTheme
-
-获取当前 GTK 主题。
-
-- **输入参数**: 无
-- **返回值**: `s`（string）：主题名称
-
-```bash
-gdbus call --session \
-  --dest org.deepin.dde.Appearance1 \
-  --object-path /org/deepin/dde/Appearance1 \
-  --method org.deepin.dde.Appearance1.GetTheme
-```
-
-#### SetDarkMode
-
-设置深色模式。
-
-- **输入参数**: `mode`（uint32, 类型 `u`）：深色模式值
-- **返回值**: 无
-
-```bash
-gdbus call --session \
-  --dest org.deepin.dde.Appearance1 \
-  --object-path /org/deepin/dde/Appearance1 \
-  --method org.deepin.dde.Appearance1.SetDarkMode 1
+  --method org.deepin.dde.Appearance1.GetActiveColors
 ```
 
 
 ### 外观属性
 
-#### Typeface（属性）
-
-当前字体名称。
-
-| 属性 | 值 |
-|------|------|
-| 类型 | `s` |
-| 读写权限 | readwrite |
-
-读取示例：
-
-```bash
-gdbus call --session \
-  --dest org.deepin.dde.Appearance1 \
-  --object-path /org/deepin/dde/Appearance1 \
-  --method org.freedesktop.DBus.Properties.Get \
-  org.deepin.dde.Appearance1 Typeface
-```
-设置示例：
-
-```bash
-gdbus call --session \
-  --dest org.deepin.dde.Appearance1 \
-  --object-path /org/deepin/dde/Appearance1 \
-  --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Appearance1 Typeface "<string>"
-```
 #### FontSize（属性）
 
-当前字体大小。
+字体大小。
 
 | 属性 | 值 |
 |------|------|
@@ -421,6 +345,7 @@ gdbus call --session \
   --method org.freedesktop.DBus.Properties.Get \
   org.deepin.dde.Appearance1 FontSize
 ```
+
 设置示例：
 
 ```bash
@@ -430,304 +355,8 @@ gdbus call --session \
   --method org.freedesktop.DBus.Properties.Set \
   org.deepin.dde.Appearance1 FontSize <11.0>
 ```
-#### MonospaceFontTypeface（属性）
 
-等宽字体名称。
-
-| 属性 | 值 |
-|------|------|
-| 类型 | `s` |
-| 读写权限 | readwrite |
-
-读取示例：
-
-```bash
-gdbus call --session \
-  --dest org.deepin.dde.Appearance1 \
-  --object-path /org/deepin/dde/Appearance1 \
-  --method org.freedesktop.DBus.Properties.Get \
-  org.deepin.dde.Appearance1 MonospaceFontTypeface
-```
-设置示例：
-
-```bash
-gdbus call --session \
-  --dest org.deepin.dde.Appearance1 \
-  --object-path /org/deepin/dde/Appearance1 \
-  --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Appearance1 MonospaceFontTypeface "<string>"
-```
-#### MonospaceFontSize（属性）
-
-等宽字体大小。
-
-| 属性 | 值 |
-|------|------|
-| 类型 | `d` |
-| 读写权限 | readwrite |
-
-读取示例：
-
-```bash
-gdbus call --session \
-  --dest org.deepin.dde.Appearance1 \
-  --object-path /org/deepin/dde/Appearance1 \
-  --method org.freedesktop.DBus.Properties.Get \
-  org.deepin.dde.Appearance1 MonospaceFontSize
-```
-设置示例：
-
-```bash
-gdbus call --session \
-  --dest org.deepin.dde.Appearance1 \
-  --object-path /org/deepin/dde/Appearance1 \
-  --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Appearance1 MonospaceFontSize <11.0>
-```
-#### Cursor（属性）
-
-当前光标主题。
-
-| 属性 | 值 |
-|------|------|
-| 类型 | `s` |
-| 读写权限 | readwrite |
-
-读取示例：
-
-```bash
-gdbus call --session \
-  --dest org.deepin.dde.Appearance1 \
-  --object-path /org/deepin/dde/Appearance1 \
-  --method org.freedesktop.DBus.Properties.Get \
-  org.deepin.dde.Appearance1 Cursor
-```
-设置示例：
-
-```bash
-gdbus call --session \
-  --dest org.deepin.dde.Appearance1 \
-  --object-path /org/deepin/dde/Appearance1 \
-  --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Appearance1 Cursor "<string>"
-```
-#### GlobalScale（属性）
-
-全局缩放比例。
-
-| 属性 | 值 |
-|------|------|
-| 类型 | `d` |
-| 读写权限 | readwrite |
-
-读取示例：
-
-```bash
-gdbus call --session \
-  --dest org.deepin.dde.Appearance1 \
-  --object-path /org/deepin/dde/Appearance1 \
-  --method org.freedesktop.DBus.Properties.Get \
-  org.deepin.dde.Appearance1 GlobalScale
-```
-设置示例：
-
-```bash
-gdbus call --session \
-  --dest org.deepin.dde.Appearance1 \
-  --object-path /org/deepin/dde/Appearance1 \
-  --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Appearance1 GlobalScale <1.25>
-```
-#### Wallpaper（属性）
-
-当前壁纸。
-
-| 属性 | 值 |
-|------|------|
-| 类型 | `s` |
-| 读写权限 | read |
-
-读取示例：
-
-```bash
-gdbus call --session \
-  --dest org.deepin.dde.Appearance1 \
-  --object-path /org/deepin/dde/Appearance1 \
-  --method org.freedesktop.DBus.Properties.Get \
-  org.deepin.dde.Appearance1 Wallpaper
-```
-#### WallpaperSlideShow（属性）
-
-当前幻灯片壁纸。
-
-| 属性 | 值 |
-|------|------|
-| 类型 | `s` |
-| 读写权限 | read |
-
-读取示例：
-
-```bash
-gdbus call --session \
-  --dest org.deepin.dde.Appearance1 \
-  --object-path /org/deepin/dde/Appearance1 \
-  --method org.freedesktop.DBus.Properties.Get \
-  org.deepin.dde.Appearance1 WallpaperSlideShow
-```
-#### IconTheme（属性）
-
-当前图标主题。
-
-| 属性 | 值 |
-|------|------|
-| 类型 | `s` |
-| 读写权限 | readwrite |
-
-读取示例：
-
-```bash
-gdbus call --session \
-  --dest org.deepin.dde.Appearance1 \
-  --object-path /org/deepin/dde/Appearance1 \
-  --method org.freedesktop.DBus.Properties.Get \
-  org.deepin.dde.Appearance1 IconTheme
-```
-设置示例：
-
-```bash
-gdbus call --session \
-  --dest org.deepin.dde.Appearance1 \
-  --object-path /org/deepin/dde/Appearance1 \
-  --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Appearance1 IconTheme "<string>"
-```
-#### GtkTheme（属性）
-
-当前 GTK 主题。
-
-| 属性 | 值 |
-|------|------|
-| 类型 | `s` |
-| 读写权限 | readwrite |
-
-读取示例：
-
-```bash
-gdbus call --session \
-  --dest org.deepin.dde.Appearance1 \
-  --object-path /org/deepin/dde/Appearance1 \
-  --method org.freedesktop.DBus.Properties.Get \
-  org.deepin.dde.Appearance1 GtkTheme
-```
-设置示例：
-
-```bash
-gdbus call --session \
-  --dest org.deepin.dde.Appearance1 \
-  --object-path /org/deepin/dde/Appearance1 \
-  --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Appearance1 GtkTheme "<string>"
-```
-#### QtTheme（属性）
-
-当前 Qt 主题。
-
-| 属性 | 值 |
-|------|------|
-| 类型 | `s` |
-| 读写权限 | read |
-
-读取示例：
-
-```bash
-gdbus call --session \
-  --dest org.deepin.dde.Appearance1 \
-  --object-path /org/deepin/dde/Appearance1 \
-  --method org.freedesktop.DBus.Properties.Get \
-  org.deepin.dde.Appearance1 QtTheme
-```
-#### DarkMode（属性）
-
-深色模式状态。
-
-| 属性 | 值 |
-|------|------|
-| 类型 | `u` |
-| 读写权限 | readwrite |
-
-读取示例：
-
-```bash
-gdbus call --session \
-  --dest org.deepin.dde.Appearance1 \
-  --object-path /org/deepin/dde/Appearance1 \
-  --method org.freedesktop.DBus.Properties.Get \
-  org.deepin.dde.Appearance1 DarkMode
-```
-设置示例：
-
-```bash
-gdbus call --session \
-  --dest org.deepin.dde.Appearance1 \
-  --object-path /org/deepin/dde/Appearance1 \
-  --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Appearance1 DarkMode <uint32 1>
-```
-#### RoundRadius（属性）
-
-窗口圆角半径。
-
-| 属性 | 值 |
-|------|------|
-| 类型 | `u` |
-| 读写权限 | readwrite |
-
-读取示例：
-
-```bash
-gdbus call --session \
-  --dest org.deepin.dde.Appearance1 \
-  --object-path /org/deepin/dde/Appearance1 \
-  --method org.freedesktop.DBus.Properties.Get \
-  org.deepin.dde.Appearance1 RoundRadius
-```
-设置示例：
-
-```bash
-gdbus call --session \
-  --dest org.deepin.dde.Appearance1 \
-  --object-path /org/deepin/dde/Appearance1 \
-  --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Appearance1 RoundRadius <uint32 8>
-```
-#### ActiveColor（属性）
-
-活动色。
-
-| 属性 | 值 |
-|------|------|
-| 类型 | `s` |
-| 读写权限 | readwrite |
-
-读取示例：
-
-```bash
-gdbus call --session \
-  --dest org.deepin.dde.Appearance1 \
-  --object-path /org/deepin/dde/Appearance1 \
-  --method org.freedesktop.DBus.Properties.Get \
-  org.deepin.dde.Appearance1 ActiveColor
-```
-设置示例：
-
-```bash
-gdbus call --session \
-  --dest org.deepin.dde.Appearance1 \
-  --object-path /org/deepin/dde/Appearance1 \
-  --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Appearance1 ActiveColor "<string>"
-```
-#### WindowOpacity（属性）
+#### Opacity（属性）
 
 窗口不透明度。
 
@@ -743,8 +372,9 @@ gdbus call --session \
   --dest org.deepin.dde.Appearance1 \
   --object-path /org/deepin/dde/Appearance1 \
   --method org.freedesktop.DBus.Properties.Get \
-  org.deepin.dde.Appearance1 WindowOpacity
+  org.deepin.dde.Appearance1 Opacity
 ```
+
 设置示例：
 
 ```bash
@@ -752,11 +382,155 @@ gdbus call --session \
   --dest org.deepin.dde.Appearance1 \
   --object-path /org/deepin/dde/Appearance1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Appearance1 WindowOpacity <1.0>
+  org.deepin.dde.Appearance1 Opacity <1.0>
 ```
+
+#### WindowRadius（属性）
+
+窗口圆角半径。
+
+| 属性 | 值 |
+|------|------|
+| 类型 | `i` |
+| 读写权限 | readwrite |
+
+读取示例：
+
+```bash
+gdbus call --session \
+  --dest org.deepin.dde.Appearance1 \
+  --object-path /org/deepin/dde/Appearance1 \
+  --method org.freedesktop.DBus.Properties.Get \
+  org.deepin.dde.Appearance1 WindowRadius
+```
+
+设置示例：
+
+```bash
+gdbus call --session \
+  --dest org.deepin.dde.Appearance1 \
+  --object-path /org/deepin/dde/Appearance1 \
+  --method org.freedesktop.DBus.Properties.Set \
+  org.deepin.dde.Appearance1 WindowRadius <int32 8>
+```
+
 #### Background（属性）
 
-背景。
+当前背景 URI。
+
+| 属性 | 值 |
+|------|------|
+| 类型 | `s` |
+| 读写权限 | read |
+
+读取示例：
+
+```bash
+gdbus call --session \
+  --dest org.deepin.dde.Appearance1 \
+  --object-path /org/deepin/dde/Appearance1 \
+  --method org.freedesktop.DBus.Properties.Get \
+  org.deepin.dde.Appearance1 Background
+```
+
+#### GlobalTheme（属性）
+
+当前全局主题。
+
+| 属性 | 值 |
+|------|------|
+| 类型 | `s` |
+| 读写权限 | read |
+
+读取示例：
+
+```bash
+gdbus call --session \
+  --dest org.deepin.dde.Appearance1 \
+  --object-path /org/deepin/dde/Appearance1 \
+  --method org.freedesktop.DBus.Properties.Get \
+  org.deepin.dde.Appearance1 GlobalTheme
+```
+
+#### GtkTheme（属性）
+
+当前 GTK 主题。
+
+| 属性 | 值 |
+|------|------|
+| 类型 | `s` |
+| 读写权限 | read |
+
+读取示例：
+
+```bash
+gdbus call --session \
+  --dest org.deepin.dde.Appearance1 \
+  --object-path /org/deepin/dde/Appearance1 \
+  --method org.freedesktop.DBus.Properties.Get \
+  org.deepin.dde.Appearance1 GtkTheme
+```
+
+#### IconTheme（属性）
+
+当前图标主题。
+
+| 属性 | 值 |
+|------|------|
+| 类型 | `s` |
+| 读写权限 | read |
+
+读取示例：
+
+```bash
+gdbus call --session \
+  --dest org.deepin.dde.Appearance1 \
+  --object-path /org/deepin/dde/Appearance1 \
+  --method org.freedesktop.DBus.Properties.Get \
+  org.deepin.dde.Appearance1 IconTheme
+```
+
+#### CursorTheme（属性）
+
+当前光标主题。
+
+| 属性 | 值 |
+|------|------|
+| 类型 | `s` |
+| 读写权限 | read |
+
+读取示例：
+
+```bash
+gdbus call --session \
+  --dest org.deepin.dde.Appearance1 \
+  --object-path /org/deepin/dde/Appearance1 \
+  --method org.freedesktop.DBus.Properties.Get \
+  org.deepin.dde.Appearance1 CursorTheme
+```
+
+#### MonospaceFont（属性）
+
+当前等宽字体。
+
+| 属性 | 值 |
+|------|------|
+| 类型 | `s` |
+| 读写权限 | read |
+
+读取示例：
+
+```bash
+gdbus call --session \
+  --dest org.deepin.dde.Appearance1 \
+  --object-path /org/deepin/dde/Appearance1 \
+  --method org.freedesktop.DBus.Properties.Get \
+  org.deepin.dde.Appearance1 MonospaceFont
+```
+
+#### QtActiveColor（属性）
+
+Qt 活动色。
 
 | 属性 | 值 |
 |------|------|
@@ -770,8 +544,9 @@ gdbus call --session \
   --dest org.deepin.dde.Appearance1 \
   --object-path /org/deepin/dde/Appearance1 \
   --method org.freedesktop.DBus.Properties.Get \
-  org.deepin.dde.Appearance1 Background
+  org.deepin.dde.Appearance1 QtActiveColor
 ```
+
 设置示例：
 
 ```bash
@@ -779,15 +554,35 @@ gdbus call --session \
   --dest org.deepin.dde.Appearance1 \
   --object-path /org/deepin/dde/Appearance1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Appearance1 Background "<string>"
+  org.deepin.dde.Appearance1 QtActiveColor "<'#2CA7F8'>"
 ```
-#### BlurEnabled（属性）
 
-窗口模糊是否启用。
+#### StandardFont（属性）
+
+当前标准字体。
 
 | 属性 | 值 |
 |------|------|
-| 类型 | `b` |
+| 类型 | `s` |
+| 读写权限 | read |
+
+读取示例：
+
+```bash
+gdbus call --session \
+  --dest org.deepin.dde.Appearance1 \
+  --object-path /org/deepin/dde/Appearance1 \
+  --method org.freedesktop.DBus.Properties.Get \
+  org.deepin.dde.Appearance1 StandardFont
+```
+
+#### WallpaperSlideShow（属性）
+
+壁纸轮播配置。
+
+| 属性 | 值 |
+|------|------|
+| 类型 | `s` |
 | 读写权限 | readwrite |
 
 读取示例：
@@ -797,8 +592,9 @@ gdbus call --session \
   --dest org.deepin.dde.Appearance1 \
   --object-path /org/deepin/dde/Appearance1 \
   --method org.freedesktop.DBus.Properties.Get \
-  org.deepin.dde.Appearance1 BlurEnabled
+  org.deepin.dde.Appearance1 WallpaperSlideShow
 ```
+
 设置示例：
 
 ```bash
@@ -806,16 +602,123 @@ gdbus call --session \
   --dest org.deepin.dde.Appearance1 \
   --object-path /org/deepin/dde/Appearance1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Appearance1 BlurEnabled <true>
+  org.deepin.dde.Appearance1 WallpaperSlideShow "<'300'>"
 ```
+
+#### DTKSizeMode（属性）
+
+DTK 缩放模式。
+
+| 属性 | 值 |
+|------|------|
+| 类型 | `i` |
+| 读写权限 | readwrite |
+
+读取示例：
+
+```bash
+gdbus call --session \
+  --dest org.deepin.dde.Appearance1 \
+  --object-path /org/deepin/dde/Appearance1 \
+  --method org.freedesktop.DBus.Properties.Get \
+  org.deepin.dde.Appearance1 DTKSizeMode
+```
+
+设置示例：
+
+```bash
+gdbus call --session \
+  --dest org.deepin.dde.Appearance1 \
+  --object-path /org/deepin/dde/Appearance1 \
+  --method org.freedesktop.DBus.Properties.Set \
+  org.deepin.dde.Appearance1 DTKSizeMode <int32 1>
+```
+
+#### QtScrollBarPolicy（属性）
+
+Qt 滚动条策略。
+
+| 属性 | 值 |
+|------|------|
+| 类型 | `i` |
+| 读写权限 | readwrite |
+
+读取示例：
+
+```bash
+gdbus call --session \
+  --dest org.deepin.dde.Appearance1 \
+  --object-path /org/deepin/dde/Appearance1 \
+  --method org.freedesktop.DBus.Properties.Get \
+  org.deepin.dde.Appearance1 QtScrollBarPolicy
+```
+
+设置示例：
+
+```bash
+gdbus call --session \
+  --dest org.deepin.dde.Appearance1 \
+  --object-path /org/deepin/dde/Appearance1 \
+  --method org.freedesktop.DBus.Properties.Set \
+  org.deepin.dde.Appearance1 QtScrollBarPolicy <int32 0>
+```
+
+#### CursorSize（属性）
+
+光标大小。
+
+| 属性 | 值 |
+|------|------|
+| 类型 | `i` |
+| 读写权限 | readwrite |
+
+读取示例：
+
+```bash
+gdbus call --session \
+  --dest org.deepin.dde.Appearance1 \
+  --object-path /org/deepin/dde/Appearance1 \
+  --method org.freedesktop.DBus.Properties.Get \
+  org.deepin.dde.Appearance1 CursorSize
+```
+
+设置示例：
+
+```bash
+gdbus call --session \
+  --dest org.deepin.dde.Appearance1 \
+  --object-path /org/deepin/dde/Appearance1 \
+  --method org.freedesktop.DBus.Properties.Set \
+  org.deepin.dde.Appearance1 CursorSize <int32 24>
+```
+
+#### WallpaperURls（属性）
+
+壁纸 URL 列表。
+
+| 属性 | 值 |
+|------|------|
+| 类型 | `s` |
+| 读写权限 | read |
+
+读取示例：
+
+```bash
+gdbus call --session \
+  --dest org.deepin.dde.Appearance1 \
+  --object-path /org/deepin/dde/Appearance1 \
+  --method org.freedesktop.DBus.Properties.Get \
+  org.deepin.dde.Appearance1 WallpaperURls
+```
+
 
 ### 外观变化信号
 
-#### AppearanceChanged
+#### Changed
 
 外观属性变化时发出。
 
-- **参数**: `type`（string, 类型 `s`）：属性类型；`value`（string, 类型 `s`）：新值
+- **参数**: `ty`（string, 类型 `s`）：属性类型；`value`（string, 类型 `s`）：新值
 - **触发条件**: 外观属性被设置时发出
 
 ```bash
@@ -828,7 +731,7 @@ gdbus monitor --session \
 
 外观配置刷新完成时发出。
 
-- **参数**: 无
+- **参数**: `type`（string, 类型 `s`）：刷新的类型
 - **触发条件**: 外观配置刷新完成时发出
 
 ```bash

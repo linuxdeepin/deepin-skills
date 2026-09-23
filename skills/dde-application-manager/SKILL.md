@@ -9,6 +9,20 @@ Categories:
 
 dde-application-manager 是 DDE 应用管理器组件，通过 Session 总线提供应用启动、应用属性管理、任务跟踪、MIME 类型管理和应用更新通知能力。
 
+## CLI 命令
+
+### dde-am
+
+DDE 应用管理器客户端命令行工具，用于启动应用、执行命令、列出已安装应用。
+
+详见 [dde-am.md](references/cli/dde-am.md)
+
+### app-identifier
+
+应用身份识别工具，用于识别指定进程以何种身份（应用 ID）运行。
+
+详见 [app-identifier.md](references/cli/app-identifier.md)
+
 ## D-Bus 接口
 
 ### 应用管理
@@ -56,18 +70,3 @@ dde-application-manager 通过 DConfig 暴露应用启动次数记录和应用�
 应用环境变量黑名单和额外环境变量配置。
 
 详见 [org.deepin.dde.application-manager](references/config/org.deepin.dde.application-manager.md)
-
-## CLI 命令
-
-### dde-am
-
-DDE 应用管理器客户端命令行工具，用于启动应用、执行命令、列出已安装应用。
-
-详见 [dde-am.md](references/cli/dde-am.md)
-
-### app-identifier
-
-应用身份识别工具，用于识别指定进程以何种身份（应用 ID）运行。
-
-详见 [app-identifier.md](references/cli/app-identifier.md)
-

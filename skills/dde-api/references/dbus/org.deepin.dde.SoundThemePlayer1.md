@@ -1,6 +1,6 @@
 # org.deepin.dde.SoundThemePlayer1 接口参考
 
-该接口提供声音主题播放控制能力。
+该接口提供系统声音主题播放、登录音效、关机音效准备和音频状态保存能力。
 
 ## 接口信息
 
@@ -11,105 +11,136 @@
 | Interface | `org.deepin.dde.SoundThemePlayer1` |
 | Bus | System |
 
-> **待核验声明**：本文档接口信息基于源码静态分析，未经运行时 D-Bus 内省验证，标记为待核验。
 
 ### 声音播放方法
 
 #### Play
 
-播放指定声音。
+播放指定主题和事件的声音。
 
-- **输入参数**: `s`（string, 类型 `s`）：声音名称
+- **输入参数**: `theme`（string, 类型 `s`）：声音主题名称；`event`（string, 类型 `s`）：声音事件名称；`device`（string, 类型 `s`）：音频设备名称
 - **返回值**: 无
 
+权限：
+- requires_sudo: true
+
 ```bash
-gdbus call --system \
+pkexec gdbus call --system \
   --dest org.deepin.dde.SoundThemePlayer1 \
   --object-path /org/deepin/dde/SoundThemePlayer1 \
-  --method org.deepin.dde.SoundThemePlayer1.Play "message"
+  --method org.deepin.dde.SoundThemePlayer1.Play "deepin" "message" "default"
 ```
 
-#### Stop
+#### PlaySoundDesktopLogin
 
-停止播放。
+播放桌面登录音效。根据当前用户配置决定是否播放。
 
 - **输入参数**: 无
 - **返回值**: 无
 
+权限：
+- requires_sudo: true
+
 ```bash
-gdbus call --system \
+pkexec gdbus call --system \
   --dest org.deepin.dde.SoundThemePlayer1 \
   --object-path /org/deepin/dde/SoundThemePlayer1 \
-  --method org.deepin.dde.SoundThemePlayer1.Stop
+  --method org.deepin.dde.SoundThemePlayer1.PlaySoundDesktopLogin
 ```
 
-#### PausePlay
 
-暂停播放。
+### 关机音效
 
-- **输入参数**: 无
+#### PrepareShutdownSound
+
+准备关机音效配置，供 greeter 界面调用。
+
+- **输入参数**: `uid`（int32, 类型 `i`）：用户 UID
 - **返回值**: 无
 
+权限：
+- requires_sudo: true
+
 ```bash
-gdbus call --system \
+pkexec gdbus call --system \
   --dest org.deepin.dde.SoundThemePlayer1 \
   --object-path /org/deepin/dde/SoundThemePlayer1 \
-  --method org.deepin.dde.SoundThemePlayer1.PausePlay
+  --method org.deepin.dde.SoundThemePlayer1.PrepareShutdownSound 1000
 ```
 
-#### SetVolume
 
-设置音量。
+### 音频状态管理
 
-- **输入参数**: `d`（double, 类型 `d`）：音量值
+#### SaveAudioState
+
+保存指定用户的音频状态，并准备关机音效。
+
+- **输入参数**: `activePlayback`（dict, 类型 `a{sv}`）：活跃播放设备信息，包含 `card`（string）、`device`（string）、`mute`（bool）字段
 - **返回值**: 无
 
-```bash
-gdbus call --system \
-  --dest org.deepin.dde.SoundThemePlayer1 \
-  --object-path /org/deepin/dde/SoundThemePlayer1 \
-  --method org.deepin.dde.SoundThemePlayer1.SetVolume 0.5
-```
-
-#### GetVolume
-
-获取音量。
-
-- **输入参数**: 无
-- **返回值**: `d`（double）：音量值
+权限：
+- requires_sudo: true
 
 ```bash
-gdbus call --system \
+pkexec gdbus call --system \
   --dest org.deepin.dde.SoundThemePlayer1 \
   --object-path /org/deepin/dde/SoundThemePlayer1 \
-  --method org.deepin.dde.SoundThemePlayer1.GetVolume
+  --method org.deepin.dde.SoundThemePlayer1.SaveAudioState \
+  "{'card': <'PCH'>, 'device': <'0'>, 'mute': <false>}"
 ```
 
-#### SetMute
 
-设置静音。
+### 声音配置
 
-- **输入参数**: `b`（bool, 类型 `b`）：是否静音
+#### EnableSoundDesktopLogin
+
+启用或禁用桌面登录音效。
+
+- **输入参数**: `enabled`（bool, 类型 `b`）：是否启用
 - **返回值**: 无
 
-```bash
-gdbus call --system \
-  --dest org.deepin.dde.SoundThemePlayer1 \
-  --object-path /org/deepin/dde/SoundThemePlayer1 \
-  --method org.deepin.dde.SoundThemePlayer1.SetMute true
-```
-
-#### GetMute
-
-获取静音状态。
-
-- **输入参数**: 无
-- **返回值**: `b`（bool）：是否静音
+权限：
+- requires_sudo: true
 
 ```bash
-gdbus call --system \
+pkexec gdbus call --system \
   --dest org.deepin.dde.SoundThemePlayer1 \
   --object-path /org/deepin/dde/SoundThemePlayer1 \
-  --method org.deepin.dde.SoundThemePlayer1.GetMute
+  --method org.deepin.dde.SoundThemePlayer1.EnableSoundDesktopLogin true
 ```
 
+#### EnableSound
+
+启用或禁用指定声音事件。
+
+- **输入参数**: `name`（string, 类型 `s`）：声音事件名称（空字符串表示全部，`desktop-login` 表示登录音，`system-shutdown` 表示关机音）；`enabled`（bool, 类型 `b`）：是否启用
+- **返回值**: 无
+
+权限：
+- requires_sudo: true
+
+```bash
+pkexec gdbus call --system \
+  --dest org.deepin.dde.SoundThemePlayer1 \
+  --object-path /org/deepin/dde/SoundThemePlayer1 \
+  --method org.deepin.dde.SoundThemePlayer1.EnableSound "desktop-login" true
+```
+
+#### SetSoundTheme
+
+设置声音主题。
+
+- **输入参数**: `theme`（string, 类型 `s`）：声音主题名称
+- **返回值**: 无
+
+权限：
+- requires_sudo: true
+
+```bash
+pkexec gdbus call --system \
+  --dest org.deepin.dde.SoundThemePlayer1 \
+  --object-path /org/deepin/dde/SoundThemePlayer1 \
+  --method org.deepin.dde.SoundThemePlayer1.SetSoundTheme "deepin"
+```
+
+---

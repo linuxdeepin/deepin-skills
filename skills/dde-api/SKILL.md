@@ -1,45 +1,13 @@
 ---
 name: dde-api
-description: 提供图形信息查询、拼音搜索、设备管理、区域设置和声音主题播放的 D-Bus 接口
+description: 提供图形处理、拼音查询、设备管理、区域设置和声音主题播放的 CLI 命令和 D-Bus 接口
 Categories:
   - Develop
 ---
 
 # dde-api
 
-dde-api 是 DDE 后端调用库组件，通过 Session 和 System 总线提供图形处理、拼音查询、设备管理、区域设置和声音主题播放能力。
-
-## D-Bus 接口
-
-### 图形处理
-
-提供图像裁剪、缩放、旋转、模糊、圆角处理能力。
-
-详见 [org.deepin.dde.Graphic1.md](references/dbus/org.deepin.dde.Graphic1.md)
-
-### 拼音查询
-
-提供中文拼音搜索能力。
-
-详见 [org.deepin.dde.Pinyin1.md](references/dbus/org.deepin.dde.Pinyin1.md)
-
-### 设备管理
-
-提供蓝牙设备阻止状态查询和解锁能力。
-
-详见 [org.deepin.dde.Device1.md](references/dbus/org.deepin.dde.Device1.md)
-
-### 区域设置
-
-提供系统区域设置生成和切换能力。
-
-详见 [org.deepin.dde.LocaleHelper1.md](references/dbus/org.deepin.dde.LocaleHelper1.md)
-
-### 声音主题播放
-
-提供声音主题播放控制能力。
-
-详见 [org.deepin.dde.SoundThemePlayer1.md](references/dbus/org.deepin.dde.SoundThemePlayer1.md)
+dde-api 是 DDE 后端调用库组件，通过 Session 和 System 总线提供图形处理、拼音查询、设备管理、区域设置和声音主题播放能力，同时提供文件打开、GRUB 主题调整、图片模糊和声音主题播放的命令行工具。
 
 ## CLI 命令
 
@@ -67,3 +35,34 @@ GRUB 主题调整工具，用于根据屏幕分辨率和语言环境自动调整
 
 详见 [sound-theme-player.md](references/cli/sound-theme-player.md)
 
+## D-Bus 接口
+
+### 图形处理
+
+提供图像模糊、裁剪、格式转换、合成、翻转、旋转、缩放、缩略图生成和颜色空间转换能力。
+
+详见 [org.deepin.dde.Graphic1.md](references/dbus/org.deepin.dde.Graphic1.md)
+
+### 拼音查询
+
+提供中文汉字到拼音的查询能力。
+
+详见 [org.deepin.dde.Pinyin1.md](references/dbus/org.deepin.dde.Pinyin1.md)
+
+### 设备管理
+
+提供蓝牙设备阻止状态查询和解锁能力。
+
+详见 [org.deepin.dde.Device1.md](references/dbus/org.deepin.dde.Device1.md)
+
+### 区域设置
+
+提供系统区域设置生成和切换能力。
+
+详见 [org.deepin.dde.LocaleHelper1.md](references/dbus/org.deepin.dde.LocaleHelper1.md)
+
+### 声音主题播放
+
+提供系统声音主题播放、登录音效、关机音效准备和音频状态保存能力。
+
+详见 [org.deepin.dde.SoundThemePlayer1.md](references/dbus/org.deepin.dde.SoundThemePlayer1.md)

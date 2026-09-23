@@ -1,6 +1,6 @@
 # org.deepin.dde.Clipboard1 接口参考
 
-该接口用于管理 DDE 剪贴板历史服务，提供剪贴板历史记录的管理能力，而非直接操作系统剪贴板。具体方法和属性详见源码。
+该接口提供 DDE 剪贴板历史服务的显示/隐藏控制能力。
 
 ## 接口信息
 
@@ -11,8 +11,87 @@
 | Interface | `org.deepin.dde.Clipboard1` |
 | Bus | Session |
 
-> **待核验声明**：本文档接口信息基于源码静态分析，未经运行时 D-Bus 内省验证，标记为待核验。
 
-> **待核验声明**：该接口的详细方法和属性信息需参考源码进一步核验。
+### 窗口控制
+
+#### Toggle
+
+切换剪贴板管理界面的显示/隐藏状态。
+
+- **输入参数**: 无
+- **返回值**: 无
+
+```bash
+gdbus call --session \
+  --dest org.deepin.dde.Clipboard1 \
+  --object-path /org/deepin/dde/Clipboard1 \
+  --method org.deepin.dde.Clipboard1.Toggle
+```
+
+#### Show
+
+显示剪贴板管理界面。
+
+- **输入参数**: 无
+- **返回值**: 无
+
+```bash
+gdbus call --session \
+  --dest org.deepin.dde.Clipboard1 \
+  --object-path /org/deepin/dde/Clipboard1 \
+  --method org.deepin.dde.Clipboard1.Show
+```
+
+#### Hide
+
+隐藏剪贴板管理界面。
+
+- **输入参数**: 无
+- **返回值**: 无
+
+```bash
+gdbus call --session \
+  --dest org.deepin.dde.Clipboard1 \
+  --object-path /org/deepin/dde/Clipboard1 \
+  --method org.deepin.dde.Clipboard1.Hide
+```
+
+
+### 属性
+
+#### clipboardVisible（属性）
+
+剪贴板管理界面是否可见。
+
+| 属性 | 值 |
+|------|------|
+| 类型 | `b` |
+| 读写权限 | read |
+
+读取示例：
+
+```bash
+gdbus call --session \
+  --dest org.deepin.dde.Clipboard1 \
+  --object-path /org/deepin/dde/Clipboard1 \
+  --method org.freedesktop.DBus.Properties.Get \
+  org.deepin.dde.Clipboard1 clipboardVisible
+```
+
+
+### 信号
+
+#### clipboardVisibleChanged
+
+剪贴板管理界面可见状态变化时发出。
+
+- **参数**: `visible`（boolean, 类型 `b`）：界面是否可见
+- **触发条件**: 剪贴板管理界面显示或隐藏时发出
+
+```bash
+gdbus monitor --session \
+  --dest org.deepin.dde.Clipboard1 \
+  --object-path /org/deepin/dde/Clipboard1
+```
 
 ---

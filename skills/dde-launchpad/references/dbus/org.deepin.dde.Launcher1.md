@@ -11,7 +11,6 @@
 | Interface | `org.deepin.dde.Launcher1` |
 | Bus | Session |
 
-> **待核验声明**：本文档接口信息基于源码静态分析，未经运行时 D-Bus 内省验证，标记为待核验。
 
 ### 启动器显示控制
 
@@ -75,7 +74,7 @@ gdbus call --session \
 
 按指定模式显示启动器。
 
-- **输入参数**: `mode`（uint16, 类型 `q`）：显示模式
+- **输入参数**: `mode`（int64, 类型 `x`）：显示模式
 - **返回值**: 无
 
 ```bash

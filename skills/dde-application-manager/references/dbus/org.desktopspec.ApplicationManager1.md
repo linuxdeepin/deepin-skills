@@ -11,7 +11,6 @@
 | Interface | `org.desktopspec.ApplicationManager1` |
 | Bus | Session |
 
-> **待核验声明**：本文档接口信息基于源码静态分析，未经运行时 D-Bus 内省验证，标记为待核验。
 
 ### 应用管理操作
 
@@ -82,7 +81,8 @@ gdbus call --session \
 gdbus call --session \
   --dest org.desktopspec.ApplicationManager1 \
   --object-path /org/desktopspec/ApplicationManager1 \
-  --method org.desktopspec.ApplicationManager1.executeCommand
+  --method org.desktopspec.ApplicationManager1.executeCommand \
+  "/usr/bin/ls" "[-la]" "portablebinary" "" "{}" ""
 ```
 
 

@@ -1,6 +1,6 @@
 # org.desktopspec.ApplicationManager1.Application 接口参考
 
-该接口提供单个应用的启动、桌面操作和属性查询能力。动态对象路径由 ApplicationManager1.List 返回。
+该接口提供单个应用的启动、桌面操作和属性查询能力。动态对象路径由 ApplicationManager1.List 属性返回。
 
 ## 接口信息
 
@@ -11,58 +11,56 @@
 | Interface | `org.desktopspec.ApplicationManager1.Application` |
 | Bus | Session |
 
-> **待核验声明**：本文档接口信息基于源码静态分析，未经运行时 D-Bus 内省验证，标记为待核验。
-
 ### 应用操作
 
 #### Launch
 
 启动应用。
 
-- **输入参数**: 无
-- **返回值**: 无
+- **输入参数**: `action`（string, 类型 `s`）：动作标识，空字符串表示默认启动；`fields`（string 数组, 类型 `as`）：文件路径或 URI 列表；`options`（字典, 类型 `a{sv}`）：额外选项（如 `uid`、`env`、`path` 等）
+- **返回值**: `job`（object path, 类型 `o`）：任务对象路径
 
 ```bash
 gdbus call --session \
   --dest org.desktopspec.ApplicationManager1 \
-  --object-path <dynamic> \
-  --method org.desktopspec.ApplicationManager1.Application.Launch
+  --object-path /org/desktopspec/ApplicationManager1/org_deepin_editor \
+  --method org.desktopspec.ApplicationManager1.Application.Launch \
+  "" "[]" "{}"
 ```
 
 #### SendToDesktop
 
-发送到桌面。
+发送应用快捷方式到桌面。
 
 - **输入参数**: 无
-- **返回值**: 无
+- **返回值**: `success`（bool, 类型 `b`）：是否成功
 
 ```bash
 gdbus call --session \
   --dest org.desktopspec.ApplicationManager1 \
-  --object-path <dynamic> \
+  --object-path /org/desktopspec/ApplicationManager1/org_deepin_editor \
   --method org.desktopspec.ApplicationManager1.Application.SendToDesktop
 ```
 
 #### RemoveFromDesktop
 
-从桌面移除。
+从桌面移除应用快捷方式。
 
 - **输入参数**: 无
-- **返回值**: 无
+- **返回值**: `success`（bool, 类型 `b`）：是否成功
 
 ```bash
 gdbus call --session \
   --dest org.desktopspec.ApplicationManager1 \
-  --object-path <dynamic> \
+  --object-path /org/desktopspec/ApplicationManager1/org_deepin_editor \
   --method org.desktopspec.ApplicationManager1.Application.RemoveFromDesktop
 ```
 
+### 属性
 
-### 应用属性
+#### ID
 
-#### ID（属性）
-
-应用 ID。
+应用桌面文件 ID。
 
 | 属性 | 值 |
 |------|------|
@@ -74,17 +72,18 @@ gdbus call --session \
 ```bash
 gdbus call --session \
   --dest org.desktopspec.ApplicationManager1 \
-  --object-path <dynamic> \
+  --object-path /org/desktopspec/ApplicationManager1/org_deepin_editor \
   --method org.freedesktop.DBus.Properties.Get \
   org.desktopspec.ApplicationManager1.Application ID
 ```
-#### Name（属性）
 
-应用名称。
+#### Name
+
+应用名称（多语言映射）。
 
 | 属性 | 值 |
 |------|------|
-| 类型 | `s` |
+| 类型 | `a{ss}` |
 | 读写权限 | read |
 
 读取示例：
@@ -92,17 +91,18 @@ gdbus call --session \
 ```bash
 gdbus call --session \
   --dest org.desktopspec.ApplicationManager1 \
-  --object-path <dynamic> \
+  --object-path /org/desktopspec/ApplicationManager1/org_deepin_editor \
   --method org.freedesktop.DBus.Properties.Get \
   org.desktopspec.ApplicationManager1.Application Name
 ```
-#### DisplayName（属性）
 
-应用显示名称。
+#### GenericName
+
+应用通用名称（多语言映射）。
 
 | 属性 | 值 |
 |------|------|
-| 类型 | `s` |
+| 类型 | `a{ss}` |
 | 读写权限 | read |
 
 读取示例：
@@ -110,35 +110,18 @@ gdbus call --session \
 ```bash
 gdbus call --session \
   --dest org.desktopspec.ApplicationManager1 \
-  --object-path <dynamic> \
-  --method org.freedesktop.DBus.Properties.Get \
-  org.desktopspec.ApplicationManager1.Application DisplayName
-```
-#### GenericName（属性）
-
-应用通用名称。
-
-| 属性 | 值 |
-|------|------|
-| 类型 | `s` |
-| 读写权限 | read |
-
-读取示例：
-
-```bash
-gdbus call --session \
-  --dest org.desktopspec.ApplicationManager1 \
-  --object-path <dynamic> \
+  --object-path /org/desktopspec/ApplicationManager1/org_deepin_editor \
   --method org.freedesktop.DBus.Properties.Get \
   org.desktopspec.ApplicationManager1.Application GenericName
 ```
-#### Categories（属性）
 
-应用分类。
+#### Icons
+
+应用图标映射。
 
 | 属性 | 值 |
 |------|------|
-| 类型 | `as` |
+| 类型 | `a{ss}` |
 | 读写权限 | read |
 
 读取示例：
@@ -146,31 +129,14 @@ gdbus call --session \
 ```bash
 gdbus call --session \
   --dest org.desktopspec.ApplicationManager1 \
-  --object-path <dynamic> \
-  --method org.freedesktop.DBus.Properties.Get \
-  org.desktopspec.ApplicationManager1.Application Categories
-```
-#### Icons（属性）
-
-应用图标。
-
-| 属性 | 值 |
-|------|------|
-| 类型 | `a{sv}` |
-| 读写权限 | read |
-
-读取示例：
-
-```bash
-gdbus call --session \
-  --dest org.desktopspec.ApplicationManager1 \
-  --object-path <dynamic> \
+  --object-path /org/desktopspec/ApplicationManager1/org_deepin_editor \
   --method org.freedesktop.DBus.Properties.Get \
   org.desktopspec.ApplicationManager1.Application Icons
 ```
-#### Actions（属性）
 
-应用动作列表。
+#### Categories
+
+应用分类列表。
 
 | 属性 | 值 |
 |------|------|
@@ -182,44 +148,18 @@ gdbus call --session \
 ```bash
 gdbus call --session \
   --dest org.desktopspec.ApplicationManager1 \
-  --object-path <dynamic> \
+  --object-path /org/desktopspec/ApplicationManager1/org_deepin_editor \
   --method org.freedesktop.DBus.Properties.Get \
-  org.desktopspec.ApplicationManager1.Application Actions
+  org.desktopspec.ApplicationManager1.Application Categories
 ```
-#### ActionName（属性）
 
-当前动作名称。
+#### Actions
+
+应用动作标识列表。
 
 | 属性 | 值 |
 |------|------|
-| 类型 | `s` |
-| 读写权限 | readwrite |
-
-读取示例：
-
-```bash
-gdbus call --session \
-  --dest org.desktopspec.ApplicationManager1 \
-  --object-path <dynamic> \
-  --method org.freedesktop.DBus.Properties.Get \
-  org.desktopspec.ApplicationManager1.Application ActionName
-```
-设置示例：
-
-```bash
-gdbus call --session \
-  --dest org.desktopspec.ApplicationManager1 \
-  --object-path <dynamic> \
-  --method org.freedesktop.DBus.Properties.Set \
-  org.desktopspec.ApplicationManager1.Application ActionName "<action_name>"
-```
-#### Execs（属性）
-
-应用执行命令。
-
-| 属性 | 值 |
-|------|------|
-| 类型 | `a{sv}` |
+| 类型 | `as` |
 | 读写权限 | read |
 
 读取示例：
@@ -227,11 +167,50 @@ gdbus call --session \
 ```bash
 gdbus call --session \
   --dest org.desktopspec.ApplicationManager1 \
-  --object-path <dynamic> \
+  --object-path /org/desktopspec/ApplicationManager1/org_deepin_editor \
+  --method org.freedesktop.DBus.Properties.Get \
+  org.desktopspec.ApplicationManager1.Application Actions
+```
+
+#### ActionName
+
+动作名称映射（动作标识到多语言名称）。
+
+| 属性 | 值 |
+|------|------|
+| 类型 | `a{sa{ss}}` |
+| 读写权限 | read |
+
+读取示例：
+
+```bash
+gdbus call --session \
+  --dest org.desktopspec.ApplicationManager1 \
+  --object-path /org/desktopspec/ApplicationManager1/org_deepin_editor \
+  --method org.freedesktop.DBus.Properties.Get \
+  org.desktopspec.ApplicationManager1.Application ActionName
+```
+
+#### Execs
+
+应用执行命令映射。
+
+| 属性 | 值 |
+|------|------|
+| 类型 | `a{ss}` |
+| 读写权限 | read |
+
+读取示例：
+
+```bash
+gdbus call --session \
+  --dest org.desktopspec.ApplicationManager1 \
+  --object-path /org/desktopspec/ApplicationManager1/org_deepin_editor \
   --method org.freedesktop.DBus.Properties.Get \
   org.desktopspec.ApplicationManager1.Application Execs
 ```
-#### Terminal（属性）
+
+#### Terminal
 
 是否在终端中运行。
 
@@ -245,7 +224,172 @@ gdbus call --session \
 ```bash
 gdbus call --session \
   --dest org.desktopspec.ApplicationManager1 \
-  --object-path <dynamic> \
+  --object-path /org/desktopspec/ApplicationManager1/org_deepin_editor \
   --method org.freedesktop.DBus.Properties.Get \
   org.desktopspec.ApplicationManager1.Application Terminal
 ```
+
+#### MimeTypes
+
+应用关联的 MIME 类型列表。
+
+| 属性 | 值 |
+|------|------|
+| 类型 | `as` |
+| 读写权限 | readwrite |
+
+读取示例：
+
+```bash
+gdbus call --session \
+  --dest org.desktopspec.ApplicationManager1 \
+  --object-path /org/desktopspec/ApplicationManager1/org_deepin_editor \
+  --method org.freedesktop.DBus.Properties.Get \
+  org.desktopspec.ApplicationManager1.Application MimeTypes
+```
+
+设置示例：
+
+```bash
+gdbus call --session \
+  --dest org.desktopspec.ApplicationManager1 \
+  --object-path /org/desktopspec/ApplicationManager1/org_deepin_editor \
+  --method org.freedesktop.DBus.Properties.Set \
+  org.desktopspec.ApplicationManager1.Application MimeTypes <["text/plain"]>
+```
+
+#### AutoStart
+
+是否自动启动。
+
+| 属性 | 值 |
+|------|------|
+| 类型 | `b` |
+| 读写权限 | readwrite |
+
+读取示例：
+
+```bash
+gdbus call --session \
+  --dest org.desktopspec.ApplicationManager1 \
+  --object-path /org/desktopspec/ApplicationManager1/org_deepin_editor \
+  --method org.freedesktop.DBus.Properties.Get \
+  org.desktopspec.ApplicationManager1.Application AutoStart
+```
+
+设置示例：
+
+```bash
+gdbus call --session \
+  --dest org.desktopspec.ApplicationManager1 \
+  --object-path /org/desktopspec/ApplicationManager1/org_deepin_editor \
+  --method org.freedesktop.DBus.Properties.Set \
+  org.desktopspec.ApplicationManager1.Application AutoStart <true>
+```
+
+#### Instances
+
+应用所有实例的对象路径列表。
+
+| 属性 | 值 |
+|------|------|
+| 类型 | `ao` |
+| 读写权限 | read |
+
+读取示例：
+
+```bash
+gdbus call --session \
+  --dest org.desktopspec.ApplicationManager1 \
+  --object-path /org/desktopspec/ApplicationManager1/org_deepin_editor \
+  --method org.freedesktop.DBus.Properties.Get \
+  org.desktopspec.ApplicationManager1.Application Instances
+```
+
+#### NoDisplay
+
+是否在应用列表中隐藏。
+
+| 属性 | 值 |
+|------|------|
+| 类型 | `b` |
+| 读写权限 | read |
+
+读取示例：
+
+```bash
+gdbus call --session \
+  --dest org.desktopspec.ApplicationManager1 \
+  --object-path /org/desktopspec/ApplicationManager1/org_deepin_editor \
+  --method org.freedesktop.DBus.Properties.Get \
+  org.desktopspec.ApplicationManager1.Application NoDisplay
+```
+
+#### Environ
+
+应用实例的环境变量。
+
+| 属性 | 值 |
+|------|------|
+| 类型 | `s` |
+| 读写权限 | readwrite |
+
+读取示例：
+
+```bash
+gdbus call --session \
+  --dest org.desktopspec.ApplicationManager1 \
+  --object-path /org/desktopspec/ApplicationManager1/org_deepin_editor \
+  --method org.freedesktop.DBus.Properties.Get \
+  org.desktopspec.ApplicationManager1.Application Environ
+```
+
+设置示例：
+
+```bash
+gdbus call --session \
+  --dest org.desktopspec.ApplicationManager1 \
+  --object-path /org/desktopspec/ApplicationManager1/org_deepin_editor \
+  --method org.freedesktop.DBus.Properties.Set \
+  org.desktopspec.ApplicationManager1.Application Environ "<string>"
+```
+
+#### LaunchedTimes
+
+应用累计启动次数，-1 表示出错。
+
+| 属性 | 值 |
+|------|------|
+| 类型 | `x` |
+| 读写权限 | read |
+
+读取示例：
+
+```bash
+gdbus call --session \
+  --dest org.desktopspec.ApplicationManager1 \
+  --object-path /org/desktopspec/ApplicationManager1/org_deepin_editor \
+  --method org.freedesktop.DBus.Properties.Get \
+  org.desktopspec.ApplicationManager1.Application LaunchedTimes
+```
+
+#### isOnDesktop
+
+应用是否已发送到桌面。
+
+| 属性 | 值 |
+|------|------|
+| 类型 | `b` |
+| 读写权限 | read |
+
+读取示例：
+
+```bash
+gdbus call --session \
+  --dest org.desktopspec.ApplicationManager1 \
+  --object-path /org/desktopspec/ApplicationManager1/org_deepin_editor \
+  --method org.freedesktop.DBus.Properties.Get \
+  org.desktopspec.ApplicationManager1.Application isOnDesktop
+```
+
+---

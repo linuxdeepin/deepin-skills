@@ -1,6 +1,6 @@
 # org.deepin.dde.Pinyin1 接口参考
 
-该接口提供中文拼音搜索能力。
+该接口提供中文汉字到拼音的查询能力。
 
 ## 接口信息
 
@@ -11,35 +11,36 @@
 | Interface | `org.deepin.dde.Pinyin1` |
 | Bus | Session |
 
-> **待核验声明**：本文档接口信息基于源码静态分析，未经运行时 D-Bus 内省验证，标记为待核验。
 
 ### 拼音查询方法
 
 #### Query
 
-查询单个汉字的拼音。
+查询单个汉字或词语的拼音列表。
 
-- **输入参数**: `s`（string, 类型 `s`）：汉字
-- **返回值**: `s`（string）：拼音
+- **输入参数**: `hans`（string, 类型 `s`）：汉字
+- **返回值**: `pinyin`（string 数组, 类型 `as`）：拼音列表
 
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.Pinyin1 \
   --object-path /org/deepin/dde/Pinyin1 \
-  --method org.deepin.dde.Pinyin1.Query "你好"
+  --method org.deepin.dde.Pinyin1.Query "重"
 ```
 
 #### QueryList
 
-查询多个汉字的拼音列表。
+查询多个汉字的拼音，返回 JSON 格式数据。
 
-- **输入参数**: `s`（string, 类型 `s`）：汉字串
-- **返回值**: `as`（string 数组）：拼音列表
+- **输入参数**: `hansList`（string 数组, 类型 `as`）：汉字列表
+- **返回值**: `jsonStr`（string, 类型 `s`）：JSON 格式的拼音查询结果
 
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.Pinyin1 \
   --object-path /org/deepin/dde/Pinyin1 \
-  --method org.deepin.dde.Pinyin1.QueryList "你好世界"
+  --method org.deepin.dde.Pinyin1.QueryList \
+  "['重', '好']"
 ```
 
+---
