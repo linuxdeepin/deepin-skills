@@ -7,7 +7,7 @@
 | 字段 | 值 |
 |------|------|
 | 所属 DTK | DTK 开发工具集 |
-| 安装路径 | `/usr/bin/deepin-os-release` |
+| 安装路径 | `/usr/libexec/dtk6/DCore/bin/deepin-os-release` |
 | DDE 角色 | 系统信息查询工具 |
 
 ## 用途

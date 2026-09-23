@@ -7,7 +7,7 @@ DDE 的 PolicyKit 认证代理，负责在用户执行需要特权的操作时�
 | 字段 | 值 |
 |------|------|
 | 所属包名 | `dde-polkit-agent` |
-| 安装路径 | `/usr/libexec/dde-polkit-agent` |
+| 安装路径 | `/usr/lib/polkit-1-dde/dde-polkit-agent` |
 | DDE 角色 | PolicyKit 图形化认证代理 |
 
 ## 用途

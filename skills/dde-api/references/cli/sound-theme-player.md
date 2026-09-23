@@ -7,7 +7,7 @@
 | 字段 | 值 |
 |------|------|
 | 所属包名 | `dde-api` |
-| 安装路径 | `/usr/bin/sound-theme-player` |
+| 安装路径 | `/usr/lib/deepin-api/sound-theme-player` |
 | DDE 角色 | 系统调用的声音播放守护进程，由会话管理自动启动 |
 
 ## 用途

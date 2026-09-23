@@ -7,7 +7,7 @@ LightDM Deepin Greeter 的辅助程序，用于在登录过程中处理亮度调
 | 字段 | 值 |
 |------|------|
 | 所属包名 | `dde-session-shell` |
-| 安装路径 | `/usr/libexec/lightdm-deepin-greeter-lighter` |
+| 安装路径 | `/usr/bin/lightdm-deepin-greeter-lighter` |
 | DDE 角色 | 登录界面的亮度初始化辅助程序 |
 
 ## 用途

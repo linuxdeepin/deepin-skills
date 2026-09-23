@@ -7,7 +7,7 @@ GRUB 主题调整工具，用于根据屏幕分辨率和语言环境自动调整
 | 字段 | 值 |
 |------|------|
 | 所属包名 | `dde-api` |
-| 安装路径 | `/usr/bin/adjust-grub-theme` |
+| 安装路径 | `/usr/lib/deepin-api/adjust-grub-theme` |
 | DDE 角色 | 系统调用的辅助工具，在主题或分辨率变更时自动运行 |
 
 ## 用途

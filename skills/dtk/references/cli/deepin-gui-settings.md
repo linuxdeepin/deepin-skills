@@ -7,7 +7,7 @@ DTK GUI 设置工具，用于读写 X11 窗口属性设置。
 | 字段 | 值 |
 |------|------|
 | 所属 DTK | DTK 开发工具集 |
-| 安装路径 | `/usr/bin/deepin-gui-settings` |
+| 安装路径 | `/usr/libexec/dtk6/DGui/bin/deepin-gui-settings` |
 | DDE 角色 | 开发调试工具，用于窗口属性读写和调试 |
 
 ## 用途

@@ -7,7 +7,7 @@
 | 字段 | 值 |
 |------|------|
 | 所属 DTK | DTK 开发工具集 |
-| 安装路径 | `/usr/bin/ch2py` |
+| 安装路径 | `/usr/libexec/dtk6/DCore/bin/ch2py` |
 | DDE 角色 | 开发辅助工具，用于中文转拼音 |
 
 ## 用途

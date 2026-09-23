@@ -7,7 +7,7 @@ DConfig 转 C++ 代码生成器，从 DConfig JSON 配置文件生成 C++ 头文
 | 字段 | 值 |
 |------|------|
 | 所属 DTK | DTK 开发工具集 |
-| 安装路径 | `/usr/bin/dconfig2cpp` |
+| 安装路径 | `/usr/libexec/dtk6/DCore/bin/dconfig2cpp` |
 | DDE 角色 | 开发工具，用于 DConfig 配置项的 C++ 代码生成 |
 
 ## 用途

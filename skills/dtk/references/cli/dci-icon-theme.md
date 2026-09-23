@@ -7,7 +7,7 @@ DCI 图标主题构建工具，用于将普通的图标目录结构转换为 DCI
 | 字段 | 值 |
 |------|------|
 | 所属 DTK | DTK 开发工具集 |
-| 安装路径 | `/usr/bin/dci-icon-theme` |
+| 安装路径 | `/usr/libexec/dtk6/DGui/bin/dci-icon-theme` |
 | DDE 角色 | 开发调试工具，用于 DCI 图标主题构建和打包 |
 
 ## 用途

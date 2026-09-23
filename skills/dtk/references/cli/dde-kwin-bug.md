@@ -1,4 +1,4 @@
-# dde-kwin-debug 命令参考
+# dde-kwin-bug 命令参考
 
 DDE KWin 调试工具，用于输出 KWin 窗口管理器的调试信息。
 
@@ -7,7 +7,7 @@ DDE KWin 调试工具，用于输出 KWin 窗口管理器的调试信息。
 | 字段 | 值 |
 |------|------|
 | 所属 DTK | DTK 开发工具集 |
-| 安装路径 | `/usr/bin/dde-kwin-debug` |
+| 安装路径 | `/usr/libexec/dtk6/DGui/bin/dde-kwin-bug` |
 | DDE 角色 | KWin 窗口管理器的调试辅助工具 |
 
 ## 用途

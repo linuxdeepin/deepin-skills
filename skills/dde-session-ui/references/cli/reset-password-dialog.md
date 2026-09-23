@@ -7,7 +7,7 @@ DDE 重置密码对话框，用于在用户忘记密码时提供密码重置功�
 | 字段 | 值 |
 |------|------|
 | 所属包名 | `dde-session-ui` |
-| 安装路径 | `/usr/bin/reset-password-dialog` |
+| 安装路径 | `/usr/lib/dde-control-center/reset-password-dialog` |
 | DDE 角色 | 用户使用的密码重置工具，登录界面中触发 |
 
 ## 用途

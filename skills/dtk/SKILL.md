@@ -71,11 +71,11 @@ DTK GUI 设置工具，用于读写 X11 窗口属性设置。
 
 详见 [deepin-gui-settings.md](references/cli/deepin-gui-settings.md)
 
-### dde-kwin-debug
+### dde-kwin-bug
 
 DDE KWin 调试工具，用于输出 KWin 窗口管理器的调试信息。
 
-详见 [dde-kwin-debug.md](references/cli/dde-kwin-debug.md)
+详见 [dde-kwin-bug.md](references/cli/dde-kwin-bug.md)
 
 ### dtk-settings
 

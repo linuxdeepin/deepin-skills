@@ -7,7 +7,7 @@ IP 地址监视守护进程（upstream 开源项目），用于监视网络接�
 | 字段 | 值 |
 |------|------|
 | 所属包名 | `dde-services`（集成 upstream ipwatchd） |
-| 安装路径 | `/usr/bin/ipwatchd` |
+| 安装路径 | `/usr/sbin/ipwatchd` |
 | DDE 角色 | 系统调用的底层网络辅助工具 |
 
 ## 用途

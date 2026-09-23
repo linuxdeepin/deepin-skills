@@ -7,7 +7,7 @@ DCI 图片格式转换工具，用于在 DCI（Deepin Custom Image）格式与 a
 | 字段 | 值 |
 |------|------|
 | 所属 DTK | DTK 开发工具集 |
-| 安装路径 | `/usr/bin/dci-image-converter` |
+| 安装路径 | 不安装（仅源码构建产物） |
 | DDE 角色 | 开发调试工具，用于 DCI 图片资源构建和转换 |
 
 ## 用途

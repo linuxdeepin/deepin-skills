@@ -7,7 +7,7 @@ DCI 图标查找工具，用于在已安装的 DCI 图标主题中搜索指定�
 | 字段 | 值 |
 |------|------|
 | 所属 DTK | DTK 开发工具集 |
-| 安装路径 | `/usr/bin/dci-iconfinder` |
+| 安装路径 | `/usr/libexec/dtk6/DGui/bin/dci-iconfinder` |
 | DDE 角色 | 开发调试工具，用于 DCI 图标资源查找和定位 |
 
 ## 用途

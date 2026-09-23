@@ -7,7 +7,7 @@ DDE 托盘插件加载器，负责加载和管理系统托盘区域的插件。
 | 字段 | 值 |
 |------|------|
 | 所属包名 | `dde-tray-loader` |
-| 安装路径 | `/usr/bin/trayplugin-loader` |
+| 安装路径 | `/usr/libexec/trayplugin-loader` |
 | DDE 角色 | 系统调用的辅助工具，由 dde-shell 在会话启动时自动拉起 |
 
 ## 用途

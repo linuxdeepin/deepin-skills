@@ -7,7 +7,7 @@ D-Bus XML 转 C++ 代码生成器，是 Qt 自带 `qdbusxml2cpp` 的增强版本
 | 字段 | 值 |
 |------|------|
 | 所属 DTK | DTK 开发工具集 |
-| 安装路径 | `/usr/bin/qdbusxml2cpp-fix` |
+| 安装路径 | `/usr/libexec/dtk6/DCore/bin/qdbusxml2cpp-fix` |
 | DDE 角色 | 开发工具，用于 D-Bus 接口 C++ 代码生成 |
 
 ## 用途

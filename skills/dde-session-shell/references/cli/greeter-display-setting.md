@@ -7,7 +7,7 @@
 | 字段 | 值 |
 |------|------|
 | 所属包名 | `dde-session-shell` |
-| 安装路径 | `/usr/lib/deepin-daemon/greeter-display-setting` |
+| 安装路径 | `/usr/bin/greeter-display-setting` |
 | DDE 角色 | 登录界面的显示配置辅助工具 |
 
 ## 用途

@@ -7,7 +7,7 @@ DTK 设置工具，用于从 DTK 设置 JSON 配置文件生成翻译代码（C+
 | 字段 | 值 |
 |------|------|
 | 所属 DTK | DTK 开发工具集 |
-| 安装路径 | `/usr/bin/dtk-settings` |
+| 安装路径 | `/usr/libexec/dtk6/DCore/bin/dtk-settings` |
 | DDE 角色 | 开发调试工具，用于 DTK 设置项翻译代码和 GSettings schema 生成 |
 
 ## 用途

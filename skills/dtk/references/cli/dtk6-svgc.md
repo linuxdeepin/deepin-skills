@@ -7,7 +7,7 @@ SVG 转 PNG 转换工具，将 SVG 矢量图渲染为 PNG 位图。
 | 字段 | 值 |
 |------|------|
 | 所属 DTK | DTK 开发工具集 |
-| 安装路径 | `/usr/bin/dtk6-svgc` |
+| 安装路径 | `/usr/libexec/dtk6/DWidget/bin/dtk6-svgc` |
 | DDE 角色 | 开发工具，用于 SVG 图片转 PNG |
 
 ## 用途

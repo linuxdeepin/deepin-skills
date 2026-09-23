@@ -7,7 +7,7 @@
 | 字段 | 值 |
 |------|------|
 | 所属包名 | `dde-api` |
-| 安装路径 | `/usr/bin/image-blur` |
+| 安装路径 | `/usr/lib/deepin-api/image-blur` |
 | DDE 角色 | 系统调用的图片处理辅助工具 |
 
 ## 用途

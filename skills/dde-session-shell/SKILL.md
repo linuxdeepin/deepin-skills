@@ -41,11 +41,11 @@ DDE 锁屏程序，是 DDE 桌面环境中负责屏幕锁定和用户切换的�
 
 详见 [dde-lock.md](references/cli/dde-lock.md)
 
-### resetDialog
+### reset-pattern-dialog
 
-重置登录手势密码对话框，位于 `dde-session-shell/plugins/login-gesture/resetDialog`。
+重置登录手势密码对话框，位于 `dde-session-shell/plugins/login-gesture/reset-pattern-dialog`。
 
-详见 [resetDialog.md](references/cli/resetDialog.md)
+详见 [reset-pattern-dialog.md](references/cli/reset-pattern-dialog.md)
 
 ### lightdm-deepin-greeter
 
