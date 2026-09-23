@@ -27,7 +27,7 @@
 gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path /path/to/manager \
-  --method org.desktopspec.ConfigManager.Manager.value.value "key_name"
+  --method org.desktopspec.ConfigManager.Manager.value "key_name"
 ```
 
 #### setValue
@@ -41,7 +41,7 @@ gdbus call --system \
 gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path /path/to/manager \
-  --method org.desktopspec.ConfigManager.Manager.setValue.setValue "key_name" <variant true>
+  --method org.desktopspec.ConfigManager.Manager.setValue "key_name" <variant true>
 ```
 
 #### isDefaultValue
@@ -55,7 +55,7 @@ gdbus call --system \
 gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path /path/to/manager \
-  --method org.desktopspec.ConfigManager.Manager.isDefaultValue.isDefaultValue "key_name"
+  --method org.desktopspec.ConfigManager.Manager.isDefaultValue "key_name"
 ```
 
 #### reset
@@ -69,7 +69,7 @@ gdbus call --system \
 gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path /path/to/manager \
-  --method org.desktopspec.ConfigManager.Manager.reset.reset "key_name"
+  --method org.desktopspec.ConfigManager.Manager.reset "key_name"
 ```
 
 
@@ -86,7 +86,7 @@ gdbus call --system \
 gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path /path/to/manager \
-  --method org.desktopspec.ConfigManager.Manager.name.name "key_name" "zh_CN"
+  --method org.desktopspec.ConfigManager.Manager.name "key_name" "zh_CN"
 ```
 
 #### description
@@ -100,7 +100,7 @@ gdbus call --system \
 gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path /path/to/manager \
-  --method org.desktopspec.ConfigManager.Manager.description.description "key_name" "zh_CN"
+  --method org.desktopspec.ConfigManager.Manager.description "key_name" "zh_CN"
 ```
 
 #### visibility
@@ -114,7 +114,7 @@ gdbus call --system \
 gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path /path/to/manager \
-  --method org.desktopspec.ConfigManager.Manager.visibility.visibility "key_name"
+  --method org.desktopspec.ConfigManager.Manager.visibility "key_name"
 ```
 
 #### permissions
@@ -128,7 +128,7 @@ gdbus call --system \
 gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path /path/to/manager \
-  --method org.desktopspec.ConfigManager.Manager.permissions.permissions "key_name"
+  --method org.desktopspec.ConfigManager.Manager.permissions "key_name"
 ```
 
 #### flags
@@ -142,7 +142,7 @@ gdbus call --system \
 gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path /path/to/manager \
-  --method org.desktopspec.ConfigManager.Manager.flags.flags "key_name"
+  --method org.desktopspec.ConfigManager.Manager.flags "key_name"
 ```
 
 #### release
@@ -156,7 +156,7 @@ gdbus call --system \
 gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path /path/to/manager \
-  --method org.desktopspec.ConfigManager.Manager.release.release
+  --method org.desktopspec.ConfigManager.Manager.release
 ```
 
 

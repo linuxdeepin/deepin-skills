@@ -27,7 +27,7 @@
 gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path / \
-  --method org.desktopspec.ConfigManager.acquireManagerV2.acquireManagerV2 1000 "org.deepin.dde.daemon" "org.deepin.dde.daemon.power" ""
+  --method org.desktopspec.ConfigManager.acquireManagerV2 1000 "org.deepin.dde.daemon" "org.deepin.dde.daemon.power" ""
 ```
 
 #### acquireManager
@@ -41,7 +41,7 @@ gdbus call --system \
 gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path / \
-  --method org.desktopspec.ConfigManager.acquireManager.acquireManager "org.deepin.dde.daemon" "org.deepin.dde.daemon.power" ""
+  --method org.desktopspec.ConfigManager.acquireManager "org.deepin.dde.daemon" "org.deepin.dde.daemon.power" ""
 ```
 
 
@@ -54,11 +54,14 @@ gdbus call --system \
 - **输入参数**: `path`（string, 类型 `s`）：管理器对象路径
 - **返回值**: 无
 
+权限：
+- requires_sudo: true
+
 ```bash
-gdbus call --system \
+pkexec gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path / \
-  --method org.desktopspec.ConfigManager.update.update "/path/to/manager"
+  --method org.desktopspec.ConfigManager.update "/path/to/manager"
 ```
 
 #### sync
@@ -68,11 +71,14 @@ gdbus call --system \
 - **输入参数**: `path`（string, 类型 `s`）：管理器对象路径
 - **返回值**: 无
 
+权限：
+- requires_sudo: true
+
 ```bash
-gdbus call --system \
+pkexec gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path / \
-  --method org.desktopspec.ConfigManager.sync.sync "/path/to/manager"
+  --method org.desktopspec.ConfigManager.sync "/path/to/manager"
 ```
 
 #### setDelayReleaseTime
@@ -82,11 +88,14 @@ gdbus call --system \
 - **输入参数**: `time`（int32, 类型 `i`）：延迟时间（毫秒）
 - **返回值**: 无
 
+权限：
+- requires_sudo: true
+
 ```bash
-gdbus call --system \
+pkexec gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path / \
-  --method org.desktopspec.ConfigManager.setDelayReleaseTime.setDelayReleaseTime 5000
+  --method org.desktopspec.ConfigManager.setDelayReleaseTime 5000
 ```
 
 #### delayReleaseTime
@@ -96,11 +105,14 @@ gdbus call --system \
 - **输入参数**: 无
 - **返回值**: `i`（int32）：延迟时间（毫秒）
 
+权限：
+- requires_sudo: true
+
 ```bash
-gdbus call --system \
+pkexec gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path / \
-  --method org.desktopspec.ConfigManager.delayReleaseTime.delayReleaseTime
+  --method org.desktopspec.ConfigManager.delayReleaseTime
 ```
 
 
@@ -113,11 +125,14 @@ gdbus call --system \
 - **输入参数**: 无
 - **返回值**: 无
 
+权限：
+- requires_sudo: true
+
 ```bash
-gdbus call --system \
+pkexec gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path / \
-  --method org.desktopspec.ConfigManager.enableVerboseLogging.enableVerboseLogging
+  --method org.desktopspec.ConfigManager.enableVerboseLogging
 ```
 
 #### disableVerboseLogging
@@ -127,11 +142,14 @@ gdbus call --system \
 - **输入参数**: 无
 - **返回值**: 无
 
+权限：
+- requires_sudo: true
+
 ```bash
-gdbus call --system \
+pkexec gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path / \
-  --method org.desktopspec.ConfigManager.disableVerboseLogging.disableVerboseLogging
+  --method org.desktopspec.ConfigManager.disableVerboseLogging
 ```
 
 #### setLogRules
@@ -141,11 +159,14 @@ gdbus call --system \
 - **输入参数**: `rules`（string, 类型 `s`）：日志规则 JSON
 - **返回值**: 无
 
+权限：
+- requires_sudo: true
+
 ```bash
-gdbus call --system \
+pkexec gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path / \
-  --method org.desktopspec.ConfigManager.setLogRules.setLogRules '{"rules":"*=true"}'
+  --method org.desktopspec.ConfigManager.setLogRules '{"rules":"*=true"}'
 ```
 
 #### removeUserData
@@ -155,11 +176,14 @@ gdbus call --system \
 - **输入参数**: `uid`（uint32, 类型 `u`）：用户 ID
 - **返回值**: 无
 
+权限：
+- requires_sudo: true
+
 ```bash
-gdbus call --system \
+pkexec gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path / \
-  --method org.desktopspec.ConfigManager.removeUserData.removeUserData 1000
+  --method org.desktopspec.ConfigManager.removeUserData 1000
 ```
 
 #### reload
@@ -169,11 +193,14 @@ gdbus call --system \
 - **输入参数**: 无
 - **返回值**: 无
 
+权限：
+- requires_sudo: true
+
 ```bash
-gdbus call --system \
+pkexec gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path / \
-  --method org.desktopspec.ConfigManager.reload.reload
+  --method org.desktopspec.ConfigManager.reload
 ```
 
 ---
