@@ -48,23 +48,6 @@ pkexec gdbus call --system \
   --method org.deepin.dde.LocaleHelper1.GenerateLocale "zh_CN.UTF-8"
 ```
 
-#### SetAllowCaller
-
-设置允许调用区域设置接口的 DBus 唯一名称。
-
-- **输入参数**: `uniqueName`（string, 类型 `s`）：DBus 唯一名称
-- **返回值**: 无
-
-权限：
-- requires_sudo: true
-
-```bash
-pkexec gdbus call --system \
-  --dest org.deepin.dde.LocaleHelper1 \
-  --object-path /org/deepin/dde/LocaleHelper1 \
-  --method org.deepin.dde.LocaleHelper1.SetAllowCaller ":1.42"
-```
-
 
 ### 区域设置信号
 

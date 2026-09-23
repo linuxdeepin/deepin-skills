@@ -83,26 +83,6 @@ gdbus call --system \
 ```
 
 
-### 调用者管理
-
-#### SetAllowCaller
-
-设置允许调用认证接口的 DBus 唯一名称。
-
-- **输入参数**: `uniqueName`（string, 类型 `s`）：DBus 唯一名称
-- **返回值**: 无
-
-权限：
-- requires_sudo: true
-
-```bash
-pkexec gdbus call --system \
-  --dest org.deepin.dde.Authenticate1 \
-  --object-path /org/deepin/dde/Authenticate1 \
-  --method org.deepin.dde.Authenticate1.SetAllowCaller ":1.42"
-```
-
-
 ### 认证属性
 
 #### SupportEncrypts（属性）
