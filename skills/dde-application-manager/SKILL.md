@@ -61,7 +61,7 @@ dde-application-manager 通过 DConfig 暴露应用启动次数记录和应用�
 
 ### dde-am
 
-DDE 应用管理器客户端命令行工具，用于启动应用、执行命令、列出已安装应用等。
+DDE 应用管理器客户端命令行工具，用于启动应用、执行命令、列出已安装应用。
 
 详见 [dde-am.md](references/cli/dde-am.md)
 

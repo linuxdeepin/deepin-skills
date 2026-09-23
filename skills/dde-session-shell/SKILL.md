@@ -55,13 +55,13 @@ DDE 登录界面（LightDM Greeter），是 deepin 定制的 LightDM 欢迎程�
 
 ### greeter-display-setting
 
-登录界面显示设置工具，用于在 LightDM 登录阶段配置显示相关参数（如分辨率、缩放等）。
+登录界面显示设置工具，用于在 LightDM 登录阶段配置显示相关参数（如分辨率、缩放）。
 
 详见 [greeter-display-setting.md](references/cli/greeter-display-setting.md)
 
 ### lightdm-deepin-greeter-lighter
 
-LightDM Deepin Greeter 的辅助程序，用于在登录过程中处理亮度调节等初始化操作。
+LightDM Deepin Greeter 的辅助程序，用于在登录过程中处理亮度调节初始化操作。
 
 详见 [lightdm-deepin-greeter-lighter.md](references/cli/lightdm-deepin-greeter-lighter.md)
 

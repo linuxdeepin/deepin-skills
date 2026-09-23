@@ -39,7 +39,7 @@ DDE 会话管理程序，负责 DDE 桌面会话的启动和初始化。
 
 ### dde-session-ctl
 
-DDE 会话控制工具，用于执行关机、退出会话、注销等会话级操作。
+DDE 会话控制工具，用于执行关机、退出会话、注销这三项会话级操作。
 
 详见 [dde-session-ctl.md](references/cli/dde-session-ctl.md)
 

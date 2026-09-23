@@ -61,7 +61,7 @@ DCI 图标查找工具，用于在已安装的 DCI 图标主题中搜索指定�
 
 ### image-handler
 
-DTK 图片处理工具，支持图片旋转、应用滤镜效果、查看图片信息等操作。
+DTK 图片处理工具，支持图片旋转、应用滤镜效果、查看图片信息三项操作。
 
 详见 [image-handler.md](references/cli/image-handler.md)
 

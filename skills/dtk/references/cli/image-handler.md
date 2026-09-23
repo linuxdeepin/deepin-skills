@@ -1,4 +1,4 @@
-**用途**：DTK 图片处理工具，支持图片旋转、应用滤镜效果、查看图片信息等操作。内置多种滤镜效果（old 复古、warm 暖色、cool 冷色、gray 灰度、anticolor 反色、metal 金属），可以按指定角度旋转图片并保存到文件。还支持列出所有支持的图片格式和显示额外图片元信息。该工具适用于简单的图片处理需求，也是 DTK 图片处理功能的命令行接口。
+**用途**：DTK 图片处理工具，支持图片旋转、应用滤镜效果、查看图片信息三项操作。内置多种滤镜效果（old 复古、warm 暖色、cool 冷色、gray 灰度、anticolor 反色、metal 金属），可以按指定角度旋转图片并保存到文件。还支持列出所有支持的图片格式和显示额外图片元信息。该工具适用于简单的图片处理需求，也是 DTK 图片处理功能的命令行接口。
 
 - **所属 DTK**：DTK 开发工具集
 - **安装路径**：`/usr/bin/image-handler`
@@ -35,7 +35,7 @@ image-handler -f gray -o /tmp/gray.jpg /home/user/photo.jpg
 # 应用暖色滤镜并保存
 image-handler -f warm -o /tmp/warm.jpg /home/user/photo.jpg
 
-# 显示图片的额外信息（尺寸、格式、色彩空间等）
+# 显示图片的额外信息（尺寸、格式、色彩空间）
 image-handler -e /home/user/photo.jpg
 
 # 列出所有支持的图片格式

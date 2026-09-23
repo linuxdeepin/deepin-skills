@@ -93,7 +93,7 @@ xdg-desktop-portal-dde 是 xdg-desktop-portal 的 DDE 后端实现，通过 Sess
 
 ### xdg-desktop-portal-dde
 
-DDE 的 XDG Desktop Portal 后端实现，为 Flatpak 等沙箱应用提供访问系统资源（文件选择、屏幕截图、屏幕共享等）的 DBus 接口。
+DDE 的 XDG Desktop Portal 后端实现，为沙箱应用（如 Flatpak）提供访问系统资源（文件选择、屏幕截图、屏幕共享）的 DBus 接口。
 
 详见 [xdg-desktop-portal-dde.md](references/cli/xdg-desktop-portal-dde.md)
 
