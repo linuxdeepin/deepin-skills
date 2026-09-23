@@ -23,7 +23,7 @@
 - **返回值**: 无
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest com.deepin.daemon.Power \
   --object-path /com/deepin/daemon/Power \
   --method com.deepin.daemon.Power1.SetScreenBlackLock true
@@ -37,7 +37,7 @@ pkexec gdbus call --system \
 - **返回值**: 无
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest com.deepin.daemon.Power \
   --object-path /com/deepin/daemon/Power \
   --method com.deepin.daemon.Power1.SetSleepLock true
@@ -51,7 +51,7 @@ pkexec gdbus call --system \
 - **返回值**: 无
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest com.deepin.daemon.Power \
   --object-path /com/deepin/daemon/Power \
   --method com.deepin.daemon.Power1.SetSleepDelay 300
@@ -65,7 +65,7 @@ pkexec gdbus call --system \
 - **返回值**: 无
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest com.deepin.daemon.Power \
   --object-path /com/deepin/daemon/Power \
   --method com.deepin.daemon.Power1.SetScreenBlackDelay 300
@@ -79,7 +79,7 @@ pkexec gdbus call --system \
 - **返回值**: 无
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest com.deepin.daemon.Power \
   --object-path /com/deepin/daemon/Power \
   --method com.deepin.daemon.Power1.SetLidClosedAction 1
@@ -95,7 +95,7 @@ pkexec gdbus call --system \
 - **返回值**: 无
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest com.deepin.daemon.Power \
   --object-path /com/deepin/daemon/Power \
   --method com.deepin.daemon.Power1.SetPowerPlan "balanced"
@@ -113,7 +113,7 @@ pkexec gdbus call --system \
 读取示例：
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest com.deepin.daemon.Power \
   --object-path /com/deepin/daemon/Power \
   --method org.freedesktop.DBus.Properties.Get \

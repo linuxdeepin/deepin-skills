@@ -13,7 +13,6 @@
 
 > **待核验声明**：本文档接口信息基于源码静态分析，未经运行时 D-Bus 内省验证，标记为待核验。
 
-> **注意**：该接口位于 System 总线，调用需要提权。
 
 ### 通用配置
 
@@ -23,6 +22,9 @@
 
 - **输入参数**: `data`（string, 类型 `s`）：配置 JSON
 - **返回值**: 无
+
+权限：
+- requires_sudo: true
 
 ```bash
 pkexec gdbus call --system \
@@ -38,6 +40,9 @@ pkexec gdbus call --system \
 - **输入参数**: 无
 - **返回值**: `s`（string）：配置 JSON
 
+权限：
+- requires_sudo: true
+
 ```bash
 pkexec gdbus call --system \
   --dest org.deepin.dde.PasswdConf1 \
@@ -52,6 +57,9 @@ pkexec gdbus call --system \
 - **输入参数**: 无
 - **返回值**: 无
 
+权限：
+- requires_sudo: true
+
 ```bash
 pkexec gdbus call --system \
   --dest org.deepin.dde.PasswdConf1 \
@@ -65,6 +73,9 @@ pkexec gdbus call --system \
 
 - **输入参数**: 无
 - **返回值**: 无
+
+权限：
+- requires_sudo: true
 
 ```bash
 pkexec gdbus call --system \
@@ -84,7 +95,7 @@ pkexec gdbus call --system \
 - **返回值**: `(ii)`（int32, int32）：最小长度和最大长度
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.deepin.dde.PasswdConf1 \
   --object-path /org/deepin/dde/PasswdConf1 \
   --method org.deepin.dde.PasswdConf1.GetLengthLimit
@@ -96,6 +107,9 @@ pkexec gdbus call --system \
 
 - **输入参数**: `min`（int32, 类型 `i`）：最小长度；`max`（int32, 类型 `i`）：最大长度
 - **返回值**: 无
+
+权限：
+- requires_sudo: true
 
 ```bash
 pkexec gdbus call --system \
@@ -115,7 +129,7 @@ pkexec gdbus call --system \
 - **返回值**: `s`（string）：校验策略 JSON
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.deepin.dde.PasswdConf1 \
   --object-path /org/deepin/dde/PasswdConf1 \
   --method org.deepin.dde.PasswdConf1.GetValidatePolicy
@@ -127,6 +141,9 @@ pkexec gdbus call --system \
 
 - **输入参数**: `s`（string, 类型 `s`）：校验策略 JSON
 - **返回值**: 无
+
+权限：
+- requires_sudo: true
 
 ```bash
 pkexec gdbus call --system \
@@ -143,7 +160,7 @@ pkexec gdbus call --system \
 - **返回值**: `i`（int32）：校验规则数量
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.deepin.dde.PasswdConf1 \
   --object-path /org/deepin/dde/PasswdConf1 \
   --method org.deepin.dde.PasswdConf1.GetValidateRequired
@@ -155,6 +172,9 @@ pkexec gdbus call --system \
 
 - **输入参数**: `n`（int32, 类型 `i`）：校验规则数量
 - **返回值**: 无
+
+权限：
+- requires_sudo: true
 
 ```bash
 pkexec gdbus call --system \
@@ -174,7 +194,7 @@ pkexec gdbus call --system \
 - **返回值**: `b`（bool）：是否启用
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.deepin.dde.PasswdConf1 \
   --object-path /org/deepin/dde/PasswdConf1 \
   --method org.deepin.dde.PasswdConf1.GetEnabled
@@ -186,6 +206,9 @@ pkexec gdbus call --system \
 
 - **输入参数**: `enabled`（bool, 类型 `b`）：是否启用
 - **返回值**: 无
+
+权限：
+- requires_sudo: true
 
 ```bash
 pkexec gdbus call --system \
@@ -202,7 +225,7 @@ pkexec gdbus call --system \
 - **返回值**: `b`（bool）：是否要求
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.deepin.dde.PasswdConf1 \
   --object-path /org/deepin/dde/PasswdConf1 \
   --method org.deepin.dde.PasswdConf1.GetFirstLetterUpper
@@ -214,6 +237,9 @@ pkexec gdbus call --system \
 
 - **输入参数**: `enabled`（bool, 类型 `b`）：是否要求
 - **返回值**: 无
+
+权限：
+- requires_sudo: true
 
 ```bash
 pkexec gdbus call --system \

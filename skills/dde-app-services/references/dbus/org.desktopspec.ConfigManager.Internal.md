@@ -13,7 +13,6 @@
 
 > **待核验声明**：本文档接口信息基于源码静态分析，未经运行时 D-Bus 内省验证，标记为待核验。
 
-> **注意**：该接口位于 System 总线，调用需要提权。
 
 ### 配置项查询
 
@@ -25,7 +24,7 @@
 - **返回值**: `a(sss)`（string 三元组数组）：配置项列表
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path /Internal \
   --method org.desktopspec.ConfigManager.Internal.configurations.configurations
@@ -42,7 +41,7 @@ pkexec gdbus call --system \
 - **触发条件**: 配置项列表变化时发出
 
 ```bash
-pkexec gdbus monitor --system \
+gdbus monitor --system \
   --dest org.desktopspec.ConfigManager \
   --object-path /Internal
 ```

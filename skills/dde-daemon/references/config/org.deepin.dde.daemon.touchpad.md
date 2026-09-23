@@ -28,7 +28,7 @@
 
 ```bash
 # 查询触控板开关
-pkexec dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.touchpad -k touchpadEnabled --get
+dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.touchpad -k touchpadEnabled --get
 # 设置触控板开关
-pkexec dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.touchpad -k touchpadEnabled -s "<value>"
+dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.touchpad -k touchpadEnabled -s "<value>"
 ```

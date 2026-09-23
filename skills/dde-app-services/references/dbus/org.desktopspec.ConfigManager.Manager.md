@@ -13,7 +13,6 @@
 
 > **待核验声明**：本文档接口信息基于源码静态分析，未经运行时 D-Bus 内省验证，标记为待核验。
 
-> **注意**：该接口位于 System 总线，调用需要提权。对象路径通过 `acquireManager` 或 `acquireManagerV2` 方法获取。
 
 ### 配置值读写
 
@@ -25,7 +24,7 @@
 - **返回值**: `v`（variant）：配置值
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path /path/to/manager \
   --method org.desktopspec.ConfigManager.Manager.value.value "key_name"
@@ -39,7 +38,7 @@ pkexec gdbus call --system \
 - **返回值**: 无
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path /path/to/manager \
   --method org.desktopspec.ConfigManager.Manager.setValue.setValue "key_name" <variant true>
@@ -53,7 +52,7 @@ pkexec gdbus call --system \
 - **返回值**: `b`（bool）：是否为默认值
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path /path/to/manager \
   --method org.desktopspec.ConfigManager.Manager.isDefaultValue.isDefaultValue "key_name"
@@ -67,7 +66,7 @@ pkexec gdbus call --system \
 - **返回值**: 无
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path /path/to/manager \
   --method org.desktopspec.ConfigManager.Manager.reset.reset "key_name"
@@ -84,7 +83,7 @@ pkexec gdbus call --system \
 - **返回值**: `s`（string）：名称
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path /path/to/manager \
   --method org.desktopspec.ConfigManager.Manager.name.name "key_name" "zh_CN"
@@ -98,7 +97,7 @@ pkexec gdbus call --system \
 - **返回值**: `s`（string）：描述
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path /path/to/manager \
   --method org.desktopspec.ConfigManager.Manager.description.description "key_name" "zh_CN"
@@ -112,7 +111,7 @@ pkexec gdbus call --system \
 - **返回值**: `s`（string）：可见性
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path /path/to/manager \
   --method org.desktopspec.ConfigManager.Manager.visibility.visibility "key_name"
@@ -126,7 +125,7 @@ pkexec gdbus call --system \
 - **返回值**: `s`（string）：权限
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path /path/to/manager \
   --method org.desktopspec.ConfigManager.Manager.permissions.permissions "key_name"
@@ -140,7 +139,7 @@ pkexec gdbus call --system \
 - **返回值**: `i`（int32）：标志位
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path /path/to/manager \
   --method org.desktopspec.ConfigManager.Manager.flags.flags "key_name"
@@ -154,7 +153,7 @@ pkexec gdbus call --system \
 - **返回值**: 无
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path /path/to/manager \
   --method org.desktopspec.ConfigManager.Manager.release.release
@@ -175,7 +174,7 @@ pkexec gdbus call --system \
 读取示例：
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path /path/to/manager \
   --method org.freedesktop.DBus.Properties.Get \
@@ -193,7 +192,7 @@ pkexec gdbus call --system \
 读取示例：
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path /path/to/manager \
   --method org.freedesktop.DBus.Properties.Get \
@@ -210,7 +209,7 @@ pkexec gdbus call --system \
 - **触发条件**: 配置值被设置时发出
 
 ```bash
-pkexec gdbus monitor --system \
+gdbus monitor --system \
   --dest org.desktopspec.ConfigManager \
   --object-path /path/to/manager
 ```

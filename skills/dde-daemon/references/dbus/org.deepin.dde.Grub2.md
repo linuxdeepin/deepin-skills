@@ -22,6 +22,9 @@
 - **输入参数**: 无
 - **返回值**: 无
 
+权限：
+- requires_sudo: true
+
 ```bash
 pkexec gdbus call --system \
   --dest org.deepin.dde.Grub2 \
@@ -35,6 +38,9 @@ pkexec gdbus call --system \
 
 - **输入参数**: 无
 - **返回值**: 无
+
+权限：
+- requires_sudo: true
 
 ```bash
 pkexec gdbus call --system \
@@ -50,6 +56,9 @@ pkexec gdbus call --system \
 - **输入参数**: 无
 - **返回值**: 无
 
+权限：
+- requires_sudo: true
+
 ```bash
 pkexec gdbus call --system \
   --dest org.deepin.dde.Grub2 \
@@ -63,6 +72,9 @@ pkexec gdbus call --system \
 
 - **输入参数**: 无
 - **返回值**: `a(ss)`（元组数组）：图形模式列表
+
+权限：
+- requires_sudo: true
 
 ```bash
 pkexec gdbus call --system \
@@ -78,6 +90,9 @@ pkexec gdbus call --system \
 - **输入参数**: 无
 - **返回值**: `as`（string 数组）：标题列表
 
+权限：
+- requires_sudo: true
+
 ```bash
 pkexec gdbus call --system \
   --dest org.deepin.dde.Grub2 \
@@ -91,6 +106,9 @@ pkexec gdbus call --system \
 
 - **输入参数**: 无
 - **返回值**: 无
+
+权限：
+- requires_sudo: true
 
 ```bash
 pkexec gdbus call --system \
@@ -106,6 +124,9 @@ pkexec gdbus call --system \
 - **输入参数**: 无
 - **返回值**: 无
 
+权限：
+- requires_sudo: true
+
 ```bash
 pkexec gdbus call --system \
   --dest org.deepin.dde.Grub2 \
@@ -119,6 +140,9 @@ pkexec gdbus call --system \
 
 - **输入参数**: `entry`（string, 类型 `s`）：条目标题
 - **返回值**: 无
+
+权限：
+- requires_sudo: true
 
 ```bash
 pkexec gdbus call --system \
@@ -134,6 +158,9 @@ pkexec gdbus call --system \
 - **输入参数**: `enable`（bool, 类型 `b`）：是否启用
 - **返回值**: 无
 
+权限：
+- requires_sudo: true
+
 ```bash
 pkexec gdbus call --system \
   --dest org.deepin.dde.Grub2 \
@@ -147,6 +174,9 @@ pkexec gdbus call --system \
 
 - **输入参数**: `mode`（string, 类型 `s`）：图形模式
 - **返回值**: 无
+
+权限：
+- requires_sudo: true
 
 ```bash
 pkexec gdbus call --system \
@@ -162,6 +192,9 @@ pkexec gdbus call --system \
 - **输入参数**: `timeout`（int32, 类型 `i`）：超时秒数
 - **返回值**: 无
 
+权限：
+- requires_sudo: true
+
 ```bash
 pkexec gdbus call --system \
   --dest org.deepin.dde.Grub2 \
@@ -176,6 +209,9 @@ pkexec gdbus call --system \
 - **输入参数**: 无
 - **返回值**: `s`（string）：背景图片路径
 
+权限：
+- requires_sudo: true
+
 ```bash
 pkexec gdbus call --system \
   --dest org.deepin.dde.Grub2 \
@@ -189,6 +225,9 @@ pkexec gdbus call --system \
 
 - **输入参数**: `file`（string, 类型 `s`）：文件路径
 - **返回值**: 无
+
+权限：
+- requires_sudo: true
 
 ```bash
 pkexec gdbus call --system \

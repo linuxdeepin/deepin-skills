@@ -34,7 +34,7 @@
 
 ```bash
 # 查询音效总开关
-pkexec dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.soundeffect -k enabled --get
+dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.soundeffect -k enabled --get
 # 设置音效总开关
-pkexec dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.soundeffect -k enabled -s "<value>"
+dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.soundeffect -k enabled -s "<value>"
 ```

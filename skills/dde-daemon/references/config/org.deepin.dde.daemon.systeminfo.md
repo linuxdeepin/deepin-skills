@@ -12,7 +12,7 @@
 
 ```bash
 # 查询 M900 配置标识
-pkexec dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.systeminfo -k IsM900Config --get
+dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.systeminfo -k IsM900Config --get
 # 设置 M900 配置标识
-pkexec dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.systeminfo -k IsM900Config -s "<value>"
+dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.systeminfo -k IsM900Config -s "<value>"
 ```

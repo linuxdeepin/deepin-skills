@@ -22,6 +22,9 @@
 - **输入参数**: `name`（string, 类型 `s`）：用户名；`fullName`（string, 类型 `s`）：全名；`groupType`（int32, 类型 `i`）：用户组类型
 - **返回值**: `o`（object path）：用户路径
 
+权限：
+- requires_sudo: true
+
 ```bash
 pkexec gdbus call --system \
   --dest com.deepin.daemon.Accounts \
@@ -35,6 +38,9 @@ pkexec gdbus call --system \
 
 - **输入参数**: `name`（string, 类型 `s`）：用户名；`rmHome`（bool, 类型 `b`）：是否删除主目录
 - **返回值**: 无
+
+权限：
+- requires_sudo: true
 
 ```bash
 pkexec gdbus call --system \
@@ -50,6 +56,9 @@ pkexec gdbus call --system \
 - **输入参数**: `uid`（int32, 类型 `i`）：用户 ID
 - **返回值**: `o`（object path）：用户路径
 
+权限：
+- requires_sudo: true
+
 ```bash
 pkexec gdbus call --system \
   --dest com.deepin.daemon.Accounts \
@@ -63,6 +72,9 @@ pkexec gdbus call --system \
 
 - **输入参数**: `name`（string, 类型 `s`）：用户名
 - **返回值**: `o`（object path）：用户路径
+
+权限：
+- requires_sudo: true
 
 ```bash
 pkexec gdbus call --system \
@@ -78,6 +90,9 @@ pkexec gdbus call --system \
 - **输入参数**: 无
 - **返回值**: `s`（string）：图标路径
 
+权限：
+- requires_sudo: true
+
 ```bash
 pkexec gdbus call --system \
   --dest com.deepin.daemon.Accounts \
@@ -92,6 +107,9 @@ pkexec gdbus call --system \
 - **输入参数**: `name`（string, 类型 `s`）：用户名
 - **返回值**: `(bas)`（元组）：是否合法、错误信息和建议列表
 
+权限：
+- requires_sudo: true
+
 ```bash
 pkexec gdbus call --system \
   --dest com.deepin.daemon.Accounts \
@@ -105,6 +123,9 @@ pkexec gdbus call --system \
 
 - **输入参数**: `password`（string, 类型 `s`）：密码
 - **返回值**: `(bas)`（元组）：是否合法、错误信息和建议列表
+
+权限：
+- requires_sudo: true
 
 ```bash
 pkexec gdbus call --system \
@@ -123,6 +144,9 @@ pkexec gdbus call --system \
 - **输入参数**: `name`（string, 类型 `s`）：组名
 - **返回值**: `o`（object path）：组路径
 
+权限：
+- requires_sudo: true
+
 ```bash
 pkexec gdbus call --system \
   --dest com.deepin.daemon.Accounts \
@@ -136,6 +160,9 @@ pkexec gdbus call --system \
 
 - **输入参数**: `name`（string, 类型 `s`）：组名
 - **返回值**: 无
+
+权限：
+- requires_sudo: true
 
 ```bash
 pkexec gdbus call --system \
@@ -151,6 +178,9 @@ pkexec gdbus call --system \
 - **输入参数**: 无
 - **返回值**: `as`（string 数组）：组列表
 
+权限：
+- requires_sudo: true
+
 ```bash
 pkexec gdbus call --system \
   --dest com.deepin.daemon.Accounts \
@@ -165,6 +195,9 @@ pkexec gdbus call --system \
 - **输入参数**: `name`（string, 类型 `s`）：组名
 - **返回值**: `a{sv}`（字典）：组信息
 
+权限：
+- requires_sudo: true
+
 ```bash
 pkexec gdbus call --system \
   --dest com.deepin.daemon.Accounts \
@@ -178,6 +211,9 @@ pkexec gdbus call --system \
 
 - **输入参数**: 无
 - **返回值**: `as`（string 数组）：预设组列表
+
+权限：
+- requires_sudo: true
 
 ```bash
 pkexec gdbus call --system \

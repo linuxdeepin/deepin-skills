@@ -13,7 +13,6 @@
 
 > **待核验声明**：本文档接口信息基于源码静态分析，未经运行时 D-Bus 内省验证，标记为待核验。
 
-> **注意**：该接口位于 System 总线，调用需要提权。
 
 ### 管理器对象获取
 
@@ -25,7 +24,7 @@
 - **返回值**: `o`（object path）：管理器对象路径
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path / \
   --method org.desktopspec.ConfigManager.acquireManagerV2.acquireManagerV2 1000 "org.deepin.dde.daemon" "org.deepin.dde.daemon.power" ""
@@ -39,7 +38,7 @@ pkexec gdbus call --system \
 - **返回值**: `o`（object path）：管理器对象路径
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path / \
   --method org.desktopspec.ConfigManager.acquireManager.acquireManager "org.deepin.dde.daemon" "org.deepin.dde.daemon.power" ""
@@ -56,7 +55,7 @@ pkexec gdbus call --system \
 - **返回值**: 无
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path / \
   --method org.desktopspec.ConfigManager.update.update "/path/to/manager"
@@ -70,7 +69,7 @@ pkexec gdbus call --system \
 - **返回值**: 无
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path / \
   --method org.desktopspec.ConfigManager.sync.sync "/path/to/manager"
@@ -84,7 +83,7 @@ pkexec gdbus call --system \
 - **返回值**: 无
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path / \
   --method org.desktopspec.ConfigManager.setDelayReleaseTime.setDelayReleaseTime 5000
@@ -98,7 +97,7 @@ pkexec gdbus call --system \
 - **返回值**: `i`（int32）：延迟时间（毫秒）
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path / \
   --method org.desktopspec.ConfigManager.delayReleaseTime.delayReleaseTime
@@ -115,7 +114,7 @@ pkexec gdbus call --system \
 - **返回值**: 无
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path / \
   --method org.desktopspec.ConfigManager.enableVerboseLogging.enableVerboseLogging
@@ -129,7 +128,7 @@ pkexec gdbus call --system \
 - **返回值**: 无
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path / \
   --method org.desktopspec.ConfigManager.disableVerboseLogging.disableVerboseLogging
@@ -143,7 +142,7 @@ pkexec gdbus call --system \
 - **返回值**: 无
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path / \
   --method org.desktopspec.ConfigManager.setLogRules.setLogRules '{"rules":"*=true"}'
@@ -157,7 +156,7 @@ pkexec gdbus call --system \
 - **返回值**: 无
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path / \
   --method org.desktopspec.ConfigManager.removeUserData.removeUserData 1000
@@ -171,7 +170,7 @@ pkexec gdbus call --system \
 - **返回值**: 无
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path / \
   --method org.desktopspec.ConfigManager.reload.reload

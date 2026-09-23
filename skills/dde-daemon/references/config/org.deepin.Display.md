@@ -23,7 +23,7 @@
 
 ```bash
 # 查询屏幕黑名单
-pkexec dde-dconfig -a org.deepin.dde.daemon -r org.deepin.Display -k blacklist --get
+dde-dconfig -a org.deepin.dde.daemon -r org.deepin.Display -k blacklist --get
 # 设置屏幕黑名单
-pkexec dde-dconfig -a org.deepin.dde.daemon -r org.deepin.Display -k blacklist -s "<value>"
+dde-dconfig -a org.deepin.dde.daemon -r org.deepin.Display -k blacklist -s "<value>"
 ```

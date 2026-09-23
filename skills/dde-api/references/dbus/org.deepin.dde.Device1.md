@@ -23,7 +23,7 @@
 - **返回值**: `b`（bool）：是否有设备被阻止
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.deepin.dde.Device1 \
   --object-path /org/deepin/dde/Device1 \
   --method org.deepin.dde.Device1.HasBluetoothDeviceBlocked
@@ -35,6 +35,9 @@ pkexec gdbus call --system \
 
 - **输入参数**: 无
 - **返回值**: 无
+
+权限：
+- requires_sudo: true
 
 ```bash
 pkexec gdbus call --system \

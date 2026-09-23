@@ -22,6 +22,9 @@
 - **输入参数**: 无
 - **返回值**: 无
 
+权限：
+- requires_sudo: true
+
 ```bash
 pkexec gdbus call --system \
   --dest com.deepin.daemon.Greeter \

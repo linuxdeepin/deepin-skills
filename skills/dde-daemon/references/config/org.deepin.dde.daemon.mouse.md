@@ -22,7 +22,7 @@
 
 ```bash
 # 查询自适应加速配置
-pkexec dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.mouse -k adaptiveAccelProfile --get
+dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.mouse -k adaptiveAccelProfile --get
 # 设置自适应加速配置
-pkexec dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.mouse -k adaptiveAccelProfile -s "<value>"
+dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.mouse -k adaptiveAccelProfile -s "<value>"
 ```

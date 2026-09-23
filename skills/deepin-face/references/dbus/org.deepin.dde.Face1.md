@@ -13,7 +13,6 @@
 
 > **待核验声明**：本文档接口信息基于源码静态分析，未经运行时 D-Bus 内省验证，标记为待核验。
 
-> **注意**：该接口位于 System 总线，调用需要提权。
 
 ### 人脸录入
 
@@ -25,7 +24,7 @@
 - **返回值**: `h`（handle）：录入句柄
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.deepin.dde.Face1 \
   --object-path /org/deepin/dde/Face1 \
   --method org.deepin.dde.Face1.EnrollStart "face_1" 1 "enroll_action"
@@ -39,7 +38,7 @@ pkexec gdbus call --system \
 - **返回值**: 无
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.deepin.dde.Face1 \
   --object-path /org/deepin/dde/Face1 \
   --method org.deepin.dde.Face1.EnrollStop "enroll_action"
@@ -56,7 +55,7 @@ pkexec gdbus call --system \
 - **返回值**: `h`（handle）：验证句柄
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.deepin.dde.Face1 \
   --object-path /org/deepin/dde/Face1 \
   --method org.deepin.dde.Face1.VerifyStart ["face_1"] "verify_action"
@@ -70,7 +69,7 @@ pkexec gdbus call --system \
 - **返回值**: 无
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.deepin.dde.Face1 \
   --object-path /org/deepin/dde/Face1 \
   --method org.deepin.dde.Face1.VerifyStop "verify_action"
@@ -87,7 +86,7 @@ pkexec gdbus call --system \
 - **返回值**: 无
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.deepin.dde.Face1 \
   --object-path /org/deepin/dde/Face1 \
   --method org.deepin.dde.Face1.Delete "face_1"
@@ -108,7 +107,7 @@ pkexec gdbus call --system \
 读取示例：
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.deepin.dde.Face1 \
   --object-path /org/deepin/dde/Face1 \
   --method org.freedesktop.DBus.Properties.Get \
@@ -126,7 +125,7 @@ pkexec gdbus call --system \
 读取示例：
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.deepin.dde.Face1 \
   --object-path /org/deepin/dde/Face1 \
   --method org.freedesktop.DBus.Properties.Get \
@@ -144,7 +143,7 @@ pkexec gdbus call --system \
 读取示例：
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.deepin.dde.Face1 \
   --object-path /org/deepin/dde/Face1 \
   --method org.freedesktop.DBus.Properties.Get \
@@ -161,7 +160,7 @@ pkexec gdbus call --system \
 - **触发条件**: 人脸录入过程中状态变化时发出
 
 ```bash
-pkexec gdbus monitor --system \
+gdbus monitor --system \
   --dest org.deepin.dde.Face1 \
   --object-path /org/deepin/dde/Face1
 ```
@@ -174,7 +173,7 @@ pkexec gdbus monitor --system \
 - **触发条件**: 人脸验证过程中状态变化时发出
 
 ```bash
-pkexec gdbus monitor --system \
+gdbus monitor --system \
   --dest org.deepin.dde.Face1 \
   --object-path /org/deepin/dde/Face1
 ```

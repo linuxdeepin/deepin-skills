@@ -15,7 +15,7 @@
 
 ```bash
 # 查询长按持续时间
-pkexec dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.touchscreen -k longpressDuration --get
+dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.touchscreen -k longpressDuration --get
 # 设置长按持续时间
-pkexec dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.touchscreen -k longpressDuration -s "<value>"
+dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.touchscreen -k longpressDuration -s "<value>"
 ```

@@ -23,7 +23,7 @@
 - **返回值**: 无
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.deepin.dde.SoundThemePlayer1 \
   --object-path /org/deepin/dde/SoundThemePlayer1 \
   --method org.deepin.dde.SoundThemePlayer1.Play "message"
@@ -37,7 +37,7 @@ pkexec gdbus call --system \
 - **返回值**: 无
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.deepin.dde.SoundThemePlayer1 \
   --object-path /org/deepin/dde/SoundThemePlayer1 \
   --method org.deepin.dde.SoundThemePlayer1.Stop
@@ -51,7 +51,7 @@ pkexec gdbus call --system \
 - **返回值**: 无
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.deepin.dde.SoundThemePlayer1 \
   --object-path /org/deepin/dde/SoundThemePlayer1 \
   --method org.deepin.dde.SoundThemePlayer1.PausePlay
@@ -65,7 +65,7 @@ pkexec gdbus call --system \
 - **返回值**: 无
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.deepin.dde.SoundThemePlayer1 \
   --object-path /org/deepin/dde/SoundThemePlayer1 \
   --method org.deepin.dde.SoundThemePlayer1.SetVolume 0.5
@@ -79,7 +79,7 @@ pkexec gdbus call --system \
 - **返回值**: `d`（double）：音量值
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.deepin.dde.SoundThemePlayer1 \
   --object-path /org/deepin/dde/SoundThemePlayer1 \
   --method org.deepin.dde.SoundThemePlayer1.GetVolume
@@ -93,7 +93,7 @@ pkexec gdbus call --system \
 - **返回值**: 无
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.deepin.dde.SoundThemePlayer1 \
   --object-path /org/deepin/dde/SoundThemePlayer1 \
   --method org.deepin.dde.SoundThemePlayer1.SetMute true
@@ -107,7 +107,7 @@ pkexec gdbus call --system \
 - **返回值**: `b`（bool）：是否静音
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.deepin.dde.SoundThemePlayer1 \
   --object-path /org/deepin/dde/SoundThemePlayer1 \
   --method org.deepin.dde.SoundThemePlayer1.GetMute

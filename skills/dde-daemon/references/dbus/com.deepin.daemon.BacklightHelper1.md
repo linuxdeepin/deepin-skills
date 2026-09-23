@@ -23,7 +23,7 @@
 - **返回值**: `b`（bool）：是否支持
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest com.deepin.daemon.BacklightHelper \
   --object-path /com/deepin/daemon/BacklightHelper \
   --method com.deepin.daemon.BacklightHelper1.CheckCfgSupport "name"
@@ -37,7 +37,7 @@ pkexec gdbus call --system \
 - **返回值**: 无
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest com.deepin.daemon.BacklightHelper \
   --object-path /com/deepin/daemon/BacklightHelper \
   --method com.deepin.daemon.BacklightHelper1.SetBrightness 50

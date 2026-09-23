@@ -25,7 +25,7 @@ Wacom 数位板配置资源，管理Wacom 光标模式、橡皮擦压感级别�
 
 ```bash
 # 查询 Wacom 光标模式
-pkexec dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.wacom -k cursorMode --get
+dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.wacom -k cursorMode --get
 # 设置 Wacom 光标模式
-pkexec dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.wacom -k cursorMode -s "<value>"
+dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.wacom -k cursorMode -s "<value>"
 ```

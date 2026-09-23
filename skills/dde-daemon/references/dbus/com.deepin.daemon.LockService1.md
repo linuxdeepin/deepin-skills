@@ -22,6 +22,9 @@
 - **输入参数**: 无
 - **返回值**: `s`（string）：当前用户名
 
+权限：
+- requires_sudo: true
+
 ```bash
 pkexec gdbus call --system \
   --dest com.deepin.daemon.LockService \
@@ -35,6 +38,9 @@ pkexec gdbus call --system \
 
 - **输入参数**: `name`（string, 类型 `s`）：用户名
 - **返回值**: 无
+
+权限：
+- requires_sudo: true
 
 ```bash
 pkexec gdbus call --system \

@@ -27,7 +27,7 @@
 读取示例：
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest com.deepin.daemon.AirplaneMode \
   --object-path /com/deepin/daemon/AirplaneMode \
   --method org.freedesktop.DBus.Properties.Get \
@@ -36,7 +36,7 @@ pkexec gdbus call --system \
 设置示例：
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest com.deepin.daemon.AirplaneMode \
   --object-path /com/deepin/daemon/AirplaneMode \
   --method org.freedesktop.DBus.Properties.Set \

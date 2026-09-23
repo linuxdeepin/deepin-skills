@@ -22,6 +22,9 @@
 - **输入参数**: `s`（string, 类型 `s`）：区域名称
 - **返回值**: `s`（string）：生成的区域设置
 
+权限：
+- requires_sudo: true
+
 ```bash
 pkexec gdbus call --system \
   --dest org.deepin.dde.LocaleHelper1 \
@@ -35,6 +38,9 @@ pkexec gdbus call --system \
 
 - **输入参数**: `s`（string, 类型 `s`）：区域名称
 - **返回值**: 无
+
+权限：
+- requires_sudo: true
 
 ```bash
 pkexec gdbus call --system \
@@ -51,7 +57,7 @@ pkexec gdbus call --system \
 - **返回值**: 无
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.deepin.dde.LocaleHelper1 \
   --object-path /org/deepin/dde/LocaleHelper1 \
   --method org.deepin.dde.LocaleHelper1.SetAllowCaller "myapp"

@@ -13,7 +13,6 @@
 
 > **待核验声明**：本文档接口信息基于源码静态分析，未经运行时 D-Bus 内省验证，标记为待核验。
 
-> **注意**：该接口位于 System 总线，调用需要提权。
 
 ### 对话框操作
 
@@ -27,7 +26,7 @@
 - **返回值**: 无
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.deepin.dde.dialog1 \
   --object-path /org/deepin/dde/dialog1 \
   --method org.deepin.dde.dialog1.Open "confirm" "标题" "消息内容" "dialog-information" "确定"
@@ -43,7 +42,7 @@ pkexec gdbus call --system \
 - **返回值**: 无
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.deepin.dde.dialog1 \
   --object-path /org/deepin/dde/dialog1 \
   --method org.deepin.dde.dialog1.Cancel "confirm"
@@ -60,7 +59,7 @@ pkexec gdbus call --system \
 - **返回值**: 无
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.deepin.dde.dialog1 \
   --object-path /org/deepin/dde/dialog1 \
   --method org.deepin.dde.dialog1.RegisterAgent "com.example.Agent" "/com/example/Agent"
@@ -74,7 +73,7 @@ pkexec gdbus call --system \
 - **返回值**: 无
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.deepin.dde.dialog1 \
   --object-path /org/deepin/dde/dialog1 \
   --method org.deepin.dde.dialog1.UnregisterAgent "com.example.Agent" "/com/example/Agent"
@@ -90,7 +89,7 @@ pkexec gdbus call --system \
 - **返回值**: 无
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.deepin.dde.dialog1 \
   --object-path /org/deepin/dde/dialog1 \
   --method org.deepin.dde.dialog1.AgentResponse "confirm" 0

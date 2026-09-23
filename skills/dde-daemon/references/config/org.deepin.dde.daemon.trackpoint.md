@@ -21,7 +21,7 @@
 
 ```bash
 # 查询滚轮模拟开关
-pkexec dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.trackpoint -k wheelEmulation --get
+dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.trackpoint -k wheelEmulation --get
 # 设置滚轮模拟开关
-pkexec dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.trackpoint -k wheelEmulation -s "<value>"
+dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.trackpoint -k wheelEmulation -s "<value>"
 ```
