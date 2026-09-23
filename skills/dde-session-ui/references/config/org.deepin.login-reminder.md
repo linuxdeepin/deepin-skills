@@ -12,7 +12,7 @@
 
 ```bash
 # 查询登录提醒开关
-dde-dconfig -a org.deepin.login-reminder -r org.deepin.login-reminder -k LoginReminder --get
+dde-dconfig get -a org.deepin.login-reminder -r org.deepin.login-reminder -k LoginReminder
 # 设置登录提醒开关
-dde-dconfig -a org.deepin.login-reminder -r org.deepin.login-reminder -k LoginReminder -s "<value>"
+dde-dconfig set -a org.deepin.login-reminder -r org.deepin.login-reminder -k LoginReminder -v "<value>"
 ```

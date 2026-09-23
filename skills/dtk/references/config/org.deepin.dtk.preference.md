@@ -19,11 +19,11 @@ DTK 应用偏好配置，控制以下 DTK 应用的外观与行为：主题、�
 | 读写权限 | readwrite |
 
 ```bash
-dconfig read -d "" -r org.deepin.dtk.preference autoDisplayFeature
+dde-dconfig get -a org.deepin.dtk.preference -k autoDisplayFeature
 ```
 
 ```bash
-dconfig write -d "" -r org.deepin.dtk.preference autoDisplayFeature true
+dde-dconfig set -a org.deepin.dtk.preference -k autoDisplayFeature -v true
 ```
 
 ### defaultColorMode
@@ -36,11 +36,11 @@ dconfig write -d "" -r org.deepin.dtk.preference autoDisplayFeature true
 | 读写权限 | readwrite |
 
 ```bash
-dconfig read -d "" -r org.deepin.dtk.preference defaultColorMode
+dde-dconfig get -a org.deepin.dtk.preference -k defaultColorMode
 ```
 
 ```bash
-dconfig write -d "" -r org.deepin.dtk.preference defaultColorMode "light"
+dde-dconfig set -a org.deepin.dtk.preference -k defaultColorMode -v "light"
 ```
 
 ### enableDtkAnimations
@@ -53,11 +53,11 @@ dconfig write -d "" -r org.deepin.dtk.preference defaultColorMode "light"
 | 读写权限 | readwrite |
 
 ```bash
-dconfig read -d "" -r org.deepin.dtk.preference enableDtkAnimations
+dde-dconfig get -a org.deepin.dtk.preference -k enableDtkAnimations
 ```
 
 ```bash
-dconfig write -d "" -r org.deepin.dtk.preference enableDtkAnimations false
+dde-dconfig set -a org.deepin.dtk.preference -k enableDtkAnimations -v false
 ```
 
 ### featureUpdated
@@ -70,11 +70,11 @@ dconfig write -d "" -r org.deepin.dtk.preference enableDtkAnimations false
 | 读写权限 | readwrite |
 
 ```bash
-dconfig read -d "" -r org.deepin.dtk.preference featureUpdated
+dde-dconfig get -a org.deepin.dtk.preference -k featureUpdated
 ```
 
 ```bash
-dconfig write -d "" -r org.deepin.dtk.preference featureUpdated true
+dde-dconfig set -a org.deepin.dtk.preference -k featureUpdated -v true
 ```
 
 ### keyboardsearchDisabled
@@ -87,11 +87,11 @@ dconfig write -d "" -r org.deepin.dtk.preference featureUpdated true
 | 读写权限 | readwrite |
 
 ```bash
-dconfig read -d "" -r org.deepin.dtk.preference keyboardsearchDisabled
+dde-dconfig get -a org.deepin.dtk.preference -k keyboardsearchDisabled
 ```
 
 ```bash
-dconfig write -d "" -r org.deepin.dtk.preference keyboardsearchDisabled true
+dde-dconfig set -a org.deepin.dtk.preference -k keyboardsearchDisabled -v true
 ```
 
 ### rules
@@ -105,11 +105,11 @@ dconfig write -d "" -r org.deepin.dtk.preference keyboardsearchDisabled true
 | Flags | `global` |
 
 ```bash
-dconfig read -d "" -r org.deepin.dtk.preference rules
+dde-dconfig get -a org.deepin.dtk.preference -k rules
 ```
 
 ```bash
-dconfig write -d "" -r org.deepin.dtk.preference rules "*.debug=true"
+dde-dconfig set -a org.deepin.dtk.preference -k rules -v "*.debug=true"
 ```
 
 ### scrollBarPolicy
@@ -122,11 +122,11 @@ dconfig write -d "" -r org.deepin.dtk.preference rules "*.debug=true"
 | 读写权限 | readwrite |
 
 ```bash
-dconfig read -d "" -r org.deepin.dtk.preference scrollBarPolicy
+dde-dconfig get -a org.deepin.dtk.preference -k scrollBarPolicy
 ```
 
 ```bash
-dconfig write -d "" -r org.deepin.dtk.preference scrollBarPolicy 0
+dde-dconfig set -a org.deepin.dtk.preference -k scrollBarPolicy -v 0
 ```
 
 ### sizeMode
@@ -139,11 +139,11 @@ dconfig write -d "" -r org.deepin.dtk.preference scrollBarPolicy 0
 | 读写权限 | readwrite |
 
 ```bash
-dconfig read -d "" -r org.deepin.dtk.preference sizeMode
+dde-dconfig get -a org.deepin.dtk.preference -k sizeMode
 ```
 
 ```bash
-dconfig write -d "" -r org.deepin.dtk.preference sizeMode 1
+dde-dconfig set -a org.deepin.dtk.preference -k sizeMode -v 1
 ```
 
 ### themeType
@@ -156,11 +156,11 @@ dconfig write -d "" -r org.deepin.dtk.preference sizeMode 1
 | 读写权限 | readwrite |
 
 ```bash
-dconfig read -d "" -r org.deepin.dtk.preference themeType
+dde-dconfig get -a org.deepin.dtk.preference -k themeType
 ```
 
 ```bash
-dconfig write -d "" -r org.deepin.dtk.preference themeType 2
+dde-dconfig set -a org.deepin.dtk.preference -k themeType -v 2
 ```
 
 ### titlebarHeight
@@ -173,11 +173,11 @@ dconfig write -d "" -r org.deepin.dtk.preference themeType 2
 | 读写权限 | readwrite |
 
 ```bash
-dconfig read -d "" -r org.deepin.dtk.preference titlebarHeight
+dde-dconfig get -a org.deepin.dtk.preference -k titlebarHeight
 ```
 
 ```bash
-dconfig write -d "" -r org.deepin.dtk.preference titlebarHeight 40
+dde-dconfig set -a org.deepin.dtk.preference -k titlebarHeight -v 40
 ```
 
 ### underlineShortcut
@@ -190,9 +190,9 @@ dconfig write -d "" -r org.deepin.dtk.preference titlebarHeight 40
 | 读写权限 | readwrite |
 
 ```bash
-dconfig read -d "" -r org.deepin.dtk.preference underlineShortcut
+dde-dconfig get -a org.deepin.dtk.preference -k underlineShortcut
 ```
 
 ```bash
-dconfig write -d "" -r org.deepin.dtk.preference underlineShortcut true
+dde-dconfig set -a org.deepin.dtk.preference -k underlineShortcut -v true
 ```

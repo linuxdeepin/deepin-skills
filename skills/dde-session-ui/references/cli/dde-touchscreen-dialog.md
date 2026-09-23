@@ -7,7 +7,7 @@ DDE 触摸屏校准对话框，用于触摸屏设备的校准操作。
 | 字段 | 值 |
 |------|------|
 | 所属包名 | `dde-session-ui` |
-| 安装路径 | `/usr/bin/dde-touchscreen-dialog` |
+| 安装路径 | `/usr/lib/deepin-daemon/dde-touchscreen-dialog` |
 | DDE 角色 | 系统调用的辅助工具，触摸屏校准场景自动弹出 |
 
 ## 用途

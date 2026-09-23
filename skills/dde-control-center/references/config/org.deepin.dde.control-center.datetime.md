@@ -12,7 +12,7 @@
 
 ```bash
 # 查询自定义 NTP 服务器
-dde-dconfig -a org.deepin.dde.control-center -r org.deepin.dde.control-center.datetime -k customNtpServer --get
+dde-dconfig get -a org.deepin.dde.control-center -r org.deepin.dde.control-center.datetime -k customNtpServer
 # 设置自定义 NTP 服务器
-dde-dconfig -a org.deepin.dde.control-center -r org.deepin.dde.control-center.datetime -k customNtpServer -s "<value>"
+dde-dconfig set -a org.deepin.dde.control-center -r org.deepin.dde.control-center.datetime -k customNtpServer -v "<value>"
 ```

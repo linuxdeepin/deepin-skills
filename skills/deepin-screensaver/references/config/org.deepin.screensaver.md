@@ -12,7 +12,7 @@
 
 ```bash
 # 查询当前屏保
-dde-dconfig -a org.deepin.screensaver -r org.deepin.screensaver -k currentScreenSaver --get
+dde-dconfig get -a org.deepin.screensaver -r org.deepin.screensaver -k currentScreenSaver
 # 设置当前屏保
-dde-dconfig -a org.deepin.screensaver -r org.deepin.screensaver -k currentScreenSaver -s "<value>"
+dde-dconfig set -a org.deepin.screensaver -r org.deepin.screensaver -k currentScreenSaver -v "<value>"
 ```

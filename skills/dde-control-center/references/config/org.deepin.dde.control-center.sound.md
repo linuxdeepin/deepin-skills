@@ -12,7 +12,7 @@
 
 ```bash
 # 查询设备管理显示开关
-dde-dconfig -a org.deepin.dde.control-center -r org.deepin.dde.control-center.sound -k showDeviceManager --get
+dde-dconfig get -a org.deepin.dde.control-center -r org.deepin.dde.control-center.sound -k showDeviceManager
 # 设置设备管理显示开关
-dde-dconfig -a org.deepin.dde.control-center -r org.deepin.dde.control-center.sound -k showDeviceManager -s "<value>"
+dde-dconfig set -a org.deepin.dde.control-center -r org.deepin.dde.control-center.sound -k showDeviceManager -v "<value>"
 ```

@@ -7,7 +7,7 @@ DDE 黑屏部件工具，用于在特定场景下显示全屏黑色遮罩窗口�
 | 字段 | 值 |
 |------|------|
 | 所属包名 | `dde-session-ui` |
-| 安装路径 | `/usr/bin/dde-blackwidget` |
+| 安装路径 | `/usr/lib/deepin-daemon/dde-blackwidget` |
 | DDE 角色 | 系统调用的辅助工具，显示状态变更时自动调用 |
 
 ## 用途

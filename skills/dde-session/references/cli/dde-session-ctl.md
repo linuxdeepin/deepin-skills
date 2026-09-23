@@ -7,7 +7,7 @@ DDE 会话控制工具，用于执行关机、退出会话、注销这三项会�
 | 字段 | 值 |
 |------|------|
 | 所属包名 | `dde-session` |
-| 安装路径 | `/usr/bin/dde-session-ctl` |
+| 安装路径 | `/usr/libexec/dde-session-ctl` |
 | DDE 角色 | 用户和系统脚本均可使用的会话控制工具 |
 
 ## 用途

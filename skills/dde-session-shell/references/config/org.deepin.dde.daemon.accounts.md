@@ -12,7 +12,7 @@
 
 ```bash
 # 查询快速登录开关
-dde-dconfig -a org.deepin.dde.lightdm-deepin-greeter -r org.deepin.dde.daemon.accounts -k enableQuickLogin --get
+dde-dconfig get -a org.deepin.dde.lightdm-deepin-greeter -r org.deepin.dde.daemon.accounts -k enableQuickLogin
 # 设置快速登录开关
-dde-dconfig -a org.deepin.dde.lightdm-deepin-greeter -r org.deepin.dde.daemon.accounts -k enableQuickLogin -s "<value>"
+dde-dconfig set -a org.deepin.dde.lightdm-deepin-greeter -r org.deepin.dde.daemon.accounts -k enableQuickLogin -v "<value>"
 ```

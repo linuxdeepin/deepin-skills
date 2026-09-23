@@ -14,7 +14,7 @@
 
 ```bash
 # 查询轮播间隔
-dde-dconfig -a org.deepin.screensaver -r org.deepin.customscreensaver -k intervalTime --get
+dde-dconfig get -a org.deepin.screensaver -r org.deepin.customscreensaver -k intervalTime
 # 设置轮播间隔
-dde-dconfig -a org.deepin.screensaver -r org.deepin.customscreensaver -k intervalTime -s "<value>"
+dde-dconfig set -a org.deepin.screensaver -r org.deepin.customscreensaver -k intervalTime -v "<value>"
 ```

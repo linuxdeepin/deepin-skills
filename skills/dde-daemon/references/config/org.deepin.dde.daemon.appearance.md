@@ -12,7 +12,7 @@
 
 ```bash
 # 查询缩放排除 Plymouth 开关
-dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.appearance -k scaleWithoutPlymouthEnabled --get
+dde-dconfig get -a org.deepin.dde.daemon -r org.deepin.dde.daemon.appearance -k scaleWithoutPlymouthEnabled
 # 设置缩放排除 Plymouth 开关
-dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.appearance -k scaleWithoutPlymouthEnabled -s "<value>"
+dde-dconfig set -a org.deepin.dde.daemon -r org.deepin.dde.daemon.appearance -k scaleWithoutPlymouthEnabled -v "<value>"
 ```

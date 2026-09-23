@@ -47,9 +47,9 @@
 
 ```bash
 # 查询节能模式开关
-dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.power -k powerSavingModeEnabled --get
+dde-dconfig get -a org.deepin.dde.daemon -r org.deepin.dde.daemon.power -k powerSavingModeEnabled
 # 设置节能模式开关
-dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.power -k powerSavingModeEnabled -s "<value>"
+dde-dconfig set -a org.deepin.dde.daemon -r org.deepin.dde.daemon.power -k powerSavingModeEnabled -v "<value>"
 ```
 
 ## 覆盖说明

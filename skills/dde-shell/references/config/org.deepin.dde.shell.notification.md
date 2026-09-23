@@ -22,7 +22,7 @@
 
 ```bash
 # 查询勿扰模式开关
-dde-dconfig -a org.deepin.dde.shell -r org.deepin.dde.shell.notification -k dndMode --get
+dde-dconfig get -a org.deepin.dde.shell -r org.deepin.dde.shell.notification -k dndMode
 # 设置勿扰模式开关
-dde-dconfig -a org.deepin.dde.shell -r org.deepin.dde.shell.notification -k dndMode -s "<value>"
+dde-dconfig set -a org.deepin.dde.shell -r org.deepin.dde.shell.notification -k dndMode -v "<value>"
 ```

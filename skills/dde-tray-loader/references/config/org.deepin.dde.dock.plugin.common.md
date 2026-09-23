@@ -12,5 +12,5 @@
 
 ```bash
 # 查询默认驻留插件列表
-dde-dconfig -a org.deepin.dde.tray-loader -r org.deepin.dde.dock.plugin.common -k defaultDockedPlugins --get
+dde-dconfig get -a org.deepin.dde.tray-loader -r org.deepin.dde.dock.plugin.common -k defaultDockedPlugins
 ```

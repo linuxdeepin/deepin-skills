@@ -12,7 +12,7 @@
 
 ```bash
 # 查询亮度最小值
-dde-dconfig -a org.deepin.dde.control-center -r org.deepin.dde.control-center.display -k minBrightnessValue --get
+dde-dconfig get -a org.deepin.dde.control-center -r org.deepin.dde.control-center.display -k minBrightnessValue
 # 设置亮度最小值
-dde-dconfig -a org.deepin.dde.control-center -r org.deepin.dde.control-center.display -k minBrightnessValue -s "<value>"
+dde-dconfig set -a org.deepin.dde.control-center -r org.deepin.dde.control-center.display -k minBrightnessValue -v "<value>"
 ```

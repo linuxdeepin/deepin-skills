@@ -7,7 +7,7 @@ DDE 系统守护进程，是 DDE 桌面环境中运行在系统级别的核心�
 | 字段 | 值 |
 |------|------|
 | 所属包名 | `dde-daemon` |
-| 安装路径 | `/usr/bin/deepin-system-daemon` |
+| 安装路径 | `/usr/lib/deepin-daemon/dde-system-daemon` |
 | DDE 角色 | 系统级核心后台服务，管理硬件和系统模块 |
 
 ## 用途

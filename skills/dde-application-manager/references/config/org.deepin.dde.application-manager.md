@@ -13,7 +13,7 @@
 
 ```bash
 # 查询环境变量黑名单
-dde-dconfig -a org.deepin.dde.application-manager -r org.deepin.dde.application-manager -k appEnvironmentsBlacklist --get
+dde-dconfig get -a org.deepin.dde.application-manager -r org.deepin.dde.application-manager -k appEnvironmentsBlacklist
 # 设置环境变量黑名单
-dde-dconfig -a org.deepin.dde.application-manager -r org.deepin.dde.application-manager -k appEnvironmentsBlacklist -s "<value>"
+dde-dconfig set -a org.deepin.dde.application-manager -r org.deepin.dde.application-manager -k appEnvironmentsBlacklist -v "<value>"
 ```

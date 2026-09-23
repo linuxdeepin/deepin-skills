@@ -12,7 +12,7 @@
 
 ```bash
 # 查询应用启动次数
-dde-dconfig -a org.deepin.dde.application-manager -r org.deepin.dde.am -k appsLaunchedTimes --get
+dde-dconfig get -a org.deepin.dde.application-manager -r org.deepin.dde.am -k appsLaunchedTimes
 # 设置应用启动次数
-dde-dconfig -a org.deepin.dde.application-manager -r org.deepin.dde.am -k appsLaunchedTimes -s "<value>"
+dde-dconfig set -a org.deepin.dde.application-manager -r org.deepin.dde.am -k appsLaunchedTimes -v "<value>"
 ```

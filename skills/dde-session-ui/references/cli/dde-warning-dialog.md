@@ -7,7 +7,7 @@ DDE 警告对话框，用于显示系统级警告消息的图形化弹窗。
 | 字段 | 值 |
 |------|------|
 | 所属包名 | `dde-session-ui` |
-| 安装路径 | `/usr/bin/dde-warning-dialog` |
+| 安装路径 | `/usr/lib/deepin-daemon/dde-warning-dialog` |
 | DDE 角色 | 系统级警告消息的图形化弹窗组件 |
 
 ## 用途

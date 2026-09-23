@@ -7,7 +7,7 @@ DDE 欢迎程序，在新用户首次登录或系统安装后显示欢迎引导�
 | 字段 | 值 |
 |------|------|
 | 所属包名 | `dde-session-ui` |
-| 安装路径 | `/usr/bin/dde-welcome` |
+| 安装路径 | `/usr/lib/deepin-daemon/dde-welcome` |
 | DDE 角色 | 新用户/新系统首次登录的引导程序 |
 
 ## 用途

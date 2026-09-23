@@ -12,9 +12,9 @@
 
 ```bash
 # 查询是否按桌面 ID 搜索
-dde-dconfig -a org.deepin.dde.shell -r org.deepin.ds.launchpad -k searchByDesktopId --get
+dde-dconfig get -a org.deepin.dde.shell -r org.deepin.ds.launchpad -k searchByDesktopId
 # 设置是否按桌面 ID 搜索
-dde-dconfig -a org.deepin.dde.shell -r org.deepin.ds.launchpad -k searchByDesktopId -s "<value>"
+dde-dconfig set -a org.deepin.dde.shell -r org.deepin.ds.launchpad -k searchByDesktopId -v "<value>"
 ```
 
 ## 覆盖说明

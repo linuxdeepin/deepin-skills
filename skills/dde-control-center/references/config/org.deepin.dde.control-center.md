@@ -13,7 +13,7 @@
 
 ```bash
 # 查询窗口高度
-dde-dconfig -a org.deepin.dde.control-center -r org.deepin.dde.control-center -k height --get
+dde-dconfig get -a org.deepin.dde.control-center -r org.deepin.dde.control-center -k height
 # 设置窗口高度
-dde-dconfig -a org.deepin.dde.control-center -r org.deepin.dde.control-center -k height -s "<value>"
+dde-dconfig set -a org.deepin.dde.control-center -r org.deepin.dde.control-center -k height -v "<value>"
 ```

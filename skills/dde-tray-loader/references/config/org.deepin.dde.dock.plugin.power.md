@@ -13,7 +13,7 @@
 
 ```bash
 # 查询充电保护阈值
-dde-dconfig -a org.deepin.dde.tray-loader -r org.deepin.dde.dock.plugin.power -k chargingProtectThreshold --get
+dde-dconfig get -a org.deepin.dde.tray-loader -r org.deepin.dde.dock.plugin.power -k chargingProtectThreshold
 # 设置充电保护阈值
-dde-dconfig -a org.deepin.dde.tray-loader -r org.deepin.dde.dock.plugin.power -k chargingProtectThreshold -s "<value>"
+dde-dconfig set -a org.deepin.dde.tray-loader -r org.deepin.dde.dock.plugin.power -k chargingProtectThreshold -v "<value>"
 ```

@@ -7,7 +7,7 @@ DDE 低电量提示工具，当系统检测到电池电量低于阈值时弹出�
 | 字段 | 值 |
 |------|------|
 | 所属包名 | `dde-session-ui` |
-| 安装路径 | `/usr/bin/dde-lowpower` |
+| 安装路径 | `/usr/lib/deepin-daemon/dde-lowpower` |
 | DDE 角色 | 系统调用的辅助工具，电源管理在低电量时自动弹出 |
 
 ## 用途

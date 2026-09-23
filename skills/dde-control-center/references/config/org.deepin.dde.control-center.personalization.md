@@ -12,5 +12,5 @@
 
 ```bash
 # 查询隐藏图标主题
-dde-dconfig -a org.deepin.dde.control-center -r org.deepin.dde.control-center.personalization -k hideIconThemes --get
+dde-dconfig get -a org.deepin.dde.control-center -r org.deepin.dde.control-center.personalization -k hideIconThemes
 ```

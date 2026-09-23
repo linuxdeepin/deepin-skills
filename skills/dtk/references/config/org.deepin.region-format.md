@@ -20,11 +20,11 @@ DTK 区域格式配置，控制以下系统的区域格式：语言、日期、�
 | Flags | `user-public` |
 
 ```bash
-dconfig read -d "" -r org.deepin.region-format country
+dde-dconfig get -a org.deepin.region-format -k country
 ```
 
 ```bash
-dconfig write -d "" -r org.deepin.region-format country "CN"
+dde-dconfig set -a org.deepin.region-format -k country -v "CN"
 ```
 
 ### currencyFormat
@@ -37,11 +37,11 @@ dconfig write -d "" -r org.deepin.region-format country "CN"
 | 读写权限 | readwrite |
 
 ```bash
-dconfig read -d "" -r org.deepin.region-format currencyFormat
+dde-dconfig get -a org.deepin.region-format -k currencyFormat
 ```
 
 ```bash
-dconfig write -d "" -r org.deepin.region-format currencyFormat "¥"
+dde-dconfig set -a org.deepin.region-format -k currencyFormat -v "¥"
 ```
 
 ### firstDayOfWeek
@@ -55,11 +55,11 @@ dconfig write -d "" -r org.deepin.region-format currencyFormat "¥"
 | Flags | `user-public` |
 
 ```bash
-dconfig read -d "" -r org.deepin.region-format firstDayOfWeek
+dde-dconfig get -a org.deepin.region-format -k firstDayOfWeek
 ```
 
 ```bash
-dconfig write -d "" -r org.deepin.region-format firstDayOfWeek 1
+dde-dconfig set -a org.deepin.region-format -k firstDayOfWeek -v 1
 ```
 
 ### languageRegion
@@ -73,11 +73,11 @@ dconfig write -d "" -r org.deepin.region-format firstDayOfWeek 1
 | Flags | `user-public` |
 
 ```bash
-dconfig read -d "" -r org.deepin.region-format languageRegion
+dde-dconfig get -a org.deepin.region-format -k languageRegion
 ```
 
 ```bash
-dconfig write -d "" -r org.deepin.region-format languageRegion "zh_CN"
+dde-dconfig set -a org.deepin.region-format -k languageRegion -v "zh_CN"
 ```
 
 ### localeName
@@ -91,11 +91,11 @@ dconfig write -d "" -r org.deepin.region-format languageRegion "zh_CN"
 | Flags | `user-public` |
 
 ```bash
-dconfig read -d "" -r org.deepin.region-format localeName
+dde-dconfig get -a org.deepin.region-format -k localeName
 ```
 
 ```bash
-dconfig write -d "" -r org.deepin.region-format localeName "zh_CN.UTF-8"
+dde-dconfig set -a org.deepin.region-format -k localeName -v "zh_CN.UTF-8"
 ```
 
 ### longDateFormat
@@ -109,11 +109,11 @@ dconfig write -d "" -r org.deepin.region-format localeName "zh_CN.UTF-8"
 | Flags | `user-public` |
 
 ```bash
-dconfig read -d "" -r org.deepin.region-format longDateFormat
+dde-dconfig get -a org.deepin.region-format -k longDateFormat
 ```
 
 ```bash
-dconfig write -d "" -r org.deepin.region-format longDateFormat "yyyy年M月d日"
+dde-dconfig set -a org.deepin.region-format -k longDateFormat -v "yyyy年M月d日"
 ```
 
 ### longTimeFormat
@@ -127,11 +127,11 @@ dconfig write -d "" -r org.deepin.region-format longDateFormat "yyyy年M月d日"
 | Flags | `user-public` |
 
 ```bash
-dconfig read -d "" -r org.deepin.region-format longTimeFormat
+dde-dconfig get -a org.deepin.region-format -k longTimeFormat
 ```
 
 ```bash
-dconfig write -d "" -r org.deepin.region-format longTimeFormat "HH:mm:ss"
+dde-dconfig set -a org.deepin.region-format -k longTimeFormat -v "HH:mm:ss"
 ```
 
 ### numberFormat
@@ -144,11 +144,11 @@ dconfig write -d "" -r org.deepin.region-format longTimeFormat "HH:mm:ss"
 | 读写权限 | readwrite |
 
 ```bash
-dconfig read -d "" -r org.deepin.region-format numberFormat
+dde-dconfig get -a org.deepin.region-format -k numberFormat
 ```
 
 ```bash
-dconfig write -d "" -r org.deepin.region-format numberFormat "#,##0.00"
+dde-dconfig set -a org.deepin.region-format -k numberFormat -v "#,##0.00"
 ```
 
 ### paperFormat
@@ -161,11 +161,11 @@ dconfig write -d "" -r org.deepin.region-format numberFormat "#,##0.00"
 | 读写权限 | readwrite |
 
 ```bash
-dconfig read -d "" -r org.deepin.region-format paperFormat
+dde-dconfig get -a org.deepin.region-format -k paperFormat
 ```
 
 ```bash
-dconfig write -d "" -r org.deepin.region-format paperFormat "A4"
+dde-dconfig set -a org.deepin.region-format -k paperFormat -v "A4"
 ```
 
 ### shortDateFormat
@@ -179,11 +179,11 @@ dconfig write -d "" -r org.deepin.region-format paperFormat "A4"
 | Flags | `user-public` |
 
 ```bash
-dconfig read -d "" -r org.deepin.region-format shortDateFormat
+dde-dconfig get -a org.deepin.region-format -k shortDateFormat
 ```
 
 ```bash
-dconfig write -d "" -r org.deepin.region-format shortDateFormat "yyyy/M/d"
+dde-dconfig set -a org.deepin.region-format -k shortDateFormat -v "yyyy/M/d"
 ```
 
 ### shortTimeFormat
@@ -197,9 +197,9 @@ dconfig write -d "" -r org.deepin.region-format shortDateFormat "yyyy/M/d"
 | Flags | `user-public` |
 
 ```bash
-dconfig read -d "" -r org.deepin.region-format shortTimeFormat
+dde-dconfig get -a org.deepin.region-format -k shortTimeFormat
 ```
 
 ```bash
-dconfig write -d "" -r org.deepin.region-format shortTimeFormat "HH:mm"
+dde-dconfig set -a org.deepin.region-format -k shortTimeFormat -v "HH:mm"
 ```

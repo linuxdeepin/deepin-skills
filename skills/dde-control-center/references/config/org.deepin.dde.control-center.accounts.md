@@ -12,7 +12,7 @@
 
 ```bash
 # 查询头像路径
-dde-dconfig -a org.deepin.dde.control-center -r org.deepin.dde.control-center.accounts -k avatarPath --get
+dde-dconfig get -a org.deepin.dde.control-center -r org.deepin.dde.control-center.accounts -k avatarPath
 # 设置头像路径
-dde-dconfig -a org.deepin.dde.control-center -r org.deepin.dde.control-center.accounts -k avatarPath -s "<value>"
+dde-dconfig set -a org.deepin.dde.control-center -r org.deepin.dde.control-center.accounts -k avatarPath -v "<value>"
 ```

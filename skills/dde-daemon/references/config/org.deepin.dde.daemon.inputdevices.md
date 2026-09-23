@@ -13,7 +13,7 @@
 
 ```bash
 # 查询键盘启用状态
-dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.inputdevices -k keyboardEnabled --get
+dde-dconfig get -a org.deepin.dde.daemon -r org.deepin.dde.daemon.inputdevices -k keyboardEnabled
 # 设置键盘启用状态
-dde-dconfig -a org.deepin.dde.daemon -r org.deepin.dde.daemon.inputdevices -k keyboardEnabled -s "<value>"
+dde-dconfig set -a org.deepin.dde.daemon -r org.deepin.dde.daemon.inputdevices -k keyboardEnabled -v "<value>"
 ```
