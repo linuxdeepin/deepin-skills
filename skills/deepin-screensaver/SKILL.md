@@ -32,3 +32,12 @@ deepin-screensaver 通过 DConfig 暴露屏保轮播和当前屏保选择的配�
 当前使用的屏保选择配置。
 
 详见 [org.deepin.screensaver](references/config/org.deepin.screensaver.md)
+
+## CLI 命令
+
+### deepin-screensaver
+
+DDE 屏幕保护程序，负责在用户空闲一段时间后启动屏幕保护动画。
+
+详见 [deepin-screensaver.md](references/cli/deepin-screensaver.md)
+

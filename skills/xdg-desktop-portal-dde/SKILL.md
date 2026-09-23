@@ -89,3 +89,11 @@ xdg-desktop-portal-dde 是 xdg-desktop-portal 的 DDE 后端实现，通过 Sess
 
 详见 [org.freedesktop.impl.portal.Request.md](references/dbus/org.freedesktop.impl.portal.Request.md)
 
+## CLI 命令
+
+### xdg-desktop-portal-dde
+
+DDE 的 XDG Desktop Portal 后端实现，为 Flatpak 等沙箱应用提供访问系统资源（文件选择、屏幕截图、屏幕共享等）的 DBus 接口。
+
+详见 [xdg-desktop-portal-dde.md](references/cli/xdg-desktop-portal-dde.md)
+

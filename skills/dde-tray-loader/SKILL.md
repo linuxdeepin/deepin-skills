@@ -38,3 +38,12 @@ dde-tray-loader 通过 DConfig 暴露任务栏插件默认驻留和电源插件�
 充电保护电量阈值、显示电池时间信息配置。
 
 详见 [org.deepin.dde.dock.plugin.power](references/config/org.deepin.dde.dock.plugin.power.md)
+
+## CLI 命令
+
+### trayplugin-loader
+
+DDE 托盘插件加载器，负责加载和管理系统托盘区域的插件。
+
+详见 [trayplugin-loader.md](references/cli/trayplugin-loader.md)
+

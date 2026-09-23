@@ -65,3 +65,17 @@ dde-services 是 DDE 的后端服务组件，通过 Session 总线提供电源�
 
 详见 [org.deepin.dde.AmbientBrightness1.md](references/dbus/org.deepin.dde.AmbientBrightness1.md)
 
+## CLI 命令
+
+### dde-shortcut-tool
+
+DDE 快捷键工具，通过子命令 + action 模式执行各类系统快捷操作。
+
+详见 [dde-shortcut-tool.md](references/cli/dde-shortcut-tool.md)
+
+### ipwatchd
+
+IP 地址监视守护进程（upstream 开源项目），用于监视网络接口的 IP 地址变化。
+
+详见 [ipwatchd.md](references/cli/ipwatchd.md)
+

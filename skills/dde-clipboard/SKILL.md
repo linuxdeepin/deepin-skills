@@ -23,3 +23,17 @@ dde-clipboard 是 DDE 剪贴板组件，通过 Session 总线提供剪贴板前�
 
 详见 [org.deepin.dde.ClipboardLoader1.md](references/dbus/org.deepin.dde.ClipboardLoader1.md)
 
+## CLI 命令
+
+### dde-clipboard
+
+DDE 剪贴板工具，提供图形化的剪贴板历史管理界面。
+
+详见 [dde-clipboard.md](references/cli/dde-clipboard.md)
+
+### dde-clipboard-daemon
+
+DDE 剪贴板守护进程，负责管理剪贴板历史记录和剪贴板事件监听。
+
+详见 [dde-clipboard-daemon.md](references/cli/dde-clipboard-daemon.md)
+

@@ -41,3 +41,29 @@ dde-api 是 DDE 后端调用库组件，通过 Session 和 System 总线提供�
 
 详见 [org.deepin.dde.SoundThemePlayer1.md](references/dbus/org.deepin.dde.SoundThemePlayer1.md)
 
+## CLI 命令
+
+### dde-open
+
+DDE 文件/URL 打开工具，用于通过默认关联应用打开文件或 URL。
+
+详见 [dde-open.md](references/cli/dde-open.md)
+
+### adjust-grub-theme
+
+GRUB 主题调整工具，用于根据屏幕分辨率和语言环境自动调整 GRUB 启动菜单的主题显示。
+
+详见 [adjust-grub-theme.md](references/cli/adjust-grub-theme.md)
+
+### image-blur
+
+图片模糊处理工具，使用高斯模糊算法对图片进行模糊处理。
+
+详见 [image-blur.md](references/cli/image-blur.md)
+
+### sound-theme-player
+
+声音主题播放守护进程，提供 DBus 接口供其他程序播放系统声音。
+
+详见 [sound-theme-player.md](references/cli/sound-theme-player.md)
+

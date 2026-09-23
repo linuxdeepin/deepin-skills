@@ -68,3 +68,12 @@ dde-control-center 通过 DConfig 暴露窗口尺寸、账户、通用信息、�
 设备管理显示开关配置。
 
 详见 [org.deepin.dde.control-center.sound](references/config/org.deepin.dde.control-center.sound.md)
+
+## CLI 命令
+
+### dde-control-center
+
+DDE 控制中心主程序，是 DDE 桌面环境中用于系统设置管理的核心图形应用。
+
+详见 [dde-control-center.md](references/cli/dde-control-center.md)
+

@@ -248,3 +248,84 @@ M900 配置标识配置。
 Wacom 光标模式、橡皮擦压感级别、橡皮擦采样窗口大小、橡皮擦压力阈值、强制比例匹配、下键操作映射、上键操作映射、Wacom 旋转设置、映射输出设备、跨屏重新映射、触控笔压感级别、触控笔采样窗口大小、触控笔压力阈值、坐标变化抑制阈值配置。
 
 详见 [org.deepin.dde.daemon.wacom](references/config/org.deepin.dde.daemon.wacom.md)
+
+## CLI 命令
+
+### dde-session-daemon
+
+DDE 会话守护进程，是 DDE 桌面会话中运行的后台核心服务。
+
+详见 [dde-session-daemon.md](references/cli/dde-session-daemon.md)
+
+### grub2
+
+GRUB2 相关工具，用于 GRUB 启动菜单的图形模式检测、主题设置和系统编号查询。
+
+详见 [grub2.md](references/cli/grub2.md)
+
+### dde-system-daemon
+
+DDE 系统守护进程，是 DDE 桌面环境中运行在系统级别的核心后台服务。
+
+详见 [dde-system-daemon.md](references/cli/dde-system-daemon.md)
+
+### search
+
+DDE 文件搜索工具，是 dde-daemon 提供的文件全文搜索引擎后端。
+
+详见 [search.md](references/cli/search.md)
+
+### backlight_helper
+
+背光调节辅助工具，用于在权限受限的环境中设置屏幕背光亮度。
+
+详见 [backlight_helper.md](references/cli/backlight_helper.md)
+
+### langselector
+
+语言选择守护进程，负责管理系统的语言和区域设置。
+
+详见 [langselector.md](references/cli/langselector.md)
+
+### soundeffect
+
+声音效果守护进程，负责管理系统事件音效的播放。
+
+详见 [soundeffect.md](references/cli/soundeffect.md)
+
+### dde-lockservice
+
+DDE 锁屏服务工具，用于触发系统锁屏。
+
+详见 [dde-lockservice.md](references/cli/dde-lockservice.md)
+
+### default-terminal
+
+默认终端设置工具，用于查询和设置系统默认终端模拟器。
+
+详见 [default-terminal.md](references/cli/default-terminal.md)
+
+### dde-greeter-setter
+
+登录界面设置工具，用于在 LightDM 登录阶段配置 greeter 相关参数。
+
+详见 [dde-greeter-setter.md](references/cli/dde-greeter-setter.md)
+
+### default-file-manager
+
+默认文件管理器设置工具，用于查询和设置系统默认文件管理器。
+
+详见 [default-file-manager.md](references/cli/default-file-manager.md)
+
+### greeter-display-daemon
+
+登录界面显示守护进程，负责在 LightDM 登录阶段管理显示配置。
+
+详见 [greeter-display-daemon.md](references/cli/greeter-display-daemon.md)
+
+### fix-xauthority-perm
+
+Xauthority 权限修复工具，用于修正 `.Xauthority` 文件的权限问题。
+
+详见 [fix-xauthority-perm.md](references/cli/fix-xauthority-perm.md)
+

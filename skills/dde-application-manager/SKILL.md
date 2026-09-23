@@ -56,3 +56,18 @@ dde-application-manager 通过 DConfig 暴露应用启动次数记录和应用�
 应用环境变量黑名单和额外环境变量配置。
 
 详见 [org.deepin.dde.application-manager](references/config/org.deepin.dde.application-manager.md)
+
+## CLI 命令
+
+### dde-am
+
+DDE 应用管理器客户端命令行工具，用于启动应用、执行命令、列出已安装应用等。
+
+详见 [dde-am.md](references/cli/dde-am.md)
+
+### app-identifier
+
+应用身份识别工具，用于识别指定进程以何种身份（应用 ID）运行。
+
+详见 [app-identifier.md](references/cli/app-identifier.md)
+

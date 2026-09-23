@@ -1,0 +1,5 @@
+**用途**：登录界面显示设置工具，用于在 LightDM 登录阶段配置显示相关参数（如分辨率、缩放等）。它在登录阶段运行，为 deepin greeter 提供显示配置支持，不提供命令行参数。
+
+- **所属包名**：`dde-session-shell`
+- **安装路径**：`/usr/lib/deepin-daemon/greeter-display-setting`
+- **DDE 角色**：登录界面的显示配置辅助工具

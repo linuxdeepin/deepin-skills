@@ -32,3 +32,36 @@ dde-session-shell 通过 DConfig 暴露账户快速登录配置资源。
 快速登录开关配置。
 
 详见 [org.deepin.dde.daemon.accounts](references/config/org.deepin.dde.daemon.accounts.md)
+
+## CLI 命令
+
+### dde-lock
+
+DDE 锁屏程序，是 DDE 桌面环境中负责屏幕锁定和用户切换的核心组件。
+
+详见 [dde-lock.md](references/cli/dde-lock.md)
+
+### resetDialog
+
+重置登录手势密码对话框，位于 `dde-session-shell/plugins/login-gesture/resetDialog`。
+
+详见 [resetDialog.md](references/cli/resetDialog.md)
+
+### lightdm-deepin-greeter
+
+DDE 登录界面（LightDM Greeter），是 deepin 定制的 LightDM 欢迎程序。
+
+详见 [lightdm-deepin-greeter.md](references/cli/lightdm-deepin-greeter.md)
+
+### greeter-display-setting
+
+登录界面显示设置工具，用于在 LightDM 登录阶段配置显示相关参数（如分辨率、缩放等）。
+
+详见 [greeter-display-setting.md](references/cli/greeter-display-setting.md)
+
+### lightdm-deepin-greeter-lighter
+
+LightDM Deepin Greeter 的辅助程序，用于在登录过程中处理亮度调节等初始化操作。
+
+详见 [lightdm-deepin-greeter-lighter.md](references/cli/lightdm-deepin-greeter-lighter.md)
+

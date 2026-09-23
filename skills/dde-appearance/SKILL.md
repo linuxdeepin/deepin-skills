@@ -23,3 +23,11 @@ dde-appearance 是 DDE 外观管理组件，通过 Session 总线提供外观设
 
 详见 [com.deepin.wm.md](references/dbus/com.deepin.wm.md)
 
+## CLI 命令
+
+### dde-fakewm
+
+DDE 虚拟窗口管理器，是 dde-appearance 项目中的开发/调试工具。
+
+详见 [dde-fakewm.md](references/cli/dde-fakewm.md)
+

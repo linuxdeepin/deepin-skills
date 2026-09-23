@@ -29,3 +29,23 @@ dde-session 是 DDE 会话管理组件，通过 Session 总线提供会话登录
 
 详见 [org.deepin.dde.WMSwitcher1.md](references/dbus/org.deepin.dde.WMSwitcher1.md)
 
+## CLI 命令
+
+### dde-session
+
+DDE 会话管理程序，负责 DDE 桌面会话的启动和初始化。
+
+详见 [dde-session.md](references/cli/dde-session.md)
+
+### dde-session-ctl
+
+DDE 会话控制工具，用于执行关机、退出会话、注销等会话级操作。
+
+详见 [dde-session-ctl.md](references/cli/dde-session-ctl.md)
+
+### dde-quick-login
+
+DDE 锁屏快速登录工具，用于在锁屏状态下快速重新登录。
+
+详见 [dde-quick-login.md](references/cli/dde-quick-login.md)
+
