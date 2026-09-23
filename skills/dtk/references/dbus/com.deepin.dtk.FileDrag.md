@@ -113,6 +113,20 @@ gdbus monitor --session \
   --object-path /Ddnd
 ```
 
+### targetDataChanged
+
+拖拽会话的目标数据变更时发出。
+
+- **参数**:
+  - `key` (string): 变更的数据键名
+- **触发条件**: 接收方调用 setData 设置数据且值发生变化时由拖拽源发出
+
+```bash
+gdbus monitor --session \
+  --dest :1.23 \
+  --object-path /Ddnd
+```
+
 ## DFileDragState 枚举
 
 | 枚举值 | 数值 | 说明 |
