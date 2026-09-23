@@ -44,14 +44,14 @@
 gdbus call --session \
   --dest org.deepin.dde.Appearance1 \
   --object-path /org/deepin/dde/Appearance1 \
-  --method org.deepin.dde.Appearance1.Set "font" "Sans"
+  --method org.deepin.dde.Appearance1.Set "standardfont" "Sans"
 ```
 
 #### Get
 
 获取指定类型的外观值。
 
-> **待核验**: 该方法在当前 dde-appearance 源码的 D-Bus 接口定义（`appearance1.h` / `org.deepin.dde.Appearance1.xml`）中未找到，可能在其他版本中存在或由客户端封装。`type` 参数支持的选项待核验。
+> **待核验**: 该方法在当前源码的 D-Bus 接口定义中未找到，待核验是否在其他版本中存在或由客户端封装。
 
 - **输入参数**: `type`（string, 类型 `s`）：类型名称
 - **返回值**: `s`（string）：当前值
@@ -60,14 +60,14 @@ gdbus call --session \
 gdbus call --session \
   --dest org.deepin.dde.Appearance1 \
   --object-path /org/deepin/dde/Appearance1 \
-  --method org.deepin.dde.Appearance1.Get "font"
+  --method org.deepin.dde.Appearance1.Get "standardfont"
 ```
 
 #### GetSchema
 
 获取指定类型的默认外观值。
 
-> **待核验**: 该方法在当前 dde-appearance 源码的 D-Bus 接口定义（`appearance1.h` / `org.deepin.dde.Appearance1.xml`）中未找到，可能在其他版本中存在或由客户端封装。`type` 参数支持的选项待核验。
+> **待核验**: 该方法在当前源码的 D-Bus 接口定义中未找到，待核验是否在其他版本中存在或由客户端封装。
 
 - **输入参数**: `type`（string, 类型 `s`）：类型名称
 - **返回值**: `s`（string）：默认值
@@ -76,7 +76,7 @@ gdbus call --session \
 gdbus call --session \
   --dest org.deepin.dde.Appearance1 \
   --object-path /org/deepin/dde/Appearance1 \
-  --method org.deepin.dde.Appearance1.GetSchema "font"
+  --method org.deepin.dde.Appearance1.GetSchema "standardfont"
 ```
 
 #### List
@@ -99,7 +99,7 @@ gdbus call --session \
 gdbus call --session \
   --dest org.deepin.dde.Appearance1 \
   --object-path /org/deepin/dde/Appearance1 \
-  --method org.deepin.dde.Appearance1.List "font"
+  --method org.deepin.dde.Appearance1.List "standardfont"
 ```
 
 

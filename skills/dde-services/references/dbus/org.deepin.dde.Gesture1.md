@@ -47,7 +47,7 @@ gdbus call --session \
 
 获取手势可用动作。
 
-> **待核验**: `actionType` 参数可能支持固定的动作类型选项，具体支持的选项值需核验对应源码。
+> **待核验**: `actionType` 参数支持固定的动作类型选项，具体选项值待核验源码确认。
 
 - **输入参数**: `actionType`（string, 类型 `s`）：动作类型；`fingerNum`（int32, 类型 `i`）：手指数
 - **返回值**: `s`（string）：可用动作 JSON
