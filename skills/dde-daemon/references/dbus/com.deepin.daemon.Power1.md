@@ -89,6 +89,8 @@ pkexec gdbus call --system \
 
 设置电源计划。
 
+> **待核验**: `plan` 参数可能支持固定的电源计划选项（如 `balanced`、`powersave`、`performance`），具体支持的选项值需核验对应源码。
+
 - **输入参数**: `plan`（string, 类型 `s`）：计划名称
 - **返回值**: 无
 

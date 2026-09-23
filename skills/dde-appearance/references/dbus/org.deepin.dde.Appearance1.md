@@ -22,6 +22,24 @@
 - **输入参数**: `type`（string, 类型 `s`）：类型名称；`value`（string, 类型 `s`）：值
 - **返回值**: 无
 
+**`type` 支持的选项**（来源于 dde-appearance 源码 `appearancemanager.cpp` 的 `doSetByType()` 及 `commondefine.h`）:
+- `gtk` — GTK 主题
+- `icon` — 图标主题
+- `cursor` — 光标主题
+- `cursorSize` — 光标大小
+- `background` — 背景
+- `greeterbackground` — 登录背景
+- `standardfont` — 标准字体
+- `monospacefont` — 等宽字体
+- `fontsize` — 字体大小
+- `globaltheme` — 全局主题
+- `activecolor` — 活动色
+- `windowradius` — 窗口圆角
+- `windowopacity` — 窗口不透明度
+- `wallpaper` — 壁纸
+- `dtksizemode` — DTK 缩放模式
+- `qtscrollbarpolicy` — Qt 滚动条策略
+
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.Appearance1 \
@@ -32,6 +50,8 @@ gdbus call --session \
 #### Get
 
 获取指定类型的外观值。
+
+> **待核验**: 该方法在当前 dde-appearance 源码的 D-Bus 接口定义（`appearance1.h` / `org.deepin.dde.Appearance1.xml`）中未找到，可能在其他版本中存在或由客户端封装。`type` 参数支持的选项待核验。
 
 - **输入参数**: `type`（string, 类型 `s`）：类型名称
 - **返回值**: `s`（string）：当前值
@@ -46,6 +66,8 @@ gdbus call --session \
 #### GetSchema
 
 获取指定类型的默认外观值。
+
+> **待核验**: 该方法在当前 dde-appearance 源码的 D-Bus 接口定义（`appearance1.h` / `org.deepin.dde.Appearance1.xml`）中未找到，可能在其他版本中存在或由客户端封装。`type` 参数支持的选项待核验。
 
 - **输入参数**: `type`（string, 类型 `s`）：类型名称
 - **返回值**: `s`（string）：默认值
@@ -63,6 +85,15 @@ gdbus call --session \
 
 - **输入参数**: `type`（string, 类型 `s`）：类型名称
 - **返回值**: `as`（string 数组）：可用值列表
+
+**`type` 支持的选项**（来源于 dde-appearance 源码 `appearancemanager.cpp` 的 `doList()`）:
+- `gtk` — GTK 主题
+- `icon` — 图标主题
+- `cursor` — 光标主题
+- `background` — 背景
+- `standardfont` — 标准字体
+- `monospacefont` — 等宽字体
+- `globaltheme` — 全局主题
 
 ```bash
 gdbus call --session \
@@ -182,6 +213,8 @@ gdbus call --session \
 
 设置壁纸。
 
+> **待核验**: 该方法在当前 dde-appearance 源码的 D-Bus 接口定义（`appearance1.h` / `org.deepin.dde.Appearance1.xml`）中未找到。实际的壁纸设置方法为 `SetCurrentWorkspaceBackground(uri)`，不带 `type` 参数。`type` 参数支持的选项待核验。
+
 - **输入参数**: `type`（string, 类型 `s`）：壁纸类型；`uri`（string, 类型 `s`）：壁纸 URI
 - **返回值**: 无
 
@@ -195,6 +228,8 @@ gdbus call --session \
 #### GetWallpaper
 
 获取当前壁纸。
+
+> **待核验**: 该方法在当前 dde-appearance 源码的 D-Bus 接口定义（`appearance1.h` / `org.deepin.dde.Appearance1.xml`）中未找到。实际的壁纸获取方法为 `GetCurrentWorkspaceBackground()`，不带 `type` 参数。`type` 参数支持的选项待核验。
 
 - **输入参数**: `type`（string, 类型 `s`）：壁纸类型
 - **返回值**: `s`（string）：壁纸 URI

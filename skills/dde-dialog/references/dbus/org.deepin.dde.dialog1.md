@@ -21,6 +21,8 @@
 
 打开系统对话框。
 
+> **待核验**: `type` 参数可能支持固定的对话框类型选项（如 `confirm`），具体支持的选项值需核验对应源码。
+
 - **输入参数**: `type`（string, 类型 `s`）：对话框类型；`title`（string, 类型 `s`）：标题；`message`（string, 类型 `s`）：消息内容；`icon`（string, 类型 `s`）：图标；`button_name`（string, 类型 `s`）：按钮名称
 - **返回值**: 无
 
@@ -34,6 +36,8 @@ pkexec gdbus call --system \
 #### Cancel
 
 取消指定类型的对话框。
+
+> **待核验**: `type` 参数可能支持固定的对话框类型选项，具体支持的选项值需核验对应源码。
 
 - **输入参数**: `type`（string, 类型 `s`）：对话框类型
 - **返回值**: 无
@@ -79,6 +83,8 @@ pkexec gdbus call --system \
 #### AgentResponse
 
 代理响应对话框。
+
+> **待核验**: `type` 参数可能支持固定的对话框类型选项，具体支持的选项值需核验对应源码。
 
 - **输入参数**: `type`（string, 类型 `s`）：对话框类型；`button_index`（int32, 类型 `i`）：按钮索引
 - **返回值**: 无
