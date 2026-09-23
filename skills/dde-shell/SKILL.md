@@ -41,7 +41,7 @@ dde-shell 通过 DConfig 暴露通知和启动器相关的配置资源。
 
 ### 通知配置
 
-应用通知开关、勿扰模式、气泡数量等通知相关配置。
+应用通知设置、通知内容行数、最大通知气泡数量、勿扰模式、勿扰结束时间、锁屏开启勿扰、最大通知数量、通知清理天数、关闭所有通知、按时间间隔开启勿扰、勿扰开始时间配置。
 
 详见 [org.deepin.dde.shell.notification](references/config/org.deepin.dde.shell.notification.md)
 

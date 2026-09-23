@@ -29,6 +29,6 @@ dde-session-shell 通过 DConfig 暴露账户快速登录配置资源。
 
 ### 账户配置
 
-快速登录启用开关等账户配置。
+快速登录开关配置。
 
 详见 [org.deepin.dde.daemon.accounts](references/config/org.deepin.dde.daemon.accounts.md)

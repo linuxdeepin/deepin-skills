@@ -1,6 +1,6 @@
 # org.deepin.dde.daemon.power
 
-电源管理配置资源，控制亮度调节、屏保、休眠、定时关机、节能模式等电源相关配置。
+电源管理配置资源，控制自动调节亮度开关、允许屏幕保护、环境光自动调节亮度、电池模式合盖休眠、电池模式锁屏延时、电池模式黑屏延时、电池模式屏保延时、电池模式休眠延时、定时关机重复日期、黑屏空闲处理间隔、黑屏程序唤醒延时、全屏抑制屏保应用列表、插电模式合盖休眠、插电模式锁屏延时、插电模式黑屏延时、插电模式屏保延时、插电模式休眠延时、电源性能模式、下一次关机时间、电源键按下执行命令、功耗模式映射配置、电源模块初始化状态、电池模式自动节能、自动节能电量阈值、低电量自动节能、节能模式亮度降低比例、节能模式开关、定时关机开关、黑屏前锁定、关机倒计时、定时关机重复类型、定时关机时间、休眠前锁定、特殊 CPU 配置、CPU 支持的调频模式、基于电量百分比的策略电源相关配置。
 
 ## 配置项
 
@@ -23,7 +23,7 @@
 | `linePowerScreenBlackDelay` | 插电模式黑屏延时 | 配置使用外接电源时自动关闭屏幕的延时时间（分钟） | number | readwrite |
 | `linePowerScreensaverDelay` | 插电模式屏保延时 | 配置使用外接电源时启动屏保的延时时间（分钟） | number | readwrite |
 | `linePowerSleepDelay` | 插电模式休眠延时 | 配置使用外接电源时进入休眠的延时时间（分钟） | number | readwrite |
-| `mode` | 电源性能模式 | 配置当前电源性能模式，如平衡模式、高性能模式、节能模式等 | string | readwrite |
+| `mode` | 电源性能模式 | 配置当前电源性能模式（平衡模式、高性能模式、节能模式） | string | readwrite |
 | `nextShutdownTime` | 下一次关机时间 | 记录定时关机的下一次执行时间 | number | readwrite |
 | `powerButtonPressedExec` | 电源键按下执行命令 | 配置按下电源键时执行的命令 | string | readwrite |
 | `powerMappingConfig` | 功耗模式映射配置 | 配置四种功耗模式（平衡、高性能、节能、自定义）对应的具体参数 | string | readwrite |
@@ -36,7 +36,7 @@
 | `scheduledShutdownState` | 定时关机开关 | 控制定时关机功能的启用状态 | bool | readwrite |
 | `screenBlackLock` | 黑屏前锁定 | 控制关闭屏幕前是否先锁定屏幕 | bool | readwrite |
 | `shutdownCountdown` | 关机倒计时 | 配置定时关机的倒计时时间 | number | readwrite |
-| `shutdownRepetition` | 定时关机重复类型 | 配置定时关机的重复类型（0-3），如每天、每周、每月等 | number | readwrite |
+| `shutdownRepetition` | 定时关机重复类型 | 配置定时关机的重复类型（0-3），包括每天、每周、每月 | number | readwrite |
 | `shutdownTime` | 定时关机时间 | 配置定时关机的执行时间 | string | readwrite |
 | `sleepLock` | 休眠前锁定 | 控制进入休眠前是否先锁定屏幕 | bool | readwrite |
 | `specialCpuModeJson` | 特殊 CPU 配置 | 配置需要进行特殊处理的 CPU 型号及其对应的功耗模式参数（JSON 格式） | string | readwrite |

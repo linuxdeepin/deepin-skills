@@ -35,6 +35,6 @@ dde-tray-loader 通过 DConfig 暴露任务栏插件默认驻留和电源插件�
 
 ### 电源插件配置
 
-充电保护电量阈值和电池时间信息显示等电源插件配置。
+充电保护电量阈值、显示电池时间信息配置。
 
 详见 [org.deepin.dde.dock.plugin.power](references/config/org.deepin.dde.dock.plugin.power.md)

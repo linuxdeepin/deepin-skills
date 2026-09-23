@@ -7,7 +7,7 @@
 | Key | Name | Description | 类型 | Permissions |
 |---|---|---|---|---|
 | `intervalTime` | 屏保轮播间隔 | 配置自定义屏保图片轮播切换的时间间隔（范围 3-3600 秒） | number | readwrite |
-| `playMode` | 屏保播放模式 | 配置自定义屏保的图片播放模式（如顺序播放、随机播放等） | number | readwrite |
+| `playMode` | 屏保播放模式 | 配置自定义屏保的图片播放模式（顺序播放、随机播放） | number | readwrite |
 | `slideshowPath` | 屏保图片路径 | 配置自定义屏保轮播图片的目录路径 | string | readwrite |
 
 ## 读写示例

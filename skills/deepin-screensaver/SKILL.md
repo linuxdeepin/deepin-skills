@@ -23,7 +23,7 @@ deepin-screensaver 通过 DConfig 暴露屏保轮播和当前屏保选择的配�
 
 ### 自定义屏保配置
 
-屏保轮播间隔、播放模式和图片路径等自定义屏保配置。
+屏保轮播间隔、屏保播放模式、屏保图片路径配置。
 
 详见 [org.deepin.customscreensaver](references/config/org.deepin.customscreensaver.md)
 
