@@ -17,7 +17,7 @@
 
 启动应用。
 
-- **输入参数**: `action`（string, 类型 `s`）：动作标识，空字符串表示默认启动；`fields`（string 数组, 类型 `as`）：文件路径或 URI 列表；`options`（字典, 类型 `a{sv}`）：额外选项（如 `uid`、`env`、`path` 等）
+- **输入参数**: `action`（string, 类型 `s`）：动作标识，空字符串表示默认启动；`fields`（string 数组, 类型 `as`）：文件路径或 URI 列表；`options`（字典, 类型 `a{sv}`）：额外选项（`uid`、`env`、`unsetEnv`、`path`）
 - **返回值**: `job`（object path, 类型 `o`）：任务对象路径
 
 ```bash
