@@ -25,16 +25,10 @@ dde-session-shell 是 DDE 登录锁屏组件，通过 Session 总线提供锁屏
 
 ## DConfig 配置项
 
-### 资源: `org.deepin.dde.daemon.accounts`
+dde-session-shell 通过 DConfig 暴露账户快速登录配置资源。
 
-| Key | Name | 类型 | Permissions |
-|---|---|---|---|
-| `enableQuickLogin` | 是否启用快速登录 | bool | readwrite |
+### 账户配置
 
-```bash
-# 查询
-dde-dconfig -a org.deepin.dde.lightdm-deepin-greeter -r org.deepin.dde.daemon.accounts -k enableQuickLogin --get
-# 设置
-dde-dconfig -a org.deepin.dde.lightdm-deepin-greeter -r org.deepin.dde.daemon.accounts -k enableQuickLogin -s "<value>"
-```
+快速登录启用开关等账户配置。
 
+详见 [org.deepin.dde.daemon.accounts](references/config/org.deepin.dde.daemon.accounts.md)

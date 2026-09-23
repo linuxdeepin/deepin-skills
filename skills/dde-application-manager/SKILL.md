@@ -43,30 +43,16 @@ dde-application-manager 是 DDE 应用管理器组件，通过 Session 总线提
 
 ## DConfig 配置项
 
-### 资源: `org.deepin.dde.am`
+dde-application-manager 通过 DConfig 暴露应用启动次数记录和应用环境变量配置资源。
 
-| Key | Name | 类型 | Permissions |
-|---|---|---|---|
-| `appsLaunchedTimes` | 应用启动次数记录 | object | readwrite |
+### 应用启动次数配置
 
-```bash
-# 查询
-dde-dconfig -a org.deepin.dde.application-manager -r org.deepin.dde.am -k appsLaunchedTimes --get
-# 设置
-dde-dconfig -a org.deepin.dde.application-manager -r org.deepin.dde.am -k appsLaunchedTimes -s "<value>"
-```
+应用启动次数记录配置。
 
-### 资源: `org.deepin.dde.application-manager`
+详见 [org.deepin.dde.am](references/config/org.deepin.dde.am.md)
 
-| Key | Name | 类型 | Permissions |
-|---|---|---|---|
-| `appEnvironmentsBlacklist` | 应用环境变量黑名单 | array | readwrite |
-| `appExtraEnvironments` | 应用额外环境变量 | array | readwrite |
+### 应用管理器配置
 
-```bash
-# 查询
-dde-dconfig -a org.deepin.dde.application-manager -r org.deepin.dde.application-manager -k appEnvironmentsBlacklist --get
-# 设置
-dde-dconfig -a org.deepin.dde.application-manager -r org.deepin.dde.application-manager -k appEnvironmentsBlacklist -s "<value>"
-```
+应用环境变量黑名单和额外环境变量配置。
 
+详见 [org.deepin.dde.application-manager](references/config/org.deepin.dde.application-manager.md)

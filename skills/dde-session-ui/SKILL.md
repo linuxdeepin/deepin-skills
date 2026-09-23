@@ -61,16 +61,10 @@ dde-session-ui 是 DDE 通用 UI 组件，通过 Session 总线提供 OSD 显示
 
 ## DConfig 配置项
 
-### 资源: `org.deepin.login-reminder`
+dde-session-ui 通过 DConfig 暴露登录提醒配置资源。
 
-| Key | Name | 类型 | Permissions |
-|---|---|---|---|
-| `LoginReminder` | 登录提醒是否启用 | bool | readwrite |
+### 登录提醒配置
 
-```bash
-# 查询
-dde-dconfig -a org.deepin.login-reminder -r org.deepin.login-reminder -k LoginReminder --get
-# 设置
-dde-dconfig -a org.deepin.login-reminder -r org.deepin.login-reminder -k LoginReminder -s "<value>"
-```
+登录提醒启用开关配置。
 
+详见 [org.deepin.login-reminder](references/config/org.deepin.login-reminder.md)

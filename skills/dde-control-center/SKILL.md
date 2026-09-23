@@ -25,93 +25,46 @@ dde-control-center 是 DDE 控制中心，通过 Session 总线提供窗口显�
 
 ## DConfig 配置项
 
-### 资源: `org.deepin.dde.control-center`
+dde-control-center 通过 DConfig 暴露窗口尺寸、账户、通用信息、日期时间、显示、个性化和声音等配置资源。
 
-| Key | Name | 类型 | Permissions |
-|---|---|---|---|
-| `height` | 窗口高度 | number | readwrite |
-| `width` | 窗口宽度 | number | readwrite |
+### 控制中心窗口配置
 
-```bash
-# 查询
-dde-dconfig -a org.deepin.dde.control-center -r org.deepin.dde.control-center -k height --get
-# 设置
-dde-dconfig -a org.deepin.dde.control-center -r org.deepin.dde.control-center -k height -s "<value>"
-```
+控制中心窗口宽度和高度配置。
 
-### 资源: `org.deepin.dde.control-center.accounts`
+详见 [org.deepin.dde.control-center](references/config/org.deepin.dde.control-center.md)
 
-| Key | Name | 类型 | Permissions |
-|---|---|---|---|
-| `avatarPath` | 头像路径 | string | readwrite |
+### 账户配置
 
-```bash
-# 查询
-dde-dconfig -a org.deepin.dde.control-center -r org.deepin.dde.control-center.accounts -k avatarPath --get
-# 设置
-dde-dconfig -a org.deepin.dde.control-center -r org.deepin.dde.control-center.accounts -k avatarPath -s "<value>"
-```
+用户头像路径配置。
 
-### 资源: `org.deepin.dde.control-center.commoninfo`
+详见 [org.deepin.dde.control-center.accounts](references/config/org.deepin.dde.control-center.accounts.md)
 
-| Key | Name | 类型 | Permissions |
-|---|---|---|---|
-| `showReadOnlyProtection` | 显示只读保护 | bool | readwrite |
+### 通用信息配置
 
-```bash
-# 查询
-dde-dconfig -a org.deepin.dde.control-center -r org.deepin.dde.control-center.commoninfo -k showReadOnlyProtection --get
-# 设置
-dde-dconfig -a org.deepin.dde.control-center -r org.deepin.dde.control-center.commoninfo -k showReadOnlyProtection -s "<value>"
-```
+只读保护显示等通用信息配置。
 
-### 资源: `org.deepin.dde.control-center.datetime`
+详见 [org.deepin.dde.control-center.commoninfo](references/config/org.deepin.dde.control-center.commoninfo.md)
 
-| Key | Name | 类型 | Permissions |
-|---|---|---|---|
-| `customNtpServer` | 自定义 NTP 服务器 | string | readwrite |
+### 日期时间配置
 
-```bash
-# 查询
-dde-dconfig -a org.deepin.dde.control-center -r org.deepin.dde.control-center.datetime -k customNtpServer --get
-# 设置
-dde-dconfig -a org.deepin.dde.control-center -r org.deepin.dde.control-center.datetime -k customNtpServer -s "<value>"
-```
+自定义 NTP 服务器等日期时间配置。
 
-### 资源: `org.deepin.dde.control-center.display`
+详见 [org.deepin.dde.control-center.datetime](references/config/org.deepin.dde.control-center.datetime.md)
 
-| Key | Name | 类型 | Permissions |
-|---|---|---|---|
-| `minBrightnessValue` | 最小亮度值 | number | readwrite |
+### 显示配置
 
-```bash
-# 查询
-dde-dconfig -a org.deepin.dde.control-center -r org.deepin.dde.control-center.display -k minBrightnessValue --get
-# 设置
-dde-dconfig -a org.deepin.dde.control-center -r org.deepin.dde.control-center.display -k minBrightnessValue -s "<value>"
-```
+最小亮度值等显示配置。
 
-### 资源: `org.deepin.dde.control-center.personalization`
+详见 [org.deepin.dde.control-center.display](references/config/org.deepin.dde.control-center.display.md)
 
-| Key | Name | 类型 | Permissions |
-|---|---|---|---|
-| `hideIconThemes` | 隐藏图标主题 | array | readonly |
+### 个性化配置
 
-```bash
-# 查询
-dde-dconfig -a org.deepin.dde.control-center -r org.deepin.dde.control-center.personalization -k hideIconThemes --get
-```
+隐藏图标主题等个性化配置。
 
-### 资源: `org.deepin.dde.control-center.sound`
+详见 [org.deepin.dde.control-center.personalization](references/config/org.deepin.dde.control-center.personalization.md)
 
-| Key | Name | 类型 | Permissions |
-|---|---|---|---|
-| `showDeviceManager` | 显示设备管理器 | bool | readwrite |
+### 声音配置
 
-```bash
-# 查询
-dde-dconfig -a org.deepin.dde.control-center -r org.deepin.dde.control-center.sound -k showDeviceManager --get
-# 设置
-dde-dconfig -a org.deepin.dde.control-center -r org.deepin.dde.control-center.sound -k showDeviceManager -s "<value>"
-```
+设备管理器显示等声音配置。
 
+详见 [org.deepin.dde.control-center.sound](references/config/org.deepin.dde.control-center.sound.md)

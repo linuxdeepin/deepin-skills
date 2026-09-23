@@ -25,28 +25,16 @@ dde-tray-loader 是 DDE 托盘加载器组件，通过 Session 总线提供键�
 
 ## DConfig 配置项
 
-### 资源: `org.deepin.dde.dock.plugin.common`
+dde-tray-loader 通过 DConfig 暴露任务栏插件默认驻留和电源插件配置资源。
 
-| Key | Name | 类型 | Permissions |
-|---|---|---|---|
-| `defaultDockedPlugins` | 默认驻留任务栏插件 | array | readonly |
+### 任务栏插件通用配置
 
-```bash
-# 查询
-dde-dconfig -a org.deepin.dde.tray-loader -r org.deepin.dde.dock.plugin.common -k defaultDockedPlugins --get
-```
+默认驻留任务栏插件列表配置。
 
-### 资源: `org.deepin.dde.dock.plugin.power`
+详见 [org.deepin.dde.dock.plugin.common](references/config/org.deepin.dde.dock.plugin.common.md)
 
-| Key | Name | 类型 | Permissions |
-|---|---|---|---|
-| `chargingProtectThreshold` | 充电保护电量阈值 | number | readwrite |
-| `showTimeToFull` | 显示电池时间信息 | bool | readwrite |
+### 电源插件配置
 
-```bash
-# 查询
-dde-dconfig -a org.deepin.dde.tray-loader -r org.deepin.dde.dock.plugin.power -k chargingProtectThreshold --get
-# 设置
-dde-dconfig -a org.deepin.dde.tray-loader -r org.deepin.dde.dock.plugin.power -k chargingProtectThreshold -s "<value>"
-```
+充电保护电量阈值和电池时间信息显示等电源插件配置。
 
+详见 [org.deepin.dde.dock.plugin.power](references/config/org.deepin.dde.dock.plugin.power.md)

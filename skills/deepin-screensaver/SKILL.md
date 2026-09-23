@@ -19,31 +19,16 @@ deepin-screensaver 是 DDE 的屏幕保护程序组件，通过 Session 总线�
 
 ## DConfig 配置项
 
-### 资源: `org.deepin.customscreensaver`
+deepin-screensaver 通过 DConfig 暴露屏保轮播和当前屏保选择的配置资源。
 
-| Key | Name | 类型 | Permissions |
-|---|---|---|---|
-| `intervalTime` | 屏保轮播间隔 | number | readwrite |
-| `playMode` | 屏保播放模式 | number | readwrite |
-| `slideshowPath` | 屏保图片路径 | string | readwrite |
+### 自定义屏保配置
 
-```bash
-# 查询
-dde-dconfig -a org.deepin.screensaver -r org.deepin.customscreensaver -k intervalTime --get
-# 设置
-dde-dconfig -a org.deepin.screensaver -r org.deepin.customscreensaver -k intervalTime -s "<value>"
-```
+屏保轮播间隔、播放模式和图片路径等自定义屏保配置。
 
-### 资源: `org.deepin.screensaver`
+详见 [org.deepin.customscreensaver](references/config/org.deepin.customscreensaver.md)
 
-| Key | Name | 类型 | Permissions |
-|---|---|---|---|
-| `currentScreenSaver` | 当前屏保 | string | readwrite |
+### 屏保选择配置
 
-```bash
-# 查询
-dde-dconfig -a org.deepin.screensaver -r org.deepin.screensaver -k currentScreenSaver --get
-# 设置
-dde-dconfig -a org.deepin.screensaver -r org.deepin.screensaver -k currentScreenSaver -s "<value>"
-```
+当前使用的屏保选择配置。
 
+详见 [org.deepin.screensaver](references/config/org.deepin.screensaver.md)

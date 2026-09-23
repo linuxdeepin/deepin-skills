@@ -37,44 +37,16 @@ dde-shell 是 DDE 桌面的 Shell 组件，通过 Session 总线上的多个 D-B
 
 ## DConfig 配置项
 
-### 资源: `org.deepin.dde.shell.notification`
+dde-shell 通过 DConfig 暴露通知和启动器相关的配置资源。
 
-| Key | Name | 类型 | Permissions |
-|---|---|---|---|
-| `appsInfo` | 应用通知信息 | object | readwrite |
-| `bubbleContentRowCount` | 气泡内容行数 | number | readwrite |
-| `bubbleCount` | 气泡数量 | number | readwrite |
-| `dndMode` | 勿扰模式 | bool | readwrite |
-| `endTime` | 勿扰结束时间 | string | readwrite |
-| `lockScreenOpenDndMode` | 锁屏开启勿扰模式 | bool | readwrite |
-| `maxCount` | 最大通知数量 | number | readwrite |
-| `notificationCleanupDays` | 通知清理天数 | number | readwrite |
-| `notificationClosed` | 通知是否关闭 | bool | readwrite |
-| `openByTimeInterval` | 按时间段开启 | bool | readwrite |
-| `startTime` | 勿扰开始时间 | string | readwrite |
+### 通知配置
 
-```bash
-# 查询
-dde-dconfig -a org.deepin.dde.shell -r org.deepin.dde.shell.notification -k appsInfo --get
-# 设置
-dde-dconfig -a org.deepin.dde.shell -r org.deepin.dde.shell.notification -k appsInfo -s "<value>"
-```
+应用通知开关、勿扰模式、气泡数量等通知相关配置。
 
-### 资源: `org.deepin.ds.launchpad`
+详见 [org.deepin.dde.shell.notification](references/config/org.deepin.dde.shell.notification.md)
 
-| Key | Name | 类型 | Permissions |
-|---|---|---|---|
-| `searchByDesktopId` | 是否按 Desktop ID 搜索 | bool | readwrite |
+### 启动器配置
 
-```bash
-# 查询
-dde-dconfig -a org.deepin.dde.shell -r org.deepin.ds.launchpad -k searchByDesktopId --get
-# 设置
-dde-dconfig -a org.deepin.dde.shell -r org.deepin.ds.launchpad -k searchByDesktopId -s "<value>"
-```
+启动器搜索行为配置。
 
-### 覆盖说明
-
-- `org.deepin.ds.dock` 覆盖 `Item_Alignment` 配置项
-- `org.deepin.ds.dock.taskmanager` 覆盖 `Docked_Items` 配置项
-- `org.deepin.ds.launchpad` 覆盖 `excludeAppIdList` 配置项
+详见 [org.deepin.ds.launchpad](references/config/org.deepin.ds.launchpad.md)
