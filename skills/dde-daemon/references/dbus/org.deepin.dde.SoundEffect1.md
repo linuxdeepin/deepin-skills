@@ -1,4 +1,4 @@
-# com.deepin.daemon.SoundEffect1 接口参考
+# org.deepin.dde.SoundEffect1 接口参考
 
 该接口提供系统声音效果管理能力。
 
@@ -6,9 +6,9 @@
 
 | 字段 | 值 |
 |------|------|
-| Service | `com.deepin.daemon.SoundEffect` |
+| Service | `org.deepin.dde.SoundEffect` |
 | Object path | `/com/deepin/daemon/SoundEffect` |
-| Interface | `com.deepin.daemon.SoundEffect1` |
+| Interface | `org.deepin.dde.SoundEffect1` |
 | Bus | Session |
 
 > **待核验声明**：本文档接口信息基于源码静态分析，未经运行时 D-Bus 内省验证，标记为待核验。
@@ -24,9 +24,9 @@
 
 ```bash
 gdbus call --session \
-  --dest com.deepin.daemon.SoundEffect \
+  --dest org.deepin.dde.SoundEffect \
   --object-path /com/deepin/daemon/SoundEffect \
-  --method com.deepin.daemon.SoundEffect1.PlaySound "message"
+  --method org.deepin.dde.SoundEffect1.PlaySound "message"
 ```
 
 #### EnableAllSound
@@ -38,8 +38,8 @@ gdbus call --session \
 
 ```bash
 gdbus call --session \
-  --dest com.deepin.daemon.SoundEffect \
+  --dest org.deepin.dde.SoundEffect \
   --object-path /com/deepin/daemon/SoundEffect \
-  --method com.deepin.daemon.SoundEffect1.EnableAllSound true
+  --method org.deepin.dde.SoundEffect1.EnableAllSound true
 ```
 

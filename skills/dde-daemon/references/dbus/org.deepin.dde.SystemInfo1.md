@@ -1,4 +1,4 @@
-# com.deepin.daemon.SystemInfo1 接口参考
+# org.deepin.dde.SystemInfo1 接口参考
 
 该接口提供系统硬件和软件信息查询能力。
 
@@ -6,9 +6,9 @@
 
 | 字段 | 值 |
 |------|------|
-| Service | `com.deepin.daemon.SystemInfo` |
+| Service | `org.deepin.dde.SystemInfo` |
 | Object path | `/com/deepin/daemon/SystemInfo` |
-| Interface | `com.deepin.daemon.SystemInfo1` |
+| Interface | `org.deepin.dde.SystemInfo1` |
 | Bus | Session |
 
 > **待核验声明**：本文档接口信息基于源码静态分析，未经运行时 D-Bus 内省验证，标记为待核验。
@@ -24,9 +24,9 @@
 
 ```bash
 gdbus call --session \
-  --dest com.deepin.daemon.SystemInfo \
+  --dest org.deepin.dde.SystemInfo \
   --object-path /com/deepin/daemon/SystemInfo \
-  --method com.deepin.daemon.SystemInfo1.GetSystemVersion
+  --method org.deepin.dde.SystemInfo1.GetSystemVersion
 ```
 
 #### GetProcessorModel
@@ -38,9 +38,9 @@ gdbus call --session \
 
 ```bash
 gdbus call --session \
-  --dest com.deepin.daemon.SystemInfo \
+  --dest org.deepin.dde.SystemInfo \
   --object-path /com/deepin/daemon/SystemInfo \
-  --method com.deepin.daemon.SystemInfo1.GetProcessorModel
+  --method org.deepin.dde.SystemInfo1.GetProcessorModel
 ```
 
 #### GetMemoryCapacity
@@ -52,8 +52,8 @@ gdbus call --session \
 
 ```bash
 gdbus call --session \
-  --dest com.deepin.daemon.SystemInfo \
+  --dest org.deepin.dde.SystemInfo \
   --object-path /com/deepin/daemon/SystemInfo \
-  --method com.deepin.daemon.SystemInfo1.GetMemoryCapacity
+  --method org.deepin.dde.SystemInfo1.GetMemoryCapacity
 ```
 

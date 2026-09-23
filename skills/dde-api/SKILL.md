@@ -1,13 +1,13 @@
 ---
 name: dde-api
-description: 提供图形信息查询、拼音搜索、设备管理、区域设置、声音主题播放、输入校验和 inhibit 提示的 D-Bus 接口
+description: 提供图形信息查询、拼音搜索、设备管理、区域设置和声音主题播放的 D-Bus 接口
 Categories:
   - Develop
 ---
 
 # dde-api
 
-dde-api 是 DDE 后端调用库组件，通过 Session 和 System 总线提供图形处理、拼音查询、设备管理、区域设置、声音主题播放、输入校验和 inhibit 提示能力。
+dde-api 是 DDE 后端调用库组件，通过 Session 和 System 总线提供图形处理、拼音查询、设备管理、区域设置和声音主题播放能力。
 
 ## D-Bus 接口
 
@@ -40,16 +40,4 @@ dde-api 是 DDE 后端调用库组件，通过 Session 和 System 总线提供�
 提供声音主题播放控制能力。
 
 详见 [org.deepin.dde.SoundThemePlayer1.md](references/dbus/org.deepin.dde.SoundThemePlayer1.md)
-
-### 输入校验
-
-提供主机名和用户名校验能力。
-
-详见 [org.deepin.dde.Validator1.md](references/dbus/org.deepin.dde.Validator1.md)
-
-### Inhibit 提示
-
-提供抑制提示查询能力。
-
-详见 [org.deepin.dde.InhibitHint1.md](references/dbus/org.deepin.dde.InhibitHint1.md)
 

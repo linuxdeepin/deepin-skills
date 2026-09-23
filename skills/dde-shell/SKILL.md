@@ -13,7 +13,7 @@ dde-shell 是 DDE 桌面的 Shell 组件，通过 Session 总线上的多个 D-B
 
 ### 任务栏控制
 
-控制 Dock 的显示、插件重载、位置、几何区域和主屏显示属性。
+提供给外部控制 Dock 的服务接口，允许外部程序控制 Dock 的显示、插件重载、位置、几何区域和主屏显示属性。
 
 详见 [org.deepin.ds.Dock](references/dbus/org.deepin.ds.Dock.md)
 
@@ -22,6 +22,12 @@ dde-shell 是 DDE 桌面的 Shell 组件，通过 Session 总线上的多个 D-B
 提供桌面通知的发送、更新和关闭能力，可查询通知服务支持的能力与服务器信息；支持按应用读取和修改通知开关及展示配置，读取和修改系统级通知配置，查询通知记录数量，并监听通知处理状态、应用配置和系统配置的变化。
 
 详见 [org.deepin.dde.Notification1](references/dbus/org.deepin.dde.Notification1.md)
+
+### 桌面通知（freedesktop 标准）
+
+实现 freedesktop.org 桌面通知规范，提供桌面通知的发送、关闭和能力查询功能。
+
+详见 [org.freedesktop.Notifications.md](references/dbus/org.freedesktop.Notifications.md)
 
 ### OSD 显示
 

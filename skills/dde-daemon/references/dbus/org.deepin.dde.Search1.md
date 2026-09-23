@@ -1,4 +1,4 @@
-# com.deepin.daemon.Search1 接口参考
+# org.deepin.dde.Search1 接口参考
 
 该接口提供系统搜索和搜索字典管理能力。
 
@@ -6,9 +6,9 @@
 
 | 字段 | 值 |
 |------|------|
-| Service | `com.deepin.daemon.Search` |
+| Service | `org.deepin.dde.Search` |
 | Object path | `/com/deepin/daemon/Search` |
-| Interface | `com.deepin.daemon.Search1` |
+| Interface | `org.deepin.dde.Search1` |
 | Bus | Session |
 
 > **待核验声明**：本文档接口信息基于源码静态分析，未经运行时 D-Bus 内省验证，标记为待核验。
@@ -24,9 +24,9 @@
 
 ```bash
 gdbus call --session \
-  --dest com.deepin.daemon.Search \
+  --dest org.deepin.dde.Search \
   --object-path /com/deepin/daemon/Search \
-  --method com.deepin.daemon.Search1.NewSearchWithStrDict {"key":"value"}
+  --method org.deepin.dde.Search1.NewSearchWithStrDict {"key":"value"}
 ```
 
 #### NewSearchWithStrList
@@ -38,9 +38,9 @@ gdbus call --session \
 
 ```bash
 gdbus call --session \
-  --dest com.deepin.daemon.Search \
+  --dest org.deepin.dde.Search \
   --object-path /com/deepin/daemon/Search \
-  --method com.deepin.daemon.Search1.NewSearchWithStrList ["item1","item2"]
+  --method org.deepin.dde.Search1.NewSearchWithStrList ["item1","item2"]
 ```
 
 #### SearchStartWithString
@@ -52,9 +52,9 @@ gdbus call --session \
 
 ```bash
 gdbus call --session \
-  --dest com.deepin.daemon.Search \
+  --dest org.deepin.dde.Search \
   --object-path /com/deepin/daemon/Search \
-  --method com.deepin.daemon.Search1.SearchStartWithString "keyword"
+  --method org.deepin.dde.Search1.SearchStartWithString "keyword"
 ```
 
 #### SearchString
@@ -66,8 +66,8 @@ gdbus call --session \
 
 ```bash
 gdbus call --session \
-  --dest com.deepin.daemon.Search \
+  --dest org.deepin.dde.Search \
   --object-path /com/deepin/daemon/Search \
-  --method com.deepin.daemon.Search1.SearchString "keyword"
+  --method org.deepin.dde.Search1.SearchString "keyword"
 ```
 

@@ -1,4 +1,4 @@
-# com.deepin.daemon.Timedate1 接口参考
+# org.deepin.dde.Timedate1 接口参考
 
 该接口提供时区、时间和自动同步设置能力。
 
@@ -6,9 +6,9 @@
 
 | 字段 | 值 |
 |------|------|
-| Service | `com.deepin.daemon.Timedate` |
+| Service | `org.deepin.dde.Timedate` |
 | Object path | `/com/deepin/daemon/Timedate` |
-| Interface | `com.deepin.daemon.Timedate1` |
+| Interface | `org.deepin.dde.Timedate1` |
 | Bus | Session |
 
 > **待核验声明**：本文档接口信息基于源码静态分析，未经运行时 D-Bus 内省验证，标记为待核验。
@@ -24,9 +24,9 @@
 
 ```bash
 gdbus call --session \
-  --dest com.deepin.daemon.Timedate \
+  --dest org.deepin.dde.Timedate \
   --object-path /com/deepin/daemon/Timedate \
-  --method com.deepin.daemon.Timedate1.SetTimezone "Asia/Shanghai"
+  --method org.deepin.dde.Timedate1.SetTimezone "Asia/Shanghai"
 ```
 
 #### SetNTP
@@ -38,9 +38,9 @@ gdbus call --session \
 
 ```bash
 gdbus call --session \
-  --dest com.deepin.daemon.Timedate \
+  --dest org.deepin.dde.Timedate \
   --object-path /com/deepin/daemon/Timedate \
-  --method com.deepin.daemon.Timedate1.SetNTP true
+  --method org.deepin.dde.Timedate1.SetNTP true
 ```
 
 #### SetDate
@@ -52,8 +52,8 @@ gdbus call --session \
 
 ```bash
 gdbus call --session \
-  --dest com.deepin.daemon.Timedate \
+  --dest org.deepin.dde.Timedate \
   --object-path /com/deepin/daemon/Timedate \
-  --method com.deepin.daemon.Timedate1.SetDate 1609459200
+  --method org.deepin.dde.Timedate1.SetDate 1609459200
 ```
 

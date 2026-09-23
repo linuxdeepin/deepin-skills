@@ -1,4 +1,4 @@
-# com.deepin.daemon.Bluetooth1 接口参考
+# org.deepin.dde.Bluetooth1 接口参考
 
 该接口提供蓝牙适配器、设备、文件传输和配对管理能力。
 
@@ -6,9 +6,9 @@
 
 | 字段 | 值 |
 |------|------|
-| Service | `com.deepin.daemon.Bluetooth` |
+| Service | `org.deepin.dde.Bluetooth` |
 | Object path | `/com/deepin/daemon/Bluetooth` |
-| Interface | `com.deepin.daemon.Bluetooth1` |
+| Interface | `org.deepin.dde.Bluetooth1` |
 | Bus | Session |
 
 > **待核验声明**：本文档接口信息基于源码静态分析，未经运行时 D-Bus 内省验证，标记为待核验。
@@ -24,9 +24,9 @@
 
 ```bash
 gdbus call --session \
-  --dest com.deepin.daemon.Bluetooth \
+  --dest org.deepin.dde.Bluetooth \
   --object-path /com/deepin/daemon/Bluetooth \
-  --method com.deepin.daemon.Bluetooth1.CancelTransferSession
+  --method org.deepin.dde.Bluetooth1.CancelTransferSession
 ```
 
 #### ClearUnpairedDevice
@@ -38,9 +38,9 @@ gdbus call --session \
 
 ```bash
 gdbus call --session \
-  --dest com.deepin.daemon.Bluetooth \
+  --dest org.deepin.dde.Bluetooth \
   --object-path /com/deepin/daemon/Bluetooth \
-  --method com.deepin.daemon.Bluetooth1.ClearUnpairedDevice
+  --method org.deepin.dde.Bluetooth1.ClearUnpairedDevice
 ```
 
 #### Confirm
@@ -52,9 +52,9 @@ gdbus call --session \
 
 ```bash
 gdbus call --session \
-  --dest com.deepin.daemon.Bluetooth \
+  --dest org.deepin.dde.Bluetooth \
   --object-path /com/deepin/daemon/Bluetooth \
-  --method com.deepin.daemon.Bluetooth1.Confirm "/path" true
+  --method org.deepin.dde.Bluetooth1.Confirm "/path" true
 ```
 
 #### ConnectDevice
@@ -66,9 +66,9 @@ gdbus call --session \
 
 ```bash
 gdbus call --session \
-  --dest com.deepin.daemon.Bluetooth \
+  --dest org.deepin.dde.Bluetooth \
   --object-path /com/deepin/daemon/Bluetooth \
-  --method com.deepin.daemon.Bluetooth1.ConnectDevice "/path"
+  --method org.deepin.dde.Bluetooth1.ConnectDevice "/path"
 ```
 
 #### DebugInfo
@@ -80,9 +80,9 @@ gdbus call --session \
 
 ```bash
 gdbus call --session \
-  --dest com.deepin.daemon.Bluetooth \
+  --dest org.deepin.dde.Bluetooth \
   --object-path /com/deepin/daemon/Bluetooth \
-  --method com.deepin.daemon.Bluetooth1.DebugInfo
+  --method org.deepin.dde.Bluetooth1.DebugInfo
 ```
 
 #### DisconnectDevice
@@ -94,9 +94,9 @@ gdbus call --session \
 
 ```bash
 gdbus call --session \
-  --dest com.deepin.daemon.Bluetooth \
+  --dest org.deepin.dde.Bluetooth \
   --object-path /com/deepin/daemon/Bluetooth \
-  --method com.deepin.daemon.Bluetooth1.DisconnectDevice "/path"
+  --method org.deepin.dde.Bluetooth1.DisconnectDevice "/path"
 ```
 
 #### FeedPasskey
@@ -108,9 +108,9 @@ gdbus call --session \
 
 ```bash
 gdbus call --session \
-  --dest com.deepin.daemon.Bluetooth \
+  --dest org.deepin.dde.Bluetooth \
   --object-path /com/deepin/daemon/Bluetooth \
-  --method com.deepin.daemon.Bluetooth1.FeedPasskey "/path" 123456
+  --method org.deepin.dde.Bluetooth1.FeedPasskey "/path" 123456
 ```
 
 #### FeedPinCode
@@ -122,9 +122,9 @@ gdbus call --session \
 
 ```bash
 gdbus call --session \
-  --dest com.deepin.daemon.Bluetooth \
+  --dest org.deepin.dde.Bluetooth \
   --object-path /com/deepin/daemon/Bluetooth \
-  --method com.deepin.daemon.Bluetooth1.FeedPinCode "/path" "0000"
+  --method org.deepin.dde.Bluetooth1.FeedPinCode "/path" "0000"
 ```
 
 #### GetAdapters
@@ -136,9 +136,9 @@ gdbus call --session \
 
 ```bash
 gdbus call --session \
-  --dest com.deepin.daemon.Bluetooth \
+  --dest org.deepin.dde.Bluetooth \
   --object-path /com/deepin/daemon/Bluetooth \
-  --method com.deepin.daemon.Bluetooth1.GetAdapters
+  --method org.deepin.dde.Bluetooth1.GetAdapters
 ```
 
 #### GetDevices
@@ -150,9 +150,9 @@ gdbus call --session \
 
 ```bash
 gdbus call --session \
-  --dest com.deepin.daemon.Bluetooth \
+  --dest org.deepin.dde.Bluetooth \
   --object-path /com/deepin/daemon/Bluetooth \
-  --method com.deepin.daemon.Bluetooth1.GetDevices "/path"
+  --method org.deepin.dde.Bluetooth1.GetDevices "/path"
 ```
 
 #### RemoveDevice
@@ -164,9 +164,9 @@ gdbus call --session \
 
 ```bash
 gdbus call --session \
-  --dest com.deepin.daemon.Bluetooth \
+  --dest org.deepin.dde.Bluetooth \
   --object-path /com/deepin/daemon/Bluetooth \
-  --method com.deepin.daemon.Bluetooth1.RemoveDevice "/path"
+  --method org.deepin.dde.Bluetooth1.RemoveDevice "/path"
 ```
 
 #### RequestDiscovery
@@ -178,9 +178,9 @@ gdbus call --session \
 
 ```bash
 gdbus call --session \
-  --dest com.deepin.daemon.Bluetooth \
+  --dest org.deepin.dde.Bluetooth \
   --object-path /com/deepin/daemon/Bluetooth \
-  --method com.deepin.daemon.Bluetooth1.RequestDiscovery "/path"
+  --method org.deepin.dde.Bluetooth1.RequestDiscovery "/path"
 ```
 
 #### SendFiles
@@ -192,8 +192,8 @@ gdbus call --session \
 
 ```bash
 gdbus call --session \
-  --dest com.deepin.daemon.Bluetooth \
+  --dest org.deepin.dde.Bluetooth \
   --object-path /com/deepin/daemon/Bluetooth \
-  --method com.deepin.daemon.Bluetooth1.SendFiles "/path" ["file1"]
+  --method org.deepin.dde.Bluetooth1.SendFiles "/path" ["file1"]
 ```
 

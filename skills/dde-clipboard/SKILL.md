@@ -13,7 +13,7 @@ dde-clipboard 是 DDE 剪贴板组件，通过 Session 总线提供剪贴板前�
 
 ### 剪贴板服务
 
-提供剪贴板前端服务能力。
+管理 DDE 剪贴板历史服务，提供剪贴板历史记录管理能力，而非直接操作系统剪贴板。
 
 详见 [org.deepin.dde.Clipboard1.md](references/dbus/org.deepin.dde.Clipboard1.md)
 

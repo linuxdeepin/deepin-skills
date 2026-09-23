@@ -1,6 +1,6 @@
 # org.desktopspec.ConfigManager 接口参考
 
-该接口提供配置管理器对象获取、更新、同步和日志规则设置能力。
+该接口提供配置管理器对象获取、更新、同步和日志规则设置能力。dde-app-services 是 DDE 提供的全局系统配置管理服务，可读写 DConfig 配置。其中日志配置用于设置 dde-app-services 自身的日志级别/行为，而非系统全局日志。
 
 ## 接口信息
 

@@ -1,6 +1,6 @@
 # org.deepin.ds.Dock 接口参考
 
-该接口提供任务栏（Dock）的显示控制与属性管理能力，包括 Dock 的显示调用、插件重载，以及位置、几何区域和是否在主屏显示属性的读取与设置。
+该接口是提供给外部控制 Dock 的服务接口，允许外部程序控制 Dock 的显示控制与属性管理能力，包括 Dock 的显示调用、插件重载，以及位置、几何区域和是否在主屏显示属性的读取与设置。
 
 > **待核验**: XML 文件 `panels/dock/api/dbus/org.deepin.ds.dock.xml` 中定义的接口名为 `org.deepin.dde.Dock1`，但注册代码 `dockpanel.cpp` 中注册的服务名为 `org.deepin.ds.Dock`，接口名为 `org.deepin.ds.Dock`。XML 中定义的成员与 DockPanel 类的 Q_PROPERTY 声明对应。此差异需运行时核验。
 

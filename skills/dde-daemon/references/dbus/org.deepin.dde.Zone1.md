@@ -1,4 +1,4 @@
-# com.deepin.daemon.Zone1 接口参考
+# org.deepin.dde.Zone1 接口参考
 
 该接口提供系统区域设置管理能力。
 
@@ -6,9 +6,9 @@
 
 | 字段 | 值 |
 |------|------|
-| Service | `com.deepin.daemon.Zone` |
+| Service | `org.deepin.dde.Zone` |
 | Object path | `/com/deepin/daemon/Zone` |
-| Interface | `com.deepin.daemon.Zone1` |
+| Interface | `org.deepin.dde.Zone1` |
 | Bus | Session |
 
 > **待核验声明**：本文档接口信息基于源码静态分析，未经运行时 D-Bus 内省验证，标记为待核验。
@@ -24,8 +24,8 @@
 
 ```bash
 gdbus call --session \
-  --dest com.deepin.daemon.Zone \
+  --dest org.deepin.dde.Zone \
   --object-path /com/deepin/daemon/Zone \
-  --method com.deepin.daemon.Zone1.SetTimeZone "Asia/Shanghai"
+  --method org.deepin.dde.Zone1.SetTimeZone "Asia/Shanghai"
 ```
 

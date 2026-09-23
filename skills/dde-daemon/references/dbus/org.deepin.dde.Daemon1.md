@@ -1,4 +1,4 @@
-# com.deepin.daemon.Daemon1 接口参考
+# org.deepin.dde.Daemon1 接口参考
 
 该接口提供系统级守护进程管理和调试能力。
 
@@ -6,9 +6,9 @@
 
 | 字段 | 值 |
 |------|------|
-| Service | `com.deepin.daemon.Daemon` |
+| Service | `org.deepin.dde.Daemon` |
 | Object path | `/com/deepin/daemon/Daemon` |
-| Interface | `com.deepin.daemon.Daemon1` |
+| Interface | `org.deepin.dde.Daemon1` |
 | Bus | Session |
 
 > **待核验声明**：本文档接口信息基于源码静态分析，未经运行时 D-Bus 内省验证，标记为待核验。
@@ -24,9 +24,9 @@
 
 ```bash
 gdbus call --session \
-  --dest com.deepin.daemon.Daemon \
+  --dest org.deepin.dde.Daemon \
   --object-path /com/deepin/daemon/Daemon \
-  --method com.deepin.daemon.Daemon1.CallTrace
+  --method org.deepin.dde.Daemon1.CallTrace
 ```
 
 #### StartPart2
@@ -38,8 +38,8 @@ gdbus call --session \
 
 ```bash
 gdbus call --session \
-  --dest com.deepin.daemon.Daemon \
+  --dest org.deepin.dde.Daemon \
   --object-path /com/deepin/daemon/Daemon \
-  --method com.deepin.daemon.Daemon1.StartPart2
+  --method org.deepin.dde.Daemon1.StartPart2
 ```
 

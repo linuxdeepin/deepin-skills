@@ -1,33 +1,15 @@
 ---
 name: dde-session-ui
-description: 提供 OSD 显示、通知发送关闭、黑屏、警告对话框、内存警告、欢迎界面和低电量提示的 D-Bus 接口
+description: 提供黑屏、警告对话框、欢迎界面和低电量提示的 D-Bus 接口
 Categories:
   - Application
 ---
 
 # dde-session-ui
 
-dde-session-ui 是 DDE 通用 UI 组件，通过 Session 总线提供 OSD 显示、通知、黑屏、警告对话框、内存警告、欢迎界面和低电量提示能力。
+dde-session-ui 是 DDE 通用 UI 组件，通过 Session 总线提供黑屏、警告对话框、欢迎界面和低电量提示能力。
 
 ## D-Bus 接口
-
-### OSD 显示
-
-提供屏幕显示（OSD）提示能力。
-
-详见 [org.deepin.dde.Osd1.md](references/dbus/org.deepin.dde.Osd1.md)
-
-### 桌面通知
-
-提供 freedesktop 标准桌面通知发送和关闭能力。
-
-详见 [org.freedesktop.Notifications.md](references/dbus/org.freedesktop.Notifications.md)
-
-### DDE 通知
-
-提供 DDE 通知发送、更新和关闭能力。
-
-详见 [org.deepin.dde.Notification1.md](references/dbus/org.deepin.dde.Notification1.md)
 
 ### 黑屏控制
 
@@ -40,12 +22,6 @@ dde-session-ui 是 DDE 通用 UI 组件，通过 Session 总线提供 OSD 显示
 提供警告对话框显示能力。
 
 详见 [org.deepin.dde.WarningDialog1.md](references/dbus/org.deepin.dde.WarningDialog1.md)
-
-### 内存警告对话框
-
-提供内存警告对话框显示能力。
-
-详见 [org.deepin.dde.MemoryWarningDialog1.md](references/dbus/org.deepin.dde.MemoryWarningDialog1.md)
 
 ### 欢迎界面
 

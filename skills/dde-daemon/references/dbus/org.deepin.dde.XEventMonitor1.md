@@ -1,4 +1,4 @@
-# com.deepin.daemon.XEventMonitor1 接口参考
+# org.deepin.dde.XEventMonitor1 接口参考
 
 该接口提供 X 事件区域监控能力。
 
@@ -6,9 +6,9 @@
 
 | 字段 | 值 |
 |------|------|
-| Service | `com.deepin.daemon.XEventMonitor` |
+| Service | `org.deepin.dde.XEventMonitor` |
 | Object path | `/com/deepin/daemon/XEventMonitor` |
-| Interface | `com.deepin.daemon.XEventMonitor1` |
+| Interface | `org.deepin.dde.XEventMonitor1` |
 | Bus | Session |
 
 > **待核验声明**：本文档接口信息基于源码静态分析，未经运行时 D-Bus 内省验证，标记为待核验。
@@ -24,9 +24,9 @@
 
 ```bash
 gdbus call --session \
-  --dest com.deepin.daemon.XEventMonitor \
+  --dest org.deepin.dde.XEventMonitor \
   --object-path /com/deepin/daemon/XEventMonitor \
-  --method com.deepin.daemon.XEventMonitor1.RegisterArea 0 0 100 100 0
+  --method org.deepin.dde.XEventMonitor1.RegisterArea 0 0 100 100 0
 ```
 
 #### UnregisterArea
@@ -38,8 +38,8 @@ gdbus call --session \
 
 ```bash
 gdbus call --session \
-  --dest com.deepin.daemon.XEventMonitor \
+  --dest org.deepin.dde.XEventMonitor \
   --object-path /com/deepin/daemon/XEventMonitor \
-  --method com.deepin.daemon.XEventMonitor1.UnregisterArea 1
+  --method org.deepin.dde.XEventMonitor1.UnregisterArea 1
 ```
 

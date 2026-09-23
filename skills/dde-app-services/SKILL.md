@@ -13,15 +13,9 @@ dde-app-services 是 DDE 的 DConfig 管理服务组件，通过 System 总线�
 
 ### 配置管理器
 
-提供配置管理器对象获取、更新、同步和日志规则设置能力。
+提供配置管理器对象获取、更新、同步和日志规则设置能力。dde-app-services 是 DDE 提供的全局系统配置管理服务，可读写 DConfig 配置。其中日志配置用于设置 dde-app-services 自身的日志级别/行为，而非系统全局日志。
 
 详见 [org.desktopspec.ConfigManager.md](references/dbus/org.desktopspec.ConfigManager.md)
-
-### 配置管理器内部接口
-
-提供配置项列表查询和变更通知能力。
-
-详见 [org.desktopspec.ConfigManager.Internal.md](references/dbus/org.desktopspec.ConfigManager.Internal.md)
 
 ### 配置管理器 Manager 接口
 

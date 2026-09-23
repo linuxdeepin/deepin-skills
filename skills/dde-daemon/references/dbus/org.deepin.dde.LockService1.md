@@ -1,4 +1,4 @@
-# com.deepin.daemon.LockService1 接口参考
+# org.deepin.dde.LockService1 接口参考
 
 该接口提供锁屏和用户切换能力。
 
@@ -6,9 +6,9 @@
 
 | 字段 | 值 |
 |------|------|
-| Service | `com.deepin.daemon.LockService` |
+| Service | `org.deepin.dde.LockService` |
 | Object path | `/com/deepin/daemon/LockService` |
-| Interface | `com.deepin.daemon.LockService1` |
+| Interface | `org.deepin.dde.LockService1` |
 | Bus | System |
 
 > **待核验声明**：本文档接口信息基于源码静态分析，未经运行时 D-Bus 内省验证，标记为待核验。
@@ -27,9 +27,9 @@
 
 ```bash
 pkexec gdbus call --system \
-  --dest com.deepin.daemon.LockService \
+  --dest org.deepin.dde.LockService \
   --object-path /com/deepin/daemon/LockService \
-  --method com.deepin.daemon.LockService1.CurrentUser
+  --method org.deepin.dde.LockService1.CurrentUser
 ```
 
 #### SwitchToUser
@@ -44,8 +44,8 @@ pkexec gdbus call --system \
 
 ```bash
 pkexec gdbus call --system \
-  --dest com.deepin.daemon.LockService \
+  --dest org.deepin.dde.LockService \
   --object-path /com/deepin/daemon/LockService \
-  --method com.deepin.daemon.LockService1.SwitchToUser "user"
+  --method org.deepin.dde.LockService1.SwitchToUser "user"
 ```
 

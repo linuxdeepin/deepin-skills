@@ -31,7 +31,7 @@ dde-application-manager 是 DDE 应用管理器组件，通过 Session 总线提
 
 ### MIME 类型管理
 
-提供默认应用 MIME 类型设置能力。
+系统级 MIME 类型管理，管理所有应用的 MIME 关联，提供默认应用 MIME 类型设置能力。
 
 详见 [org.desktopspec.MimeManager1.md](references/dbus/org.desktopspec.MimeManager1.md)
 

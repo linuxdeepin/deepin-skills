@@ -1,4 +1,4 @@
-# com.deepin.daemon.Gesture1 接口参考
+# org.deepin.dde.Gesture1 接口参考
 
 该接口提供触摸手势管理能力。
 
@@ -6,9 +6,9 @@
 
 | 字段 | 值 |
 |------|------|
-| Service | `com.deepin.daemon.Gesture` |
+| Service | `org.deepin.dde.Gesture` |
 | Object path | `/com/deepin/daemon/Gesture` |
-| Interface | `com.deepin.daemon.Gesture1` |
+| Interface | `org.deepin.dde.Gesture1` |
 | Bus | Session |
 
 > **待核验声明**：本文档接口信息基于源码静态分析，未经运行时 D-Bus 内省验证，标记为待核验。
@@ -24,7 +24,7 @@
 
 ```bash
 gdbus monitor --session \
-  --dest com.deepin.daemon.Gesture \
+  --dest org.deepin.dde.Gesture \
   --object-path /com/deepin/daemon/Gesture
 ```
 
@@ -37,7 +37,7 @@ gdbus monitor --session \
 
 ```bash
 gdbus monitor --session \
-  --dest com.deepin.daemon.Gesture \
+  --dest org.deepin.dde.Gesture \
   --object-path /com/deepin/daemon/Gesture
 ```
 

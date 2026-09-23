@@ -1,4 +1,4 @@
-# com.deepin.daemon.SessionWatcher1 接口参考
+# org.deepin.dde.SessionWatcher1 接口参考
 
 该接口提供会话状态监控能力。
 
@@ -6,9 +6,9 @@
 
 | 字段 | 值 |
 |------|------|
-| Service | `com.deepin.daemon.SessionWatcher` |
+| Service | `org.deepin.dde.SessionWatcher` |
 | Object path | `/com/deepin/daemon/SessionWatcher` |
-| Interface | `com.deepin.daemon.SessionWatcher1` |
+| Interface | `org.deepin.dde.SessionWatcher1` |
 | Bus | Session |
 
 > **待核验声明**：本文档接口信息基于源码静态分析，未经运行时 D-Bus 内省验证，标记为待核验。
@@ -28,10 +28,10 @@
 
 ```bash
 gdbus call --session \
-  --dest com.deepin.daemon.SessionWatcher \
+  --dest org.deepin.dde.SessionWatcher \
   --object-path /com/deepin/daemon/SessionWatcher \
   --method org.freedesktop.DBus.Properties.Get \
-  com.deepin.daemon.SessionWatcher1 Locked
+  org.deepin.dde.SessionWatcher1 Locked
 ```
 
 ### 会话监控信号
@@ -45,7 +45,7 @@ gdbus call --session \
 
 ```bash
 gdbus monitor --session \
-  --dest com.deepin.daemon.SessionWatcher \
+  --dest org.deepin.dde.SessionWatcher \
   --object-path /com/deepin/daemon/SessionWatcher
 ```
 

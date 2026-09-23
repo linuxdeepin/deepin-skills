@@ -1,4 +1,4 @@
-# com.deepin.daemon.Greeter1 接口参考
+# org.deepin.dde.Greeter1 接口参考
 
 该接口提供 Greeter 主题更新能力。
 
@@ -6,9 +6,9 @@
 
 | 字段 | 值 |
 |------|------|
-| Service | `com.deepin.daemon.Greeter` |
+| Service | `org.deepin.dde.Greeter` |
 | Object path | `/com/deepin/daemon/Greeter` |
-| Interface | `com.deepin.daemon.Greeter1` |
+| Interface | `org.deepin.dde.Greeter1` |
 | Bus | System |
 
 > **待核验声明**：本文档接口信息基于源码静态分析，未经运行时 D-Bus 内省验证，标记为待核验。
@@ -27,8 +27,8 @@
 
 ```bash
 pkexec gdbus call --system \
-  --dest com.deepin.daemon.Greeter \
+  --dest org.deepin.dde.Greeter \
   --object-path /com/deepin/daemon/Greeter \
-  --method com.deepin.daemon.Greeter1.UpdateGreeterQtTheme
+  --method org.deepin.dde.Greeter1.UpdateGreeterQtTheme
 ```
 

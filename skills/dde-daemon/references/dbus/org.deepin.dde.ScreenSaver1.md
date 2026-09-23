@@ -1,4 +1,4 @@
-# com.deepin.daemon.ScreenSaver1 接口参考
+# org.deepin.dde.ScreenSaver1 接口参考
 
 该接口提供屏幕保护管理能力。
 
@@ -6,9 +6,9 @@
 
 | 字段 | 值 |
 |------|------|
-| Service | `com.deepin.daemon.ScreenSaver` |
+| Service | `org.deepin.dde.ScreenSaver` |
 | Object path | `/com/deepin/daemon/ScreenSaver` |
-| Interface | `com.deepin.daemon.ScreenSaver1` |
+| Interface | `org.deepin.dde.ScreenSaver1` |
 | Bus | Session |
 
 > **待核验声明**：本文档接口信息基于源码静态分析，未经运行时 D-Bus 内省验证，标记为待核验。
@@ -24,9 +24,9 @@
 
 ```bash
 gdbus call --session \
-  --dest com.deepin.daemon.ScreenSaver \
+  --dest org.deepin.dde.ScreenSaver \
   --object-path /com/deepin/daemon/ScreenSaver \
-  --method com.deepin.daemon.ScreenSaver1.Start
+  --method org.deepin.dde.ScreenSaver1.Start
 ```
 
 #### Stop
@@ -38,8 +38,8 @@ gdbus call --session \
 
 ```bash
 gdbus call --session \
-  --dest com.deepin.daemon.ScreenSaver \
+  --dest org.deepin.dde.ScreenSaver \
   --object-path /com/deepin/daemon/ScreenSaver \
-  --method com.deepin.daemon.ScreenSaver1.Stop
+  --method org.deepin.dde.ScreenSaver1.Stop
 ```
 
