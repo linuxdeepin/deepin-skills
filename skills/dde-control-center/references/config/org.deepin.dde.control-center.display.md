@@ -4,9 +4,9 @@
 
 ## 配置项
 
-| Key | Name | Description | 类型 | Permissions |
-|---|---|---|---|---|
-| `minBrightnessValue` | 亮度最小值 | 配置控制中心显示设置中亮度调节的最小值 | number | readwrite |
+| Key | Name | Description | 类型 | 取值范围 | Permissions | Flags |
+|---|---|---|---|---|---|---|
+| `minBrightnessValue` | 亮度最小值 | 配置控制中心显示设置中亮度调节的最小值 | float | 0.0 ~ 100.0（亮度百分比） | readwrite | |
 
 ## 读写示例
 

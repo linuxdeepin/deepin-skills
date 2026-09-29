@@ -2,8 +2,6 @@
 
 该接口是提供给外部控制 Dock 的服务接口，允许外部程序控制 Dock 的显示控制与属性管理能力，包括 Dock 的显示调用、插件重载，以及位置、几何区域和是否在主屏显示属性的读取与设置。
 
-> **待核验**: XML 文件 `panels/dock/api/dbus/org.deepin.ds.dock.xml` 中定义的接口名为 `org.deepin.dde.Dock1`，但注册代码 `dockpanel.cpp` 中注册的服务名为 `org.deepin.ds.Dock`，接口名为 `org.deepin.ds.Dock`。XML 中定义的成员与 DockPanel 类的 Q_PROPERTY 声明对应。此差异需运行时核验。
-
 ## 接口信息
 
 | 字段 | 值 |
@@ -13,7 +11,15 @@
 | Interface | `org.deepin.ds.Dock` |
 | Bus | Session |
 
-> **待核验声明**：本文档接口信息基于源码静态分析，未经运行时 D-Bus 内省验证，标记为待核验。
+## 接口关系
+
+Dock 面板服务除当前使用的 `org.deepin.ds.Dock` 外，还注册了两个历史别名服务，各自注册在独立的对象路径上，用于向后兼容不同版本的调用方：
+
+- `org.deepin.ds.Dock`（`/org/deepin/ds/Dock`）— 当前服务名。
+- `org.deepin.dde.Dock1`（`/org/deepin/dde/Dock1`）— 旧版前端接口别名。
+- `org.deepin.dde.daemon.Dock1`（`/org/deepin/dde/daemon/Dock1`）— 旧版守护进程接口别名。
+
+**兼容关系**：`org.deepin.dde.Dock1` 和 `org.deepin.dde.daemon.Dock1` 为兼容历史调用方而保留，功能与 `org.deepin.ds.Dock` 相同。新代码应优先使用 `org.deepin.ds.Dock`。
 
 ## 方法、属性与信号
 
@@ -21,8 +27,13 @@
 
 #### callShow
 
+> ⚠️ **未实现的桩函数**：该方法为 TODO 空桩实现，当前不可用。
+
 调用 Dock 显示。
 
+- **功能**: 触发 Dock 面板的显示
+- **触发条件**: 外部程序调用此方法时执行（当前为空桩实现，不会产生实际效果）
+- **使用场景**: 外部程序需要强制显示 Dock 面板时调用
 - **输入参数**: 无
 - **返回值**: 无
 
@@ -35,8 +46,13 @@ gdbus call --session \
 
 #### ReloadPlugins
 
+> ⚠️ **未实现的桩函数**：该方法为 TODO 空桩实现，当前不可用。
+
 重新加载 Dock 插件。
 
+- **功能**: 重新加载 Dock 面板上的全部插件
+- **触发条件**: 外部程序调用此方法时执行（当前为空桩实现，不会产生实际效果）
+- **使用场景**: 插件安装或更新后需要重新加载 Dock 插件时调用
 - **输入参数**: 无
 - **返回值**: 无
 
@@ -53,6 +69,11 @@ gdbus call --session \
 
 Dock 的几何区域。
 
+- **功能**: 表示 Dock 面板当前的几何区域（x 坐标、y 坐标、宽度、高度）
+- **触发条件**: Dock 面板位置或大小变化时值随之更新
+- **使用场景**: 外部程序（如窗口管理器）需要获取 Dock 占用的屏幕区域以避免窗口遮挡
+- **属性值**:
+
 | 属性 | 值 |
 |------|------|
 | 类型 | `(iiii)`（QRect: x, y, width, height） |
@@ -63,12 +84,17 @@ gdbus call --session \
   --dest org.deepin.ds.Dock \
   --object-path /org/deepin/ds/Dock \
   --method org.freedesktop.DBus.Properties.Get \
-  org.deepin.ds.Dock geometry
+  "org.deepin.ds.Dock" "geometry"
 ```
 
 #### position（属性）
 
 Dock 位置。
+
+- **功能**: 表示 Dock 面板在屏幕上的位置（底部、顶部、左侧、右侧）
+- **触发条件**: 外部程序通过 Properties.Set 修改时更新；Dock 面板位置变化时值随之更新
+- **使用场景**: Dock 设置界面读取和修改 Dock 的显示位置
+- **属性值**:
 
 | 属性 | 值 |
 |------|------|
@@ -82,7 +108,7 @@ gdbus call --session \
   --dest org.deepin.ds.Dock \
   --object-path /org/deepin/ds/Dock \
   --method org.freedesktop.DBus.Properties.Get \
-  org.deepin.ds.Dock position
+  "org.deepin.ds.Dock" "position"
 ```
 
 设置示例：
@@ -92,12 +118,17 @@ gdbus call --session \
   --dest org.deepin.ds.Dock \
   --object-path /org/deepin/ds/Dock \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.ds.Dock position "<int32 0>"
+  "org.deepin.ds.Dock" "position" "<int32 0>"
 ```
 
 #### showInPrimary（属性）
 
 是否在主屏显示 Dock。
+
+- **功能**: 控制 Dock 面板是否仅在主显示器上显示
+- **触发条件**: 外部程序通过 Properties.Set 修改时更新
+- **使用场景**: 多显示器环境下，用户通过 Dock 设置控制 Dock 是否仅在主屏显示
+- **属性值**:
 
 | 属性 | 值 |
 |------|------|
@@ -111,7 +142,7 @@ gdbus call --session \
   --dest org.deepin.ds.Dock \
   --object-path /org/deepin/ds/Dock \
   --method org.freedesktop.DBus.Properties.Get \
-  org.deepin.ds.Dock showInPrimary
+  "org.deepin.ds.Dock" "showInPrimary"
 ```
 
 设置示例：
@@ -121,7 +152,7 @@ gdbus call --session \
   --dest org.deepin.ds.Dock \
   --object-path /org/deepin/ds/Dock \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.ds.Dock showInPrimary "<true>"
+  "org.deepin.ds.Dock" "showInPrimary" "<true>"
 ```
 
 ---

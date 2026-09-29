@@ -24,10 +24,10 @@ DDE Shell 框架主程序，是 DDE 桌面环境面板（panel）和小程序（
 |------|------|------------|
 | `-h, --help` | 显示命令行帮助 | 否 |
 | `-v, --version` | 显示版本信息 | 否 |
-| `-p <panel>` | 指定 panel 集合 | 是 |
-| `-C <category>` | 按 category 指定根 panel 集合 | 是 |
+| `-p <panel>` | 指定要加载的 panel 插件 ID（如 `org.deepin.ds.dock`），可重复指定多次以加载多个 panel | 是 |
+| `-C <category>` | 按插件 metadata 中的 Category 字段过滤根 panel 集合（如 `DDE`），可重复指定多次 | 是 |
 | `-t, --test` | 应用测试模式 | 否 |
-| `-d <disable-applet>` | 禁用指定 applet | 是 |
+| `-d <disable-applet>` | 禁用指定 applet，值为完整 applet 插件 ID，可重复指定多次以禁用多个 applet | 是 |
 | `--list` | 列出所有 applet | 否 |
 | `--sceneview` | 在场景中查看 applet（仅在无 Window 时生效） | 否 |
 | `--serviceName <serviceName>` | 注册 DBus 服务名（默认：`org.deepin.dde.shell`） | 是 |
@@ -36,19 +36,19 @@ DDE Shell 框架主程序，是 DDE 桌面环境面板（panel）和小程序（
 
 ```bash
 # 以指定插件（panel）启动 dde-shell，如加载 dock 面板
-dde-shell -p dock
+dde-shell -p org.deepin.ds.dock
 
-# 指定多个 panel 启动
-dde-shell -p dock,launcher
+# 指定多个 panel 启动（重复 -p 参数，而非逗号分隔）
+dde-shell -p org.deepin.ds.dock -p org.deepin.ds.notification
 
-# 按 category 指定根 panel 集合
-dde-shell -C main-panel
+# 按 category 指定根 panel 集合（Category 值见插件 metadata.json）
+dde-shell -C DDE
 
 # 列出所有可用的 applet
 dde-shell --list
 
-# 启动时禁用指定 applet（如禁用音量控制小程序）
-dde-shell -d volume
+# 启动时禁用指定 applet（如禁用音量 OSD 小程序）
+dde-shell -d org.deepin.ds.osd.audio
 
 # 以测试模式启动（用于开发调试）
 dde-shell -t

@@ -1,37 +1,13 @@
 ---
 name: dtk
-description: DTK 开发套件提供的跨进程文件拖拽 D-Bus 接口和 DTK 应用偏好与区域格式 DConfig 配置能力
+description: DTK（Deepin Tool Kit）是 Deepin 桌面环境的开发套件，提供 CLI 工具、D-Bus 接口和 DConfig 公共配置能力。本 skill 提供 DCI 图标打包解包查看、DCI 图标主题构建与查找、X11 窗口属性读写、KWin 调试信息输出、DConfig 配置 C++ 代码生成、D-Bus 接口 C++ 代码生成、DTK 设置翻译代码与 GSettings schema 生成、中文转拼音、系统信息查询、SVG 转 PNG 的 CLI 命令，DTK 应用间跨进程文件拖拽 D-Bus 接口，DTK 应用偏好 DConfig 配置（作用范围为 DTK 应用）和系统区域格式 DConfig 配置（作用范围为系统全局）
 Categories:
   - Develop
 ---
 
 # dtk
 
-DTK（Deepin Tool Kit）是 Deepin 桌面环境的开发套件。本 skill 描述 DTK 对外提供的 D-Bus 接口和 DConfig 公共配置能力。
-
-## D-Bus 接口
-
-### 文件拖拽服务
-
-提供跨进程文件拖拽交互能力。拖拽源进程在 Session 总线上注册此接口对象，文件接收方通过 D-Bus 与拖拽源通信，实现拖拽状态查询、进度同步和数据回传。接口使用动态 baseService（拖拽源进程的唯一连接名），接收方从拖拽 MIME 数据中获取 service 名称和会话 UUID 后调用。
-
-详见 [com.deepin.dtk.FileDrag](references/dbus/com.deepin.dtk.FileDrag.md)
-
-## DConfig 配置
-
-DTK 通过 DConfig 暴露两组公共配置资源（appId 为空，所有 DTK 应用共享）。
-
-### DTK 应用偏好配置
-
-控制以下 DTK 应用的外观与行为：主题、动画、滚动条、标题栏、新特性展示、菜单搜索、日志规则。
-
-详见 [org.deepin.dtk.preference](references/config/org.deepin.dtk.preference.md)
-
-### 区域格式配置
-
-控制以下系统的区域格式：语言、日期、时间、数字、货币、纸张。
-
-详见 [org.deepin.region-format](references/config/org.deepin.region-format.md)
+DTK（Deepin Tool Kit）是 Deepin 桌面环境的开发套件。本 skill 描述 DTK 对外提供的 CLI 命令、D-Bus 接口和 DConfig 公共配置能力。
 
 ## CLI 命令
 
@@ -40,12 +16,6 @@ DTK 通过 DConfig 暴露两组公共配置资源（appId 为空，所有 DTK �
 DCI 文件打包/解包工具，用于将符合 DCI 目录规范的图标目录打包为 `.dci` 文件，或将 `.dci` 文件导出为目录结构，还支持以树形结构查看 DCI 文件内容。
 
 详见 [dci.md](references/cli/dci.md)
-
-### dci-image-converter
-
-DCI 图片格式转换工具，用于在 DCI（Deepin Custom Image）格式与 alpha8 格式之间进行相互转换。
-
-详见 [dci-image-converter.md](references/cli/dci-image-converter.md)
 
 ### dci-icon-theme
 
@@ -58,12 +28,6 @@ DCI 图标主题构建工具，用于将普通的图标目录结构转换为 DCI
 DCI 图标查找工具，用于在已安装的 DCI 图标主题中搜索指定名称的图标文件。
 
 详见 [dci-iconfinder.md](references/cli/dci-iconfinder.md)
-
-### image-handler
-
-DTK 图片处理工具，支持图片旋转、应用滤镜效果、查看图片信息三项操作。
-
-详见 [image-handler.md](references/cli/image-handler.md)
 
 ### deepin-gui-settings
 
@@ -113,3 +77,27 @@ SVG 转 PNG 转换工具，将 SVG 矢量图渲染为 PNG 位图。
 
 详见 [dtk6-svgc.md](references/cli/dtk6-svgc.md)
 
+
+## D-Bus 接口
+
+### 文件拖拽服务
+
+提供跨进程文件拖拽交互能力。拖拽源进程在 Session 总线上注册此接口对象，文件接收方通过 D-Bus 与拖拽源通信，实现拖拽状态查询、进度同步和数据回传。接口使用动态 baseService（拖拽源进程的唯一连接名），接收方从拖拽 MIME 数据中获取 service 名称和会话 UUID 后调用。
+
+详见 [com.deepin.dtk.FileDrag](references/dbus/com.deepin.dtk.FileDrag.md)
+
+## DConfig 配置项
+
+DTK 通过 DConfig 暴露两组公共配置资源（appId 为空，所有 DTK 应用共享）。两组配置的作用范围不同：DTK 应用偏好配置仅作用于 DTK 应用，区域格式配置作用于系统全局。
+
+### DTK 应用偏好配置
+
+控制 DTK 应用的外观与行为：主题、动画、滚动条、标题栏、新特性展示、菜单搜索、日志规则。作用范围为 DTK 应用。
+
+详见 [org.deepin.dtk.preference](references/config/org.deepin.dtk.preference.md)
+
+### 区域格式配置
+
+控制系统的区域格式：语言、日期、时间、数字、货币、纸张。作用范围为系统全局。
+
+详见 [org.deepin.region-format](references/config/org.deepin.region-format.md)

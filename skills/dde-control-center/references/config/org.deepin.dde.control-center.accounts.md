@@ -4,9 +4,9 @@
 
 ## 配置项
 
-| Key | Name | Description | 类型 | Permissions |
-|---|---|---|---|---|
-| `avatarPath` | 用户头像路径 | 配置控制中心账户管理中当前用户的头像图片路径 | string | readwrite |
+| Key | Name | Description | 类型 | 取值范围 | Permissions | Flags |
+|---|---|---|---|---|---|---|
+| `avatarPath` | 用户头像路径 | 配置控制中心账户管理中当前用户的头像图片路径 | string | 字符串（文件路径） | readwrite | |
 
 ## 读写示例
 

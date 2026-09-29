@@ -40,17 +40,17 @@ DCI 图标主题构建工具，用于将普通的图标目录结构转换为 DCI
 
 ```bash
 # 将图标目录转换为 DCI 主题，输出到指定目录
-dci-icon-theme -o /tmp/dci-output/ /path/to/icon-source/
+/usr/libexec/dtk6/DGui/bin/dci-icon-theme -o /tmp/dci-output/ /path/to/icon-source/
 
 # 使用通配符匹配特定图标文件
-dci-icon-theme -m "*.png" -o /tmp/dci-output/ /path/to/icon-source/
+/usr/libexec/dtk6/DGui/bin/dci-icon-theme -m "*.png" -o /tmp/dci-output/ /path/to/icon-source/
 
 # 指定符号链接 CSV 文件
-dci-icon-theme -s symlinks.csv -o /tmp/dci-output/ /path/to/icon-source/
+/usr/libexec/dtk6/DGui/bin/dci-icon-theme -s symlinks.csv -o /tmp/dci-output/ /path/to/icon-source/
 
 # 自动为暗色主题创建符号链接
-dci-icon-theme --fix-dark-theme -o /tmp/dci-output/ /path/to/icon-source/
+/usr/libexec/dtk6/DGui/bin/dci-icon-theme --fix-dark-theme -o /tmp/dci-output/ /path/to/icon-source/
 
 # 指定缩放质量（2x 和 3x 分辨率的质量参数）
-dci-icon-theme -O "2=98:3=95" -o /tmp/dci-output/ /path/to/icon-source/
+/usr/libexec/dtk6/DGui/bin/dci-icon-theme -O "2=98:3=95" -o /tmp/dci-output/ /path/to/icon-source/
 ```

@@ -31,11 +31,11 @@ DDE 重置密码对话框，用于在用户忘记密码时提供密码重置功�
 
 ```bash
 # 为指定用户弹出重置密码对话框
-reset-password-dialog -u testuser
+/usr/lib/dde-control-center/reset-password-dialog -u testuser
 
 # 指定用户名和应用名
-reset-password-dialog -u testuser -a lightdm-deepin-greeter
+/usr/lib/dde-control-center/reset-password-dialog -u testuser -a lightdm-deepin-greeter
 
 # 使用文件描述符进行通信
-reset-password-dialog -u testuser -a lightdm-deepin-greeter --fd 3
+/usr/lib/dde-control-center/reset-password-dialog -u testuser -a lightdm-deepin-greeter --fd 3
 ```

@@ -4,9 +4,9 @@
 
 ## 配置项
 
-| Key | Name | Description | 类型 | Permissions |
-|---|---|---|---|---|
-| `customNtpServer` | 自定义 NTP 服务器 | 配置用于时间同步的自定义 NTP 服务器地址 | string | readwrite |
+| Key | Name | Description | 类型 | 取值范围 | Permissions | Flags |
+|---|---|---|---|---|---|---|
+| `customNtpServer` | 自定义 NTP 服务器 | 配置用于时间同步的自定义 NTP 服务器地址 | string | 字符串（NTP 服务器地址） | readwrite | |
 
 ## 读写示例
 

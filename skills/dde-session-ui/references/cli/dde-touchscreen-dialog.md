@@ -34,8 +34,8 @@ DDE 触摸屏校准对话框，用于触摸屏设备的校准操作。当系统�
 
 ```bash
 # 对指定触摸屏设备（UUID）启动校准对话框
-dde-touchscreen-dialog e6f1c2d3-4a5b-6c7d-8e9f-0a1b2c3d4e5f
+/usr/lib/deepin-daemon/dde-touchscreen-dialog e6f1c2d3-4a5b-6c7d-8e9f-0a1b2c3d4e5f
 
 # 不指定设备启动（系统自动选择触摸屏设备）
-dde-touchscreen-dialog
+/usr/lib/deepin-daemon/dde-touchscreen-dialog
 ```

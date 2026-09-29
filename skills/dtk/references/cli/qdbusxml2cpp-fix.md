@@ -45,23 +45,23 @@ D-Bus XML 转 C++ 代码生成器，是 Qt 自带 `qdbusxml2cpp` 的增强版本
 
 ```bash
 # 从 XML 文件生成代理代码
-qdbusxml2cpp-fix -p myproxy com.example.MyService.xml
+/usr/libexec/dtk6/DCore/bin/qdbusxml2cpp-fix -p myproxy com.example.MyService.xml
 
 # 从 XML 文件生成适配器代码
-qdbusxml2cpp-fix -a myadaptor com.example.MyService.xml
+/usr/libexec/dtk6/DCore/bin/qdbusxml2cpp-fix -a myadaptor com.example.MyService.xml
 
 # 指定类名生成代理代码
-qdbusxml2cpp-fix -c MyServiceProxy -p myproxy com.example.MyService.xml
+/usr/libexec/dtk6/DCore/bin/qdbusxml2cpp-fix -c MyServiceProxy -p myproxy com.example.MyService.xml
 
 # 生成适配器代码并指定父类
-qdbusxml2cpp-fix -a myadaptor -l QObject com.example.MyService.xml
+/usr/libexec/dtk6/DCore/bin/qdbusxml2cpp-fix -a myadaptor -l QObject com.example.MyService.xml
 
 # 跳过命名空间
-qdbusxml2cpp-fix -N -p myproxy com.example.MyService.xml
+/usr/libexec/dtk6/DCore/bin/qdbusxml2cpp-fix -N -p myproxy com.example.MyService.xml
 
 # 跳过 types/ 目录的 include 注解
-qdbusxml2cpp-fix -S -p myproxy com.example.MyService.xml
+/usr/libexec/dtk6/DCore/bin/qdbusxml2cpp-fix -S -p myproxy com.example.MyService.xml
 
 # 查看帮助信息
-qdbusxml2cpp-fix -h
+/usr/libexec/dtk6/DCore/bin/qdbusxml2cpp-fix -h
 ```

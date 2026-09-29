@@ -44,26 +44,26 @@ DTK GUI 设置工具，用于读写 X11 窗口属性设置。它可以直接操�
 
 ```bash
 # 获取指定窗口（ID 0x3a00006）的某个属性值
-deepin-gui-settings -w 0x3a00006 WM_NAME
+/usr/libexec/dtk6/DGui/bin/deepin-gui-settings -w 0x3a00006 WM_NAME
 
 # 通过鼠标在屏幕上选择窗口并获取属性
-deepin-gui-settings --select WM_NAME
+/usr/libexec/dtk6/DGui/bin/deepin-gui-settings --select WM_NAME
 
 # 使用窗口的 leader 窗口获取属性
-deepin-gui-settings --window-leader WM_NAME
+/usr/libexec/dtk6/DGui/bin/deepin-gui-settings --window-leader WM_NAME
 
 # 设置字符串类型的窗口属性
-deepin-gui-settings -w 0x3a00006 --set -s "My Window" WM_NAME
+/usr/libexec/dtk6/DGui/bin/deepin-gui-settings -w 0x3a00006 --set -s "My Window" WM_NAME
 
 # 设置整数类型的窗口属性
-deepin-gui-settings -w 0x3a00006 --set -i 100 _NET_WM_DESKTOP
+/usr/libexec/dtk6/DGui/bin/deepin-gui-settings -w 0x3a00006 --set -i 100 _NET_WM_DESKTOP
 
 # 设置颜色类型的窗口属性
-deepin-gui-settings -w 0x3a00006 --set -c "#FF0000" background-color
+/usr/libexec/dtk6/DGui/bin/deepin-gui-settings -w 0x3a00006 --set -c "#FF0000" background-color
 
 # 指定属性的域
-deepin-gui-settings -w 0x3a00006 -p my-domain WM_NAME
+/usr/libexec/dtk6/DGui/bin/deepin-gui-settings -w 0x3a00006 -p my-domain WM_NAME
 
 # 移除指定窗口属性
-deepin-gui-settings -w 0x3a00006 -r WM_NAME
+/usr/libexec/dtk6/DGui/bin/deepin-gui-settings -w 0x3a00006 -r WM_NAME
 ```

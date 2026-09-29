@@ -4,9 +4,9 @@
 
 ## 配置项
 
-| Key | Name | Description | 类型 | Permissions |
-|---|---|---|---|---|
-| `showDeviceManager` | 设备管理显示开关 | 控制是否在声音设置中显示设备管理入口，主要用于开启端口自动切换功能 | bool | readwrite |
+| Key | Name | Description | 类型 | 取值范围 | Permissions | Flags |
+|---|---|---|---|---|---|---|
+| `showDeviceManager` | 设备管理显示开关 | 控制是否在声音设置中显示设备管理入口，主要用于开启端口自动切换功能 | bool | true / false | readwrite | |
 
 ## 读写示例
 

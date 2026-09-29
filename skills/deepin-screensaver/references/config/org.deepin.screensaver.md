@@ -1,6 +1,13 @@
 # org.deepin.screensaver
 
-屏保主配置资源，管理当前使用的屏幕保护程序。
+屏保主配置资源，管理当前使用的屏幕保护程序。仅作用于 deepin-screensaver 自身应用。
+
+## 配置资源信息
+
+| 字段 | 值 |
+|------|------|
+| App ID | `org.deepin.screensaver` |
+| Resource ID | `org.deepin.screensaver` |
 
 ## 配置项
 

@@ -38,14 +38,14 @@ DCI 文件打包/解包工具，用于将符合 DCI 目录规范的图标目录�
 
 ```bash
 # 将图标目录打包为 DCI 文件（输出到 ~/Desktop/ 目录下生成 action_add.dci）
-dci --create ~/Desktop ~/Desktop/action_add
+/usr/libexec/dtk6/DCore/bin/dci --create ~/Desktop ~/Desktop/action_add
 
 # 将 DCI 文件导出为目录（输出到 ~/Desktop/ 目录下生成 action_add/ 目录）
-dci --export ~/Desktop ~/Desktop/action_add.dci
+/usr/libexec/dtk6/DCore/bin/dci --export ~/Desktop ~/Desktop/action_add.dci
 
 # 以树形结构查看 DCI 文件内容
-dci --tree ~/Desktop/action_add.dci
+/usr/libexec/dtk6/DCore/bin/dci --tree ~/Desktop/action_add.dci
 
 # 查看帮助信息
-dci --help
+/usr/libexec/dtk6/DCore/bin/dci --help
 ```

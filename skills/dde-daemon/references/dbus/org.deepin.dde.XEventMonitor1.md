@@ -6,26 +6,27 @@
 
 | 字段 | 值 |
 |------|------|
-| Service | `org.deepin.dde.XEventMonitor` |
-| Object path | `/com/deepin/daemon/XEventMonitor` |
+| Service | `org.deepin.dde.XEventMonitor1` |
+| Object path | `/org/deepin/dde/XEventMonitor1` |
 | Interface | `org.deepin.dde.XEventMonitor1` |
 | Bus | Session |
-
-> **待核验声明**：本文档接口信息基于源码静态分析，未经运行时 D-Bus 内省验证，标记为待核验。
-
 ### X 事件监控方法
 
 #### RegisterArea
 
 注册监控区域。
 
-- **输入参数**: `x`（int32, 类型 `i`）：X 坐标；`y`（int32, 类型 `i`）：Y 坐标；`width`（int32, 类型 `i`）：宽度；`height`（int32, 类型 `i`）：高度；`flags`（int32, 类型 `i`）：标志
-- **返回值**: `i`（int32）：区域 ID
+- **功能**：注册一个屏幕区域的全局 X 事件监控。
+- **触发条件**：当需要监控指定屏幕区域内的鼠标事件时调用。
+- **使用场景**：热区触发、屏幕边缘手势监控。
+
+- **输入参数**: `x1`（int32, 类型 `i`）：左上角 X 坐标；`y1`（int32, 类型 `i`）：左上角 Y 坐标；`x2`（int32, 类型 `i`）：右下角 X 坐标；`y2`（int32, 类型 `i`）：右下角 Y 坐标；`flag`（int32, 类型 `i`）：标志
+- **返回值**: `s`（string）：区域 ID
 
 ```bash
 gdbus call --session \
-  --dest org.deepin.dde.XEventMonitor \
-  --object-path /com/deepin/daemon/XEventMonitor \
+  --dest org.deepin.dde.XEventMonitor1 \
+  --object-path /org/deepin/dde/XEventMonitor1 \
   --method org.deepin.dde.XEventMonitor1.RegisterArea 0 0 100 100 0
 ```
 
@@ -33,13 +34,16 @@ gdbus call --session \
 
 取消注册监控区域。
 
-- **输入参数**: `id`（int32, 类型 `i`）：区域 ID
-- **返回值**: 无
+- **功能**：取消注册的屏幕区域 X 事件监控。
+- **触发条件**：当不再需要监控指定区域时调用。
+- **使用场景**：热区监控取消、区域监控清理。
+
+- **输入参数**: `id`（string, 类型 `s`）：区域 ID
+- **返回值**: `b`（bool）：是否成功取消
 
 ```bash
 gdbus call --session \
-  --dest org.deepin.dde.XEventMonitor \
-  --object-path /com/deepin/daemon/XEventMonitor \
-  --method org.deepin.dde.XEventMonitor1.UnregisterArea 1
+  --dest org.deepin.dde.XEventMonitor1 \
+  --object-path /org/deepin/dde/XEventMonitor1 \
+  --method org.deepin.dde.XEventMonitor1.UnregisterArea "region_id"
 ```
-

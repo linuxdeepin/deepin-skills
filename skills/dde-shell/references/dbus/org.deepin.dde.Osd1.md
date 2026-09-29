@@ -11,7 +11,34 @@
 | Interface | `org.deepin.dde.Osd1` |
 | Bus | Session |
 
-> **待核验声明**：本文档接口信息基于源码静态分析，未经运行时 D-Bus 内省验证，标记为待核验。
+## 接口关系
+
+dde-shell 的 OSD 面板在 Session 总线上注册了两个 D-Bus 接口，两者提供相同的 `ShowOSD` 方法，功能无差异：
+
+- `org.deepin.dde.Osd1`（本接口）— 注册在 object path `/`，拥有独立 service name `org.deepin.dde.Osd1`。
+- `org.deepin.dde.shell.osd` — 注册在 object path `/org/deepin/dde/shell/osd`，无独立 service name（使用 dde-shell 进程的 bus name，通常为 `org.deepin.dde.shell`）。
+
+两个接口为同一 OSD 功能的不同注册路径，不存在功能差异。`org.deepin.dde.Osd1` 拥有独立 service name，调用更稳定方便；`org.deepin.dde.shell.osd` 无独立 service name，需使用 dde-shell 进程的 bus name。
+
+**推荐使用**：`org.deepin.dde.Osd1`，因其拥有独立 service name，调用更稳定方便。
+
+### org.deepin.dde.shell.osd 接口
+
+| 字段 | 值 |
+|------|------|
+| Service | 无独立 service name（使用 dde-shell 进程的 bus name，通常为 `org.deepin.dde.shell`） |
+| Object path | `/org/deepin/dde/shell/osd` |
+| Interface | `org.deepin.dde.shell.osd` |
+| Bus | Session |
+
+该接口提供与 `org.deepin.dde.Osd1` 相同的 `ShowOSD` 方法，调用示例：
+
+```bash
+gdbus call --session \
+  --dest org.deepin.dde.shell \
+  --object-path /org/deepin/dde/shell/osd \
+  --method org.deepin.dde.shell.osd.ShowOSD "SwitchWM3D"
+```
 
 ## 方法、属性与信号
 
@@ -19,13 +46,16 @@
 
 #### ShowOSD
 
-显示 OSD 提示。
+根据 OSD 类型标识触发对应的屏幕提示显示。
 
+- **功能**: 根据 OSD 类型标识触发对应的屏幕提示显示
+- **触发条件**: 系统服务或硬件事件（如音量键、亮度键、快捷键）需要展示 OSD 时调用
+- **使用场景**: 音量调节、亮度调节、WLAN 开关、飞行模式切换、电源模式切换、窗口特效切换、大写锁定开关、数字键盘开关、触摸板开关、Fn 键切换、麦克风静音切换、摄像头开关、显示器切换、键盘布局切换
 - **输入参数**:
   - `text`（string, 类型 `s`）：OSD 类型标识
 - **返回值**: 无
 
-**支持的选项**（来源于 dde-shell 源码 `panels/notification/osd/` 下各 applet 的 `match()` / `types` / `osdTypeModel`）:
+**支持的选项**（对应系统服务和硬件事件触发的 OSD 类型）:
 
 音频：
 - `AudioUp` — 音量增大

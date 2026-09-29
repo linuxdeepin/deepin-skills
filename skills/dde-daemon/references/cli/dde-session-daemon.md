@@ -7,7 +7,7 @@ DDE 会话守护进程，是 DDE 桌面会话中运行的后台核心服务。
 | 字段 | 值 |
 |------|------|
 | 所属包名 | `dde-daemon` |
-| 安装路径 | `/usr/lib/deepin-daemon/dde-session-daemon` |
+| 安装路径 | `/usr/libexec/deepin/dde-session-daemon` |
 | DDE 角色 | 系统核心守护进程，会话启动时自动运行 |
 
 ## 用途
@@ -16,7 +16,7 @@ DDE 会话守护进程，是 DDE 桌面会话中运行的后台核心服务。�
 
 ## 用法
 
-`dde-session-daemon [options]`
+`/usr/libexec/deepin/dde-session-daemon [options]`
 
 ## 参数
 
@@ -34,29 +34,29 @@ DDE 会话守护进程，是 DDE 桌面会话中运行的后台核心服务。�
 
 ```bash
 # 正常启动会话守护进程（默认日志级别 info）
-dde-session-daemon
+/usr/libexec/deepin/dde-session-daemon
 
 # 以 debug 日志级别启动（输出详细调试信息）
-dde-session-daemon -l debug
+/usr/libexec/deepin/dde-session-daemon -l debug
 
 # 使用简写方式启用详细输出
-dde-session-daemon -v
+/usr/libexec/deepin/dde-session-daemon -v
 
 # 列出所有已注册的模块
-dde-session-daemon -list all
+/usr/libexec/deepin/dde-session-daemon -list all
 
 # 列出指定模块的依赖关系
-dde-session-daemon -list network
+/usr/libexec/deepin/dde-session-daemon -list network
 
 # 启用指定模块及其依赖
-dde-session-daemon -enable network,bluetooth
+/usr/libexec/deepin/dde-session-daemon -enable network,bluetooth
 
 # 禁用指定模块
-dde-session-daemon -disable bluetooth
+/usr/libexec/deepin/dde-session-daemon -disable bluetooth
 
 # 强制启动已禁用的模块
-dde-session-daemon -f
+/usr/libexec/deepin/dde-session-daemon -f
 
 # 忽略缺失模块启动（默认行为，显式指定）
-dde-session-daemon -i
+/usr/libexec/deepin/dde-session-daemon -i
 ```

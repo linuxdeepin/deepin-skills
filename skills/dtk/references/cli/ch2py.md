@@ -36,14 +36,14 @@
 
 ```bash
 # 将中文转换为带声调的拼音（默认）
-ch2py 你好世界
+/usr/libexec/dtk6/DCore/bin/ch2py 你好世界
 
 # 转换为不带声调的拼音
-ch2py --tonestyle notones 你好世界
+/usr/libexec/dtk6/DCore/bin/ch2py --tonestyle notones 你好世界
 
 # 转换为数字声调的拼音
-ch2py -s numtones 你好世界
+/usr/libexec/dtk6/DCore/bin/ch2py -s numtones 你好世界
 
 # 仅输出拼音首字母
-ch2py --letters 你好世界
+/usr/libexec/dtk6/DCore/bin/ch2py --letters 你好世界
 ```

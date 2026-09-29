@@ -7,7 +7,7 @@
 | 字段 | 值 |
 |------|------|
 | 所属包名 | `dde-daemon` |
-| 安装路径 | `/usr/lib/deepin-daemon/langselector` |
+| 安装路径 | `/usr/libexec/deepin/langselector` |
 | DDE 角色 | 系统语言和区域设置管理服务 |
 
 ## 用途

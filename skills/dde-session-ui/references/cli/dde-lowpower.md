@@ -30,11 +30,11 @@ DDE 低电量提示工具，当系统检测到电池电量低于阈值时弹出�
 
 ```bash
 # 正常启动低电量提示窗口
-dde-lowpower
+/usr/lib/deepin-daemon/dde-lowpower
 
 # 提升窗口到最前显示（强制置顶）
-dde-lowpower --raise
+/usr/lib/deepin-daemon/dde-lowpower --raise
 
 # 退出所有正在运行的 dde-lowpower 实例
-dde-lowpower --quit
+/usr/lib/deepin-daemon/dde-lowpower --quit
 ```

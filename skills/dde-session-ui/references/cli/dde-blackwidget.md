@@ -34,8 +34,8 @@ DDE 黑屏部件工具，用于在特定场景下显示全屏黑色遮罩窗口�
 
 ```bash
 # 正常启动黑屏部件（使用 DBus 通信）
-dde-blackwidget
+/usr/lib/deepin-daemon/dde-blackwidget
 
 # 以无 DBus 模式启动（独立运行，不通过 DBus 控制）
-dde-blackwidget nodbus
+/usr/lib/deepin-daemon/dde-blackwidget nodbus
 ```

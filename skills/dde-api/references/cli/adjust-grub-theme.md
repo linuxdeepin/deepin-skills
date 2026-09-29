@@ -16,7 +16,7 @@ GRUB 主题调整工具，用于根据屏幕分辨率和语言环境自动调整
 
 ## 用法
 
-`adjust-grub-theme [options]`
+`/usr/lib/deepin-api/adjust-grub-theme [options]`
 
 ## 参数
 
@@ -38,26 +38,26 @@ GRUB 主题调整工具，用于根据屏幕分辨率和语言环境自动调整
 
 ```bash
 # 根据当前屏幕分辨率 1920x1080 调整 GRUB 主题
-adjust-grub-theme -width 1920 -height 1080
+/usr/lib/deepin-api/adjust-grub-theme -width 1920 -height 1080
 
 # 指定屏幕分辨率和语言环境
-adjust-grub-theme -width 1920 -height 1080 -lang zh_CN
+/usr/lib/deepin-api/adjust-grub-theme -width 1920 -height 1080 -lang zh_CN
 
 # 使用自定义主题输入和输出目录
-adjust-grub-theme -width 2560 -height 1440 -theme-input /opt/my-grub-themes/ -theme-output /tmp/grub-output/
+/usr/lib/deepin-api/adjust-grub-theme -width 2560 -height 1440 -theme-input /opt/my-grub-themes/ -theme-output /tmp/grub-output/
 
 # 设置 GRUB 背景图片（隐藏选项）
-adjust-grub-theme -width 1920 -height 1080 -set-background /usr/share/backgrounds/grub-bg.png
+/usr/lib/deepin-api/adjust-grub-theme -width 1920 -height 1080 -set-background /usr/share/backgrounds/grub-bg.png
 
 # 调整终端字体大小和名称
-adjust-grub-theme -width 1920 -height 1080 -tf-size 16 -tf-name "DejaVu Sans Mono"
+/usr/lib/deepin-api/adjust-grub-theme -width 1920 -height 1080 -tf-size 16 -tf-name "DejaVu Sans Mono"
 
 # 仅使用后备主题
-adjust-grub-theme -width 1920 -height 1080 -fallback-only
+/usr/lib/deepin-api/adjust-grub-theme -width 1920 -height 1080 -fallback-only
 
 # 记录到 syslog（隐藏选项，用于系统日志记录）
-adjust-grub-theme -width 1920 -height 1080 -log-sys
+/usr/lib/deepin-api/adjust-grub-theme -width 1920 -height 1080 -log-sys
 
 # 查看版本信息
-adjust-grub-theme -version
+/usr/lib/deepin-api/adjust-grub-theme -version
 ```

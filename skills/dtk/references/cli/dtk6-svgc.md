@@ -38,23 +38,23 @@ SVG 转 PNG 转换工具，将 SVG 矢量图渲染为 PNG 位图。支持通过 
 
 ```bash
 # 将 SVG 转为 PNG（默认尺寸和渲染器）
-dtk6-svgc icon.svg icon.png
+/usr/libexec/dtk6/DWidget/bin/dtk6-svgc icon.svg icon.png
 
 # 指定输出尺寸为 100x200
-dtk6-svgc -s 100x200 icon.svg icon.png
+/usr/libexec/dtk6/DWidget/bin/dtk6-svgc -s 100x200 icon.svg icon.png
 
 # 仅指定宽度，高度按比例缩放
-dtk6-svgc -s 100x icon.svg icon.png
+/usr/libexec/dtk6/DWidget/bin/dtk6-svgc -s 100x icon.svg icon.png
 
 # 仅指定高度，宽度按比例缩放
-dtk6-svgc -s x200 icon.svg icon.png
+/usr/libexec/dtk6/DWidget/bin/dtk6-svgc -s x200 icon.svg icon.png
 
 # 使用 DTK 增强渲染器
-dtk6-svgc -r DSvgRenderer icon.svg icon.png
+/usr/libexec/dtk6/DWidget/bin/dtk6-svgc -r DSvgRenderer icon.svg icon.png
 
 # 使用 2 倍缩放因子
-dtk6-svgc -f 2.0 icon.svg icon.png
+/usr/libexec/dtk6/DWidget/bin/dtk6-svgc -f 2.0 icon.svg icon.png
 
 # 查看帮助信息
-dtk6-svgc --help
+/usr/libexec/dtk6/DWidget/bin/dtk6-svgc --help
 ```

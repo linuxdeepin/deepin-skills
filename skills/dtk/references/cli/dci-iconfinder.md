@@ -36,14 +36,14 @@ DCI 图标查找工具，用于在已安装的 DCI 图标主题中搜索指定�
 
 ```bash
 # 在默认主题中搜索指定图标
-dci-iconfinder preferences-system
+/usr/libexec/dtk6/DGui/bin/dci-iconfinder preferences-system
 
 # 在指定主题中搜索图标
-dci-iconfinder -t bloom preferences-system
+/usr/libexec/dtk6/DGui/bin/dci-iconfinder -t bloom preferences-system
 
 # 同时搜索多个图标
-dci-iconfinder -t bloom preferences-system folder-open document-new
+/usr/libexec/dtk6/DGui/bin/dci-iconfinder -t bloom preferences-system folder-open document-new
 
 # 查看版本信息
-dci-iconfinder --version
+/usr/libexec/dtk6/DGui/bin/dci-iconfinder --version
 ```

@@ -43,21 +43,21 @@
 
 ```bash
 # 输出所有系统信息
-deepin-os-release --all
+/usr/libexec/dtk6/DCore/bin/deepin-os-release --all
 
 # 查询 deepin 版本号
-deepin-os-release --deepin-version
+/usr/libexec/dtk6/DCore/bin/deepin-os-release --deepin-version
 
 # 查询 CPU 型号
-deepin-os-release --cpu-model
+/usr/libexec/dtk6/DCore/bin/deepin-os-release --cpu-model
 
 # 查询内存大小（GiB）
-deepin-os-release --memory-size
+/usr/libexec/dtk6/DCore/bin/deepin-os-release --memory-size
 
 # 查询产品类型和版本
-deepin-os-release --product-type
-deepin-os-release --product-version
+/usr/libexec/dtk6/DCore/bin/deepin-os-release --product-type
+/usr/libexec/dtk6/DCore/bin/deepin-os-release --product-version
 
 # 查看帮助信息
-deepin-os-release --help
+/usr/libexec/dtk6/DCore/bin/deepin-os-release --help
 ```

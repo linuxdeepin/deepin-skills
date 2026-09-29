@@ -37,14 +37,14 @@ DTK 设置工具，用于从 DTK 设置 JSON 配置文件生成翻译代码（C+
 
 ```bash
 # 从 JSON 配置生成翻译 C++ 代码
-dtk-settings -o settings_translate.cpp config.json
+/usr/libexec/dtk6/DCore/bin/dtk-settings -o settings_translate.cpp config.json
 
 # 从 JSON 配置生成 GSettings schema XML
-dtk-settings -g schema.xml config.json
+/usr/libexec/dtk6/DCore/bin/dtk-settings -g schema.xml config.json
 
 # 同时生成翻译代码和 GSettings schema
-dtk-settings -o settings_translate.cpp -g schema.xml config.json
+/usr/libexec/dtk6/DCore/bin/dtk-settings -o settings_translate.cpp -g schema.xml config.json
 
 # 查看帮助信息
-dtk-settings --help
+/usr/libexec/dtk6/DCore/bin/dtk-settings --help
 ```

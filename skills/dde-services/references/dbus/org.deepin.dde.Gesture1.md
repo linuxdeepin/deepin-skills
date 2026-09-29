@@ -11,16 +11,17 @@
 | Interface | `org.deepin.dde.Gesture1` |
 | Bus | Session |
 
-> **待核验声明**：本文档接口信息基于源码静态分析，未经运行时 D-Bus 内省验证，标记为待核验。
-
 ### 手势查询与修改
 
 #### ListAllGestures
 
 列出所有手势。
 
-- **输入参数**: 无
-- **返回值**: `a(GestureInfo)`：手势信息数组
+- **功能**：返回系统中所有已注册的手势信息列表
+- **触发条件**：控制中心手势设置页面加载手势列表时调用
+- **输入参数**：无
+- **返回值**：`a(GestureInfo)`：手势信息数组
+- **使用场景**：控制中心手势设置页面加载手势列表时调用
 
 ```bash
 gdbus call --session \
@@ -33,8 +34,11 @@ gdbus call --session \
 
 修改手势动作。
 
-- **输入参数**: `id`（string, 类型 `s`）：手势 ID；`action`（string 数组, 类型 `as`）：动作
-- **返回值**: `b`（bool）：是否成功
+- **功能**：将指定手势 ID 绑定的动作修改为新动作
+- **触发条件**：用户在控制中心修改手势绑定的操作时调用
+- **输入参数**：`id`（string, 类型 `s`）：手势 ID；`action`（string 数组, 类型 `as`）：动作
+- **返回值**：`b`（bool）：是否成功
+- **使用场景**：用户在控制中心修改手势绑定的操作时调用
 
 ```bash
 gdbus call --session \
@@ -47,10 +51,11 @@ gdbus call --session \
 
 获取手势可用动作。
 
-> **待核验**: `actionType` 参数支持固定的动作类型选项，具体选项值待核验源码确认。
-
-- **输入参数**: `actionType`（string, 类型 `s`）：动作类型；`fingerNum`（int32, 类型 `i`）：手指数
-- **返回值**: `s`（string）：可用动作 JSON
+- **功能**：根据动作类型和手指数返回该手势可绑定的所有可用动作列表
+- **触发条件**：控制中心手势设置页面展示可选动作列表时调用
+- **输入参数**：`actionType`（string, 类型 `s`）：动作类型；`fingerNum`（int32, 类型 `i`）：手指数
+- **返回值**：`s`（string）：可用动作 JSON
+- **使用场景**：控制中心手势设置页面展示可选动作列表时调用
 
 ```bash
 gdbus call --session \
@@ -59,15 +64,16 @@ gdbus call --session \
   --method org.deepin.dde.Gesture1.GetGestureAvaiableActions "swipe" 3
 ```
 
-
 ### 手势信号
 
 #### GestureInfosChanged
 
 手势信息变化时发出。
 
-- **参数**: 无
-- **触发条件**: 手势配置变化时发出
+- **功能**：通知手势配置信息已发生变化
+- **参数**：无
+- **触发条件**：手势配置被修改或重置时发出
+- **使用场景**：UI 监听此信号以刷新手势列表显示
 
 ```bash
 gdbus monitor --session \
@@ -79,8 +85,10 @@ gdbus monitor --session \
 
 手势激活时发出。
 
-- **参数**: `id`（string, 类型 `s`）：手势 ID；`params`（string 数组, 类型 `as`）：参数
-- **触发条件**: 手势被触发时发出
+- **功能**：通知一个手势被触发并执行了对应动作
+- **参数**：`id`（string, 类型 `s`）：手势 ID；`params`（string 数组, 类型 `as`）：参数
+- **触发条件**：用户执行触控板手势操作时发出
+- **使用场景**：调试或日志记录手势触发情况
 
 ```bash
 gdbus monitor --session \

@@ -39,14 +39,14 @@ DConfig 转 C++ 代码生成器，从 DConfig JSON 配置文件生成 C++ 头文
 
 ```bash
 # 从 JSON 配置生成 C++ 头文件
-dconfig2cpp -c MyConfig -o myconfig.h config.json
+/usr/libexec/dtk6/DCore/bin/dconfig2cpp -c MyConfig -o myconfig.h config.json
 
 # 生成不含注释的代码
-dconfig2cpp -c MyConfig -o myconfig.h --no-comment config.json
+/usr/libexec/dtk6/DCore/bin/dconfig2cpp -c MyConfig -o myconfig.h --no-comment config.json
 
 # 强制请求线程创建 DConfig 实例
-dconfig2cpp -c MyConfig -o myconfig.h --force-request-thread config.json
+/usr/libexec/dtk6/DCore/bin/dconfig2cpp -c MyConfig -o myconfig.h --force-request-thread config.json
 
 # 查看帮助信息
-dconfig2cpp --help
+/usr/libexec/dtk6/DCore/bin/dconfig2cpp --help
 ```

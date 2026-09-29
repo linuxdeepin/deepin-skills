@@ -16,7 +16,7 @@
 
 ## 用法
 
-`image-blur [options] <input> <output>`
+`/usr/lib/deepin-api/image-blur [options] <input> <output>`
 
 ## 参数
 
@@ -35,11 +35,11 @@
 
 ```bash
 # 使用默认模糊强度（20.0）处理图片
-image-blur /home/user/wallpaper.jpg /tmp/wallpaper-blurred.jpg
+/usr/lib/deepin-api/image-blur /home/user/wallpaper.jpg /tmp/wallpaper-blurred.jpg
 
 # 指定模糊强度为 10.0（较轻微的模糊）
-image-blur -sigma 10.0 /home/user/wallpaper.jpg /tmp/wallpaper-blurred.jpg
+/usr/lib/deepin-api/image-blur -sigma 10.0 /home/user/wallpaper.jpg /tmp/wallpaper-blurred.jpg
 
 # 指定模糊强度为 50.0（较强的模糊效果）
-image-blur -sigma 50.0 /home/user/wallpaper.jpg /tmp/wallpaper-blurred.jpg
+/usr/lib/deepin-api/image-blur -sigma 50.0 /home/user/wallpaper.jpg /tmp/wallpaper-blurred.jpg
 ```

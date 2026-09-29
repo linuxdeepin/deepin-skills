@@ -6,26 +6,44 @@
 
 | 字段 | 值 |
 |------|------|
-| Service | `org.deepin.dde.EventLog` |
-| Object path | `/com/deepin/daemon/EventLog` |
+| Service | `org.deepin.dde.EventLog1` |
+| Object path | `/org/deepin/dde/EventLog1` |
 | Interface | `org.deepin.dde.EventLog1` |
 | Bus | Session |
-
-> **待核验声明**：本文档接口信息基于源码静态分析，未经运行时 D-Bus 内省验证，标记为待核验。
-
 ### 事件日志方法
 
-#### WriteEventLog
+#### Enable
 
-写入事件日志。
+启用或禁用事件日志记录。
 
-- **输入参数**: `event`（string, 类型 `s`）：事件 JSON 字符串
+- **功能**：启用或禁用事件日志记录。
+- **触发条件**：当需要开启或关闭系统事件日志记录时调用。
+- **使用场景**：系统事件日志记录开关控制。
+
+- **输入参数**: `enable`（bool, 类型 `b`）：是否启用事件日志记录
 - **返回值**: 无
 
 ```bash
 gdbus call --session \
-  --dest org.deepin.dde.EventLog \
-  --object-path /com/deepin/daemon/EventLog \
-  --method org.deepin.dde.EventLog1.WriteEventLog "{}"
+  --dest org.deepin.dde.EventLog1 \
+  --object-path /org/deepin/dde/EventLog1 \
+  --method org.deepin.dde.EventLog1.Enable true
 ```
 
+#### ReportLog
+
+上报事件日志。
+
+- **功能**：上报日志信息。
+- **触发条件**：当应用需要上报事件日志时调用。
+- **使用场景**：应用事件日志上报记录。
+
+- **输入参数**: `log`（string, 类型 `s`）：事件 JSON 字符串
+- **返回值**: 无
+
+```bash
+gdbus call --session \
+  --dest org.deepin.dde.EventLog1 \
+  --object-path /org/deepin/dde/EventLog1 \
+  --method org.deepin.dde.EventLog1.ReportLog "{}"
+```
