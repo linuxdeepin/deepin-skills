@@ -26,3 +26,19 @@ dde-dconfig get -a org.deepin.dde.tray-loader -r org.deepin.dde.dock.plugin.powe
 # 设置充电保护阈值
 dde-dconfig set -a org.deepin.dde.tray-loader -r org.deepin.dde.dock.plugin.power -k chargingProtectThreshold -v 85
 ```
+
+```bash
+# 查询电池时间信息显示开关
+dde-dconfig get -a org.deepin.dde.tray-loader -r org.deepin.dde.dock.plugin.power -k showTimeToFull
+```
+
+输出示例：
+
+```
+true
+```
+
+```bash
+# 设置电池时间信息显示开关
+dde-dconfig set -a org.deepin.dde.tray-loader -r org.deepin.dde.dock.plugin.power -k showTimeToFull -v false
+```

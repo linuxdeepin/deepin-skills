@@ -160,7 +160,7 @@ gdbus call --session \
 - **功能**: 标识屏幕保护程序当前是否处于运行状态。
 - **触发条件**: 屏保启动时变为 `true`，停止时变为 `false`。
 - **使用场景**: 判断当前屏保运行状态时使用。
-- **信号关联**: 屏保启动（调用 `Start` 或 `Preview` 方法）或停止（调用 `Stop` 方法）时触发 `isRunningChanged` 信号。
+- **信号关联**（已废弃/不推荐使用）: 屏保启动（调用 `Start` 或 `Preview` 方法）或停止（调用 `Stop` 方法）时触发 `isRunningChanged` 信号。该信号未在 D-Bus 内省 XML 中声明，属性变化通过 `org.freedesktop.DBus.Properties.PropertiesChanged` 信号通知。
 
 | 属性 | 值 |
 |------|------|
@@ -184,7 +184,7 @@ gdbus call --session \
 - **功能**: 获取或设置当前正在使用的屏保名称。
 - **触发条件**: 用户切换屏保时属性值更新。
 - **使用场景**: 获取或设置当前使用的屏保时使用。
-- **信号关联**: 设置该属性后会触发 `currentScreenSaverChanged` 信号。
+- **信号关联**（已废弃/不推荐使用）: 设置该属性后会触发 `currentScreenSaverChanged` 信号。该信号未在 D-Bus 内省 XML 中声明，属性变化通过 `org.freedesktop.DBus.Properties.PropertiesChanged` 信号通知。
 
 | 属性 | 值 |
 |------|------|
@@ -218,7 +218,7 @@ gdbus call --session \
 - **功能**: 返回系统中所有已安装的屏保名称列表。
 - **触发条件**: 安装或卸载屏保应用后属性值更新。
 - **使用场景**: 获取系统中所有可用屏保列表时使用。
-- **信号关联**: 调用 `RefreshScreenSaverList` 方法刷新屏保列表后触发 `allScreenSaverChanged` 信号。
+- **信号关联**（已废弃/不推荐使用）: 调用 `RefreshScreenSaverList` 方法刷新屏保列表后触发 `allScreenSaverChanged` 信号。该信号未在 D-Bus 内省 XML 中声明，属性变化通过 `org.freedesktop.DBus.Properties.PropertiesChanged` 信号通知。
 
 | 属性 | 值 |
 |------|------|
@@ -242,7 +242,7 @@ gdbus call --session \
 - **功能**: 获取或设置电池供电时屏保启动的空闲超时时间（单位：秒）。
 - **触发条件**: 用户在电源设置中修改时更新。
 - **使用场景**: 获取或设置电池模式下的屏保启动延迟时间时使用。
-- **信号关联**: 设置该属性后会触发 `batteryScreenSaverTimeoutChanged` 信号。
+- **信号关联**（已废弃/不推荐使用）: 设置该属性后会触发 `batteryScreenSaverTimeoutChanged` 信号。该信号未在 D-Bus 内省 XML 中声明，属性变化通过 `org.freedesktop.DBus.Properties.PropertiesChanged` 信号通知。
 
 | 属性 | 值 |
 |------|------|
@@ -276,7 +276,7 @@ gdbus call --session \
 - **功能**: 获取或设置交流电源供电时屏保启动的空闲超时时间（单位：秒）。
 - **触发条件**: 用户在电源设置中修改时更新。
 - **使用场景**: 获取或设置交流电源模式下的屏保启动延迟时间时使用。
-- **信号关联**: 设置该属性后会触发 `linePowerScreenSaverTimeoutChanged` 信号。
+- **信号关联**（已废弃/不推荐使用）: 设置该属性后会触发 `linePowerScreenSaverTimeoutChanged` 信号。该信号未在 D-Bus 内省 XML 中声明，属性变化通过 `org.freedesktop.DBus.Properties.PropertiesChanged` 信号通知。
 
 | 属性 | 值 |
 |------|------|
@@ -310,7 +310,7 @@ gdbus call --session \
 - **功能**: 控制从屏保唤醒后是否自动锁定屏幕。
 - **触发条件**: 用户在锁屏设置中修改时更新。
 - **使用场景**: 控制从屏保唤醒后是否自动锁定屏幕时使用。
-- **信号关联**: 设置该属性后会触发 `lockScreenAtAwakeChanged` 信号。
+- **信号关联**（已废弃/不推荐使用）: 设置该属性后会触发 `lockScreenAtAwakeChanged` 信号。该信号未在 D-Bus 内省 XML 中声明，属性变化通过 `org.freedesktop.DBus.Properties.PropertiesChanged` 信号通知。
 
 | 属性 | 值 |
 |------|------|
@@ -344,7 +344,7 @@ gdbus call --session \
 - **功能**: 从屏幕保护启动开始到一定时间段内唤醒不锁定屏幕，超过该时间段后唤醒才锁定屏幕（单位：秒）。
 - **触发条件**: 用户在锁屏设置中修改时更新。
 - **使用场景**: 控制屏保启动后到锁定屏幕的延迟时间时使用。
-- **信号关联**: 设置该属性后会触发 `lockScreenDelayChanged` 信号。
+- **信号关联**（已废弃/不推荐使用）: 设置该属性后会触发 `lockScreenDelayChanged` 信号。该信号未在 D-Bus 内省 XML 中声明，属性变化通过 `org.freedesktop.DBus.Properties.PropertiesChanged` 信号通知。
 
 | 属性 | 值 |
 |------|------|
@@ -373,7 +373,11 @@ gdbus call --session \
 
 ## 信号
 
+> **注意**：以下信号均为已废弃/不推荐使用的信号。这些信号未在 D-Bus 内省 XML（`com.deepin.ScreenSaver.xml`）中声明，但在 C++ 源码中仍通过 `Q_PROPERTY ... NOTIFY` 定义并发射。属性变化实际通过标准 `org.freedesktop.DBus.Properties.PropertiesChanged` 信号通知，建议监听该标准信号而非以下废弃信号。
+
 ### allScreenSaverChanged(QStringList)
+
+> 已废弃/不推荐使用
 
 屏保列表发生变化时触发。
 
@@ -384,6 +388,8 @@ gdbus call --session \
 
 ### batteryScreenSaverTimeoutChanged(int)
 
+> 已废弃/不推荐使用
+
 电池模式下屏保超时时间发生变化时触发。
 
 - **功能**: 通知电池模式下屏保超时时间已发生变化。
@@ -392,6 +398,8 @@ gdbus call --session \
 - **关联属性**: `batteryScreenSaverTimeout`（读写）
 
 ### linePowerScreenSaverTimeoutChanged(int)
+
+> 已废弃/不推荐使用
 
 交流电源模式下屏保超时时间发生变化时触发。
 
@@ -402,6 +410,8 @@ gdbus call --session \
 
 ### currentScreenSaverChanged(QString)
 
+> 已废弃/不推荐使用
+
 当前使用的屏保发生变化时触发。
 
 - **功能**: 通知当前使用的屏保已切换。
@@ -410,6 +420,8 @@ gdbus call --session \
 - **关联属性**: `currentScreenSaver`（读写）
 
 ### isRunningChanged(bool)
+
+> 已废弃/不推荐使用
 
 屏保运行状态发生变化时触发。
 
@@ -420,6 +432,8 @@ gdbus call --session \
 
 ### lockScreenAtAwakeChanged(bool)
 
+> 已废弃/不推荐使用
+
 唤醒时是否锁定屏幕的设置发生变化时触发。
 
 - **功能**: 通知唤醒时是否锁定屏幕的设置已发生变化。
@@ -428,6 +442,8 @@ gdbus call --session \
 - **关联属性**: `lockScreenAtAwake`（读写）
 
 ### lockScreenDelayChanged(int)
+
+> 已废弃/不推荐使用
 
 锁定屏幕延迟时间发生变化时触发。
 

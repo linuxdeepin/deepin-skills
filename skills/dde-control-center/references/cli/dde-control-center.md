@@ -7,17 +7,11 @@ DDE 控制中心主程序，是 DDE 桌面环境中用于系统设置管理的�
 | 字段 | 值 |
 |------|------|
 | 所属包名 | `dde-control-center` |
-| 安装路径（包装器） | `/usr/bin/dde-control-center` |
+| 安装路径 | `/usr/bin/dde-control-center` |
 | 实际二进制 | `/usr/libexec/deepin/dde-control-center` |
 | DDE 角色 | 用户直接使用的系统设置 GUI 工具；同时被包括 dde-shell 在内的组件通过 DBus 调用以打开特定设置页 |
 
-## 路径说明
-
-`/usr/bin/dde-control-center` 是一个 bash 脚本包装器（wrapper），并非实际的二进制程序。实际执行的二进制位于 `/usr/libexec/deepin/dde-control-center`。
-
-该包装器为满足安全执行要求，使用了加载器机制来启动实际二进制。由于此包装机制，`/usr/bin/dde-control-center` 不会有终端输出，因此 `--help`、`--help-all`、`-v`（版本信息）这些功能无法通过 `/usr/bin/dde-control-center` 获取输出。
-
-如需获取终端输出（如帮助信息、版本信息），应直接使用实际二进制 `/usr/libexec/deepin/dde-control-center`。
+`/usr/bin/dde-control-center` 是一个 bash 脚本包装器，实际二进制位于 `/usr/libexec/deepin/dde-control-center`。该包装器通过加载器（loader）启动实际二进制，以满足安全执行要求。由于实际二进制通过加载器启动，`--help`、`--help-all`、`-v`（`--version`）选项无法产生终端输出，因此不提供相关示例。
 
 ## 用途
 
@@ -25,16 +19,12 @@ DDE 控制中心主程序，是 DDE 桌面环境中用于系统设置管理的�
 
 ## 用法
 
-- GUI 启动（通过包装器）：`/usr/bin/dde-control-center [options]`
-- 获取终端输出（直接使用实际二进制）：`/usr/libexec/deepin/dde-control-center [options]`
+`/usr/bin/dde-control-center [options]`
 
 ## 参数
 
 | 选项 | 说明 | 是否需要值 |
 |------|------|------------|
-| `-h, --help` | 显示命令行帮助 | 否 |
-| `--help-all` | 显示所有选项，包括 Qt 通用选项 | 否 |
-| `-v, --version` | 显示版本信息 | 否 |
 | `-s, --show` | 显示控制中心（默认隐藏） | 否 |
 | `-t, --toggle` | 切换控制中心可见性 | 否 |
 | `-d, --dbus` | 以 DBus 模式启动 | 否 |
@@ -70,17 +60,7 @@ DDE 控制中心主程序，是 DDE 桌面环境中用于系统设置管理的�
 
 # 从自定义目录加载插件
 /usr/bin/dde-control-center --spec /opt/my-plugins/
-
-# 查看命令行帮助（须使用实际二进制，包装器无终端输出）
-/usr/libexec/deepin/dde-control-center --help
-
-# 查看所有选项（包括 Qt 通用选项，须使用实际二进制）
-/usr/libexec/deepin/dde-control-center --help-all
-
-# 查看版本信息（须使用实际二进制）
-/usr/libexec/deepin/dde-control-center -v
 ```
 
 > 注意：
 > - `dde-control-center` 是图形应用，GUI 启动类操作（`-s`、`-t`、`-m`、`-d` 这些）需要图形显示环境（X11/Wayland），在无 DISPLAY 的终端中运行会报 Qt platform plugin 错误。
-> - `/usr/bin/dde-control-center` 是 bash 脚本包装器，使用了安全加载器机制，不会有终端输出。需要终端输出的操作（`--help`、`--help-all`、`-v`）须使用实际二进制 `/usr/libexec/deepin/dde-control-center`。

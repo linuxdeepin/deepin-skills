@@ -2,7 +2,7 @@
 name: deepin-screensaver
 description: deepin-screensaver 是 DDE 的屏幕保护程序组件，提供屏保启动停止、预览、配置管理和屏保列表查询的 D-Bus 接口，屏保启动与配置对话框的 CLI 命令，以及 deepin-screensaver 自身的屏保轮播和屏保选择的 DConfig 配置
 Categories:
-  - Application
+  - Settings
 ---
 
 # deepin-screensaver

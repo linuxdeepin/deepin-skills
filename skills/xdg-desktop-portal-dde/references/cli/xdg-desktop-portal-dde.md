@@ -18,7 +18,6 @@ xdg-desktop-portal-dde 是 xdg-desktop-portal 的 DDE 后端实现，为沙箱�
 
 `/usr/libexec/xdg-desktop-portal-dde`
 
-> 注：该二进制不在默认 PATH 中，需使用完整路径执行。
 
 ## 命令行选项
 

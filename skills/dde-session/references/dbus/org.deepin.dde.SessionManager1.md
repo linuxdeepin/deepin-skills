@@ -375,6 +375,31 @@ gdbus call --session \
   org.deepin.dde.SessionManager1 Locked
 ```
 
+#### Stage（属性）—— 已废弃/不推荐使用
+
+会话阶段。
+
+> **已废弃/不推荐使用**：此属性已标记为 `Q_DECL_DEPRECATED`，不建议在新代码中使用。代码中标注用途待确定，且变更通知信号已注释。仅保持兼容性，仍可通过 D-Bus 读取当前值。
+
+| 属性 | 值 |
+|------|------|
+| 类型 | `i` |
+| 读写权限 | read |
+
+- **功能**: 返回当前会话阶段的整数值。
+- **触发条件**: 无变更通知信号（`stageChanged` 信号已注释），属性值不会主动更新。
+- **使用场景**: 不推荐使用；仅用于兼容旧代码读取会话阶段值。
+
+读取示例：
+
+```bash
+gdbus call --session \
+  --dest org.deepin.dde.SessionManager1 \
+  --object-path /org/deepin/dde/SessionManager1 \
+  --method org.freedesktop.DBus.Properties.Get \
+  org.deepin.dde.SessionManager1 Stage
+```
+
 ### 会话管理器信号
 
 #### LockedChanged
@@ -436,15 +461,3 @@ gdbus monitor --session \
   --dest org.deepin.dde.SessionManager1 \
   --object-path /org/deepin/dde/SessionManager1
 ```
-
-### 已废弃接口
-
-以下方法和属性已废弃，不应在新代码中使用，建议使用对应的 `Request*` 方法替代：
-
-| 废弃方法/属性 | 替代方法 | 说明 |
-|---------------|----------|------|
-| `Logout` | `RequestLogout` | 注销当前会话，废弃后为空实现 |
-| `Reboot` | `RequestReboot` | 重启系统，废弃后为空实现 |
-| `Shutdown` | `RequestShutdown` | 关闭系统，废弃后为空实现 |
-| `PowerOffChoose` | 无直接替代 | 显示电源操作选择界面，废弃后为空实现 |
-| `Stage`（属性） | 无直接替代 | 会话阶段，已废弃，不再使用 |

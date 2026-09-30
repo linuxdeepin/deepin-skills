@@ -34,6 +34,7 @@ DDE 配置（DConfig）命令行管理工具，用于管理 DTK 提供的配置�
 | 选项 | 说明 | 是否需要值 |
 |------|------|------------|
 | `-h, --help` | 显示命令行帮助 | 否 |
+| `--help-all` | 显示包含 Qt 通用选项的完整帮助 | 否 |
 | `-u <uid>` | 用户 UID，对指定用户的配置项进行读写操作 | 是 |
 | `-a <appid>` | 应用 ID；未设置时使用第二个位置参数 | 是 |
 | `-r <resource>` | 配置 ID（配置描述文件名）；未设置时与应用 ID 相同 | 是 |
@@ -50,18 +51,29 @@ DDE 配置（DConfig）命令行管理工具，用于管理 DTK 提供的配置�
 # 列出所有支持配置的应用 ID
 dde-dconfig list
 # 输出示例（部分）：
+#
+# deepin-music
+# org.deepin.camera
+# org.deepin.dde.calendar
+# org.deepin.editor
 # org.deepin.dde.appearance
+# org.deepin.dde.control-center
 # org.deepin.dde.daemon
-# org.deepin.dde.dock
 
 # 列出指定 appId 的所有配置资源（包括公共资源）
 dde-dconfig list -a org.deepin.dde.control-center
-# 输出示例：
-# org.deepin.dde.control-center.commoninfo
-# org.deepin.dde.control-center.accounts
-# org.deepin.dde.control-center
+# 输出：
 # org.deepin.dde.control-center.display
+# org.deepin.dde.control-center.datetime
+# org.deepin.dde.control-center.accounts
+# org.deepin.dde.control-center.personalization
+# org.deepin.dde.control-center.passkey
+# org.deepin.dde.control-center.power
+# org.deepin.dde.control-center.privacy
 # org.deepin.dde.control-center.sound
+# org.deepin.dde.control-center.commoninfo
+# org.deepin.dde.control-center.update
+# org.deepin.dde.control-center
 
 # 查询 control-center 的 sidebarWidth 配置值
 dde-dconfig get -a org.deepin.dde.control-center -k sidebarWidth

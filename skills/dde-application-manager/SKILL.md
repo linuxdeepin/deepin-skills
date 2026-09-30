@@ -7,7 +7,7 @@ description: >
   DConfig 配置项覆盖应用启动次数记录、应用环境变量管理和应用属性会话级覆盖；
   CLI 命令覆盖应用启动与身份识别。
 Categories:
-  - Application
+  - Settings
 ---
 
 # dde-application-manager

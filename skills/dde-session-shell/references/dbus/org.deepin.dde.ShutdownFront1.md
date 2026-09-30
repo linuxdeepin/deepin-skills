@@ -11,10 +11,6 @@
 | Interface | `org.deepin.dde.ShutdownFront1` |
 | Bus | Session |
 
-## 兼容接口
-
-在早期 Qt5 版本（v20）中，该接口使用旧版服务名 `com.deepin.dde.shutdownFront`（对象路径 `/com/deepin/dde/shutdownFront`）。当前 Qt6 版本已切换至 `org.deepin.dde.ShutdownFront1`，旧版服务名不再注册，仅供历史应用参考。
-
 ## 方法
 
 ### Show

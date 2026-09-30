@@ -6,9 +6,9 @@
 
 ## 配置项
 
-| Key | Name | Description | 类型 | Permissions |
-|---|---|---|---|---|
-| `LoginReminder` | 登录提醒 | 控制是否显示登录提醒通知，包括登录信息、密码过期警告和登录失败次数 | bool | readwrite |
+| Key | Name | Description | 类型 | 取值范围/默认值 | Permissions |
+|---|---|---|---|---|---|
+| `LoginReminder` | 登录提醒 | 控制是否显示登录提醒通知，包括登录信息、密码过期警告和登录失败次数 | bool | `true`/`false`，默认 `false` | readwrite |
 
 ## 读写示例
 
@@ -16,5 +16,5 @@
 # 查询登录提醒开关
 dde-dconfig get -a org.deepin.login-reminder -r org.deepin.login-reminder -k LoginReminder
 # 设置登录提醒开关
-dde-dconfig set -a org.deepin.login-reminder -r org.deepin.login-reminder -k LoginReminder -v "<value>"
+dde-dconfig set -a org.deepin.login-reminder -r org.deepin.login-reminder -k LoginReminder -v "true"
 ```

@@ -1,6 +1,6 @@
 # org.deepin.ds.Dock 接口参考
 
-该接口是提供给外部控制 Dock 的服务接口，允许外部程序控制 Dock 的显示控制与属性管理能力，包括 Dock 的显示调用、插件重载，以及位置、几何区域和是否在主屏显示属性的读取与设置。
+该接口是提供给外部控制 Dock 的服务接口，允许外部程序读取和设置 Dock 的位置、几何区域和是否在主屏显示属性。
 
 ## 接口信息
 
@@ -22,46 +22,6 @@ Dock 面板服务除当前使用的 `org.deepin.ds.Dock` 外，还注册了两�
 **兼容关系**：`org.deepin.dde.Dock1` 和 `org.deepin.dde.daemon.Dock1` 为兼容历史调用方而保留，功能与 `org.deepin.ds.Dock` 相同。新代码应优先使用 `org.deepin.ds.Dock`。
 
 ## 方法、属性与信号
-
-### 显示与插件管理
-
-#### callShow
-
-> ⚠️ **未实现的桩函数**：该方法为 TODO 空桩实现，当前不可用。
-
-调用 Dock 显示。
-
-- **功能**: 触发 Dock 面板的显示
-- **触发条件**: 外部程序调用此方法时执行（当前为空桩实现，不会产生实际效果）
-- **使用场景**: 外部程序需要强制显示 Dock 面板时调用
-- **输入参数**: 无
-- **返回值**: 无
-
-```bash
-gdbus call --session \
-  --dest org.deepin.ds.Dock \
-  --object-path /org/deepin/ds/Dock \
-  --method org.deepin.ds.Dock.callShow
-```
-
-#### ReloadPlugins
-
-> ⚠️ **未实现的桩函数**：该方法为 TODO 空桩实现，当前不可用。
-
-重新加载 Dock 插件。
-
-- **功能**: 重新加载 Dock 面板上的全部插件
-- **触发条件**: 外部程序调用此方法时执行（当前为空桩实现，不会产生实际效果）
-- **使用场景**: 插件安装或更新后需要重新加载 Dock 插件时调用
-- **输入参数**: 无
-- **返回值**: 无
-
-```bash
-gdbus call --session \
-  --dest org.deepin.ds.Dock \
-  --object-path /org/deepin/ds/Dock \
-  --method org.deepin.ds.Dock.ReloadPlugins
-```
 
 ### Dock 属性
 

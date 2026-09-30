@@ -49,8 +49,6 @@ deepin-screensaver -s my-screensaver
 # 打开指定屏保应用的配置对话框
 deepin-screensaver -c my-screensaver
 
-# 查看版本信息
-deepin-screensaver -v
 ```
 
 > 注意：`deepin-screensaver` 是图形化屏幕保护程序，需要图形显示环境（X11/Wayland），在无 DISPLAY 的终端中运行会失败。

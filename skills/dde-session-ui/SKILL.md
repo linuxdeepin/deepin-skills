@@ -1,13 +1,13 @@
 ---
 name: dde-session-ui
-description: dde-session-ui 是 DDE 通用 UI 组件集合，提供系统会话中的各类图形化交互界面。该 skill 提供黑屏、提示对话框、许可证对话框、低电量提示、壁纸色调处理、触摸屏校准、窗口管理器选择、重置密码、警告对话框、欢迎程序、登录提醒、会话切换、挂起确认对话框、蓝牙配对确认的 CLI 命令，黑屏、警告对话框、低电量提示的 D-Bus 接口，以及登录提醒开关的 DConfig 配置项（仅适用于 dde-session-ui 自身的登录提醒功能）
+description: dde-session-ui 是 DDE 通用 UI 组件集合，提供系统会话中的各类图形化交互界面。该 skill 提供黑屏显示控制、低电量警告提示、许可证内容确认、壁纸色调处理、触摸屏校准、窗口管理器选择、密码重置、系统警告提示、欢迎引导、登录提醒、会话切换、挂起确认、蓝牙配对确认功能，以及登录提醒开关配置（仅适用于 dde-session-ui 自身的登录提醒功能）
 Categories:
   - Application
 ---
 
 # dde-session-ui
 
-dde-session-ui 是 DDE 通用 UI 组件集合，提供系统会话中的各类图形化交互界面。该 skill 提供黑屏、提示对话框、许可证对话框、低电量提示、壁纸色调处理、触摸屏校准、窗口管理器选择、重置密码、警告对话框、欢迎程序、登录提醒、会话切换、挂起确认对话框、蓝牙配对确认的 CLI 命令，黑屏、警告对话框、低电量提示的 D-Bus 接口，以及登录提醒开关的 DConfig 配置项。
+dde-session-ui 是 DDE 通用 UI 组件集合，提供系统会话中的各类图形化交互界面。该 skill 提供黑屏显示控制、低电量警告提示、许可证内容确认、壁纸色调处理、触摸屏校准、窗口管理器选择、密码重置、系统警告提示、欢迎引导、登录提醒、会话切换、挂起确认、蓝牙配对确认功能，以及登录提醒开关配置。
 
 ## CLI 命令
 
@@ -114,6 +114,12 @@ DDE 蓝牙 PIN 码确认对话框，用于显示蓝牙设备配对时的 PIN 码
 提供低电量提示显示能力。
 
 详见 [org.deepin.dde.LowPower1.md](references/dbus/org.deepin.dde.LowPower1.md)
+
+### 欢迎界面激活
+
+该接口为 D-Bus 激活型服务，用于欢迎界面的进程单实例控制。
+
+详见 [org.deepin.dde.Welcome1.md](references/dbus/org.deepin.dde.Welcome1.md)
 
 ## DConfig 配置项
 

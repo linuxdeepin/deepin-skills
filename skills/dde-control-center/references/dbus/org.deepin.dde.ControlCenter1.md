@@ -202,15 +202,28 @@ gdbus call --session \
   org.deepin.dde.ControlCenter1 Path
 ```
 
-## 兼容性接口
+## 兼容性接口（已废弃/不推荐使用）
 
 控制中心 D-Bus 服务在同一对象 `/org/deepin/dde/ControlCenter1` 上注册了以下已废弃的兼容性方法，保留用于向后兼容旧版调用方。新代码应使用推荐替代方法。
 
-### 旧版服务名 com.deepin.dde.ControlCenter
+### 旧版服务名 com.deepin.dde.ControlCenter（已废弃/不推荐使用）
 
 除上述方法级兼容外，系统中还存在旧版 D-Bus 服务名 `com.deepin.dde.ControlCenter`，通过 `dde-api-dbus-proxy-v1` 代理转发到新版服务 `org.deepin.dde.ControlCenter1`。旧版服务名仅供向后兼容使用，推荐直接使用新版服务名 `org.deepin.dde.ControlCenter1`，以获得完整的接口能力和更直接的调用路径，避免代理层带来的额外开销。
 
-- **ShowPage(QString module, QString page)**：旧版双参数页面跳转接口，通过模块名和页面名定位目标页面。功能与当前单参数 `ShowPage(QString url)` 相同，推荐使用 `ShowPage(QString url)` 替代。
-- **ShowModule(QString module)**：旧版模块显示接口，通过模块名显示指定模块。功能与 `ShowPage(QString url)` 相同，推荐使用 `ShowPage(QString url)` 替代。
+#### ShowPage(QString module, QString page)（已废弃/不推荐使用）
+
+- **功能**: 旧版双参数页面跳转接口，通过模块名和页面名定位目标页面。已废弃，内部委托给 `ShowPage(QString url)`。
+- **推荐替代**: `ShowPage(QString url)`
+- **触发条件**: 旧版调用方需要通过模块名+页面名跳转时调用。
+- **输入参数**: `module`（string），`page`（string）
+- **返回值**: 无
+
+#### ShowModule(QString module)（已废弃/不推荐使用）
+
+- **功能**: 旧版模块显示接口，通过模块名显示指定模块。已废弃，内部委托给 `ShowPage(QString url)`。
+- **推荐替代**: `ShowPage(QString url)`
+- **触发条件**: 旧版调用方需要通过模块名显示模块时调用。
+- **输入参数**: `module`（string）
+- **返回值**: 无
 
 以上方法仅为兼容旧版调用方保留，不建议在新代码中使用。

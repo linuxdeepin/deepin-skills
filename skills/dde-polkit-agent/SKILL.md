@@ -1,8 +1,8 @@
 ---
 name: dde-polkit-agent
-description: dde-polkit-agent 是 DDE 的 PolicyKit 认证代理组件，负责在用户执行需要特权的操作时弹出认证对话框。本 skill 提供 polkit 认证代理窗口 ID 设置的 D-Bus 接口和认证代理守护进程的 CLI 命令参考。
+description: dde-polkit-agent 是 DDE 的 PolicyKit 认证代理组件，负责在用户执行需要特权的操作时弹出图形认证对话框，收集用户密码或指纹认证信息。本 skill 提供 polkit 认证代理窗口 ID 设置能力及认证代理守护进程的启动方式说明。
 Categories:
-  - Application
+  - Settings
 ---
 
 # dde-polkit-agent

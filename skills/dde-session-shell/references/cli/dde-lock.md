@@ -53,8 +53,6 @@ dde-lock -q
 # 使用安全加载器管道启动（隐藏选项）
 dde-lock -d --fd1 3 --fd2 4
 
-# 查看版本信息
-dde-lock --version
 ```
 
 > 注意：`dde-lock` 是图形化锁屏程序，需要图形显示环境（X11/Wayland），在无 DISPLAY 的终端中运行会失败。

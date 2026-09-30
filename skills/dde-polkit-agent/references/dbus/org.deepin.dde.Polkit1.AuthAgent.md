@@ -34,8 +34,3 @@ gdbus call --session \
   --method org.deepin.dde.Polkit1.AuthAgent.setWIdForAction "org.example.action" 12345
 ```
 
-## 兼容性说明
-
-当前接口 `org.deepin.dde.Polkit1.AuthAgent`（对象路径 `/com/deepin/dde/Polkit1/AuthAgent`）是 V23 接口改造后启用的唯一 D-Bus 接口，所有示例均使用此接口。
-
-旧版接口（V23 改造前）使用服务名 `com.deepin.Polkit1AuthAgent`（对象路径 `/com/deepin/Polkit1AuthAgent`），已在 V23 接口改造中替换为新接口名，当前不再注册，属于**废弃**接口，仅作历史记录。

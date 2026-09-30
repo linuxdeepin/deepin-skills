@@ -51,9 +51,7 @@ DDE 登录界面（LightDM Greeter），是 deepin 定制的 LightDM 欢迎程�
 
 ## DConfig 配置项
 
-dde-session-shell 相关的 DConfig public 配置项仅有快速登录开关。该配置来自 dde-daemon 仓库，注册在 appId `org.deepin.dde.lightdm-deepin-greeter` 下，由 lightdm-deepin-greeter 读取应用。
-
-> 注意：dde-session-shell 自身发布的 3 个 DConfig schema（`org.deepin.dde.lock`、`org.deepin.dde.session-shell`、`org.deepin.dde.lightdm-deepin-greeter`）中所有配置项的 visibility 均为 private，按约束不纳入 skill 文档。
+dde-session-shell 相关的 DConfig 配置项为快速登录开关。该配置来自 dde-daemon 仓库，注册在 appId `org.deepin.dde.lightdm-deepin-greeter` 下，由 lightdm-deepin-greeter 读取应用。
 
 ### 快速登录开关
 

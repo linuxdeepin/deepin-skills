@@ -1,4 +1,6 @@
-# org.deepin.dde.Face1 接口参考（兼容接口）
+# org.deepin.dde.Face1 接口参考（已废弃/不推荐使用）
+
+> **已废弃/不推荐使用**：此接口为旧版 `deepin-face` 独立组件提供的兼容接口，已废弃，不应在新代码中使用。新代码应使用 [`org.deepin.dde.Authenticate1.Face`](org.deepin.dde.Authenticate1.Face.md) 接口。该接口仍在保持兼容、仍提供能力，按 v6 §7.7 保留并标注。
 
 ## 功能概述
 

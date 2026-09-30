@@ -1,8 +1,7 @@
 ---
 name: dde-shell
-description: dde-shell 是 DDE 桌面环境的 Shell 组件，提供任务栏（Dock）、通知、OSD 和任务管理桌面面板能力。本 skill 提供 dde-shell 的 D-Bus 接口（任务栏控制、桌面通知与通知配置、通知中心显示控制、OSD 显示、任务管理）、面板框架启动调试的 CLI 命令、以及 DConfig 配置项（dde-shell 自身通知行为配置）的参考文档。其中通知行为配置仅作用于 dde-shell 自身，OSD 显示为全局系统级屏幕提示控制。
+description: dde-shell 是 DDE 桌面环境的 Shell 组件，提供任务栏位置与几何区域控制、桌面通知发送与关闭、通知开关与展示配置、通知中心面板显示控制、OSD 屏幕提示显示、任务管理窗口属性查询与操作、面板框架启动调试命令、通知行为配置（勿扰模式、通知数量限制、通知清理天数）功能。
 Categories:
-  - Application
   - Settings
 ---
 
@@ -22,7 +21,7 @@ DDE Shell 框架主程序，是 DDE 桌面环境面板（panel）和小程序（
 
 ### 任务栏控制
 
-提供给外部控制 Dock 的服务接口，允许外部程序控制 Dock 的显示、插件重载、位置、几何区域和主屏显示属性。
+提供给外部控制 Dock 的服务接口，允许外部程序控制 Dock 的位置、几何区域和主屏显示属性。
 
 详见 [org.deepin.ds.Dock](references/dbus/org.deepin.ds.Dock.md)
 
