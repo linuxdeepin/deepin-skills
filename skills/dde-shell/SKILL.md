@@ -1,8 +1,9 @@
 ---
 name: dde-shell
-description: dde-shell 是 DDE 桌面环境的 Shell 组件，提供任务栏位置与几何区域控制、桌面通知发送与关闭、通知开关与展示配置、通知中心面板显示控制、OSD 屏幕提示显示、任务管理窗口属性查询与操作、面板框架启动调试命令、通知行为配置（勿扰模式、通知数量限制、通知清理天数）功能。
+description: dde-shell 是 DDE 桌面环境的 Shell 组件，提供任务栏位置与几何区域控制、桌面通知发送与关闭、通知开关与展示配置、通知中心面板显示控制、OSD 屏幕提示显示、任务管理窗口属性查询与操作、面板框架启动调试命令、通知行为配置（勿扰模式、通知数量限制、通知清理天数）功能，提供插件框架接口、Dock 接口、org.deepin.ds QML 模块和 org.deepin.ds.dock QML 模块开发接口。
 Categories:
   - Settings
+  - Develop
 ---
 
 # dde-shell
@@ -58,3 +59,31 @@ dde-shell 通过 DConfig 暴露自身通知行为相关的配置资源。
 应用通知设置、通知内容行数、最大通知气泡数量、勿扰模式、勿扰结束时间、锁屏开启勿扰、最大通知数量、通知清理天数、关闭所有通知、按时间间隔开启勿扰、勿扰开始时间配置。
 
 详见 [org.deepin.dde.shell.notification](references/config/org.deepin.dde.shell.notification.md)
+
+## 开发接口
+
+dde-shell 是 DDE Shell 框架库，提供三层插件模型（Applet → Containment → Panel）、元数据驱动的插件发现、Wayland Layer Shell 窗口管理、跨插件通信机制和 Dock 面板插件接口。使用方通过 CMake 集成框架库开发 applet 插件，或通过 Dock 接口开发 Dock 区域插件。
+
+### 插件框架接口
+
+C++ 框架类型参考文档，包含 DApplet、DContainment、DPanel、DAppletBridge、DPluginLoader、DPluginMetaData 类型的定位、功能能力和使用场景。
+
+详见 [plugin-framework.md](interface/plugin-framework.md)
+
+### Dock 接口
+
+Dock 面板 C++ 类型参考文档，包含 DAppletDock、DockItemInfo 类型的定位、功能能力和使用场景。
+
+详见 [dock-interface.md](interface/dock-interface.md)
+
+### org.deepin.ds QML 模块
+
+QML 框架接口参考文档，用于使用 QML 模块开发插件界面。
+
+详见 [org.deepin.ds.md](interface/org.deepin.ds.md)
+
+### org.deepin.ds.dock QML 模块
+
+Dock QML 接口参考文档，用于使用 Dock QML 模块开发 Dock 区域插件。
+
+详见 [org.deepin.ds.dock.md](interface/org.deepin.ds.dock.md)

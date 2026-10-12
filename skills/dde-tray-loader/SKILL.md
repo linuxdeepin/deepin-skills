@@ -1,8 +1,9 @@
 ---
 name: dde-tray-loader
-description: dde-tray-loader 是 DDE 桌面环境的托盘插件加载器组件，负责加载和管理系统托盘区域的插件。提供键盘布局切换、托盘图标管理、插件加载、电源管理配置（充电保护阈值与电池时间显示）、默认驻留插件列表管理功能
+description: dde-tray-loader 是 DDE 桌面环境的托盘插件加载器组件，负责加载和管理系统托盘区域的插件。提供键盘布局切换、托盘图标管理、插件加载、电源管理配置（充电保护阈值与电池时间显示）、默认驻留插件列表管理功能，提供 Dock 插件项 C++ 接口供第三方开发托盘插件
 Categories:
   - Settings
+  - Develop
 ---
 
 # dde-tray-loader
@@ -52,3 +53,13 @@ dde-tray-loader 自身插件的 DConfig 配置资源，仅作用于 dde-tray-loa
 充电保护电量阈值和电池时间信息显示配置。
 
 详见 [org.deepin.dde.dock.plugin.power](references/config/org.deepin.dde.dock.plugin.power.md)
+
+## 开发接口
+
+dde-tray-loader 是 DDE Dock（任务栏）的插件加载器，以 header-only 形式提供插件接口头文件。第三方开发者通过继承接口类实现自定义 Dock 插件，编译为共享库后安装到 Dock 插件目录，由 Dock 框架在运行时通过 Qt Plugin 机制加载。
+
+### 插件项接口
+
+C++ 接口参考文档，涵盖 Dock 插件基础接口（V1）、V2 扩展接口和 V3 卡片 surface 扩展接口，是插件开发者需要实现的核心接口集合。
+
+详见 [plugin-interface.md](interface/plugin-interface.md)

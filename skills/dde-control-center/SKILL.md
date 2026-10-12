@@ -1,9 +1,10 @@
 ---
 name: dde-control-center
-description: dde-control-center 是 DDE 控制中心，是 DDE 桌面环境中用于系统设置管理的核心图形应用。本 skill 提供控制中心应用启动与模块查看的 CLI 命令、控制中心窗口显示控制与页面跳转及全局搜索的 D-Bus 接口、控制中心应用自身的窗口尺寸、模块显隐、个性化图标主题隐藏、账户头像、只读保护显示、开机壁纸编辑和 GRUB 用户名显示、显示亮度、日期时间 NTP 服务器、声音设备管理的 DConfig 配置项
+description: dde-control-center 是 DDE 控制中心，是 DDE 桌面环境中用于系统设置管理的核心图形应用。本 skill 提供控制中心应用启动与模块查看的 CLI 命令、控制中心窗口显示控制与页面跳转及全局搜索的 D-Bus 接口、控制中心应用自身的窗口尺寸、模块显隐、个性化图标主题隐藏、账户头像、只读保护显示、开机壁纸编辑和 GRUB 用户名显示、显示亮度、日期时间 NTP 服务器、声音设备管理的 DConfig 配置项，提供插件工厂接口和 org.deepin.dcc QML 模块开发接口
 Categories:
   - Application
   - Settings
+  - Develop
 ---
 
 # dde-control-center
@@ -79,3 +80,19 @@ DDE 控制中心主程序，是 DDE 桌面环境中用于系统设置管理的�
 设备管理显示开关配置。为控制中心应用自身配置。
 
 详见 [org.deepin.dde.control-center.sound](references/config/org.deepin.dde.control-center.sound.md)
+
+## 开发接口
+
+dde-control-center 提供系统设置界面框架和插件机制，允许第三方开发设置模块插件。使用方通过实现插件接口、注册插件工厂并安装到指定目录，将自定义设置页面集成到控制中心。
+
+### 插件工厂接口
+
+C++ 类型参考文档，包含插件工厂接口的定位、功能能力和使用场景，涵盖插件工厂注册、CMake 集成与构建安装方式。
+
+详见 [plugin-factory.md](interface/plugin-factory.md)
+
+### org.deepin.dcc QML 模块
+
+QML 接口参考文档，包含 DccObject、DccApp 类型的定位、功能能力和使用场景，用于描述设置项层级结构和访问控制中心全局状态与页面导航。
+
+详见 [org.deepin.dcc.md](interface/org.deepin.dcc.md)

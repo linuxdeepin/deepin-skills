@@ -1,8 +1,9 @@
 ---
 name: dde-session-shell
-description: dde-session-shell 是 DDE 桌面环境的登录锁屏组件，负责系统锁屏、用户登录认证、关机重启界面显示。该 skill 提供锁屏程序启动、登录界面显示设置、登录欢迎界面运行、手势密码重置的 CLI 命令，锁屏界面显示控制、关机界面显示控制、电源操作的 D-Bus 接口，以及快速登录开关的 DConfig 配置项
+description: dde-session-shell 是 DDE 桌面环境的登录锁屏组件，负责系统锁屏、用户登录认证、关机重启界面显示。该 skill 提供锁屏程序启动、登录界面显示设置、登录欢迎界面运行、手势密码重置的 CLI 命令，锁屏界面显示控制、关机界面显示控制、电源操作的 D-Bus 接口，以及快速登录开关的 DConfig 配置项，提供登录插件接口、托盘插件接口和辅助登录 C 接口开发接口
 Categories:
   - Application
+  - Develop
 ---
 
 # dde-session-shell
@@ -58,3 +59,19 @@ dde-session-shell 相关的 DConfig 配置项为快速登录开关。该配置�
 控制是否启用快速登录功能，开启时开机后自动登录并进入锁屏状态。该配置属于 dde-daemon 发布的全局账户配置资源，非 dde-session-shell 自身发布的 schema。
 
 详见 [org.deepin.dde.daemon.accounts](references/config/org.deepin.dde.daemon.accounts.md)
+
+## 开发接口
+
+dde-session-shell 是 DDE 登录锁屏壳，提供登录界面（lightdm-deepin-greeter）和锁屏界面（dde-lock）。支持登录插件、托盘插件和辅助登录插件扩展，允许第三方通过继承接口实现自定义登录认证界面和托盘功能。
+
+### 插件接口（C++）
+
+C++ 插件接口参考文档，包括模块基础接口、V2 登录模块接口、认证回调数据结构和托盘模块接口，用于开发登录认证插件和托盘插件。
+
+详见 [plugin-interface.md](interface/plugin-interface.md)
+
+### 辅助登录接口（C）
+
+C 语言辅助认证接口参考文档，用于通过 C 函数与认证服务交互，发送账号密码进行认证。
+
+详见 [assist-login-interface.md](interface/assist-login-interface.md)

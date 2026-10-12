@@ -1,6 +1,6 @@
 ---
 name: dde-api
-description: dde-api 是 DDE 后端调用库组件，通过 Session 和 System 总线提供图像处理、拼音查询、蓝牙设备管理、区域设置、声音主题播放的 D-Bus 接口，同时提供文件打开、GRUB 主题调整、图片模糊处理、声音主题播放守护进程的 CLI 命令
+description: dde-api 是 DDE 后端调用库组件，通过 Session 和 System 总线提供图像处理、拼音查询、蓝牙设备管理、区域设置、声音主题播放的 D-Bus 接口，同时提供文件打开、GRUB 主题调整、图片模糊处理、声音主题播放守护进程的 CLI 命令，提供事件日志记录 C 接口开发库
 Categories:
   - Develop
 ---
@@ -66,3 +66,13 @@ GRUB 主题调整工具，用于根据屏幕分辨率和语言环境自动调整
 声音主题播放守护进程，启动后提供 `org.deepin.dde.SoundThemePlayer1` D-Bus 接口供其他程序播放系统声音。
 
 详见 [sound-theme-player.md](references/cli/sound-theme-player.md)
+
+## 开发接口
+
+dde-api 是 DDE 的 API 库，提供 header-only C++ 事件日志记录接口。调用者通过该接口将事件日志序列化后发送到后端库，由后端完成实际的日志写入。
+
+### 事件日志接口
+
+C++ 接口参考文档，涵盖 EventLogger 类和 EventLoggerData 数据结构，提供事件日志的组装、序列化与写入能力。
+
+详见 [event-logger.md](interface/event-logger.md)

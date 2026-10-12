@@ -1,8 +1,9 @@
 ---
 name: dde-polkit-agent
-description: dde-polkit-agent 是 DDE 的 PolicyKit 认证代理组件，负责在用户执行需要特权的操作时弹出图形认证对话框，收集用户密码或指纹认证信息。本 skill 提供 polkit 认证代理窗口 ID 设置能力及认证代理守护进程的启动方式说明。
+description: dde-polkit-agent 是 DDE 的 PolicyKit 认证代理组件，负责在用户执行需要特权的操作时弹出图形认证对话框，收集用户密码或指纹认证信息。本 skill 提供 polkit 认证代理窗口 ID 设置能力及认证代理守护进程的启动方式说明，提供认证代理扩展接口（AgentExtension）供第三方开发认证插件。
 Categories:
   - Settings
+  - Develop
 ---
 
 # dde-polkit-agent
@@ -29,3 +30,13 @@ DDE 的 PolicyKit 认证代理守护进程二进制，由 systemd 用户服务 `
 dde-polkit-agent 在 Session 总线上注册 D-Bus 服务 `org.deepin.dde.Polkit1.AuthAgent`（对象路径 `/com/deepin/dde/Polkit1/AuthAgent`），提供 polkit 认证代理窗口 ID 设置能力，供外部应用调用以关联认证窗口（仅作用于 dde-polkit-agent 自身认证窗口）。
 
 详见 [org.deepin.dde.Polkit1.AuthAgent.md](references/dbus/org.deepin.dde.Polkit1.AuthAgent.md)
+
+## 开发接口
+
+dde-polkit-agent 是 DDE 桌面环境的 Polkit 认证代理，为需要提权的操作提供图形化认证对话框。项目通过安装公开头文件，允许第三方继承扩展接口并编译为共享库插件，由认证代理在运行时加载，从而自定义认证行为。
+
+### 认证代理扩展接口
+
+C++ 接口参考文档，包含 AgentExtension 和 AgentExtensionProxy 两个公开抽象接口的定位、功能能力和使用场景，以及扩展插件的集成与构建方式。
+
+详见 [agent-extension.md](interface/agent-extension.md)
