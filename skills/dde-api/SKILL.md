@@ -75,4 +75,4 @@ dde-api 是 DDE 的 API 库，提供 header-only C++ 事件日志记录接口。
 
 C++ 接口参考文档，涵盖 EventLogger 类和 EventLoggerData 数据结构，提供事件日志的组装、序列化与写入能力。
 
-详见 [event-logger.md](interface/event-logger.md)
+详见 [event-logger.md](references/interface/event-logger.md)

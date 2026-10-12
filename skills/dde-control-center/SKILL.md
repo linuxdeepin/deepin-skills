@@ -89,10 +89,10 @@ dde-control-center 提供系统设置界面框架和插件机制，允许第三�
 
 C++ 类型参考文档，包含插件工厂接口的定位、功能能力和使用场景，涵盖插件工厂注册、CMake 集成与构建安装方式。
 
-详见 [plugin-factory.md](interface/plugin-factory.md)
+详见 [plugin-factory.md](references/interface/plugin-factory.md)
 
 ### org.deepin.dcc QML 模块
 
 QML 接口参考文档，包含 DccObject、DccApp 类型的定位、功能能力和使用场景，用于描述设置项层级结构和访问控制中心全局状态与页面导航。
 
-详见 [org.deepin.dcc.md](interface/org.deepin.dcc.md)
+详见 [org.deepin.dcc.md](references/interface/org.deepin.dcc.md)
