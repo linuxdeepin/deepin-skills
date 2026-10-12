@@ -26,4 +26,4 @@ deepin-pw-check 是 DDE 密码强度校验 C 语言库，提供密码复杂度�
 
 C 接口参考文档，以公开头文件 `deepin_pw_check.h` 为入口，涵盖密码复杂度校验、密码强度等级评估、密码校验策略查询、错误码到可读信息转换和调试控制能力的全部公开接口。
 
-详见 [password-check.md](interface/password-check.md)
+详见 [password-check.md](references/interface/password-check.md)

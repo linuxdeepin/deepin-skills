@@ -62,4 +62,4 @@ dde-tray-loader 是 DDE Dock（任务栏）的插件加载器，以 header-only 
 
 C++ 接口参考文档，涵盖 Dock 插件基础接口（V1）、V2 扩展接口和 V3 卡片 surface 扩展接口，是插件开发者需要实现的核心接口集合。
 
-详见 [plugin-interface.md](interface/plugin-interface.md)
+详见 [plugin-interface.md](references/interface/plugin-interface.md)

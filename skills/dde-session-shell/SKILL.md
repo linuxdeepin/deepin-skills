@@ -68,10 +68,10 @@ dde-session-shell 是 DDE 登录锁屏壳，提供登录界面（lightdm-deepin-
 
 C++ 插件接口参考文档，包括模块基础接口、V2 登录模块接口、认证回调数据结构和托盘模块接口，用于开发登录认证插件和托盘插件。
 
-详见 [plugin-interface.md](interface/plugin-interface.md)
+详见 [plugin-interface.md](references/interface/plugin-interface.md)
 
 ### 辅助登录接口（C）
 
 C 语言辅助认证接口参考文档，用于通过 C 函数与认证服务交互，发送账号密码进行认证。
 
-详见 [assist-login-interface.md](interface/assist-login-interface.md)
+详见 [assist-login-interface.md](references/interface/assist-login-interface.md)

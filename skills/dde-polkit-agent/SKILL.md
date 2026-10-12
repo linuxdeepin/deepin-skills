@@ -39,4 +39,4 @@ dde-polkit-agent 是 DDE 桌面环境的 Polkit 认证代理，为需要提权�
 
 C++ 接口参考文档，包含 AgentExtension 和 AgentExtensionProxy 两个公开抽象接口的定位、功能能力和使用场景，以及扩展插件的集成与构建方式。
 
-详见 [agent-extension.md](interface/agent-extension.md)
+详见 [agent-extension.md](references/interface/agent-extension.md)

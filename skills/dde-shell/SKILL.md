@@ -68,22 +68,22 @@ dde-shell 是 DDE Shell 框架库，提供三层插件模型（Applet → Contai
 
 C++ 框架类型参考文档，包含 DApplet、DContainment、DPanel、DAppletBridge、DPluginLoader、DPluginMetaData 类型的定位、功能能力和使用场景。
 
-详见 [plugin-framework.md](interface/plugin-framework.md)
+详见 [plugin-framework.md](references/interface/plugin-framework.md)
 
 ### Dock 接口
 
 Dock 面板 C++ 类型参考文档，包含 DAppletDock、DockItemInfo 类型的定位、功能能力和使用场景。
 
-详见 [dock-interface.md](interface/dock-interface.md)
+详见 [dock-interface.md](references/interface/dock-interface.md)
 
 ### org.deepin.ds QML 模块
 
 QML 框架接口参考文档，用于使用 QML 模块开发插件界面。
 
-详见 [org.deepin.ds.md](interface/org.deepin.ds.md)
+详见 [org.deepin.ds.md](references/interface/org.deepin.ds.md)
 
 ### org.deepin.ds.dock QML 模块
 
 Dock QML 接口参考文档，用于使用 Dock QML 模块开发 Dock 区域插件。
 
-详见 [org.deepin.ds.dock.md](interface/org.deepin.ds.dock.md)
+详见 [org.deepin.ds.dock.md](references/interface/org.deepin.ds.dock.md)
