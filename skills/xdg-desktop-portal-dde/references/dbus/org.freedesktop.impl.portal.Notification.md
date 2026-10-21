@@ -2,6 +2,8 @@
 
 该接口仅作用于 portal 通道的通知发送与移除，允许沙箱应用通过 Portal 接口发送桌面通知并接收通知交互回调。
 
+本文记录 Portal 后端协作接口，普通应用调用前端 `org.freedesktop.portal.Desktop` 的 `org.freedesktop.portal.*` 接口。后端示例中的应用身份与请求句柄必须来自实际前端请求，不能将演示参数用于应用权限判断。
+
 ## 接口信息
 
 | 字段 | 值 |

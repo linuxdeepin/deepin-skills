@@ -10,6 +10,8 @@ Categories:
 
 dde-session-shell 是 DDE 登录锁屏组件，提供锁屏程序、登录界面、关机界面的 CLI 命令工具，通过 Session 总线提供锁屏界面显示控制、关机界面显示控制和电源操作能力，并通过 DConfig 暴露快速登录开关配置。
 
+`ShutdownFront1.Show` 只显示电源选项界面；`Shutdown`、`Restart`、`Suspend`、`Hibernate` 可发起实际动作，不能保证每次显示确认界面。锁屏前端控制认证界面，会话管理器负责会话请求；登录阶段显示工具与当前用户桌面显示配置分开。
+
 ## CLI 命令
 
 ### dde-lock

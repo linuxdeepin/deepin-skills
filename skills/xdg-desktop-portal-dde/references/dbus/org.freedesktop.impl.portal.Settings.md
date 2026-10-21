@@ -1,6 +1,8 @@
 # org.freedesktop.impl.portal.Settings 接口参考
 
-该接口读写桌面环境全局设置（颜色方案、强调色），允许沙箱应用通过 Portal 接口查询桌面环境的外观设置。
+该后端接口只读桌面外观偏好（颜色方案、强调色），并发送变化通知，不提供写入方法。普通应用使用 Portal 前端的 `org.freedesktop.portal.Settings`，后端接口用于前端与 DDE 的协作。
+
+本文记录 Portal 后端协作接口，普通应用调用前端 `org.freedesktop.portal.Desktop` 的 `org.freedesktop.portal.*` 接口。后端示例中的应用身份与请求句柄必须来自实际前端请求，不能将演示参数用于应用权限判断。
 
 ## 接口信息
 
@@ -62,4 +64,24 @@ gdbus call --session \
   --dest org.freedesktop.impl.portal.desktop.dde \
   --object-path /org/freedesktop/portal/desktop \
   --method org.freedesktop.impl.portal.Settings.Read "org.freedesktop.appearance" "color-scheme"
+```
+
+## 应用通过前端查询
+
+应用查询颜色方案使用前端服务，返回值为 variant：
+
+```bash
+gdbus call --session \
+  --dest org.freedesktop.portal.Desktop \
+  --object-path /org/freedesktop/portal/desktop \
+  --method org.freedesktop.portal.Settings.Read \
+  org.freedesktop.appearance color-scheme
+```
+
+下面的监听针对前端变化通知，不修改桌面设置：
+
+```bash
+gdbus monitor --session \
+  --dest org.freedesktop.portal.Desktop \
+  --object-path /org/freedesktop/portal/desktop
 ```

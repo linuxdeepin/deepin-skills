@@ -1,25 +1,27 @@
 ---
 name: dde-app-services
-description: dde-app-services 是 DDE 的 DConfig 配置管理服务组件，提供统一的系统配置管理能力。通过 D-Bus 接口提供配置管理器对象获取、配置值读写与重置、元信息查询、配置更新同步、用户配置数据移除、配置热加载、管理器对象延迟释放时间设置的全局 DConfig 管理功能，以及仅作用于 `dde-dconfig-daemon` 自身的日志规则设置功能；同时提供 `dde-dconfig`、`dde-dconfig-daemon`、`dde-dconfig-editor` 命令行配置管理工具
+description: 管理 DConfig 配置资源、指定用户的配置值与元信息，提供配置更新、同步、热加载、用户数据移除和配置管理工具。普通配置访问保持当前用户身份；受限管理接口单独声明权限，配置影响范围由资源、用户与 key 标志决定。
 Categories:
   - Settings
 ---
 
 # dde-app-services
 
-dde-app-services 是 DDE 的 DConfig 配置管理服务组件，提供统一的系统配置管理能力。通过 System 总线提供全局的配置管理器对象获取、配置值读写与重置、元信息查询、配置更新同步、用户配置数据移除、配置热加载能力，以及仅作用于 `dde-dconfig-daemon` 自身的日志规则设置能力。同时提供 `dde-dconfig`、`dde-dconfig-daemon`、`dde-dconfig-editor` 命令行配置管理工具。部分接口需要提权操作。
+dde-app-services 是 DDE 的 DConfig 配置管理服务组件，提供统一的系统配置管理能力。通过 System 总线提供按应用、资源和用户获取配置管理器对象、配置值读写与重置、元信息查询、配置更新同步、用户配置数据移除、配置热加载能力，以及仅作用于 `dde-dconfig-daemon` 自身的日志规则设置能力。同时提供 `dde-dconfig`、`dde-dconfig-daemon`、`dde-dconfig-editor` 命令行配置管理工具。部分接口需要提权操作。
+
+普通配置访问保持当前用户身份：`acquireManager` 以 D-Bus 调用者 UID 获取对象，`acquireManagerV2` 显式指定 UID。System 总线不表示所有方法都需要 root；管理器可写权限与 key 的 `permissions`、用户和共享标志有关。配置写入影响对应资源及其消费者；`removeUserData` 才会清除指定用户的整组配置数据。
 
 ## D-Bus 接口
 
 ### 配置管理器
 
-提供全局的配置管理器对象获取、更新、同步、用户配置数据移除和配置热加载能力，以及仅作用于 `dde-dconfig-daemon` 自身的日志规则设置能力。
+提供按应用、资源和用户获取配置管理器对象、更新、同步、用户配置数据移除和配置热加载能力，以及仅作用于 `dde-dconfig-daemon` 自身的日志规则设置能力。
 
 详见 [org.desktopspec.ConfigManager.md](references/dbus/org.desktopspec.ConfigManager.md)
 
 ### 配置管理器 Manager 接口
 
-提供全局的配置值读写、重置和元信息查询能力。
+提供指定管理器对象的配置值读写、重置和元信息查询能力，作用范围由该对象的用户和配置资源决定。
 
 详见 [org.desktopspec.ConfigManager.Manager.md](references/dbus/org.desktopspec.ConfigManager.Manager.md)
 

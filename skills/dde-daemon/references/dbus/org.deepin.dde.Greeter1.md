@@ -1,6 +1,6 @@
 # org.deepin.dde.Greeter1 接口参考
 
-该接口提供 Greeter 主题更新能力。
+更新登录界面的 Qt 主题配置，并同步相关 XSettings 字体、图标主题和 DPI。它处理主题数据，不负责显示器分辨率配置、显示电源或当前用户桌面窗口控制。
 
 ## 接口信息
 
@@ -10,28 +10,39 @@
 | Object path | `/org/deepin/dde/Greeter1` |
 | Interface | `org.deepin.dde.Greeter1` |
 | Bus | System |
-### Greeter 方法
 
-#### UpdateGreeterQtTheme
+服务由登录界面环境提供，客户端可按总线策略调用；服务进程的运行身份与客户端是否需要 root 不应混淆。
 
-更新 Greeter Qt 主题。
+## UpdateGreeterQtTheme
 
-- **功能**：更新登录界面（Greeter）的 Qt 主题配置，使主题变更生效。
-- **触发条件**：当用户在控制中心修改主题后需要同步到登录界面时调用。
-- **使用场景**：控制中心主题设置同步到登录界面。
+- **功能**：从传入文件描述符读取主题内容，最多 100 KiB，覆盖登录界面的 Qt 主题配置，再更新对应 XSettings。
+- **输入参数**：`fd`（UnixFD，`h`）：随 D-Bus 消息传递的文件描述符在 FD 列表中的索引。
+- **返回值**：无；Qt 主题文件更新失败时返回 D-Bus 错误。请求成功不表示所有 XSettings 字段都已同步。
+- **使用场景**：向登录界面同步完整的字体、图标和缩放主题配置。
 
-- **输入参数**: `fd`（UnixFD, 类型 `h`）：主题文件描述符
-- **返回值**: 无
+风险警示：
 
-权限：
-- requires_sudo: true
+- 此操作覆盖登录界面主题而非合并部分字段，错误内容会影响后续登录界面的字体与缩放；应保留可恢复的主题配置。
 
-```bash
-# 注意：此方法参数为 UnixFD（文件描述符），无法通过 gdbus 命令行直接传递。
-# 需通过支持文件描述符传递的 DBus 客户端（如 Python dbus 绑定）调用。
-# 以下为参考调用示例：
-pkexec gdbus call --system \
-  --dest org.deepin.dde.Greeter1 \
-  --object-path /org/deepin/dde/Greeter1 \
-  --method org.deepin.dde.Greeter1.UpdateGreeterQtTheme "fd"
+`h` 不接受路径字符串或文本 `"fd"`。客户端必须随消息附加 Unix FD 列表；下面的 Python 示例依赖 PyGObject，先由调用方提供完整主题文件，保存为脚本后用系统 Python 运行：
+
+```python
+from gi.repository import Gio, GLib
+import sys
+
+if len(sys.argv) != 2:
+    raise SystemExit("Usage: update-greeter-theme.py THEME_FILE")
+
+bus = Gio.bus_get_sync(Gio.BusType.SYSTEM, None)
+with open(sys.argv[1], "rb") as theme:
+    descriptors = Gio.UnixFDList.new()
+    index = descriptors.append(theme.fileno())
+    bus.call_with_unix_fd_list_sync(
+        "org.deepin.dde.Greeter1", "/org/deepin/dde/Greeter1",
+        "org.deepin.dde.Greeter1", "UpdateGreeterQtTheme",
+        GLib.Variant("(h)", (index,)), None, Gio.DBusCallFlags.NONE,
+        5000, descriptors, None
+    )
 ```
+
+文件使用 INI 格式的 `[Theme]` 节，可包含 `IconThemeName`、`FontSize`、`Font`、`MonoFont`、`ScreenScaleFactors` 与 `ScaleLogicalDpi`。这是服务可用时的更新示例；不会因为传递了描述符而自动完成权限认证或修复不可用的服务。

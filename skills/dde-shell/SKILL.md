@@ -10,6 +10,8 @@ Categories:
 
 dde-shell 是 DDE 桌面的 Shell 组件，通过 Session 总线上的多个 D-Bus 服务提供任务栏（Dock）、通知、OSD 和任务管理能力。
 
+桌面通知发送和撤销由通知服务处理，Portal 通知另有应用身份及通道，专用对话框由相应 UI 组件提供。Dock、通知中心、OSD 和任务窗口方法分别作用于各自对象；同名显示/隐藏方法不控制其他应用窗口。
+
 ## CLI 命令
 
 ### dde-shell

@@ -2,6 +2,8 @@
 
 该接口在 **Session 总线**上动态注册，提供会话抑制器的详情查询能力。每个抑制器对象由 `SessionManager1.Inhibit` 方法创建，通过 `SessionManager1.GetInhibitors` 方法可获取所有已注册抑制器的对象路径列表。
 
+以下示例的 `inhibitor_path` 需使用 `GetInhibitors` 返回的实际对象路径；序号不能作为固定值保存。查询对象不创建抑制，解除抑制仍由 `SessionManager1.Uninhibit` 使用 cookie 完成。
+
 ## 接口信息
 
 | 字段 | 值 |
@@ -22,7 +24,7 @@
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.SessionManager1 \
-  --object-path /org/deepin/dde/Inhibitors/Inhibitor_0 \
+  --object-path "${inhibitor_path:?请先获取实际抑制器路径}" \
   --method org.deepin.dde.Inhibitor1.GetAppId
 ```
 
@@ -37,7 +39,7 @@ gdbus call --session \
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.SessionManager1 \
-  --object-path /org/deepin/dde/Inhibitors/Inhibitor_0 \
+  --object-path "${inhibitor_path:?请先获取实际抑制器路径}" \
   --method org.deepin.dde.Inhibitor1.GetClientId
 ```
 
@@ -52,7 +54,7 @@ gdbus call --session \
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.SessionManager1 \
-  --object-path /org/deepin/dde/Inhibitors/Inhibitor_0 \
+  --object-path "${inhibitor_path:?请先获取实际抑制器路径}" \
   --method org.deepin.dde.Inhibitor1.GetFlags
 ```
 
@@ -67,7 +69,7 @@ gdbus call --session \
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.SessionManager1 \
-  --object-path /org/deepin/dde/Inhibitors/Inhibitor_0 \
+  --object-path "${inhibitor_path:?请先获取实际抑制器路径}" \
   --method org.deepin.dde.Inhibitor1.GetReason
 ```
 
@@ -82,6 +84,6 @@ gdbus call --session \
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.SessionManager1 \
-  --object-path /org/deepin/dde/Inhibitors/Inhibitor_0 \
+  --object-path "${inhibitor_path:?请先获取实际抑制器路径}" \
   --method org.deepin.dde.Inhibitor1.GetToplevelXid
 ```

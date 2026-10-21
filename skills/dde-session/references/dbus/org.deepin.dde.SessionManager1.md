@@ -2,6 +2,8 @@
 
 该接口在 **Session 总线**上注册，提供会话管理器的电源操作、抑制管理和状态查询能力。
 
+电源请求面向当前会话或系统，不保证先显示确认界面。能力查询只返回当前支持状态，不执行相应操作。抑制器通过 cookie 管理，调用方在任务结束时应显式释放；不要假设连接断开会自动删除抑制器。
+
 ## 接口信息
 
 | 字段 | 值 |
@@ -21,6 +23,10 @@
 - **触发条件**: 由调用方主动调用触发。
 - **使用场景**: 需要通过程序化方式注销当前用户会话时使用，例如脚本自动化注销、第三方应用提供注销按钮。
 
+风险警示：
+
+- 注销将结束当前桌面会话，应用未保存的工作可能丢失。
+
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.SessionManager1 \
@@ -35,6 +41,10 @@ gdbus call --session \
 - **功能**: 请求系统重启，执行重启前的准备工作（如播放关机音效、停止特定服务）后触发系统重启。
 - **触发条件**: 由调用方主动调用触发。
 - **使用场景**: 用户或脚本需要通过命令行方式重启系统时使用。
+
+风险警示：
+
+- 重启将中断系统服务及用户会话，未保存工作可能丢失。
 
 ```bash
 gdbus call --session \
@@ -51,6 +61,10 @@ gdbus call --session \
 - **触发条件**: 由调用方主动调用触发。
 - **使用场景**: 用户或脚本需要通过命令行方式关闭系统时使用。
 
+风险警示：
+
+- 关机会终止正在运行的应用与服务，未保存工作可能丢失。
+
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.SessionManager1 \
@@ -65,6 +79,10 @@ gdbus call --session \
 - **功能**: 请求系统进入挂起（待机）状态，降低系统功耗。如果 `/etc/deepin/no_suspend` 文件存在则不执行挂起，仅关闭显示器。
 - **触发条件**: 由调用方主动调用触发。
 - **使用场景**: 电源管理按钮、快捷键触发系统挂起/休眠。
+
+风险警示：
+
+- 挂起将暂停交互与正在运行的任务，远程连接会受影响；它不等同于注销。
 
 ```bash
 gdbus call --session \
@@ -81,6 +99,10 @@ gdbus call --session \
 - **触发条件**: 由调用方主动调用触发。
 - **使用场景**: 电源管理按钮、快捷键触发系统挂起/休眠。
 
+风险警示：
+
+- 休眠会保存状态并暂停系统运行，依赖系统休眠支持；远程任务和连接将中断。
+
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.SessionManager1 \
@@ -95,6 +117,10 @@ gdbus call --session \
 - **功能**: 请求锁定屏幕。在 Wayland 环境下通过 logind 锁定；在 X11 环境下调用锁屏服务显示锁屏界面。
 - **触发条件**: 由调用方主动调用触发；锁定成功后会发出 `LockedChanged` 信号。
 - **使用场景**: 外部程序需要触发锁屏时调用，如快捷键锁屏、离开超时自动锁屏。
+
+风险警示：
+
+- 锁屏将中断当前交互，恢复使用需要完成解锁认证。
 
 ```bash
 gdbus call --session \
@@ -209,7 +235,7 @@ gdbus call --session \
 gdbus call --session \
   --dest org.deepin.dde.SessionManager1 \
   --object-path /org/deepin/dde/SessionManager1 \
-  --method org.deepin.dde.SessionManager1.Uninhibit 1
+  --method org.deepin.dde.SessionManager1.Uninhibit "${inhibit_cookie:?请使用 Inhibit 返回的 cookie}"
 ```
 
 #### IsInhibited

@@ -1,6 +1,6 @@
 ---
 name: dde-control-center
-description: dde-control-center 是 DDE 控制中心，是 DDE 桌面环境中用于系统设置管理的核心图形应用。本 skill 提供控制中心应用启动与模块查看的 CLI 命令、控制中心窗口显示控制与页面跳转及全局搜索的 D-Bus 接口、控制中心应用自身的窗口尺寸、模块显隐、个性化图标主题隐藏、账户头像、只读保护显示、开机壁纸编辑和 GRUB 用户名显示、显示亮度、日期时间 NTP 服务器、声音设备管理的 DConfig 配置项，提供插件工厂接口和 org.deepin.dcc QML 模块开发接口
+description: dde-control-center 是 DDE 控制中心，是 DDE 桌面环境中用于系统设置管理的核心图形应用。本 skill 提供控制中心应用启动与模块查看的 CLI 命令、控制中心窗口显示控制与页面跳转及全局搜索的 D-Bus 接口、控制中心应用自身的窗口尺寸、模块显隐、个性化图标主题隐藏、账户头像、只读保护显示、开机壁纸编辑和 GRUB 用户名显示、亮度调节下限、自定义 NTP 地址记录、声音设备管理入口显隐的 DConfig 配置项，提供插件工厂接口和 org.deepin.dcc QML 模块开发接口
 Categories:
   - Application
   - Settings
@@ -9,7 +9,7 @@ Categories:
 
 # dde-control-center
 
-dde-control-center 是 DDE 控制中心，提供控制中心应用的启动与模块查看 CLI 命令，通过 Session 总线提供窗口显示控制、页面跳转、模块列表获取和全局搜索的 D-Bus 接口，以及控制中心应用自身的窗口尺寸、模块显隐、个性化图标主题隐藏、账户头像、只读保护显示、开机壁纸编辑和 GRUB 用户名显示、显示亮度、日期时间 NTP 服务器、声音设备管理的 DConfig 配置项。
+dde-control-center 是 DDE 控制中心，提供控制中心应用的启动与模块查看 CLI 命令，通过 Session 总线提供窗口显示控制、页面跳转、模块列表获取和全局搜索的 D-Bus 接口，以及控制中心应用自身的窗口尺寸、模块显隐、个性化图标主题隐藏、账户头像、只读保护显示、开机壁纸编辑和 GRUB 用户名显示、亮度调节下限、自定义 NTP 地址记录、声音设备管理入口显隐的 DConfig 配置项。
 
 ## CLI 命令
 
@@ -37,7 +37,7 @@ DDE 控制中心主程序，是 DDE 桌面环境中用于系统设置管理的�
 
 ## DConfig 配置项
 
-以下 DConfig 配置项均为控制中心应用自身的配置，用于控制控制中心窗口尺寸、各设置模块的显示行为、个性化图标主题隐藏、账户头像、只读保护显示、开机壁纸编辑和 GRUB 用户名显示、显示亮度、日期时间 NTP 服务器、声音设备管理。其中标注为全局配置（`flags: global`）的配置项在系统范围内生效，其余为控制中心应用自身配置。
+以下 DConfig 配置项均为控制中心应用自身的配置，用于控制控制中心窗口尺寸、各设置模块的显示行为、个性化图标主题隐藏、账户头像、只读保护显示、开机壁纸编辑和 GRUB 用户名显示、亮度调节下限、自定义 NTP 地址记录、声音设备管理入口显隐。`flags: global` 表示对应资源中共享的配置值，其消费对象仍是控制中心；不能据此推断能够修改其他组件的所有设置。
 
 ### 控制中心窗口配置
 
@@ -59,13 +59,13 @@ DDE 控制中心主程序，是 DDE 桌面环境中用于系统设置管理的�
 
 ### 日期时间配置
 
-自定义 NTP 服务器配置。为控制中心应用自身配置。
+记录控制中心使用的自定义 NTP 地址。实际系统 NTP 服务器由时间后端设置；单独修改此记录不应用系统时间服务配置。
 
 详见 [org.deepin.dde.control-center.datetime](references/config/org.deepin.dde.control-center.datetime.md)
 
 ### 显示配置
 
-亮度最小值配置。为控制中心应用自身配置。
+控制中心亮度调节范围的最小比例，不直接修改当前屏幕亮度。
 
 详见 [org.deepin.dde.control-center.display](references/config/org.deepin.dde.control-center.display.md)
 

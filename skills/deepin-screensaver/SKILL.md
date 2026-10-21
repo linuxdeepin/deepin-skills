@@ -9,6 +9,8 @@ Categories:
 
 deepin-screensaver 是 DDE 的屏幕保护程序组件，负责在用户空闲一段时间后启动屏幕保护动画。该 skill 提供全局的屏保控制 D-Bus 接口与 CLI 命令，以及仅作用于 deepin-screensaver 自身的 DConfig 配置。
 
+本组件管理屏保启动、停止、预览和屏保选择；会话空闲或自动休眠抑制使用对应会话协议。停止屏保不等于解除锁屏认证，也不替代会话锁定接口。
+
 ## CLI 命令
 
 ### deepin-screensaver

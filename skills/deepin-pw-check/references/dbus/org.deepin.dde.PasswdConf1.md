@@ -2,6 +2,8 @@
 
 deepin-pw-check 是 DDE 的密码安全策略组件，负责管理系统级密码校验规则。本接口提供全局密码校验开关、密码长度限制、校验策略、校验规则数量、首字母大写要求的读写及配置管理能力。
 
+普通 getter 查询不要求客户端切换到 root；完整配置读取、备份恢复与策略修改需要服务端授权。下列权限声明只适用于对应操作。策略改动影响系统密码校验，与 C 库内的一次密码强度查询不同。
+
 ## 接口信息
 
 | 字段 | 值 |
@@ -33,6 +35,10 @@ deepin-pw-check 是 DDE 的密码安全策略组件，负责管理系统级密�
 
 权限：
 - requires_sudo: true
+
+风险警示：
+
+- 覆盖整个密码策略配置文件，错误内容可能降低校验强度或妨碍后续设置密码，应保留原配置。
 
 ```bash
 pkexec gdbus call --system \
@@ -75,6 +81,10 @@ pkexec gdbus call --system \
 
 权限：
 - requires_sudo: true
+
+风险警示：
+
+- 从备份覆盖当前密码策略，备份可能包含较旧或更宽松的规则。
 
 ```bash
 pkexec gdbus call --system \
@@ -141,6 +151,10 @@ gdbus call --system \
 权限：
 - requires_sudo: true
 
+风险警示：
+
+- 放宽长度限制会降低密码约束，过严限制会妨碍用户设置密码；核对上下限与现有策略。
+
 ```bash
 pkexec gdbus call --system \
   --dest org.deepin.dde.PasswdConf1 \
@@ -186,6 +200,10 @@ gdbus call --system \
 权限：
 - requires_sudo: true
 
+风险警示：
+
+- 更改校验策略会改变后续密码设置条件，错误或过宽规则会影响系统安全。
+
 ```bash
 pkexec gdbus call --system \
   --dest org.deepin.dde.PasswdConf1 \
@@ -228,6 +246,10 @@ gdbus call --system \
 
 权限：
 - requires_sudo: true
+
+风险警示：
+
+- 减少必需规则数量会降低密码校验强度，应确认预期安全策略。
 
 ```bash
 pkexec gdbus call --system \
@@ -274,6 +296,10 @@ gdbus call --system \
 权限：
 - requires_sudo: true
 
+风险警示：
+
+- 关闭校验会降低后续密码设置的安全约束，影响使用该策略的认证流程。
+
 ```bash
 pkexec gdbus call --system \
   --dest org.deepin.dde.PasswdConf1 \
@@ -316,6 +342,10 @@ gdbus call --system \
 
 权限：
 - requires_sudo: true
+
+风险警示：
+
+- 关闭首字母大写要求会放宽密码策略，影响依赖该校验规则的密码设置。
 
 ```bash
 pkexec gdbus call --system \

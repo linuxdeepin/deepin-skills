@@ -2,6 +2,13 @@
 
 该接口提供电源管理能力，包括电源状态查询、延时配置和电源操作。
 
+Session 与 System 总线上的同名接口作用不同：Session 接口管理当前会话的显示、空闲与动作策略；System 接口管理电池、性能模式与 CPU 控制。只读查询按普通用户调用，写操作遵循所部署服务的授权策略，不因位于 System 总线就统一以 root 运行。
+
+风险警示：
+
+- 重置电源配置会覆盖当前策略；定时关机、低电量动作和合盖动作会影响会话运行。
+- CPU 调频、频率锁定和加速开关会改变整机性能、功耗与温度，应使用硬件支持的取值。
+
 ## 接口信息
 
 | 字段 | 值 |
@@ -321,7 +328,7 @@ gdbus call --session \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1 LinePowerScreensaverDelay <int32 600>
+  org.deepin.dde.Power1 LinePowerScreensaverDelay '<int32 600>'
 ```
 
 #### LinePowerScreenBlackDelay（属性）
@@ -353,7 +360,7 @@ gdbus call --session \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1 LinePowerScreenBlackDelay <int32 600>
+  org.deepin.dde.Power1 LinePowerScreenBlackDelay '<int32 600>'
 ```
 
 #### LinePowerSleepDelay（属性）
@@ -385,7 +392,7 @@ gdbus call --session \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1 LinePowerSleepDelay <int32 900>
+  org.deepin.dde.Power1 LinePowerSleepDelay '<int32 900>'
 ```
 
 #### LinePowerLockDelay（属性）
@@ -417,7 +424,7 @@ gdbus call --session \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1 LinePowerLockDelay <int32 180>
+  org.deepin.dde.Power1 LinePowerLockDelay '<int32 180>'
 ```
 
 #### LinePowerShortIdleDelay（属性）
@@ -449,7 +456,7 @@ gdbus call --session \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1 LinePowerShortIdleDelay <int32 300>
+  org.deepin.dde.Power1 LinePowerShortIdleDelay '<int32 300>'
 ```
 
 ### 电池延时配置
@@ -483,7 +490,7 @@ gdbus call --session \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1 BatteryScreensaverDelay <int32 120>
+  org.deepin.dde.Power1 BatteryScreensaverDelay '<int32 120>'
 ```
 
 #### BatteryScreenBlackDelay（属性）
@@ -515,7 +522,7 @@ gdbus call --session \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1 BatteryScreenBlackDelay <int32 120>
+  org.deepin.dde.Power1 BatteryScreenBlackDelay '<int32 120>'
 ```
 
 #### BatterySleepDelay（属性）
@@ -547,7 +554,7 @@ gdbus call --session \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1 BatterySleepDelay <int32 300>
+  org.deepin.dde.Power1 BatterySleepDelay '<int32 300>'
 ```
 
 #### BatteryLockDelay（属性）
@@ -579,7 +586,7 @@ gdbus call --session \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1 BatteryLockDelay <int32 60>
+  org.deepin.dde.Power1 BatteryLockDelay '<int32 60>'
 ```
 
 #### BatteryShortIdleDelay（属性）
@@ -611,7 +618,7 @@ gdbus call --session \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1 BatteryShortIdleDelay <int32 60>
+  org.deepin.dde.Power1 BatteryShortIdleDelay '<int32 60>'
 ```
 
 ### 锁屏与动作配置
@@ -645,7 +652,7 @@ gdbus call --session \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1 ScreenBlackLock <true>
+  org.deepin.dde.Power1 ScreenBlackLock '<true>'
 ```
 
 #### SleepLock（属性）
@@ -677,7 +684,7 @@ gdbus call --session \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1 SleepLock <true>
+  org.deepin.dde.Power1 SleepLock '<true>'
 ```
 
 #### LinePowerLidClosedAction（属性）
@@ -709,7 +716,7 @@ gdbus call --session \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1 LinePowerLidClosedAction <int32 0>
+  org.deepin.dde.Power1 LinePowerLidClosedAction '<int32 0>'
 ```
 
 #### BatteryLidClosedAction（属性）
@@ -741,7 +748,7 @@ gdbus call --session \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1 BatteryLidClosedAction <int32 0>
+  org.deepin.dde.Power1 BatteryLidClosedAction '<int32 0>'
 ```
 
 #### LinePowerPressPowerBtnAction（属性）
@@ -773,7 +780,7 @@ gdbus call --session \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1 LinePowerPressPowerBtnAction <int32 0>
+  org.deepin.dde.Power1 LinePowerPressPowerBtnAction '<int32 0>'
 ```
 
 #### BatteryPressPowerBtnAction（属性）
@@ -805,7 +812,7 @@ gdbus call --session \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1 BatteryPressPowerBtnAction <int32 0>
+  org.deepin.dde.Power1 BatteryPressPowerBtnAction '<int32 0>'
 ```
 
 
@@ -838,7 +845,7 @@ gdbus call --session \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1 LowPowerAction <int32 1>
+  org.deepin.dde.Power1 LowPowerAction '<int32 1>'
 ```
 
 #### ScheduledShutdownState（属性）
@@ -870,7 +877,7 @@ gdbus call --session \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1 ScheduledShutdownState <true>
+  org.deepin.dde.Power1 ScheduledShutdownState '<true>'
 ```
 
 #### ShutdownTime（属性）
@@ -934,7 +941,7 @@ gdbus call --session \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1 ShutdownRepetition <int32 1>
+  org.deepin.dde.Power1 ShutdownRepetition '<int32 1>'
 ```
 
 #### CustomShutdownWeekDays（属性）
@@ -1000,7 +1007,7 @@ gdbus call --session \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1 LowPowerNotifyEnable <true>
+  org.deepin.dde.Power1 LowPowerNotifyEnable '<true>'
 ```
 
 #### LowPowerNotifyThreshold（属性）
@@ -1032,7 +1039,7 @@ gdbus call --session \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1 LowPowerNotifyThreshold <int32 20>
+  org.deepin.dde.Power1 LowPowerNotifyThreshold '<int32 20>'
 ```
 
 #### LowPowerAutoSleepThreshold（属性）
@@ -1064,7 +1071,7 @@ gdbus call --session \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1 LowPowerAutoSleepThreshold <int32 5>
+  org.deepin.dde.Power1 LowPowerAutoSleepThreshold '<int32 5>'
 ```
 
 ### 电源信号
@@ -1598,7 +1605,7 @@ gdbus call --session \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1.WarnLevelConfig UsePercentageForPolicy <true>
+  org.deepin.dde.Power1.WarnLevelConfig UsePercentageForPolicy '<true>'
 ```
 
 #### LowTime（属性）
@@ -1631,7 +1638,7 @@ gdbus call --session \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1.WarnLevelConfig LowTime <int64 1200>
+  org.deepin.dde.Power1.WarnLevelConfig LowTime '<int64 1200>'
 ```
 
 #### DangerTime（属性）
@@ -1664,7 +1671,7 @@ gdbus call --session \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1.WarnLevelConfig DangerTime <int64 600>
+  org.deepin.dde.Power1.WarnLevelConfig DangerTime '<int64 600>'
 ```
 
 #### CriticalTime（属性）
@@ -1697,7 +1704,7 @@ gdbus call --session \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1.WarnLevelConfig CriticalTime <int64 300>
+  org.deepin.dde.Power1.WarnLevelConfig CriticalTime '<int64 300>'
 ```
 
 #### ActionTime（属性）
@@ -1730,7 +1737,7 @@ gdbus call --session \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1.WarnLevelConfig ActionTime <int64 120>
+  org.deepin.dde.Power1.WarnLevelConfig ActionTime '<int64 120>'
 ```
 
 #### LowPowerNotifyThreshold（属性）
@@ -1763,7 +1770,7 @@ gdbus call --session \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1.WarnLevelConfig LowPowerNotifyThreshold <int64 20>
+  org.deepin.dde.Power1.WarnLevelConfig LowPowerNotifyThreshold '<int64 20>'
 ```
 
 #### ActionPercentage（属性）
@@ -1796,7 +1803,7 @@ gdbus call --session \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1.WarnLevelConfig ActionPercentage <int64 5>
+  org.deepin.dde.Power1.WarnLevelConfig ActionPercentage '<int64 5>'
 ```
 
 ### 信号
@@ -1914,6 +1921,10 @@ gdbus monitor --session \
 | Object path | `/org/deepin/dde/Power1` |
 | Interface | `org.deepin.dde.Power1` |
 | Bus | System |
+
+### 授权与调用范围
+
+电池和性能状态查询保持当前用户身份。修改性能模式、CPU 调频及相关策略由服务端按调用者身份授权，支持交互授权的版本会通过 Polkit 请求认证。调用方白名单登记属于受限服务协作，不能用它绕过用户授权。部署版本不支持相应调用时，先核对服务接口与策略。
 
 ### 方法
 
@@ -2377,7 +2388,7 @@ gdbus call --system \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1 PowerSavingModeEnabled <true>
+  org.deepin.dde.Power1 PowerSavingModeEnabled '<true>'
 ```
 
 #### PowerSavingModeAuto（属性）
@@ -2410,7 +2421,7 @@ gdbus call --system \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1 PowerSavingModeAuto <true>
+  org.deepin.dde.Power1 PowerSavingModeAuto '<true>'
 ```
 
 #### PowerSavingModeAutoWhenBatteryLow（属性）
@@ -2443,7 +2454,7 @@ gdbus call --system \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1 PowerSavingModeAutoWhenBatteryLow <true>
+  org.deepin.dde.Power1 PowerSavingModeAutoWhenBatteryLow '<true>'
 ```
 
 #### PowerSavingModeBrightnessDropPercent（属性）
@@ -2476,7 +2487,7 @@ gdbus call --system \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1 PowerSavingModeBrightnessDropPercent <uint32 30>
+  org.deepin.dde.Power1 PowerSavingModeBrightnessDropPercent '<uint32 30>'
 ```
 
 #### PowerSavingModeAutoBatteryPercent（属性）
@@ -2509,7 +2520,7 @@ gdbus call --system \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1 PowerSavingModeAutoBatteryPercent <uint32 20>
+  org.deepin.dde.Power1 PowerSavingModeAutoBatteryPercent '<uint32 20>'
 ```
 
 #### PowerSavingModeBrightnessData（属性）
@@ -2713,7 +2724,7 @@ gdbus call --system \
   --dest org.deepin.dde.Power1 \
   --object-path /org/deepin/dde/Power1 \
   --method org.freedesktop.DBus.Properties.Set \
-  org.deepin.dde.Power1 SupportSwitchPowerMode <true>
+  org.deepin.dde.Power1 SupportSwitchPowerMode '<true>'
 ```
 
 #### CpuGovernor（属性）

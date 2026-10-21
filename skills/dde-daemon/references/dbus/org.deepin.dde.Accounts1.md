@@ -47,6 +47,10 @@ pkexec gdbus call --system \
 权限：
 - requires_sudo: true
 
+风险警示：
+
+- 删除目标账户会影响其登录；`rmFiles=true` 还会删除用户文件，须核实用户名、文件保留意图及备份。
+
 ```bash
 pkexec gdbus call --system \
   --dest org.deepin.dde.Accounts1 \
@@ -194,6 +198,10 @@ pkexec gdbus call --system \
 
 权限：
 - requires_sudo: true
+
+风险警示：
+
+- 删除组会改变相关用户的组权限与资源访问，使用 force 前应核实组成员及依赖。
 
 ```bash
 pkexec gdbus call --system \

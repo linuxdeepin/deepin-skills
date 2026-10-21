@@ -1,6 +1,6 @@
 # org.desktopspec.ConfigManager 接口参考
 
-该接口提供全局的 DConfig 配置管理器对象获取、更新、同步、用户配置数据移除和配置热加载能力，以及仅作用于 `dde-dconfig-daemon` 自身的日志规则设置能力。
+该接口提供按应用、资源和用户获取 DConfig 配置管理器对象、更新、同步、用户配置数据移除和配置热加载能力，以及仅作用于 `dde-dconfig-daemon` 自身的日志规则设置能力。
 
 ## 接口信息
 
@@ -12,6 +12,10 @@
 | Bus | System |
 
 
+
+## 调用身份与作用范围
+
+`acquireManager` 根据调用者 UID 取得配置；读取普通用户配置时保持该用户身份。`acquireManagerV2` 可指定 UID，但取得对象不代表拥有其全部写权限。配置值写入受用户身份、`permissions` 和共享标志约束。受限管理方法按各条目的权限说明执行，不能给所有 System 总线调用统一添加 `pkexec`。
 
 ### 管理器对象获取
 
@@ -71,7 +75,7 @@ gdbus call --system \
 pkexec gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path / \
-  --method org.desktopspec.ConfigManager.update "/path/to/manager"
+  --method org.desktopspec.ConfigManager.update "${manager_path:?请提供实际管理器对象路径}"
 ```
 
 #### sync
@@ -89,7 +93,7 @@ pkexec gdbus call --system \
 pkexec gdbus call --system \
   --dest org.desktopspec.ConfigManager \
   --object-path / \
-  --method org.desktopspec.ConfigManager.sync "/path/to/manager"
+  --method org.desktopspec.ConfigManager.sync "${manager_path:?请提供实际管理器对象路径}"
 ```
 
 #### setDelayReleaseTime
@@ -200,6 +204,10 @@ pkexec gdbus call --system \
 
 权限：
 - requires_sudo: true
+
+风险警示：
+
+- 清除指定 UID 的 DConfig 自定义配置数据，影响该用户使用这些资源的应用；先核实 UID 与需要保留的配置。
 
 ```bash
 pkexec gdbus call --system \

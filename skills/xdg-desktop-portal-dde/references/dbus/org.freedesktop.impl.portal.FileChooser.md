@@ -2,6 +2,8 @@
 
 该接口提供文件打开和保存对话框能力，允许沙箱应用通过系统标准的文件选择对话框选择文件。
 
+本文记录 Portal 后端协作接口，普通应用调用前端 `org.freedesktop.portal.Desktop` 的 `org.freedesktop.portal.*` 接口。后端示例中的应用身份与请求句柄必须来自实际前端请求，不能将演示参数用于应用权限判断。
+
 ## 接口信息
 
 | 字段 | 值 |
@@ -27,7 +29,7 @@
 gdbus call --session \
   --dest org.freedesktop.impl.portal.desktop.dde \
   --object-path /org/freedesktop/portal/desktop \
-  --method org.freedesktop.impl.portal.FileChooser.OpenFile "/" "app" "" "选择文件" {}
+  --method org.freedesktop.impl.portal.FileChooser.OpenFile "${portal_handle:?请使用前端请求的实际 handle}" "${portal_app_id:?请使用实际请求的应用标识}" "" "选择文件" {}
 ```
 
 #### SaveFile
@@ -44,7 +46,7 @@ gdbus call --session \
 gdbus call --session \
   --dest org.freedesktop.impl.portal.desktop.dde \
   --object-path /org/freedesktop/portal/desktop \
-  --method org.freedesktop.impl.portal.FileChooser.SaveFile "/" "app" "" "保存文件" {}
+  --method org.freedesktop.impl.portal.FileChooser.SaveFile "${portal_handle:?请使用前端请求的实际 handle}" "${portal_app_id:?请使用实际请求的应用标识}" "" "保存文件" {}
 ```
 
 #### SaveFiles
@@ -61,5 +63,5 @@ gdbus call --session \
 gdbus call --session \
   --dest org.freedesktop.impl.portal.desktop.dde \
   --object-path /org/freedesktop/portal/desktop \
-  --method org.freedesktop.impl.portal.FileChooser.SaveFiles "/" "app" "" "保存多个文件" {}
+  --method org.freedesktop.impl.portal.FileChooser.SaveFiles "${portal_handle:?请使用前端请求的实际 handle}" "${portal_app_id:?请使用实际请求的应用标识}" "" "保存多个文件" {}
 ```

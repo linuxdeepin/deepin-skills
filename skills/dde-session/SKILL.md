@@ -1,13 +1,15 @@
 ---
 name: dde-session
-description: dde-session 是 DDE 桌面环境会话管理组件，负责桌面会话的启动、初始化和生命周期管理。本 skill 提供 dde-session 的 CLI 命令和 D-Bus 接口文档：CLI 覆盖会话启动（dde-session）、会话控制——关机/退出/注销（dde-session-ctl）、锁屏快速登录（dde-quick-login）；D-Bus 接口覆盖会话注销与会话 PID/路径查询（Session1，仅作用于 dde-session 自身）、全局电源操作与锁屏与抑制管理与抑制器详情查询与能力查询与会话注册与调试模式（SessionManager1、Inhibitor1）、窗口管理器查询与切换（WMSwitcher1）
+description: dde-session 是 DDE 桌面环境会话管理组件，负责桌面会话的启动、初始化和生命周期管理。本 skill 提供 dde-session 的 CLI 命令和 D-Bus 接口文档：CLI 覆盖会话启动（dde-session）、会话控制——关机/退出/注销（dde-session-ctl）、锁屏快速登录（dde-quick-login）；D-Bus 接口覆盖会话管理进程退出与会话 PID/路径查询（Session1）、全局电源操作与锁屏与抑制管理与抑制器详情查询与能力查询与会话注册与调试模式（SessionManager1、Inhibitor1）、X11 合成状态查询与窗口特效选择请求（WMSwitcher1）
 Categories:
   - Settings
 ---
 
 # dde-session
 
-dde-session 是 DDE 桌面会话管理组件，负责桌面会话的启动、初始化和生命周期管理。它提供会话启动、会话控制、锁屏快速登录的 CLI 命令，并通过 Session 总线提供会话注销、电源操作、抑制管理、状态查询和窗口管理器切换能力。上述功能均为系统级会话管理能力，对整个桌面会话生效。
+dde-session 是 DDE 桌面会话管理组件，负责桌面会话的启动、初始化和生命周期管理。它提供会话启动、会话控制、锁屏快速登录的 CLI 命令，并通过 Session 总线提供会话管理进程退出、注销请求、电源操作、抑制管理、状态查询和 X11 窗口特效选择请求能力。进程退出、当前用户会话操作和整机电源操作的作用范围分别见各接口。
+
+普通注销使用会话管理器的 `RequestLogout`，包含会话退出准备；`Session1.Logout` 只请求退出会话管理进程。显示关机选项使用关机界面的 `Show`；会话管理器的电源请求可进入实际动作。调用方需保存抑制器 cookie，并在操作结束后显式调用 `Uninhibit`；不要假设客户端断开会自动解除抑制。
 
 ## CLI 命令
 
@@ -33,7 +35,7 @@ DDE 锁屏快速登录工具，用于在锁屏状态下快速重新登录。
 
 ### 会话管理
 
-提供会话注销、会话进程 PID 查询和会话路径查询能力。
+提供会话管理进程退出、会话进程 PID 查询和会话路径查询能力；正常注销使用会话管理器的 `RequestLogout`。
 
 详见 [org.deepin.dde.Session1.md](references/dbus/org.deepin.dde.Session1.md)
 
@@ -51,6 +53,6 @@ DDE 锁屏快速登录工具，用于在锁屏状态下快速重新登录。
 
 ### 窗口管理器切换
 
-提供窗口管理器查询和切换能力。
+提供 X11 合成能力与状态标签查询，并请求显示窗口特效选择界面；Wayland 下不执行此请求。
 
 详见 [org.deepin.dde.WMSwitcher1.md](references/dbus/org.deepin.dde.WMSwitcher1.md)

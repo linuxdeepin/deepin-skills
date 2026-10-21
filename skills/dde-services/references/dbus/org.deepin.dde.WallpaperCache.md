@@ -116,3 +116,7 @@ gdbus call --session \
 ```
 
 ---
+
+## 兼容接口关系
+
+图像效果与图像模糊的历史接口由壁纸缓存兼容处理，新调用使用本页的壁纸缓存接口。旧协议关系见 [ImageEffect1](org.deepin.dde.ImageEffect1.md) 和 [ImageBlur1](org.deepin.dde.ImageBlur1.md)，不应将它们视为另一套通用图像处理入口。

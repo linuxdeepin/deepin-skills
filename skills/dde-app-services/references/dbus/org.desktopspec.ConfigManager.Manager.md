@@ -13,6 +13,42 @@
 
 
 
+## 对象与权限
+
+先调用 `acquireManager`，将返回的对象路径保存为 `manager_path`，后续示例使用该路径；对象释放后应重新获取。实际程序宜在同一 D-Bus 连接内获取和使用对象。`key_name` 需替换为该资源的真实 key。
+
+普通读取和同用户配置访问保持当前用户身份，不因使用 System 总线改成 root。写入前查看 key 的 `permissions` 与目标资源，读取到对象不代表可以写入其他用户的值。共享值只作用于对应配置资源的消费者，不代表所有应用配置。
+
+### 同一连接读取完整示例
+
+使用系统 Python 的 PyGObject，在同一连接取得管理器、读取当前用户的音效开关并释放对象：
+
+```python
+from gi.repository import Gio, GLib
+
+bus = Gio.bus_get_sync(Gio.BusType.SYSTEM, None)
+service = "org.desktopspec.ConfigManager"
+interface = "org.desktopspec.ConfigManager.Manager"
+manager_path = bus.call_sync(
+    service, "/", service, "acquireManager",
+    GLib.Variant("(sss)", ("org.deepin.dde.daemon",
+                          "org.deepin.dde.daemon.soundeffect", "")),
+    GLib.VariantType.new("(o)"), Gio.DBusCallFlags.NONE, 5000, None
+).unpack()[0]
+try:
+    reply = bus.call_sync(
+        service, manager_path, interface, "value",
+        GLib.Variant("(s)", ("enabled",)), GLib.VariantType.new("(v)"),
+        Gio.DBusCallFlags.NONE, 5000, None
+    )
+    print(reply.unpack()[0])
+finally:
+    bus.call_sync(service, manager_path, interface, "release", None, None,
+                  Gio.DBusCallFlags.NONE, 5000, None)
+```
+
+示例只读现有资源；资源未安装或服务不可用时返回 D-Bus 错误。下面各命令片段需沿用实际对象路径并把 key 替换为目标资源中的键。
+
 ### 配置值读写
 
 #### value
@@ -26,13 +62,13 @@
 ```bash
 gdbus call --system \
   --dest org.desktopspec.ConfigManager \
-  --object-path /path/to/manager \
+  --object-path "${manager_path:?请先获取管理器对象路径}" \
   --method org.desktopspec.ConfigManager.Manager.value "key_name"
 ```
 
 #### setValue
 
-设置指定 key 的配置值。设置后配置变更会实时生效，并通过 `valueChanged` 信号通知其他监听者。
+设置指定 key 的配置值。成功后由对应配置消费者处理，并通过配置变化信号通知监听者；是否立即应用取决于消费者。`balance` 是字符串示例，实际值必须匹配目标 key 类型。
 
 - **输入参数**: `key`（string, 类型 `s`）：配置键名；`value`（variant, 类型 `v`）：新值
 - **返回值**: 无
@@ -41,8 +77,8 @@ gdbus call --system \
 ```bash
 gdbus call --system \
   --dest org.desktopspec.ConfigManager \
-  --object-path /path/to/manager \
-  --method org.desktopspec.ConfigManager.Manager.setValue "key_name" <"balance">
+  --object-path "${manager_path:?请先获取管理器对象路径}" \
+  --method org.desktopspec.ConfigManager.Manager.setValue "key_name" "<'balance'>"
 ```
 
 #### isDefaultValue
@@ -56,7 +92,7 @@ gdbus call --system \
 ```bash
 gdbus call --system \
   --dest org.desktopspec.ConfigManager \
-  --object-path /path/to/manager \
+  --object-path "${manager_path:?请先获取管理器对象路径}" \
   --method org.desktopspec.ConfigManager.Manager.isDefaultValue "key_name"
 ```
 
@@ -71,7 +107,7 @@ gdbus call --system \
 ```bash
 gdbus call --system \
   --dest org.desktopspec.ConfigManager \
-  --object-path /path/to/manager \
+  --object-path "${manager_path:?请先获取管理器对象路径}" \
   --method org.desktopspec.ConfigManager.Manager.reset "key_name"
 ```
 
@@ -89,7 +125,7 @@ gdbus call --system \
 ```bash
 gdbus call --system \
   --dest org.desktopspec.ConfigManager \
-  --object-path /path/to/manager \
+  --object-path "${manager_path:?请先获取管理器对象路径}" \
   --method org.desktopspec.ConfigManager.Manager.name "key_name" "zh_CN"
 ```
 
@@ -104,7 +140,7 @@ gdbus call --system \
 ```bash
 gdbus call --system \
   --dest org.desktopspec.ConfigManager \
-  --object-path /path/to/manager \
+  --object-path "${manager_path:?请先获取管理器对象路径}" \
   --method org.desktopspec.ConfigManager.Manager.description "key_name" "zh_CN"
 ```
 
@@ -119,7 +155,7 @@ gdbus call --system \
 ```bash
 gdbus call --system \
   --dest org.desktopspec.ConfigManager \
-  --object-path /path/to/manager \
+  --object-path "${manager_path:?请先获取管理器对象路径}" \
   --method org.desktopspec.ConfigManager.Manager.visibility "key_name"
 ```
 
@@ -134,7 +170,7 @@ gdbus call --system \
 ```bash
 gdbus call --system \
   --dest org.desktopspec.ConfigManager \
-  --object-path /path/to/manager \
+  --object-path "${manager_path:?请先获取管理器对象路径}" \
   --method org.desktopspec.ConfigManager.Manager.permissions "key_name"
 ```
 
@@ -149,7 +185,7 @@ gdbus call --system \
 ```bash
 gdbus call --system \
   --dest org.desktopspec.ConfigManager \
-  --object-path /path/to/manager \
+  --object-path "${manager_path:?请先获取管理器对象路径}" \
   --method org.desktopspec.ConfigManager.Manager.flags "key_name"
 ```
 
@@ -166,7 +202,7 @@ gdbus call --system \
 ```bash
 gdbus call --system \
   --dest org.desktopspec.ConfigManager \
-  --object-path /path/to/manager \
+  --object-path "${manager_path:?请先获取管理器对象路径}" \
   --method org.desktopspec.ConfigManager.Manager.release
 ```
 
@@ -189,7 +225,7 @@ gdbus call --system \
 ```bash
 gdbus call --system \
   --dest org.desktopspec.ConfigManager \
-  --object-path /path/to/manager \
+  --object-path "${manager_path:?请先获取管理器对象路径}" \
   --method org.freedesktop.DBus.Properties.Get \
   org.desktopspec.ConfigManager.Manager version
 ```
@@ -209,7 +245,7 @@ gdbus call --system \
 ```bash
 gdbus call --system \
   --dest org.desktopspec.ConfigManager \
-  --object-path /path/to/manager \
+  --object-path "${manager_path:?请先获取管理器对象路径}" \
   --method org.freedesktop.DBus.Properties.Get \
   org.desktopspec.ConfigManager.Manager keyList
 ```
@@ -227,7 +263,7 @@ gdbus call --system \
 ```bash
 gdbus monitor --system \
   --dest org.desktopspec.ConfigManager \
-  --object-path /path/to/manager
+  --object-path "${manager_path:?请先获取管理器对象路径}"
 ```
 
 ---

@@ -2,6 +2,8 @@
 
 该接口提供全局快捷键会话创建和绑定能力，允许沙箱应用注册全局快捷键并接收快捷键触发事件。
 
+本文记录 Portal 后端协作接口，普通应用调用前端 `org.freedesktop.portal.Desktop` 的 `org.freedesktop.portal.*` 接口。后端示例中的应用身份与请求句柄必须来自实际前端请求，不能将演示参数用于应用权限判断。
+
 ## 接口信息
 
 | 字段 | 值 |
@@ -33,7 +35,7 @@
 gdbus call --session \
   --dest org.freedesktop.impl.portal.desktop.dde \
   --object-path /org/freedesktop/portal/desktop \
-  --method org.freedesktop.impl.portal.GlobalShortcuts.CreateSession "/" "/" "app" {}
+  --method org.freedesktop.impl.portal.GlobalShortcuts.CreateSession "/" "${portal_handle:?请使用前端请求的实际 handle}" "${portal_app_id:?请使用实际请求的应用标识}" {}
 ```
 
 #### BindShortCuts

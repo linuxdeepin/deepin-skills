@@ -1,6 +1,8 @@
 # org.deepin.dde.Authenticate1.Face 接口参考
 
-该接口在 System 总线上注册，提供全局的人脸录入、验证、列出、重命名、删除及默认设备与服务设置能力，面向系统全局用户的人脸数据管理。其中录入、重命名、删除操作需要 polkit 提权。
+该接口在 System 总线上注册，按用户、服务和模板标识管理人脸录入、验证、列出、重命名和删除；默认设备作用于指定服务，默认服务设置作用于认证服务。录入、重命名与删除操作需要授权。
+
+本接口由 `org.deepin.dde.Authenticate1` 服务提供，调用前需确保对应服务已安装并运行。操作对象由用户及人脸标识参数确定，不是对所有用户统一执行。旧版独立 `deepin-face` 接口的关系见 [Face1 说明](org.deepin.dde.Face1.md)。
 
 ## 接口信息
 
@@ -10,6 +12,12 @@
 | Object path | `/org/deepin/dde/Authenticate1/Face` |
 | Interface | `org.deepin.dde.Authenticate1.Face` |
 | Bus | System |
+
+## 提供方与权限
+
+本接口由 `deepin-authenticate` 包提供；不能仅安装旧版独立人脸组件就假定新服务可用。在 `deepin-authenticate 1:2.0.32` 的总线策略中，`StartVerify`、`ListFaces`、`SetDefaultDevice` 和 `SetDefaultService` 仅允许 root 调用；录入、重命名和删除则按对应的服务端授权规则处理。只读属性并未因此统一要求 root。部署其他版本时仍需使用其实际总线策略。
+
+录入和验证的 ID 来自 `StartEnroll` / `StartVerify`，不是可复用的固定字符串。后续停止、读取图像信息和状态监听应由发起操作的客户端管理；一次性命令片段不能替代完整的认证客户端生命周期。
 
 ### 人脸录入
 
@@ -51,7 +59,7 @@ gdbus call --system \
   --dest org.deepin.dde.Authenticate1 \
   --object-path /org/deepin/dde/Authenticate1/Face \
   --method org.deepin.dde.Authenticate1.Face.StopEnroll \
-  "<enroll_id>"
+  "${enroll_id:?请使用发起录入时返回的实际 ID}"
 ```
 
 ### 人脸验证
@@ -67,8 +75,12 @@ gdbus call --system \
 - **输入参数**: `username`（string, 类型 `s`）：用户名；`serviceName`（string, 类型 `s`）：服务名称；`timeout`（int32, 类型 `i`）：超时时间（秒）
 - **返回值**: `id`（string, 类型 `s`）：验证操作 ID
 
+权限：
+
+- requires_sudo: true
+
 ```bash
-gdbus call --system \
+pkexec gdbus call --system \
   --dest org.deepin.dde.Authenticate1 \
   --object-path /org/deepin/dde/Authenticate1/Face \
   --method org.deepin.dde.Authenticate1.Face.StartVerify \
@@ -91,7 +103,7 @@ gdbus call --system \
   --dest org.deepin.dde.Authenticate1 \
   --object-path /org/deepin/dde/Authenticate1/Face \
   --method org.deepin.dde.Authenticate1.Face.StopVerify \
-  "<verify_id>"
+  "${verify_id:?请使用发起验证时返回的实际 ID}"
 ```
 
 ### 人脸查询与管理
@@ -107,8 +119,12 @@ gdbus call --system \
 - **输入参数**: `serviceName`（string, 类型 `s`）：服务名称；`username`（string, 类型 `s`）：用户名
 - **返回值**: `faces`（string 数组, 类型 `as`）：人脸名称列表
 
+权限：
+
+- requires_sudo: true
+
 ```bash
-gdbus call --system \
+pkexec gdbus call --system \
   --dest org.deepin.dde.Authenticate1 \
   --object-path /org/deepin/dde/Authenticate1/Face \
   --method org.deepin.dde.Authenticate1.Face.ListFaces \
@@ -151,6 +167,10 @@ pkexec gdbus call --system \
 - **输入参数**: `serviceName`（string, 类型 `s`）：服务名称；`username`（string, 类型 `s`）：用户名；`faceName`（string, 类型 `s`）：人脸名称
 - **返回值**: 无
 
+风险警示：
+
+- 删除指定用户的人脸模板后，该模板不能再用于人脸认证；删除前应保留其他可用认证方式。
+
 ```bash
 pkexec gdbus call --system \
   --dest org.deepin.dde.Authenticate1 \
@@ -173,6 +193,10 @@ pkexec gdbus call --system \
 - **输入参数**: `serviceName`（string, 类型 `s`）：服务名称；`username`（string, 类型 `s`）：用户名
 - **返回值**: 无
 
+风险警示：
+
+- 批量删除将移除目标用户的多个人脸模板并影响人脸登录；确认用户、模板范围及备用认证方式。
+
 ```bash
 pkexec gdbus call --system \
   --dest org.deepin.dde.Authenticate1 \
@@ -194,8 +218,16 @@ pkexec gdbus call --system \
 - **输入参数**: `serviceName`（string, 类型 `s`）：服务名称；`device`（string, 类型 `s`）：设备路径
 - **返回值**: 无
 
+权限：
+
+- requires_sudo: true
+
+风险警示：
+
+- 更改默认认证设备或服务会影响后续人脸认证，需确认目标服务和设备可用并保留其他认证方式。
+
 ```bash
-gdbus call --system \
+pkexec gdbus call --system \
   --dest org.deepin.dde.Authenticate1 \
   --object-path /org/deepin/dde/Authenticate1/Face \
   --method org.deepin.dde.Authenticate1.Face.SetDefaultDevice \
@@ -213,8 +245,16 @@ gdbus call --system \
 - **输入参数**: `serviceName`（string, 类型 `s`）：服务名称
 - **返回值**: 无
 
+权限：
+
+- requires_sudo: true
+
+风险警示：
+
+- 更改默认认证设备或服务会影响后续人脸认证，需确认目标服务和设备可用并保留其他认证方式。
+
 ```bash
-gdbus call --system \
+pkexec gdbus call --system \
   --dest org.deepin.dde.Authenticate1 \
   --object-path /org/deepin/dde/Authenticate1/Face \
   --method org.deepin.dde.Authenticate1.Face.SetDefaultService \
@@ -239,7 +279,7 @@ gdbus call --system \
   --dest org.deepin.dde.Authenticate1 \
   --object-path /org/deepin/dde/Authenticate1/Face \
   --method org.deepin.dde.Authenticate1.Face.GetShareMemInfo \
-  "<operation_id>"
+  "${operation_id:?请使用仍有效的录入或验证操作 ID}"
 ```
 
 ### 属性

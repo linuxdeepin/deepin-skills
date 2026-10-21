@@ -1,6 +1,8 @@
 # org.freedesktop.impl.portal.Lockdown 接口参考
 
-该接口提供锁定模式设置能力，通过读写属性来控制各项系统功能的禁用状态。
+该接口报告门户后端的禁用策略状态。属性写入只更新当前后端进程内状态，服务重启后恢复默认值；不修改系统设备权限，也不保证在整个系统范围禁用相应资源。
+
+本文记录 Portal 后端协作接口，普通应用调用前端 `org.freedesktop.portal.Desktop` 的 `org.freedesktop.portal.*` 接口。后端示例中的应用身份与请求句柄必须来自实际前端请求，不能将演示参数用于应用权限判断。
 
 ## 接口信息
 
@@ -13,17 +15,17 @@
 
 ### 属性
 
-所有属性均为 `b`（bool）类型，可读可写。属性值为 `true` 时表示禁用对应功能，`false` 时表示允许使用。
+属性均为 `b`（bool），当前 DDE 后端提供读写，默认 `false`。值用于向门户前端报告策略意图，不等于强制限制任意应用；调试写入不持久化，也不替代管理员权限策略。
 
 | 属性名 | 类型 | 权限 | 说明 |
 |--------|------|------|------|
-| `disable_printing` | `b` | readwrite | 禁止打印。设为 `true` 后沙箱应用无法使用打印功能。 |
-| `disable_save_to_disk` | `b` | readwrite | 禁止保存到磁盘。设为 `true` 后沙箱应用无法将文件保存到磁盘。 |
-| `disable_application_handlers` | `b` | readwrite | 禁止应用处理器。设为 `true` 后沙箱应用无法注册或使用应用处理器。 |
-| `disable_location` | `b` | readwrite | 禁止定位。设为 `true` 后沙箱应用无法访问地理位置信息。 |
-| `disable_camera` | `b` | readwrite | 禁止摄像头。设为 `true` 后沙箱应用无法访问摄像头设备。 |
-| `disable_microphone` | `b` | readwrite | 禁止麦克风。设为 `true` 后沙箱应用无法访问麦克风设备。 |
-| `disable_sound_output` | `b` | readwrite | 禁止声音输出。设为 `true` 后沙箱应用无法输出音频。 |
+| `disable_printing` | `b` | readwrite | 报告打印禁用状态。 |
+| `disable_save_to_disk` | `b` | readwrite | 报告保存到磁盘的禁用状态。 |
+| `disable_application_handlers` | `b` | readwrite | 报告应用处理器禁用状态。 |
+| `disable_location` | `b` | readwrite | 报告定位禁用状态。 |
+| `disable_camera` | `b` | readwrite | 报告摄像头禁用状态。 |
+| `disable_microphone` | `b` | readwrite | 报告麦克风禁用状态。 |
+| `disable_sound_output` | `b` | readwrite | 报告声音输出禁用状态。 |
 
 ### 使用示例
 
@@ -45,7 +47,7 @@ gdbus call --session \
   --method org.freedesktop.DBus.Properties.Get "org.freedesktop.impl.portal.Lockdown" "disable_printing"
 ```
 
-#### 设置锁定属性
+#### 调试后端进程内状态
 
 ```bash
 gdbus call --session \

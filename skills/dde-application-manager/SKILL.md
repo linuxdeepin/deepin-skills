@@ -1,18 +1,16 @@
 ---
 name: dde-application-manager
-description: >
-  dde-application-manager 是 DDE 应用管理器组件，负责应用生命周期管理，包括应用启动、应用属性管理、应用实例管理、任务跟踪、MIME 类型管理和应用更新通知。
-  本 skill 提供 dde-application-manager 的 D-Bus 接口、DConfig 配置项和 CLI 命令的参考文档。
-  D-Bus 接口覆盖应用管理、对象管理、应用属性、应用实例、任务管理、任务对象操作、MIME 类型管理和应用更新通知；
-  DConfig 配置项覆盖应用启动次数记录、应用环境变量管理和应用属性会话级覆盖；
-  CLI 命令覆盖应用启动与身份识别。
+description: 启动和识别当前用户的应用，查询与终止应用实例，跟踪启动任务，管理 MIME 默认关联与应用属性覆盖。用于应用生命周期、默认关联及应用身份相关操作；命令启动具有应用管理语义。
 Categories:
+  - Application
   - Settings
 ---
 
 # dde-application-manager
 
 dde-application-manager 是 DDE 应用管理器组件，通过 Session 总线提供应用启动、应用属性管理、应用实例管理、任务跟踪、MIME 类型管理和应用更新通知能力，并通过 DConfig 暴露自身配置、通过 CLI 工具提供命令行操作入口。
+
+MIME 管理用于修改应用关联；默认终端和默认文件管理器启动工具只负责启动已配置的程序。实例接口的目标是指定应用实例，任务接口的目标是应用启动任务，执行命令时按应用身份与环境运行。
 
 ## D-Bus 接口
 

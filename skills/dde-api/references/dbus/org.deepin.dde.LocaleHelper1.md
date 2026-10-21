@@ -1,6 +1,6 @@
 # org.deepin.dde.LocaleHelper1 接口参考
 
-该接口提供系统区域设置生成和切换能力。
+该接口生成系统 locale 数据并修改系统默认 locale；当前用户桌面语言应通过会话语言接口管理，不能将两个设置视为等价。
 
 > **使用提示**：该服务无法通过 D-Bus 自动激活，需确保对应的 systemd 服务已启动后再进行 D-Bus 调用。
 
@@ -43,9 +43,9 @@ pkexec gdbus call --system \
 
 设置系统区域。
 
-- **功能**: 将系统当前区域设置切换为指定的区域名称
+- **功能**: 修改系统默认 locale 配置，不直接切换现有用户进程的语言
 - **触发条件**: 由应用程序通过 D-Bus 调用触发
-- **使用场景**: 控制中心切换系统语言和区域格式
+- **使用场景**: 管理系统默认语言；当前用户桌面语言使用会话语言接口
 
 - **输入参数**:
   - `locale`（string, 类型 `s`）：区域名称（如 `zh_CN.UTF-8`）
@@ -53,6 +53,10 @@ pkexec gdbus call --system \
 
 权限：
 - requires_sudo: true
+
+风险警示：
+
+- 修改系统默认 locale 会影响后续使用默认语言的会话与服务，不会替换现有进程的语言环境。
 
 ```bash
 pkexec gdbus call --system \
@@ -77,12 +81,16 @@ pkexec gdbus call --system \
 权限：
 - requires_sudo: true
 
+风险警示：
+
+- 将实际 D-Bus 唯一连接加入服务调用白名单会扩大该连接的权限；仅供受信服务协作，不能使用过期或随意填写的连接名。
+
 ```bash
 pkexec gdbus call --system \
   --dest org.deepin.dde.LocaleHelper1 \
   --object-path /org/deepin/dde/LocaleHelper1 \
   --method org.deepin.dde.LocaleHelper1.SetAllowCaller \
-  ":1.42"
+  "${caller_unique_name:?请提供当前受信连接的实际唯一名}"
 ```
 
 ## 信号

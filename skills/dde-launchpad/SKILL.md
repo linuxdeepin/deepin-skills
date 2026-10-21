@@ -9,6 +9,8 @@ Categories:
 
 dde-launchpad 是 DDE 桌面环境的启动器组件，以 dde-shell applet 形式运行，为用户提供应用启动入口。通过 Session 总线提供启动器的显示、隐藏、切换能力，以及已废弃的模式控制方法（ShowByMode），并通过 DConfig 管理启动器自身的按桌面条目 ID 搜索行为。其 DConfig 配置仅作用于 dde-launchpad 自身应用行为，不影响系统全局配置。
 
+启动器以 dde-shell applet 运行，因此使用 `appId=org.deepin.dde.shell`、`resource=org.deepin.ds.launchpad` 访问自身配置。窗口操作只控制启动器；配置资源标识不按 skill 名称推导。
+
 ## D-Bus 接口
 
 ### 启动器控制

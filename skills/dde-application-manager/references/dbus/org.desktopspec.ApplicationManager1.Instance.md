@@ -2,6 +2,8 @@
 
 该接口提供单个应用实例的管理能力。每个运行中的应用实例在 D-Bus 上注册一个动态对象路径，可通过 `ApplicationManager1.Application` 接口的 `Instances` 属性获取某应用所有实例的对象路径列表。
 
+示例中的 `instance_path` 必须来自应用管理器返回的实际实例对象；不能使用应用对象路径或固定占位路径。
+
 ## 接口信息
 
 | 字段 | 值 |
@@ -20,10 +22,14 @@
 - **输入参数**: `signal`（int, 类型 `i`）：要发送的信号编号（如 `9` 表示 SIGKILL，`15` 表示 SIGTERM）
 - **返回值**: 无
 
+风险警示：
+
+- 信号发送到指定实例及其进程，强制终止可使该应用未保存工作丢失；先确认实例身份。
+
 ```bash
 gdbus call --session \
   --dest org.desktopspec.ApplicationManager1 \
-  --object-path <dynamic> \
+  --object-path "${instance_path:?请先获取实际应用实例路径}" \
   --method org.desktopspec.ApplicationManager1.Instance.KillAll 15
 ```
 
@@ -43,7 +49,7 @@ gdbus call --session \
 ```bash
 gdbus call --session \
   --dest org.desktopspec.ApplicationManager1 \
-  --object-path <dynamic> \
+  --object-path "${instance_path:?请先获取实际应用实例路径}" \
   --method org.freedesktop.DBus.Properties.Get \
   org.desktopspec.ApplicationManager1.Instance Application
 ```
@@ -62,7 +68,7 @@ gdbus call --session \
 ```bash
 gdbus call --session \
   --dest org.desktopspec.ApplicationManager1 \
-  --object-path <dynamic> \
+  --object-path "${instance_path:?请先获取实际应用实例路径}" \
   --method org.freedesktop.DBus.Properties.Get \
   org.desktopspec.ApplicationManager1.Instance SystemdUnitPath
 ```
@@ -81,7 +87,7 @@ gdbus call --session \
 ```bash
 gdbus call --session \
   --dest org.desktopspec.ApplicationManager1 \
-  --object-path <dynamic> \
+  --object-path "${instance_path:?请先获取实际应用实例路径}" \
   --method org.freedesktop.DBus.Properties.Get \
   org.desktopspec.ApplicationManager1.Instance Launcher
 ```
@@ -100,7 +106,7 @@ gdbus call --session \
 ```bash
 gdbus call --session \
   --dest org.desktopspec.ApplicationManager1 \
-  --object-path <dynamic> \
+  --object-path "${instance_path:?请先获取实际应用实例路径}" \
   --method org.freedesktop.DBus.Properties.Get \
   org.desktopspec.ApplicationManager1.Instance LaunchType
 ```
@@ -119,7 +125,7 @@ gdbus call --session \
 ```bash
 gdbus call --session \
   --dest org.desktopspec.ApplicationManager1 \
-  --object-path <dynamic> \
+  --object-path "${instance_path:?请先获取实际应用实例路径}" \
   --method org.freedesktop.DBus.Properties.Get \
   org.desktopspec.ApplicationManager1.Instance Orphaned
 ```

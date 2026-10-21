@@ -1,13 +1,15 @@
 # org.freedesktop.impl.portal.Request 接口参考
 
-该接口提供标准 Portal 请求的生命周期管理能力，每个 Portal 请求会创建一个独立的 Request 对象，用于关闭请求和释放资源。
+该接口提供标准 Portal 请求的生命周期管理能力，支持取消的交互会注册对应的动态 Request 对象，用于关闭请求和释放资源。
+
+本文记录 Portal 后端协作接口，普通应用调用前端 `org.freedesktop.portal.Desktop` 的 `org.freedesktop.portal.*` 接口。后端示例中的应用身份与请求句柄必须来自实际前端请求，不能将演示参数用于应用权限判断。
 
 ## 接口信息
 
 | 字段 | 值 |
 |------|------|
 | Service | `org.freedesktop.impl.portal.desktop.dde` |
-| Object path | 动态对象路径，由 Portal 后端在创建请求时生成 |
+| Object path | 使用前端传给后端的实际请求 handle |
 | Interface | `org.freedesktop.impl.portal.Request` |
 | Bus | Session |
 
@@ -26,6 +28,8 @@
 ```bash
 gdbus call --session \
   --dest org.freedesktop.impl.portal.desktop.dde \
-  --object-path /org/freedesktop/portal/desktop/request/dde/1 \
+  --object-path "${portal_handle:?请使用仍有效的后端请求 handle}" \
   --method org.freedesktop.impl.portal.Request.Close
 ```
+
+后端请求路径来自实际交互，取消后不能继续复用。应用侧应关闭前端返回的 `org.freedesktop.portal.Request` 对象，不直接调用此后端接口；抑制请求关闭时还会释放对应会话抑制。

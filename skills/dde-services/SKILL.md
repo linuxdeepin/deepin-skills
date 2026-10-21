@@ -9,6 +9,8 @@ Categories:
 
 dde-services 是 DDE 的后端服务组件，在 Treeland 会话下替代 dde-daemon 的部分后端功能。提供全局电源管理、X 设置、壁纸轮播、快捷键管理、手势管理、壁纸缓存和环境亮度感知的 D-Bus 接口（电源管理同时注册在 Session 和 System 总线上），提供快捷键操作执行和 IP 地址监视的 CLI 命令，并提供电源管理和环境亮度的 DConfig 配置项。
 
+同名接口按实际会话服务分流，调用前确认目标 Bus 和服务归属。System Power1 的电池状态查询、性能模式和 CPU 调频控制与会话关机请求不同；写操作按部署版本的服务端授权策略处理。只读查询不统一提权，调用方白名单登记属于受限服务协作。
+
 ## CLI 命令
 
 ### dde-shortcut-tool
@@ -68,22 +70,6 @@ IP 地址监视守护进程（upstream 开源项目），用于监视网络接�
 全局环境亮度感知能力。
 
 详见 [org.deepin.dde.AmbientBrightness1.md](references/dbus/org.deepin.dde.AmbientBrightness1.md)
-
-### 图像效果（已废弃/不推荐使用）
-
-> **已废弃/不推荐使用**：该接口为兼容性接口，实际实现挂载在 WallpaperCache 服务上。新代码请使用 `org.deepin.dde.WallpaperCache` 接口替代。
-
-兼容 dde-daemon 的 ImageEffect 服务，提供图像效果处理（Get/Delete）接口，实际委托给 WallpaperCache 服务处理，仅支持 "pixmix"/blur 效果。
-
-详见 [org.deepin.dde.ImageEffect1.md](references/dbus/org.deepin.dde.ImageEffect1.md)
-
-### 图像模糊（已废弃/不推荐使用）
-
-> **已废弃/不推荐使用**：该接口为兼容性接口，实际实现挂载在 WallpaperCache 服务上。新代码请使用 `org.deepin.dde.WallpaperCache` 接口替代。
-
-兼容 dde-daemon 的 ImageBlur 服务，提供图像模糊处理（Get/Delete）及模糊完成信号（BlurDone），实际委托给 WallpaperCache 服务的模糊处理功能。
-
-详见 [org.deepin.dde.ImageBlur1.md](references/dbus/org.deepin.dde.ImageBlur1.md)
 
 ## DConfig 配置
 

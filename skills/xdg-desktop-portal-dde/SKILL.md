@@ -1,6 +1,6 @@
 ---
 name: xdg-desktop-portal-dde
-description: xdg-desktop-portal-dde 是 xdg-desktop-portal 的 DDE 后端实现，为沙箱应用提供访问系统资源的 Portal D-Bus 接口。本 skill 提供通过 Session 总线为沙箱应用提供截图、屏幕取色、屏幕共享、壁纸设置、通知发送与移除（仅作用于 portal 通道）、文件选择、账户查询、访问对话框、应用选择、后台运行管理、全局快捷键绑定、会话抑制、密钥检索、锁定模式设置、请求生命周期管理的 Portal D-Bus 接口，读写桌面环境全局设置（颜色方案、强调色）的 Settings 接口，以及 xdg-desktop-portal-dde 自身的后台服务命令行工具
+description: DDE 的 Portal 后端，提供截图、取色、屏幕共享、壁纸、通知、文件选择、账户、访问、应用选择、后台、快捷键、抑制、密钥、请求管理及外观偏好查询。应用通过 Portal 前端调用；本 skill 的 impl 接口用于后端协作与调试，Settings 只读，Lockdown 是门户策略状态。
 Categories:
   - Settings
 ---
@@ -8,6 +8,10 @@ Categories:
 # xdg-desktop-portal-dde
 
 xdg-desktop-portal-dde 是 xdg-desktop-portal 的 DDE 后端实现。它通过 Session 总线为沙箱应用提供访问系统资源（文件选择、屏幕截图、屏幕取色、屏幕共享、壁纸设置、通知发送、用户信息查询、全局快捷键绑定、会话抑制）的 Portal D-Bus 接口，由 DBus 在沙箱应用请求系统服务时自动激活。
+
+应用调用 `org.freedesktop.portal.Desktop` 服务的 `org.freedesktop.portal.*` 接口，由前端处理应用身份、权限与请求响应。下面的 `org.freedesktop.impl.portal.*` 是前端与 DDE 后端之间的协作接口，参数中的 `app_id`、请求 `handle` 由前端提供；后端调试示例不能代替应用调用流程。沙箱是主要使用场景，但不以应用是否沙箱化作为接口分流的唯一条件。
+
+Settings 只提供读取和变化通知；锁定策略属性只描述门户后端的状态，不保证在系统范围禁用设备。按末尾平台表选择目标会话，不能通过重复启动后台服务修复未实现的接口。
 
 ## CLI 命令
 
@@ -36,7 +40,7 @@ xdg-desktop-portal-dde 自身的后台服务进程，为沙箱应用（如 Flatp
 
 ### 设置
 
-读写桌面环境全局设置（颜色方案、强调色）。
+查询桌面外观偏好（颜色方案、强调色）并监听变化，不提供设置方法。
 
 详见 [org.freedesktop.impl.portal.Settings.md](references/dbus/org.freedesktop.impl.portal.Settings.md)
 
@@ -102,7 +106,7 @@ xdg-desktop-portal-dde 自身的后台服务进程，为沙箱应用（如 Flatp
 
 ### 锁定
 
-提供锁定模式设置能力。
+查询和调整后端进程内的门户策略状态，不作为系统设备或应用权限的全局封禁接口。
 
 详见 [org.freedesktop.impl.portal.Lockdown.md](references/dbus/org.freedesktop.impl.portal.Lockdown.md)
 

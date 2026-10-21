@@ -1,6 +1,6 @@
 # org.deepin.dde.control-center.sound
 
-声音配置资源，控制是否在声音设置中显示设备管理入口。
+控制中心声音页面的设备管理入口显示开关，默认 `true`。它控制界面入口，不直接切换音频设备或修改系统音量。
 
 ## 配置项
 
@@ -14,5 +14,5 @@
 # 查询设备管理显示开关
 dde-dconfig get -a org.deepin.dde.control-center -r org.deepin.dde.control-center.sound -k showDeviceManager
 # 设置设备管理显示开关
-dde-dconfig set -a org.deepin.dde.control-center -r org.deepin.dde.control-center.sound -k showDeviceManager -v "<value>"
+dde-dconfig set -a org.deepin.dde.control-center -r org.deepin.dde.control-center.sound -k showDeviceManager -v true
 ```

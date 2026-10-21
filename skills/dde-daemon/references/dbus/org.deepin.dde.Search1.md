@@ -1,6 +1,6 @@
 # org.deepin.dde.Search1 接口参考
 
-该接口提供系统搜索和搜索字典管理能力。
+检索调用方提供的字符串集合，支持中文拼音与模糊匹配。服务不扫描目录、不读取文件正文，也不建立系统文件全文索引。创建候选集合会写入当前用户的搜索缓存。
 
 ## 接口信息
 
@@ -10,76 +10,105 @@
 | Object path | `/org/deepin/dde/Search1` |
 | Interface | `org.deepin.dde.Search1` |
 | Bus | Session |
-### 搜索方法
 
-#### NewSearchWithStrDict
+调用当前用户的会话服务，无需切换到 root。搜索标识来自创建集合的返回值，不是待搜索文件的校验和，也不能使用空内容 MD5 代替。创建方法返回后缓存写入仍可继续，立即搜索为空不一定表示没有匹配项。
 
-使用字符串字典创建搜索。
+## 创建候选集合
 
-- **功能**：使用字符串字典创建搜索实例并返回搜索句柄。
-- **触发条件**：当需要基于键值对字典进行文件搜索时调用。
-- **使用场景**：文件搜索引擎初始化搜索实例。
+### NewSearchWithStrList
 
-- **输入参数**: `dict`（字典, 类型 `a{ss}`）：搜索字典
-- **返回值**: `(s, b)`（结构体）：搜索句柄和是否成功
+- **功能**：为传入字符串列表建立候选集合，加入原字符串及其拼音匹配形式；查询返回原字符串。
+- **输入参数**：`list`（`as`）：候选字符串列表。
+- **返回值**：`md5sum`（`s`）：集合的缓存标识；`ok`（`b`）：是否成功发起创建。
+- **使用场景**：应用内选项、名称列表和启动项的搜索。
 
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.Search1 \
   --object-path /org/deepin/dde/Search1 \
-  --method org.deepin.dde.Search1.NewSearchWithStrDict '{"key":"value"}'
+  --method org.deepin.dde.Search1.NewSearchWithStrList \
+  '["System Settings", "Terminal", "Calculator"]'
 ```
 
-#### NewSearchWithStrList
+保存实际返回的集合标识为 `search_id`。`ok=true` 不表示异步缓存已经全部写完。
 
-使用字符串列表创建搜索。
+### NewSearchWithStrDict
 
-- **功能**：使用字符串列表创建搜索实例并返回搜索句柄。
-- **触发条件**：当需要基于关键词列表进行文件搜索时调用。
-- **使用场景**：文件搜索引擎初始化搜索实例。
-
-- **输入参数**: `list`（string 数组, 类型 `as`）：搜索列表
-- **返回值**: `(s, b)`（结构体）：搜索句柄和是否成功
+- **功能**：为字符串映射建立候选集合，匹配字段包含字典值，中文键可参与拼音匹配；查询返回原字典键。
+- **输入参数**：`dict`（`a{ss}`）：候选键值映射。
+- **返回值**：`md5sum`（`s`）：集合的缓存标识；`ok`（`b`）：是否成功发起创建。
+- **使用场景**：应用需要以显示名称匹配并取得稳定条目标识。
 
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.Search1 \
   --object-path /org/deepin/dde/Search1 \
-  --method org.deepin.dde.Search1.NewSearchWithStrList '["item1","item2"]'
+  --method org.deepin.dde.Search1.NewSearchWithStrDict \
+  '{"settings": "System Settings", "terminal": "Terminal"}'
 ```
 
-#### SearchStartWithString
+## 查询候选集合
 
-使用字符串开始搜索。
+### SearchString
 
-- **功能**：使用字符串开始搜索并返回搜索结果。
-- **触发条件**：当需要基于单个关键词开始文件搜索时调用。
-- **使用场景**：文件搜索开始搜索。
-
-- **输入参数**: `str`（string, 类型 `s`）：搜索字符串；`md5sum`（string, 类型 `s`）：MD5 校验值
-- **返回值**: `as`（string 数组）：搜索结果
+- **功能**：在已创建的集合中执行忽略大小写的模糊匹配，按匹配评分排列并去重。
+- **输入参数**：`str`（`s`）：查询表达式；`md5sum`（`s`）：创建方法返回的集合标识。
+- **返回值**：`as`：匹配的原字符串或原字典键。
+- **使用场景**：应用内候选列表的搜索排序。
 
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.Search1 \
   --object-path /org/deepin/dde/Search1 \
-  --method org.deepin.dde.Search1.SearchStartWithString "keyword" "d41d8cd98f00b204e9800998ecf8427e"
+  --method org.deepin.dde.Search1.SearchString \
+  "term" "${search_id:?请使用候选集合创建方法返回的实际标识}"
 ```
 
-#### SearchString
+### SearchStartWithString
 
-搜索字符串。
-
-- **功能**：执行字符串搜索并返回匹配结果列表。
-- **触发条件**：当需要执行一次完整搜索并获取结果时调用。
-- **使用场景**：文件搜索执行搜索并返回结果。
-
-- **输入参数**: `str`（string, 类型 `s`）：搜索字符串；`md5sum`（string, 类型 `s`）：MD5 校验值
-- **返回值**: `as`（string 数组）：搜索结果
+- **功能**：对集合中的匹配字段执行忽略大小写的正则前缀匹配，去重后返回结果。
+- **输入参数**：`str`（`s`）：正则表达式的前缀部分；`md5sum`（`s`）：实际集合标识。
+- **返回值**：`as`：匹配的原字符串或原字典键。
+- **使用场景**：只需前缀匹配的候选项筛选。
 
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.Search1 \
   --object-path /org/deepin/dde/Search1 \
-  --method org.deepin.dde.Search1.SearchString "keyword" "d41d8cd98f00b204e9800998ecf8427e"
+  --method org.deepin.dde.Search1.SearchStartWithString \
+  "term" "${search_id:?请使用候选集合创建方法返回的实际标识}"
+```
+
+查询文本会参与正则构造，纯文本调用方应转义正则特殊字符；不能把任意未经处理的表达式当成普通文件名查询。
+
+## 完整调用示例
+
+以下 Python 示例依赖 PyGObject，创建示例候选并在限定时间内等待缓存可查询，不修改系统设置：
+
+```python
+from gi.repository import Gio, GLib
+import time
+
+bus = Gio.bus_get_sync(Gio.BusType.SESSION, None)
+service = "org.deepin.dde.Search1"
+path = "/org/deepin/dde/Search1"
+
+def call(method, signature, arguments):
+    return bus.call_sync(service, path, service, method,
+                         GLib.Variant(signature, arguments), None,
+                         Gio.DBusCallFlags.NONE, 2000, None).unpack()
+
+search_id, ok = call("NewSearchWithStrList", "(as)",
+                     (["System Settings", "Terminal", "Calculator"],))
+if not ok:
+    raise RuntimeError("Cannot create candidate set")
+deadline = time.monotonic() + 2
+while True:
+    results, = call("SearchString", "(ss)", ("Terminal", search_id))
+    if results:
+        print(results)
+        break
+    if time.monotonic() >= deadline:
+        raise TimeoutError("Candidate cache is not ready")
+    time.sleep(0.05)
 ```
