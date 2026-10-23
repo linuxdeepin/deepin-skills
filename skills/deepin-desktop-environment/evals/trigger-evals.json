@@ -118,5 +118,20 @@
     "query": "给 Polkit 认证代理写一个 AgentExtension 插件。",
     "should_trigger": false,
     "expected_skill": null
+  },
+  {
+    "query": "打开控制中心，搜索显示设置并跳转到对应页面。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "帮我查询一个公开 DConfig 配置项的当前值，再恢复为默认设置。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "查看电池容量、节能模式和 CPU 调频状态。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
   }
 ]

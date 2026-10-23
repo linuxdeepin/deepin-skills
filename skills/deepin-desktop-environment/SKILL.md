@@ -1,13 +1,13 @@
 ---
 name: deepin-desktop-environment
-description: 使用和配置 deepin/UOS 的 DDE 桌面与系统设置。当用户想开深色模式、换壁纸、调字体或缩放、调音量和亮度、配置显示器、合盖休眠或定时关机、调整键盘鼠标和手势、关闭蓝牙或开启飞行模式、管理账户与认证、设置锁屏屏保、启动器、任务栏、通知、剪贴板、默认应用、语言时间或会话时使用，即使用户不知道组件名称。也用于查询相关公开 D-Bus、CLI 和 DConfig 控制能力。不用于 DTK 应用工程、插件或模块开发、Shell/托盘扩展及 Portal 后端集成。
+description: 使用和配置 deepin/UOS 的 DDE 桌面与系统设置。按用户意图查询和调整外观主题、深色模式、壁纸与轮播、字体、光标、缩放和窗口效果；管理音量、音频设备与事件音效、亮度、多显示器与分辨率、电源模式、合盖休眠、空闲锁屏和定时关机；调整键盘布局、鼠标、触控板、数位板、快捷键和手势；控制蓝牙配对与飞行模式，管理账户、人脸认证、密码策略和登录设置；使用启动器、任务栏、托盘、通知与勿扰模式、剪贴板历史、应用启动和默认关联；配置桌面语言、区域格式、时区与时间，查询系统信息；管理锁屏、屏保、会话抑制、注销与关机，使用触屏校准和会话提示界面；打开控制中心、查询设置模块、搜索设置并跳转指定页面；通过公开 DConfig 资源发现、查询、修改和恢复配置，核对用户、权限与作用范围；查询和调整 GRUB 启动配置。用户无需知道组件名称，可通过相关公开 D-Bus、CLI 和 DConfig 控制面完成操作并验证结果。
 Categories:
   - Settings
 ---
 
 # deepin-desktop-environment
 
-根据用户意图操作 DDE 的公开控制面。先从下表选参考页，具体参数、类型、方法、权限及示例以该页为准；需要更多能力时再读对应组件的 `index.md`，不要一次加载全部资料。
+根据用户意图操作 DDE 的公开控制面。先从下表选参考页，具体参数、类型、方法、权限及示例以该页为准；需要更多能力时再读对应组件的 `index.md`。根据任务按需读取对应资料。
 
 ## 意图与参考资料
 
@@ -18,7 +18,8 @@ Categories:
 | 深色模式、壁纸、字体、光标、缩放、圆角 | [Appearance1](references/dde-appearance/dbus/org.deepin.dde.Appearance1.md) | 工作区与窗口操作读 [appearance 索引](references/dde-appearance/index.md)；轮播、缓存读 [services 索引](references/dde-services/index.md) |
 | 音量、音频设备、事件音效 | [Audio1](references/dde-daemon/dbus/org.deepin.dde.Audio1.md)、[SoundEffect1](references/dde-daemon/dbus/org.deepin.dde.SoundEffect1.md) | 底层声音主题播放读 [api 索引](references/dde-api/index.md) |
 | 亮度、分辨率、多显示器、旋转 | [Display1](references/dde-daemon/dbus/org.deepin.dde.Display1.md) | 背光辅助见 [daemon 索引](references/dde-daemon/index.md)，环境亮度见 [services 索引](references/dde-services/index.md) |
-| 合盖、休眠、自动锁屏、电源延时、定时关机 | [电源策略](references/dde-daemon/config/org.deepin.dde.daemon.power.md) | Treeland 电源控制读 [Power1](references/dde-services/dbus/org.deepin.dde.Power1.md)；按实际会话、Bus 和服务可用性选用 |
+| 合盖、休眠、自动锁屏、电源延时、定时关机 | [电源策略](references/dde-daemon/config/org.deepin.dde.daemon.power.md) | 会话策略与动作读 [Session Power1](references/dde-services/dbus/org.deepin.dde.Power1.Session.md)；按实际会话及服务可用性选用 |
+| 电池状态、充电信息、节能与性能模式、CPU 调频 | [System Power1](references/dde-services/dbus/org.deepin.dde.Power1.System.md) | 系统电源与电池设备接口位于 System 总线；按硬件能力与服务端权限操作 |
 | 键盘布局、鼠标、触控板、数位板、手势 | [daemon 索引](references/dde-daemon/index.md)中的输入设备及配置 | Treeland 手势和快捷键读 [services 索引](references/dde-services/index.md)；布局指示菜单读 [tray 索引](references/dde-tray-loader/index.md) |
 | 蓝牙配对、关闭蓝牙、飞行模式 | [Bluetooth1](references/dde-daemon/dbus/org.deepin.dde.Bluetooth1.md)、[AirplaneMode1](references/dde-daemon/dbus/org.deepin.dde.AirplaneMode1.md) | 底层蓝牙阻止状态读 [api 索引](references/dde-api/index.md) |
 | 账户、用户组、登录界面 | [Accounts1](references/dde-daemon/dbus/org.deepin.dde.Accounts1.md) | 登录和快速登录见 [session-shell 索引](references/dde-session-shell/index.md) |
@@ -34,8 +35,6 @@ Categories:
 | 会话提示、触屏校准、配对确认界面 | [session-ui 索引](references/dde-session-ui/index.md) | 显示界面和执行系统动作分开处理 |
 | GRUB 启动项、引导主题 | [Grub2](references/dde-daemon/dbus/org.deepin.dde.Grub2.md)、[api 索引](references/dde-api/index.md) | 属于高影响系统配置，修改前核对恢复条件 |
 | Portal 设置或与桌面接口的区别 | [Portal 边界](references/xdg-desktop-portal-dde/index.md) | 后端 impl 协议不能代替前端调用与授权 |
-
-开发任务转交独立维护的 `dtk-development`、`dde-shell-development`、`dde-control-center-development`、`dde-tray-development`。本 Skill 只包含使用与配置所需的资料；不要求为普通配置任务加载这些开发 Skill。
 
 ## 操作工作流
 

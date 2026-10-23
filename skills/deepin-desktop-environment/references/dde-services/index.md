@@ -26,7 +26,8 @@ IP 地址监视守护进程（upstream 开源项目），用于监视网络接�
 
 全局电源管理能力，包括 Session 总线上的电源状态查询、延时配置、电源操作和低电量告警配置，以及 System 总线上的系统级电源管理、电池设备管理和 CPU 调频控制。
 
-详见 [org.deepin.dde.Power1.md](dbus/org.deepin.dde.Power1.md)
+- [Session 总线电源管理](dbus/org.deepin.dde.Power1.Session.md)：会话电源状态、屏幕与空闲延时、电源操作及低电量告警。
+- [System 总线电源管理](dbus/org.deepin.dde.Power1.System.md)：系统电源、电池设备、节能与性能模式及 CPU 调频。
 
 ### X 设置
 

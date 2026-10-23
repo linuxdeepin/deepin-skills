@@ -5,34 +5,44 @@
     {
       "id": 1,
       "name": "外观与桌面范围",
-      "prompt": "帮当前用户开深色模式，并把第二个工作区壁纸换成我提供的图片。",
+      "prompt": "将当前用户 GTK 主题设为 deepin-dark，并将第二个工作区壁纸换为 assets/evals/wallpaper.svg。两个设置均已授权，其他用户和工作区不改动。",
       "expected_references": [
         "references/dde-appearance/dbus/org.deepin.dde.Appearance1.md",
         "references/dde-appearance/dbus/com.deepin.wm.md"
       ],
       "expected_output": "只读探测当前外观和窗口管理器能力，记录原值。；按明确授权修改当前用户目标设置，不重复确认普通可逆修改。；分别回读主题和目标工作区背景，不修改其他用户。",
-      "files": [],
+      "files": [
+        "assets/evals/fixtures.json",
+        "assets/evals/wallpaper.svg"
+      ],
       "assertions": [
         "只读探测当前外观和窗口管理器能力，记录原值。",
         "按明确授权修改当前用户目标设置，不重复确认普通可逆修改。",
-        "分别回读主题和目标工作区背景，不修改其他用户。"
-      ]
+        "分别回读主题和目标工作区背景，不修改其他用户。",
+        "第二个工作区使用索引 1；GTK 主题通过 Set gtk 修改，目标图片来自所附 fixture。",
+        "动作记录通过 scripts/evaluate-trace.py 的对应 fixture 检查，最终回复由评估者核对。"
+      ],
+      "fixture_id": "appearance"
     },
     {
       "id": 2,
-      "name": "会话和电源分流",
-      "prompt": "合盖后休眠，十分钟后自动锁屏。环境只说明是 Wayland，尚未确认 Treeland。",
+      "name": "电源单位与重复枚举",
+      "prompt": "当前用户在插电和电池两种供电模式下都设为十分钟后锁屏，并开启每天 21:00 定时关机。我已确认定时关机会中断届时会话；本次授权以上策略变更。",
       "expected_references": [
-        "references/dde-daemon/config/org.deepin.dde.daemon.power.md",
-        "references/dde-services/dbus/org.deepin.dde.Power1.md"
+        "references/dde-daemon/config/org.deepin.dde.daemon.power.md"
       ],
-      "expected_output": "不把 Wayland 直接等同于 Treeland，先确认服务归属及版本。；按部署能力选服务与配置，不虚构不存在的 daemon 方法。；记录原有策略、回读目标值并说明生效条件。",
-      "files": [],
+      "expected_output": "按固定 Treeland 环境探测服务；两种供电锁屏延时均回读为 600 秒；每天重复写入 1，时间为 21:00，开启定时关机并保留恢复记录。",
+      "files": [
+        "assets/evals/fixtures.json"
+      ],
       "assertions": [
-        "不把 Wayland 直接等同于 Treeland，先确认服务归属及版本。",
-        "按部署能力选服务与配置，不虚构不存在的 daemon 方法。",
-        "记录原有策略、回读目标值并说明生效条件。"
-      ]
+        "依据模拟探测结果确认会话与服务，配置管理使用 System 总线 DConfig 服务。",
+        "linePowerLockDelay 与 batteryLockDelay 均写入 600 秒，不能写入 10。",
+        "每天重复使用 shutdownRepetition=1，不能写入 0；保留用户明确授权，不重复询问。",
+        "只写入 fixture 授权的五个 key，回读全部新值并记录原值。",
+        "动作记录通过 scripts/evaluate-trace.py 的 power fixture 检查。"
+      ],
+      "fixture_id": "power"
     },
     {
       "id": 3,
@@ -143,17 +153,22 @@
     },
     {
       "id": 10,
-      "name": "写入失败与回读不一致",
-      "prompt": "调整字体，假设写入命令返回成功但回读仍为旧值。",
+      "name": "侧栏宽度回读失败",
+      "prompt": "把控制中心侧栏宽度从当前用户覆盖值 180 改成 200。若回读未生效，保持原值并如实报告，允许恢复原值。",
       "expected_references": [
-        "references/dde-appearance/dbus/org.deepin.dde.Appearance1.md"
+        "references/dde-app-services/cli/dde-dconfig.md",
+        "references/dde-control-center/config/org.deepin.dde.control-center.md"
       ],
-      "expected_output": "以回读为准报告未生效，检查错误和生效条件。；在适合且已获授权时恢复原值，不声称命令成功等于变更成功。",
-      "files": [],
+      "expected_output": "写入命令成功，但回读仍为 180，报告修改未生效；原覆盖值保持 180，不执行整组 reset。",
+      "files": [
+        "assets/evals/fixtures.json"
+      ],
       "assertions": [
         "以回读为准报告未生效，检查错误和生效条件。",
-        "在适合且已获授权时恢复原值，不声称命令成功等于变更成功。"
-      ]
+        "在适合且已获授权时恢复原值，不声称命令成功等于变更成功。",
+        "动作记录通过 scripts/evaluate-trace.py 的对应 fixture 检查，最终回复由评估者核对。"
+      ],
+      "fixture_id": "readback-failure"
     },
     {
       "id": 11,
@@ -196,6 +211,22 @@
         "选择 dde-control-center-development，涉及 DTK 通用 API 时转 dtk-development。",
         "不把用户配置资料当作插件开发教程，不要求用户配置任务加载开发 Skill。"
       ]
+    },
+    {
+      "id": 14,
+      "name": "System 电源与电池接口路由",
+      "prompt": "查询电池容量、当前性能模式和 CPU 调频状态，先不修改设置。",
+      "expected_references": [
+        "references/dde-services/dbus/org.deepin.dde.Power1.System.md"
+      ],
+      "expected_output": "使用 System 总线电源接口只读查询，通过 GetBatteries 获取电池对象路径后读取单个电池信息；不套用 Session 总线接口。",
+      "files": [],
+      "assertions": [
+        "选择 System 总线参考页，调用时使用 --system。",
+        "通过 GetBatteries 获取电池对象路径，不假定所有机器都是 Battery0。",
+        "只读查询保持当前用户身份，不执行配置写入或电源动作。"
+      ]
     }
-  ]
+  ],
+  "evaluation_protocol": "evals/protocol.md"
 }
