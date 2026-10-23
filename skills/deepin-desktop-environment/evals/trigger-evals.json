@@ -1,0 +1,122 @@
+[
+  {
+    "query": "帮我把 deepin 桌面改成深色模式，再换一张壁纸。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "字体太小了，帮我调大字体和缩放。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "外接屏分辨率不对，调一下亮度和屏幕排列。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "合盖后休眠，并把今晚的定时关机设好。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "把系统音量调低，关掉登录提示音。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "触控板误触严重，关闭轻触点击并调整滚动速度。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "关掉蓝牙，开启飞行模式。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "锁屏等多久？屏保在哪里设置？",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "打开剪贴板历史并恢复上一条内容。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "把任务栏移到左侧，打开勿扰模式。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "启动器切换到全屏模式，并更改默认 PDF 阅读器。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "帮我查看当前账户和人脸认证设备。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "把日期格式调一下，桌面语言换成中文。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "查一下这台 UOS 的版本，打开显示设置页。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "有哪些公开 DConfig 设置可以调整？",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "注销当前会话。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "修改 GRUB 默认启动项。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "用 DTK6 创建 QWidget 桌面应用。",
+    "should_trigger": false,
+    "expected_skill": "dtk-development"
+  },
+  {
+    "query": "给控制中心开发一个新的设置模块和插件工厂。",
+    "should_trigger": false,
+    "expected_skill": "dde-control-center-development"
+  },
+  {
+    "query": "开发一个 Shell Applet 和 LayerShell 面板。",
+    "should_trigger": false,
+    "expected_skill": "dde-shell-development"
+  },
+  {
+    "query": "实现托盘插件右键菜单及快捷面板。",
+    "should_trigger": false,
+    "expected_skill": "dde-tray-development"
+  },
+  {
+    "query": "给应用生成 DConfig C++ 配置类和 meta 文件。",
+    "should_trigger": false,
+    "expected_skill": "dtk-development"
+  },
+  {
+    "query": "实现 Portal 的 ScreenCast 后端协作协议。",
+    "should_trigger": false,
+    "expected_skill": null
+  },
+  {
+    "query": "给 Polkit 认证代理写一个 AgentExtension 插件。",
+    "should_trigger": false,
+    "expected_skill": null
+  }
+]
