@@ -65,7 +65,7 @@ dde-daemon 提供桌面后端的 CLI、D-Bus 和 DConfig 能力，以下按接�
 
 ### 输入设备管理
 
-- [InputDevices1](dbus/org.deepin.dde.InputDevices1.md) — 提供键盘布局和输入设备管理能力。
+- [InputDevices1](dbus/org.deepin.dde.InputDevices1.md) — 提供键盘布局和输入设备管理能力；键盘布局方法位于 `/org/deepin/dde/InputDevice1/Keyboard`。
 - [Gesture1](dbus/org.deepin.dde.Gesture1.md) — 提供触摸手势管理能力。
 
 ### 语言与区域设置

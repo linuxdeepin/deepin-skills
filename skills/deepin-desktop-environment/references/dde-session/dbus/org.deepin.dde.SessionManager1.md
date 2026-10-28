@@ -391,6 +391,8 @@ gdbus call --session \
 - **触发条件**: 锁屏进程调用 `SetLocked` 方法时更新。
 - **使用场景**: 需要检查当前会话是否被锁定以决定是否显示特定 UI 或执行特定逻辑时使用。
 
+> `Locked` 是会话锁定状态的权威来源。`org.deepin.dde.LockFront1.Visible` 只表示锁屏界面是否可见，`loginctl` 的 `LockedHint` 也可能与 DDE 会话状态不同步，二者都不能替代本属性。
+
 读取示例：
 
 ```bash

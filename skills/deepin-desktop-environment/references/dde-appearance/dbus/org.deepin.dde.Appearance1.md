@@ -11,6 +11,8 @@
 | Interface | `org.deepin.dde.Appearance1` |
 | Bus | Session |
 
+> 当前用户的外观状态以本接口属性为权威来源。`org.gnome.desktop.interface` 与 `com.deepin.dde.appearance` 下的 gsettings key 可能滞后于 daemon，或与其他桌面组件写入的值不同步；只读查询不要用 `gsettings get` 代替 `Appearance1` 属性。不同机器上的主题名称不同，应按实际返回值报告，不要套用固定示例值。
+
 ## 方法（Methods）
 
 ### 通用设置
@@ -516,6 +518,8 @@ gdbus call --session \
 | 读写权限 | read |
 - **使用场景**: 需要读取当前背景 URI 用于显示时使用。
 
+背景 URI 可能包含连续斜杠，例如 `file:////usr/share/backgrounds/default_background.jpg`。原样返回该 URI，不要自行规范化斜杠数量。
+
 读取示例：
 
 ```bash
@@ -528,13 +532,15 @@ gdbus call --session \
 
 #### GlobalTheme
 
-当前全局主题。
+DDE 全局主题名称。全局主题控制 DDE 与 Qt/DTK 应用的整体外观，不等同于 GTK 主题；GTK 应用主题由 `GtkTheme` 单独表示。
 
 | 属性 | 值 |
 |------|------|
 | 类型 | `s` |
 | 读写权限 | read |
-- **使用场景**: 需要读取当前全局主题名称时使用。
+- **使用场景**: 需要查询或调整 DDE 全局主题以及 Qt/DTK 应用外观时使用。
+
+该属性为只读，设置时调用 `Appearance1.Set`：先用 `List "globaltheme"` 获取当前可用的主题名，再调用 `Set "globaltheme" <主题名>`；不要对只读属性使用 `Properties.Set`。主题名称因系统而异，应使用实际返回值。
 
 读取示例：
 

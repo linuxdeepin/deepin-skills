@@ -105,7 +105,9 @@ gdbus call --session \
 - **类型**: `b`
 - **触发条件**: 锁屏界面被显示或隐藏时，该属性的值随之改变。
 - **读写权限**: read
-- **使用场景**: 外部程序需要判断当前是否处于锁屏状态时读取此属性。
+- **使用场景**: 外部程序需要判断锁屏界面是否已经显示时读取此属性。
+
+> `Visible` 只表示锁屏界面是否可见，不等于会话是否锁定。判断会话锁定状态必须读取 `org.deepin.dde.SessionManager1` 的 `Locked` 属性；二者可能不同步，`Visible=false` 不代表 `Locked=false`。`loginctl` 的 `LockedHint` 也不能替代该属性。
 
 读取示例：
 

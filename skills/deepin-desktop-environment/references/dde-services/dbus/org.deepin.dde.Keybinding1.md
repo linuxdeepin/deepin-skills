@@ -2,6 +2,8 @@
 
 该接口提供快捷键管理能力，包括快捷键查询、自定义快捷键增删改、快捷键冲突处理和快捷键捕获。
 
+> 同名接口在 X11 与 Treeland 会话下由不同后端提供：X11 为 dde-daemon，Treeland 为 dde-services。两套实现的方法集和返回签名可能不同，不能只依据接口名假定某个方法存在或返回 JSON。调用前先用 `gdbus introspect --session --dest org.deepin.dde.Keybinding1 --object-path /org/deepin/dde/Keybinding1` 核对当前会话的实际契约。本页的签名以 X11 dde-daemon 实现为基线。
+
 ## 接口信息
 
 | 字段 | 值 |
@@ -10,6 +12,13 @@
 | Object path | `/org/deepin/dde/Keybinding1` |
 | Interface | `org.deepin.dde.Keybinding1` |
 | Bus | Session |
+
+### 类型说明
+
+- `ShortcutInfo`：D-Bus 结构体 `(sssasssbb)`，依次包含快捷键 ID、名称、类别、快捷键字符串数组、显示名称、本地化类别及两个布尔状态。
+- `CategoryInfo`：D-Bus 结构体 `(ssib)`，依次包含类别 ID、显示名称、类别编号及一个布尔状态。
+
+结构体字段按 D-Bus 签名顺序返回。需要按名称筛选时，先调用 `ListCategories` 获取实际类别 ID，再传给 `ListShortcutsByCategory`。
 
 ### 快捷键查询
 
@@ -20,7 +29,7 @@
 - **功能**：返回系统中所有已注册的快捷键列表，包括系统预设快捷键和用户自定义快捷键
 - **触发条件**：需要获取系统中所有快捷键列表时调用
 - **输入参数**：无
-- **返回值**：`a(ShortcutInfo)`：快捷键信息数组
+- **返回值**：`a(sssasssbb)`：快捷键结构体数组（`ShortcutInfo`）。不要按 JSON 字符串解析。
 - **使用场景**：控制中心快捷键设置界面需要展示所有快捷键列表时调用
 
 ```bash
@@ -37,7 +46,7 @@ gdbus call --session \
 - **功能**：返回指定应用 ID 关联的快捷键列表
 - **触发条件**：需要查询指定应用绑定的快捷键时调用
 - **输入参数**：`appId`（string, 类型 `s`）：应用 ID
-- **返回值**：`a(ShortcutInfo)`：快捷键信息数组
+- **返回值**：`a(sssasssbb)`：快捷键结构体数组（`ShortcutInfo`）
 - **使用场景**：需要查看某个应用绑定了哪些快捷键时调用
 
 ```bash
@@ -53,16 +62,18 @@ gdbus call --session \
 
 - **功能**：返回指定类别下的快捷键列表
 - **触发条件**：需要按类别筛选快捷键时调用
-- **输入参数**：`category`（string, 类型 `s`）：类别名称
-- **返回值**：`a(ShortcutInfo)`：快捷键信息数组
+- **输入参数**：`category`（string, 类型 `s`）：类别 ID，取值来自 `ListCategories` 返回的第一项
+- **返回值**：`a(sssasssbb)`：快捷键结构体数组（`ShortcutInfo`）
 - **使用场景**：控制中心按类别分组展示快捷键时调用
 
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.Keybinding1 \
   --object-path /org/deepin/dde/Keybinding1 \
-  --method org.deepin.dde.Keybinding1.ListShortcutsByCategory "system"
+  --method org.deepin.dde.Keybinding1.ListShortcutsByCategory "System"
 ```
+
+类别 ID 区分大小写；使用 `"system"` 可能返回空数组。应先读取 `ListCategories`，再使用其返回的类别 ID。
 
 #### ListCategories
 
@@ -71,7 +82,7 @@ gdbus call --session \
 - **功能**：返回系统中所有快捷键类别的列表
 - **触发条件**：需要获取所有快捷键分类时调用
 - **输入参数**：无
-- **返回值**：`a(CategoryInfo)`：类别信息数组
+- **返回值**：`a(ssib)`：类别结构体数组（`CategoryInfo`）
 - **使用场景**：控制中心需要获取所有快捷键分类以分组展示时调用
 
 ```bash
@@ -88,7 +99,7 @@ gdbus call --session \
 - **功能**：根据快捷键 ID 返回该快捷键的详细信息
 - **触发条件**：需要查看某个快捷键的详细配置时调用
 - **输入参数**：`id`（string, 类型 `s`）：快捷键 ID
-- **返回值**：ShortcutInfo：快捷键信息
+- **返回值**：`(sssasssbb)`：快捷键结构体（`ShortcutInfo`）
 - **使用场景**：需要查看某个快捷键的具体配置（名称、绑定键、命令）时调用
 
 ```bash
@@ -122,7 +133,7 @@ gdbus call --session \
 - **功能**：检查指定快捷键组合是否与其他快捷键存在冲突，返回冲突的快捷键信息
 - **触发条件**：用户修改快捷键前需要检查是否与已有快捷键冲突时调用
 - **输入参数**：`hotkey`（string, 类型 `s`）：快捷键
-- **返回值**：ShortcutInfo：冲突快捷键信息
+- **返回值**：`(sssasssbb)`：冲突快捷键结构体（`ShortcutInfo`）
 - **使用场景**：用户修改快捷键前需要检查是否与已有快捷键冲突时调用
 
 ```bash
@@ -139,7 +150,7 @@ gdbus call --session \
 - **功能**：根据关键词模糊搜索快捷键，返回匹配的快捷键列表
 - **触发条件**：用户在快捷键搜索框中输入关键词搜索时调用
 - **输入参数**：`keyword`（string, 类型 `s`）：搜索关键词
-- **返回值**：`a(ShortcutInfo)`：快捷键信息数组
+- **返回值**：`a(sssasssbb)`：快捷键结构体数组（`ShortcutInfo`）
 - **使用场景**：控制中心快捷键搜索框中用户输入关键词搜索时调用
 
 ```bash
@@ -225,10 +236,10 @@ gdbus call --session \
 
 替换快捷键。
 
-- **功能**：将一个快捷键 ID 的绑定键替换为新的快捷键组合
+- **功能**：将一个快捷键 ID 的绑定键替换为新的快捷键组合，并指定需要处理的冲突项
 - **触发条件**：用户在控制中心替换某个快捷键的绑定键时调用
-- **输入参数**：`id`（string, 类型 `s`）：快捷键 ID；`newHotkey`（string, 类型 `s`）：新快捷键；`oldHotkey`（string, 类型 `s`）：旧快捷键
-- **返回值**：无
+- **输入参数**：`targetId`（string, 类型 `s`）：目标快捷键 ID；`newHotkey`（string, 类型 `s`）：新快捷键；`conflictId`（string, 类型 `s`）：冲突项 ID，无冲突时按服务端要求传入空值
+- **返回值**：`b`（bool）：是否成功
 - **使用场景**：用户修改快捷键时需要替换已有绑定键的场合
 
 ```bash
@@ -237,6 +248,17 @@ gdbus call --session \
   --object-path /org/deepin/dde/Keybinding1 \
   --method org.deepin.dde.Keybinding1.ReplaceHotkey "id1" "<Super>Left" ""
 ```
+
+### 其他方法
+
+当前 X11 实现还提供以下方法。字段含义与详细约束在调用前通过 introspection 或实际返回核对。
+
+- `ModifyCustomShortcut(s id, s name, s action, s hotkey) -> b`
+- `ModifyCustomShortcutWithConflict(s id, s name, s action, s hotkey, s expectedConflictId) -> b`
+- `DeleteCustomShortcut(s id) -> b`
+- `BeginCapture(u timeoutMs) -> b`、`BeginCapture() -> b`、`BeginCapture(t captureId, u timeoutMs) -> b`
+- `EndCapture()`
+- `SwapHotkeys(s id1, s id2) -> b`
 
 ### 配置管理
 
@@ -413,7 +435,7 @@ gdbus call --session \
 快捷键变化时发出。
 
 - **功能**：通知订阅者某个快捷键的配置发生了变更
-- **参数**：`id`（string, 类型 `s`）：快捷键 ID；`info`（ShortcutInfo, 类型）：快捷键信息
+- **参数**：`id`（string, 类型 `s`）：快捷键 ID；`info`（`(sssasssbb)`，`ShortcutInfo`）：快捷键信息
 - **触发条件**：快捷键被修改时发出
 - **使用场景**：控制中心快捷键列表需要实时同步快捷键变更时监听
 
@@ -438,14 +460,14 @@ gdbus monitor --session \
   --object-path /org/deepin/dde/Keybinding1
 ```
 
-#### ShortcutDisabled
+#### ShortcutRemoved
 
-快捷键禁用时发出。
+快捷键被移除时发出。
 
-- **功能**：通知订阅者某个快捷键已被禁用
+- **功能**：通知订阅者某个快捷键已从配置中移除
 - **参数**：`id`（string, 类型 `s`）：快捷键 ID
-- **触发条件**：快捷键被禁用时发出
-- **使用场景**：控制中心需要同步快捷键禁用状态时监听
+- **触发条件**：快捷键被删除时发出
+- **使用场景**：控制中心需要同步快捷键删除状态时监听
 
 ```bash
 gdbus monitor --session \
@@ -453,12 +475,12 @@ gdbus monitor --session \
   --object-path /org/deepin/dde/Keybinding1
 ```
 
-#### CaptureResult
+#### CaptureFinished
 
 快捷键捕获结果。
 
-- **功能**：通知订阅者快捷键捕获操作的结果，包含按键状态和快捷键字符串
-- **参数**：`code`（uint32, 类型 `u`）：结果码；`press`（uint32, 类型 `u`）：按键状态；`keystr`（string, 类型 `s`）：快捷键字符串
+- **功能**：通知订阅者快捷键捕获操作的结果，包含捕获会话 ID、结果码和快捷键字符串
+- **参数**：`captureId`（uint64, 类型 `t`）：捕获会话 ID；`result`（uint32, 类型 `u`）：结果码；`keystroke`（string, 类型 `s`）：快捷键字符串
 - **触发条件**：快捷键捕获完成时发出
 - **使用场景**：用户在控制中心录制新快捷键时监听以获取捕获结果
 

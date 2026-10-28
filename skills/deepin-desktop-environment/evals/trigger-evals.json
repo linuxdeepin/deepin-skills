@@ -65,6 +65,31 @@
     "expected_skill": "deepin-desktop-environment"
   },
   {
+    "query": "读取当前 DDE 全局主题、Qt 应用活动色、GTK 主题和图标主题，原样告诉我。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "当前会话的路径和窗口管理器是什么？只读查询。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "查询当前会话是否处于锁定状态，不要锁屏或解锁。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "应用管理器当前注册了多少个应用？",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "列出当前 X 设置属性，并给出系统版本和处理器型号。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
     "query": "查一下这台 UOS 的版本，打开显示设置页。",
     "should_trigger": true,
     "expected_skill": "deepin-desktop-environment"

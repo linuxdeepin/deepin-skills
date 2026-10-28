@@ -1,18 +1,19 @@
 # org.deepin.dde.InputDevices1 接口参考
 
-该接口提供键盘布局和输入设备管理能力。
+该接口提供键盘布局和输入设备管理能力。键盘布局方法位于子对象 `/org/deepin/dde/InputDevice1/Keyboard`，接口名为 `org.deepin.dde.InputDevice1.Keyboard`；父对象 `/org/deepin/dde/InputDevices1` 暴露 `WheelSpeed` 和 `Infos` 属性（另有同步配置接口），不提供本页方法。
 
 ## 接口信息
 
 | 字段 | 值 |
 |------|------|
 | Service | `org.deepin.dde.InputDevices1` |
-| Object path | `/org/deepin/dde/InputDevices1` |
-| Interface | `org.deepin.dde.InputDevices1` |
+| Object path | `/org/deepin/dde/InputDevice1/Keyboard` |
+| Interface | `org.deepin.dde.InputDevice1.Keyboard` |
 | Bus | Session |
-### 输入设备管理方法
 
-#### AddLayoutOption
+## 键盘布局方法
+
+### AddLayoutOption
 
 添加布局选项。
 
@@ -25,11 +26,11 @@
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.InputDevices1 \
-  --object-path /org/deepin/dde/InputDevices1 \
-  --method org.deepin.dde.InputDevices1.AddLayoutOption "layout"
+  --object-path /org/deepin/dde/InputDevice1/Keyboard \
+  --method org.deepin.dde.InputDevice1.Keyboard.AddLayoutOption "layout"
 ```
 
-#### AddUserLayout
+### AddUserLayout
 
 添加用户布局。
 
@@ -42,11 +43,11 @@ gdbus call --session \
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.InputDevices1 \
-  --object-path /org/deepin/dde/InputDevices1 \
-  --method org.deepin.dde.InputDevices1.AddUserLayout "layout"
+  --object-path /org/deepin/dde/InputDevice1/Keyboard \
+  --method org.deepin.dde.InputDevice1.Keyboard.AddUserLayout "layout"
 ```
 
-#### ClearLayoutOption
+### ClearLayoutOption
 
 清除布局选项。
 
@@ -59,11 +60,11 @@ gdbus call --session \
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.InputDevices1 \
-  --object-path /org/deepin/dde/InputDevices1 \
-  --method org.deepin.dde.InputDevices1.ClearLayoutOption
+  --object-path /org/deepin/dde/InputDevice1/Keyboard \
+  --method org.deepin.dde.InputDevice1.Keyboard.ClearLayoutOption
 ```
 
-#### DeleteLayoutOption
+### DeleteLayoutOption
 
 删除布局选项。
 
@@ -76,11 +77,11 @@ gdbus call --session \
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.InputDevices1 \
-  --object-path /org/deepin/dde/InputDevices1 \
-  --method org.deepin.dde.InputDevices1.DeleteLayoutOption "layout"
+  --object-path /org/deepin/dde/InputDevice1/Keyboard \
+  --method org.deepin.dde.InputDevice1.Keyboard.DeleteLayoutOption "layout"
 ```
 
-#### DeleteUserLayout
+### DeleteUserLayout
 
 删除用户布局。
 
@@ -93,11 +94,11 @@ gdbus call --session \
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.InputDevices1 \
-  --object-path /org/deepin/dde/InputDevices1 \
-  --method org.deepin.dde.InputDevices1.DeleteUserLayout "layout"
+  --object-path /org/deepin/dde/InputDevice1/Keyboard \
+  --method org.deepin.dde.InputDevice1.Keyboard.DeleteUserLayout "layout"
 ```
 
-#### GetLayoutDesc
+### GetLayoutDesc
 
 获取布局描述。
 
@@ -110,11 +111,11 @@ gdbus call --session \
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.InputDevices1 \
-  --object-path /org/deepin/dde/InputDevices1 \
-  --method org.deepin.dde.InputDevices1.GetLayoutDesc "layout"
+  --object-path /org/deepin/dde/InputDevice1/Keyboard \
+  --method org.deepin.dde.InputDevice1.Keyboard.GetLayoutDesc "layout"
 ```
 
-#### LayoutList
+### LayoutList
 
 获取布局列表。
 
@@ -122,16 +123,18 @@ gdbus call --session \
 - **触发条件**：当需要展示用户已添加的键盘布局时调用。
 - **使用场景**：控制中心键盘布局列表展示。
 - **输入参数**: 无
-- **返回值**: `a{ss}`（字典）：布局列表（键为布局名称，值为描述）
+- **返回值**: `a{ss}`（字典）：布局 ID 到描述的映射
+
+`a{ss}` 的遍历顺序不稳定；需要固定顺序时按布局 ID 排序，不要依赖返回顺序。
 
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.InputDevices1 \
-  --object-path /org/deepin/dde/InputDevices1 \
-  --method org.deepin.dde.InputDevices1.LayoutList
+  --object-path /org/deepin/dde/InputDevice1/Keyboard \
+  --method org.deepin.dde.InputDevice1.Keyboard.LayoutList
 ```
 
-#### AllLayoutList
+### AllLayoutList
 
 获取所有布局列表。
 
@@ -139,34 +142,35 @@ gdbus call --session \
 - **触发条件**：当需要展示所有可选键盘布局时调用。
 - **使用场景**：控制中心键盘布局选择列表展示。
 - **输入参数**: 无
-- **返回值**: `a{ss}`（字典）：所有布局列表（键为布局名称，值为描述）
+- **返回值**: `a{ss}`（字典）：所有布局 ID 到描述的映射
+
+`a{ss}` 的遍历顺序不稳定；需要固定顺序时按布局 ID 排序，不要依赖返回顺序。
 
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.InputDevices1 \
-  --object-path /org/deepin/dde/InputDevices1 \
-  --method org.deepin.dde.InputDevices1.AllLayoutList
+  --object-path /org/deepin/dde/InputDevice1/Keyboard \
+  --method org.deepin.dde.InputDevice1.Keyboard.AllLayoutList
 ```
 
-#### Reset
+### Reset
 
 重置输入设备配置。
 
 - **功能**：重置输入设备配置到默认状态。
 - **触发条件**：当用户在控制中心点击恢复默认输入设备设置时调用。
 - **使用场景**：控制中心键盘布局设置恢复默认。
-
 - **输入参数**: 无
 - **返回值**: 无
 
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.InputDevices1 \
-  --object-path /org/deepin/dde/InputDevices1 \
-  --method org.deepin.dde.InputDevices1.Reset
+  --object-path /org/deepin/dde/InputDevice1/Keyboard \
+  --method org.deepin.dde.InputDevice1.Keyboard.Reset
 ```
 
-#### ToggleNextLayout
+### ToggleNextLayout
 
 切换到下一个布局。
 
@@ -179,6 +183,6 @@ gdbus call --session \
 ```bash
 gdbus call --session \
   --dest org.deepin.dde.InputDevices1 \
-  --object-path /org/deepin/dde/InputDevices1 \
-  --method org.deepin.dde.InputDevices1.ToggleNextLayout
+  --object-path /org/deepin/dde/InputDevice1/Keyboard \
+  --method org.deepin.dde.InputDevice1.Keyboard.ToggleNextLayout
 ```
