@@ -68,6 +68,8 @@ gdbus call --session \
 
 #### ID（属性）
 
+先读取同项目 `org.desktopspec.ApplicationManager1.List`，再在返回对象上读本属性匹配目标。对象路径会转义特殊字符（如 `-` 为 `_2d`、`.` 为 `_2e`、`_` 为 `_5f`）；路径以注册列表为准，不从 desktop 文件推断注册状态。
+
 应用 ID（桌面文件 ID）。
 
 | 属性 | 值 |
@@ -86,6 +88,8 @@ gdbus call --session \
 ```
 
 #### Name（属性）
+
+`default` 键为默认名称，`zh_CN` 等键为本地化名称。明确要求默认名称时读取 `default`，不以当前语言或 GenericName 替换；缺键时如实报告。
 
 应用名称。键为语言代码，值为对应语言的名称。
 

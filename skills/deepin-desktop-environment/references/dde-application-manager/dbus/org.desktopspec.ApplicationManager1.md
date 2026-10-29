@@ -99,7 +99,9 @@ gdbus call --session \
 
 #### List（属性）
 
-所有已安装应用的对象路径列表。
+应用管理器当前注册的应用对象路径列表。数量为此 `ao` 的长度，不是 `.desktop` 文件数，也不是运行实例数；不要默认按 NoDisplay 过滤。目录与玲珑 entries 是注册数据来源，查询注册表以本属性为准。
+
+遍历返回对象并读取 `org.desktopspec.ApplicationManager1.Application.ID` 获取应用 ID；不要把对象路径作为 ID。返回顺序不保证稳定。本接口不提供文件管理器最近记录。
 
 | 属性 | 值 |
 |------|------|

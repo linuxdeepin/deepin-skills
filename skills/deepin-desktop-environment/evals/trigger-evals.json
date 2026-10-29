@@ -158,5 +158,70 @@
     "query": "查看电池容量、节能模式和 CPU 调频状态。",
     "should_trigger": true,
     "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "读取当前系统使用的 GTK 主题名称，原样告诉我。只查询，不要修改任何外观设置，也不要创建文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "读取当前系统使用的图标主题名称，原样告诉我。只查询，不要修改任何外观设置，也不要创建文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "读取当前桌面会话对应的进程号，告诉我这个数字。不要创建文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "查看 polkit 认证代理接口当前提供哪些成员，并说明服务是否可用。不要修改配置，也不要创建文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "汇总当前 GTK 主题、图标主题，以及控制中心注册的模块数量。只读，不要修改设置，也不要创建文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "对当前桌面外观做一次巡检：报告字体大小、图标主题、GTK 主题、桌面背景 URI、键盘布局（读取 org.deepin.dde.Keyboard1 的 layout 属性）、充电保护电量阈值，以及控制中心注册的模块数量。只读，不要修改任何配置，也不要创建文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "统计系统支持的全部键盘布局数量（整数），不要修改当前布局。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "列出 X 设置中当前记录的全部属性名，并报告属性总数（整数）。不要修改任何设置。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "列出系统快捷键的全部类别名称，并报告类别数量（整数）。不要新增、修改或删除任何快捷键。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "把 X 设置中的双击间隔设置为 400 毫秒，然后读回确认已经生效。只改这一项设置。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "汇总 X 设置：报告当前缩放因子、X 设置中记录的属性总数。不要修改任何设置。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "在应用管理器注册的应用里，找到应用 ID 为 deepin-editor 的应用，读取它的显示名称（Name 的 default 值）并原样告诉我。只做查询，不要启动应用。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "同时做两件事：读取应用管理器注册的应用数量（至少列出前三个应用 ID），以及读取文件管理器的最近文件路径列表。只读，不要启动应用、不要改最近记录。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
   }
 ]

@@ -2,6 +2,8 @@
 
 该接口提供外观设置能力，包括字体、主题、壁纸、光标、缩放、窗口圆角、不透明度的读写。
 
+当前外观状态以本接口属性为准：GTK 主题读 `GtkTheme`，图标主题读 `IconTheme`，DDE 全局主题读 `GlobalTheme`；`List`/`Show` 返回可用资源或资源信息，不能替代当前值。gsettings 可能与 daemon 不同步，不从它、主题目录或 desktop 文件推断当前外观。按实际返回值报告，不套用示例主题名。
+
 ## 接口信息
 
 | 字段 | 值 |
@@ -10,8 +12,6 @@
 | Object path | `/org/deepin/dde/Appearance1` |
 | Interface | `org.deepin.dde.Appearance1` |
 | Bus | Session |
-
-> 当前用户的外观状态以本接口属性为权威来源。`org.gnome.desktop.interface` 与 `com.deepin.dde.appearance` 下的 gsettings key 可能滞后于 daemon，或与其他桌面组件写入的值不同步；只读查询不要用 `gsettings get` 代替 `Appearance1` 属性。不同机器上的主题名称不同，应按实际返回值报告，不要套用固定示例值。
 
 ## 方法（Methods）
 
@@ -510,13 +510,13 @@ gdbus call --session \
 
 #### Background
 
-当前背景。
+daemon 记录的背景属性，不保证等同当前工作区实际壁纸。巡检查询背景 URI 时读取本属性；若需了解实际壁纸，调用 `GetCurrentWorkspaceBackground`，两者不同时分别标明来源。
 
 | 属性 | 值 |
 |------|------|
 | 类型 | `s` |
 | 读写权限 | read |
-- **使用场景**: 需要读取当前背景 URI 用于显示时使用。
+- **使用场景**: 需要读取 daemon 背景记录 URI 时使用；实际壁纸见工作区背景方法。
 
 背景 URI 可能包含连续斜杠，例如 `file:////usr/share/backgrounds/default_background.jpg`。原样返回该 URI，不要自行规范化斜杠数量。
 

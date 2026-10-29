@@ -11,6 +11,16 @@
 | Interface | `org.deepin.dde.Polkit1.AuthAgent` |
 | Bus | Session |
 
+```bash
+busctl --user introspect org.deepin.dde.Polkit1.AuthAgent /com/deepin/dde/Polkit1/AuthAgent
+```
+
+按实际输出报告接口成员；不要为了探查而调用 `setWIdForAction`。空节点不等于服务未运行，应区分服务、对象与接口三个层级。
+
+`ServiceUnknown` 表示当前 Session 总线服务不可用；`UnknownObject` 或空节点需核对对象路径；`UnknownInterface` 需核对对象接口及版本。
+
+这不是 System 总线的 `Authenticate1` 认证框架，也不是旧 `org.freedesktop.PolicyKit1.AuthenticationAgent` 接口；以上错误均不能证明某个 Polkit 动作不存在。
+
 ## 方法
 
 ### setWIdForAction

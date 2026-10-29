@@ -36,3 +36,5 @@ DConfig 配置由对应托盘插件消费。界面显示和默认驻留列表作
 充电保护电量阈值和电池时间信息显示配置。
 
 详见 [org.deepin.dde.dock.plugin.power](config/org.deepin.dde.dock.plugin.power.md)
+
+只读巡检的充电保护阈值入口：`dde-dconfig get -a org.deepin.dde.tray-loader -r org.deepin.dde.dock.plugin.power -k chargingProtectThreshold`。这是配置阈值，不是当前电池电量；硬件是否支持充电保护需另外探测。

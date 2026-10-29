@@ -1,6 +1,6 @@
 ---
 name: deepin-desktop-environment
-description: 使用和配置 deepin/UOS 的 DDE 桌面与系统设置。按用户意图查询和调整 DDE 全局主题与 Qt/DTK 应用外观、GTK 主题、图标主题、深色模式、壁纸与轮播、字体名称与大小、光标、缩放和窗口效果；查询会话路径、会话锁定状态、窗口管理器、X 设置属性、已注册应用数量和系统版本；管理音量、音频设备与事件音效、亮度、多显示器与分辨率、电源模式、合盖休眠、空闲锁屏和定时关机；调整键盘布局、鼠标、触控板、数位板、快捷键和手势；控制蓝牙配对与飞行模式，管理账户、人脸认证、密码策略和登录设置；使用启动器、任务栏、托盘、通知与勿扰模式、剪贴板历史、应用启动和默认关联；配置桌面语言、区域格式、时区与时间；管理锁屏、屏保、会话抑制、注销与关机，使用触屏校准和会话提示界面；打开控制中心、查询设置模块、搜索设置并跳转指定页面；通过公开 DConfig 资源发现、查询、修改和恢复配置，核对用户、权限与作用范围；查询和调整 GRUB 启动配置。用户无需知道组件名称，可通过相关公开 D-Bus、CLI 和 DConfig 控制面完成操作并验证结果。
+description: 使用和配置 deepin/UOS 的 DDE 桌面与系统设置。按用户意图查询和调整 DDE 全局主题与 Qt/DTK 应用外观、GTK 主题、图标主题、深色模式、壁纸与轮播、字体名称与大小、光标、缩放和窗口效果；查询会话路径与进程 PID、会话锁定状态、窗口管理器、X 设置属性与缩放、已注册应用数量与显示名称和系统版本；管理音量、音频设备与事件音效、亮度、多显示器与分辨率、电源模式、合盖休眠、空闲锁屏和定时关机；调整键盘布局、鼠标、触控板、数位板、快捷键和手势；控制蓝牙配对与飞行模式，探查 polkit 认证代理成员，管理账户、人脸认证、密码策略和登录设置；使用启动器、任务栏、托盘、通知与勿扰模式、剪贴板历史、应用启动和默认关联；配置桌面语言、区域格式、时区与时间；管理锁屏、屏保、会话抑制、注销与关机，使用触屏校准和会话提示界面；打开控制中心、查询设置模块、搜索设置并跳转指定页面；通过公开 DConfig 资源发现、查询、修改和恢复配置，核对用户、权限与作用范围；查询和调整 GRUB 启动配置。用户无需知道组件名称，可通过相关公开 D-Bus、CLI 和 DConfig 控制面完成操作并验证结果。
 Categories:
   - Settings
 ---
@@ -14,6 +14,8 @@ Categories:
 - 查询 DDE 当前状态时，以本 Skill 列出的 daemon D-Bus 属性、方法或公开 CLI 的返回值为准。
 - `gsettings`、`xset`、`loginctl`、`xprop` 和 `.desktop` 文件计数可能滞后于 daemon，或反映的是不同层次的状态，不能替代 DDE 控制面的权威结果。
 - 只读查询同样先按意图表读取对应属性；不要因为写入风险低或命令更常见就改用上述旁路工具。
+- 汇总与巡检先逐项确定“字段 → 接口/属性 → 语义”，分别读取，标注来源；原样输出请求只返回对应原值。当前值读属性，可用集合读列表，统计只计数解析后的集合，不沿用历史测试常量。
+- 接口缺失先用 `busctl --user tree <service>` 与 `introspect` 核对对象层级和方法签名；System 服务使用 `--system`。父对象可用不代表子接口存在，也不能将探测失败当作值为空或数量为零。
 
 ## 意图与参考资料
 
@@ -34,10 +36,11 @@ Categories:
 | 人脸认证、密码策略、图形授权 | [人脸管理](references/deepin-face/index.md)、[密码策略](references/deepin-pw-check/index.md)、[授权说明](references/dde-polkit-agent/index.md) | 按目标用户、设备和方法核对权限 |
 | 锁屏界面、屏保、空闲抑制 | [session-shell 索引](references/dde-session-shell/index.md)、[屏保索引](references/deepin-screensaver/index.md) | 空闲计时与抑制读 [ScreenSaver](references/dde-daemon/dbus/org.freedesktop.ScreenSaver.md)；抑制不解除锁屏 |
 | 会话锁定状态（只读） | [SessionManager1.Locked](references/dde-session/dbus/org.deepin.dde.SessionManager1.md) | `LockFront1.Visible` 只表示锁屏界面可见性，`loginctl` 的 `LockedHint` 也不可替代 `Locked` |
+| 当前桌面会话进程 PID | dde-session 项目 `org.deepin.dde.Session1.GetSessionPid` | logind Leader 与进程搜索不是同一语义 |
 | 会话路径 | [Session1.GetSessionPath](references/dde-session/dbus/org.deepin.dde.Session1.md)、[SessionManager1.CurrentSessionPath](references/dde-session/dbus/org.deepin.dde.SessionManager1.md) | 返回 login1 会话对象路径；不要用 `loginctl` 的 `session-N.scope` 名称代替 |
 | 当前窗口管理器 | [WMSwitcher1.CurrentWM](references/dde-session/dbus/org.deepin.dde.WMSwitcher1.md) | 只读查询当前窗口管理器；`CurrentWM` 是方法而非属性，具体返回值和平台差异以接口页为准 |
-| X 设置属性清单 | [XSettings1.ListProps](references/dde-services/dbus/org.deepin.dde.XSettings1.md) | 返回 JSON 字符串；单项读取使用 `GetString`、`GetInteger`、`GetColor` |
-| 已注册应用数量 | [ApplicationManager1.List](references/dde-application-manager/dbus/org.desktopspec.ApplicationManager1.md) | `List` 是 `ao` 属性；`.desktop` 文件数不等于应用管理器注册的应用数 |
+| X 设置属性清单、缩放与双击间隔 | [XSettings1.ListProps](references/dde-services/dbus/org.deepin.dde.XSettings1.md) | `ListProps` 解析后计数；缩放读 `GetScaleFactor`；双击间隔先发现 `Net/DoubleClickTime` 再读写并回读 |
+| 已注册应用数量、应用 ID 与默认显示名称 | [ApplicationManager1.List](references/dde-application-manager/dbus/org.desktopspec.ApplicationManager1.md) | `List` 是 `ao` 属性；`.desktop` 文件数不等于应用管理器注册的应用数 |
 | 注销、重启、关机、挂起、会话抑制 | [session 索引](references/dde-session/index.md) | 普通注销用会话管理器 RequestLogout；退出管理进程与完整注销不同；显示关机界面不等于执行关机 |
 | 启动器、任务栏、通知、勿扰、OSD | [启动器索引](references/dde-launchpad/index.md)、[shell 索引](references/dde-shell/index.md) | 充电保护、托盘驻留配置见 [tray 索引](references/dde-tray-loader/index.md) |
 | 剪贴板窗口、历史恢复 | [clipboard 索引](references/dde-clipboard/index.md) | 后端拥有者与保存协议见 [daemon 索引](references/dde-daemon/index.md) |

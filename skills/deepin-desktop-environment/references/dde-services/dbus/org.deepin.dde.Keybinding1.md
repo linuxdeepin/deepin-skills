@@ -18,7 +18,7 @@
 - `ShortcutInfo`：D-Bus 结构体 `(sssasssbb)`，依次包含快捷键 ID、名称、类别、快捷键字符串数组、显示名称、本地化类别及两个布尔状态。
 - `CategoryInfo`：D-Bus 结构体 `(ssib)`，依次包含类别 ID、显示名称、类别编号及一个布尔状态。
 
-结构体字段按 D-Bus 签名顺序返回。需要按名称筛选时，先调用 `ListCategories` 获取实际类别 ID，再传给 `ListShortcutsByCategory`。
+结构体字段按 D-Bus 签名顺序返回。部署提供相应方法时，按名称筛选先调用 `ListCategories` 获取实际类别 ID，再传给 `ListShortcutsByCategory`；缺少方法时按 ListCategories 小节的能力分支枚举并在本地筛选。
 
 ### 快捷键查询
 
@@ -41,6 +41,8 @@ gdbus call --session \
 
 #### ListShortcutsByApp
 
+此方法为可选能力。未提供时可从已读取的快捷键记录筛选；按应用筛选须有应用 ID 字段，不从快捷键 ID 推断。
+
 按应用列出快捷键。
 
 - **功能**：返回指定应用 ID 关联的快捷键列表
@@ -57,6 +59,8 @@ gdbus call --session \
 ```
 
 #### ListShortcutsByCategory
+
+此方法为可选能力。未提供时可从已读取的快捷键记录筛选；按应用筛选须有应用 ID 字段，不从快捷键 ID 推断。
 
 按类别列出快捷键。
 
@@ -77,6 +81,12 @@ gdbus call --session \
 
 #### ListCategories
 
+此方法为可选能力，调用前通过 introspect 确认。类别统计按以下规则处理：
+
+1. 有 `ListCategories() -> a(ssib)` 时读取类别 ID 和显示名称；按 ID 去重统计，保留大小写。
+2. 无此方法时，优先读取无参数 `ListAllShortcuts`，否则读取 introspect 确认无参数的 `List`。结果可能是结构体数组，也可能是包含 JSON 的 `s`。结构体签名为 `a(sssasssbb)` 时第三项是类别 ID、第六项是本地化类别；JSON 对象列表则按实际 `Category` 字段聚合，不能把 `Type` 猜成类别。
+3. 聚合得到的是“当前快捷键记录中出现的类别”，不能声称包含未使用的空类别。若结果未提供类别字段，明确无法枚举，不编造类别名称。按类别筛选可在已读取记录上完成；按应用筛选必须有应用 ID 字段，不从快捷键 ID 猜应用。
+
 列出所有快捷键类别。
 
 - **功能**：返回系统中所有快捷键类别的列表
@@ -93,6 +103,8 @@ gdbus call --session \
 ```
 
 #### GetShortcut
+
+输入签名随后端版本变化，调用前核对 introspect 结果，不默认只接受一个字符串 ID。
 
 获取指定快捷键信息。
 

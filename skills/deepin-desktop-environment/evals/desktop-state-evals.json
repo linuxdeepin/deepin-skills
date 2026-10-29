@@ -1,0 +1,192 @@
+{
+  "skill_name": "deepin-desktop-environment",
+  "evals": [
+    {
+      "id": 1,
+      "name": "单接口：读取当前 GTK 主题",
+      "prompt": "读取当前系统使用的 GTK 主题名称，原样告诉我。只查询，不要修改任何外观设置，也不要创建文件。",
+      "assertions": [
+        "仅提供原始提示词时，agent 自行读取 deepin-desktop-environment 的 SKILL.md；不通过显式技能调用或预加载满足此断言。",
+        "按本次接口实际返回值回答；主题名、PID、集合数量等动态值不得使用固定常量。",
+        "遵守只读、不创建文件、不启动应用等原提示词约束。",
+        "通过 Appearance1.GtkTheme 读取，最终原样返回当前值。"
+      ],
+      "files": [],
+      "should_trigger": true,
+      "expected_skill": "deepin-desktop-environment"
+    },
+    {
+      "id": 2,
+      "name": "单接口：读取当前图标主题",
+      "prompt": "读取当前系统使用的图标主题名称，原样告诉我。只查询，不要修改任何外观设置，也不要创建文件。",
+      "assertions": [
+        "仅提供原始提示词时，agent 自行读取 deepin-desktop-environment 的 SKILL.md；不通过显式技能调用或预加载满足此断言。",
+        "按本次接口实际返回值回答；主题名、PID、集合数量等动态值不得使用固定常量。",
+        "遵守只读、不创建文件、不启动应用等原提示词约束。",
+        "通过 Appearance1.IconTheme 读取，最终原样返回当前值。"
+      ],
+      "files": [],
+      "should_trigger": true,
+      "expected_skill": "deepin-desktop-environment"
+    },
+    {
+      "id": 3,
+      "name": "单接口：查询当前会话进程 PID",
+      "prompt": "读取当前桌面会话对应的进程号，告诉我这个数字。不要创建文件。",
+      "assertions": [
+        "仅提供原始提示词时，agent 自行读取 deepin-desktop-environment 的 SKILL.md；不通过显式技能调用或预加载满足此断言。",
+        "按本次接口实际返回值回答；主题名、PID、集合数量等动态值不得使用固定常量。",
+        "遵守只读、不创建文件、不启动应用等原提示词约束。",
+        "通过 Session1.GetSessionPid 返回当前 PID，不使用 logind Leader。"
+      ],
+      "files": [],
+      "should_trigger": true,
+      "expected_skill": "deepin-desktop-environment"
+    },
+    {
+      "id": 4,
+      "name": "单接口：探查认证代理接口成员",
+      "prompt": "查看 polkit 认证代理接口当前提供哪些成员，并说明服务是否可用。不要修改配置，也不要创建文件。",
+      "assertions": [
+        "仅提供原始提示词时，agent 自行读取 deepin-desktop-environment 的 SKILL.md；不通过显式技能调用或预加载满足此断言。",
+        "按本次接口实际返回值回答；主题名、PID、集合数量等动态值不得使用固定常量。",
+        "遵守只读、不创建文件、不启动应用等原提示词约束。",
+        "在 Session 总线探测 Polkit1 AuthAgent 的实际对象及接口，列出成员并区分服务/对象/接口可用性。"
+      ],
+      "files": [],
+      "should_trigger": true,
+      "expected_skill": "deepin-desktop-environment"
+    },
+    {
+      "id": 5,
+      "name": "跨组件：外观主题与控制中心模块",
+      "prompt": "汇总当前 GTK 主题、图标主题，以及控制中心注册的模块数量。只读，不要修改设置，也不要创建文件。",
+      "assertions": [
+        "仅提供原始提示词时，agent 自行读取 deepin-desktop-environment 的 SKILL.md；不通过显式技能调用或预加载满足此断言。",
+        "按本次接口实际返回值回答；主题名、PID、集合数量等动态值不得使用固定常量。",
+        "遵守只读、不创建文件、不启动应用等原提示词约束。",
+        "分别读取 Appearance1.GtkTheme/IconTheme 和控制中心注册模块，解析模块集合后计数。"
+      ],
+      "files": [],
+      "should_trigger": true,
+      "expected_skill": "deepin-desktop-environment"
+    },
+    {
+      "id": 6,
+      "name": "复杂任务：桌面外观全面巡检",
+      "prompt": "对当前桌面外观做一次巡检：报告字体大小、图标主题、GTK 主题、桌面背景 URI、键盘布局（读取 org.deepin.dde.Keyboard1 的 layout 属性）、充电保护电量阈值，以及控制中心注册的模块数量。只读，不要修改任何配置，也不要创建文件。",
+      "assertions": [
+        "仅提供原始提示词时，agent 自行读取 deepin-desktop-environment 的 SKILL.md；不通过显式技能调用或预加载满足此断言。",
+        "按本次接口实际返回值回答；主题名、PID、集合数量等动态值不得使用固定常量。",
+        "遵守只读、不创建文件、不启动应用等原提示词约束。",
+        "读取 FontSize、IconTheme、GtkTheme、Background 并保留 URI 原值；工作区背景不同则区分报告。",
+        "明确读取 org.deepin.dde.Keyboard1.layout，不替换为后端 CurrentLayout。",
+        "通过公开 DConfig 读取充电阈值，并读取控制中心注册模块后计数。"
+      ],
+      "files": [],
+      "should_trigger": true,
+      "expected_skill": "deepin-desktop-environment"
+    },
+    {
+      "id": 7,
+      "name": "单接口：统计全部键盘布局数量",
+      "prompt": "统计系统支持的全部键盘布局数量（整数），不要修改当前布局。",
+      "assertions": [
+        "仅提供原始提示词时，agent 自行读取 deepin-desktop-environment 的 SKILL.md；不通过显式技能调用或预加载满足此断言。",
+        "按本次接口实际返回值回答；主题名、PID、集合数量等动态值不得使用固定常量。",
+        "遵守只读、不创建文件、不启动应用等原提示词约束。",
+        "通过 InputDevice1/Keyboard 的 AllLayoutList 读取全集并计数，不使用 localectl 或可能过滤的 LayoutList。"
+      ],
+      "files": [],
+      "should_trigger": true,
+      "expected_skill": "deepin-desktop-environment"
+    },
+    {
+      "id": 8,
+      "name": "单接口：统计 X 设置属性数量",
+      "prompt": "列出 X 设置中当前记录的全部属性名，并报告属性总数（整数）。不要修改任何设置。",
+      "assertions": [
+        "仅提供原始提示词时，agent 自行读取 deepin-desktop-environment 的 SKILL.md；不通过显式技能调用或预加载满足此断言。",
+        "按本次接口实际返回值回答；主题名、PID、集合数量等动态值不得使用固定常量。",
+        "遵守只读、不创建文件、不启动应用等原提示词约束。",
+        "解析 XSettings1.ListProps，列出所有名称并给出与集合一致的整数总数。"
+      ],
+      "files": [],
+      "should_trigger": true,
+      "expected_skill": "deepin-desktop-environment"
+    },
+    {
+      "id": 9,
+      "name": "单接口：统计快捷键类别",
+      "prompt": "列出系统快捷键的全部类别名称，并报告类别数量（整数）。不要新增、修改或删除任何快捷键。",
+      "assertions": [
+        "仅提供原始提示词时，agent 自行读取 deepin-desktop-environment 的 SKILL.md；不通过显式技能调用或预加载满足此断言。",
+        "按本次接口实际返回值回答；主题名、PID、集合数量等动态值不得使用固定常量。",
+        "遵守只读、不创建文件、不启动应用等原提示词约束。",
+        "先探测 Keybinding1 实际方法和签名；优先可用类别接口，否则从快捷键记录 Category 去重聚合并说明统计边界。"
+      ],
+      "files": [],
+      "should_trigger": true,
+      "expected_skill": "deepin-desktop-environment"
+    },
+    {
+      "id": 10,
+      "name": "单接口：设置双击间隔并读回验证",
+      "prompt": "把 X 设置中的双击间隔设置为 400 毫秒，然后读回确认已经生效。只改这一项设置。",
+      "assertions": [
+        "仅提供原始提示词时，agent 自行读取 deepin-desktop-environment 的 SKILL.md；不通过显式技能调用或预加载满足此断言。",
+        "按本次接口实际返回值回答；主题名、PID、集合数量等动态值不得使用固定常量。",
+        "遵守只读、不创建文件、不启动应用等原提示词约束。",
+        "先发现 Net/DoubleClickTime 并记录原值；只对该键 SetInteger 400，GetInteger 同键回读400；夹具恢复与任务执行分开记录。"
+      ],
+      "files": [],
+      "should_trigger": true,
+      "expected_skill": "deepin-desktop-environment"
+    },
+    {
+      "id": 11,
+      "name": "多接口：X 设置信息汇总",
+      "prompt": "汇总 X 设置：报告当前缩放因子、X 设置中记录的属性总数。不要修改任何设置。",
+      "assertions": [
+        "仅提供原始提示词时，agent 自行读取 deepin-desktop-environment 的 SKILL.md；不通过显式技能调用或预加载满足此断言。",
+        "按本次接口实际返回值回答；主题名、PID、集合数量等动态值不得使用固定常量。",
+        "遵守只读、不创建文件、不启动应用等原提示词约束。",
+        "分别读取 XSettings1.GetScaleFactor 与 ListProps，报告缩放与解析后的属性数。"
+      ],
+      "files": [],
+      "should_trigger": true,
+      "expected_skill": "deepin-desktop-environment"
+    },
+    {
+      "id": 12,
+      "name": "单接口：按应用 ID 读取应用名称",
+      "prompt": "在应用管理器注册的应用里，找到应用 ID 为 deepin-editor 的应用，读取它的显示名称（Name 的 default 值）并原样告诉我。只做查询，不要启动应用。",
+      "assertions": [
+        "仅提供原始提示词时，agent 自行读取 deepin-desktop-environment 的 SKILL.md；不通过显式技能调用或预加载满足此断言。",
+        "按本次接口实际返回值回答；主题名、PID、集合数量等动态值不得使用固定常量。",
+        "遵守只读、不创建文件、不启动应用等原提示词约束。",
+        "读取 ApplicationManager1.List 并定位 ID，读取 Application.Name 的 default 键，不启动应用。"
+      ],
+      "files": [],
+      "should_trigger": true,
+      "expected_skill": "deepin-desktop-environment"
+    },
+    {
+      "id": 13,
+      "name": "跨 skill：应用列表与最近文件路径汇总",
+      "prompt": "同时做两件事：读取应用管理器注册的应用数量（至少列出前三个应用 ID），以及读取文件管理器的最近文件路径列表。只读，不要启动应用、不要改最近记录。",
+      "assertions": [
+        "仅提供原始提示词时，agent 自行读取 deepin-desktop-environment 的 SKILL.md；不通过显式技能调用或预加载满足此断言。",
+        "按本次接口实际返回值回答；主题名、PID、集合数量等动态值不得使用固定常量。",
+        "遵守只读、不创建文件、不启动应用等原提示词约束。",
+        "读取 ApplicationManager1.List 统计注册数量，读取至少前三个对象的 ID；不以 desktop 文件计数。",
+        "通过已运行文件管理器最近文件接口读路径，不启动应用、不修改记录；分开注明数据源。"
+      ],
+      "files": [],
+      "should_trigger": true,
+      "expected_skill": "deepin-desktop-environment"
+    }
+  ],
+  "evaluation_method": "在独立会话中将本 skill 作为可发现技能安装，只提交 prompt 原文，不显式指定技能、不预加载 SKILL.md，也不向 agent 提供断言。先从工具记录检查 agent 是否自行读取本 skill 的 SKILL.md，再用执行响应核验任务断言。缺少服务或环境前置时记录未完成，不计为通过。测试框架单独保存证据；写入用例由夹具记录原值，执行后恢复并验证。自动触发、执行结果、模拟分支分别评分。",
+  "evaluation_protocol": "evals/protocol.md"
+}

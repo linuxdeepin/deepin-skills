@@ -2,6 +2,8 @@
 
 该接口提供键盘布局和输入设备管理能力。键盘布局方法位于子对象 `/org/deepin/dde/InputDevice1/Keyboard`，接口名为 `org.deepin.dde.InputDevice1.Keyboard`；父对象 `/org/deepin/dde/InputDevices1` 暴露 `WheelSpeed` 和 `Infos` 属性（另有同步配置接口），不提供本页方法。
 
+服务名 `InputDevices1` 为复数，Keyboard 对象路径及接口中的 `InputDevice1` 为单数；可通过 `busctl --user tree org.deepin.dde.InputDevices1` 发现子对象，再 introspect 核对方法。当前实际输入布局读 `CurrentLayout`；dde-tray-loader 项目 `org.deepin.dde.Keyboard1.layout` 是独立的托盘指示器属性，不是别名。
+
 ## 接口信息
 
 | 字段 | 值 |
@@ -135,6 +137,8 @@ gdbus call --session \
 ```
 
 ### AllLayoutList
+
+统计全部支持布局时使用本方法，按返回 `a{ss}` 字典的键计数。`LayoutList` 可能受区域等条件过滤，`UserLayoutList` 是用户选择的子集，均不能默认作为全集；`localectl` 也不代表本接口的返回集合。
 
 获取所有布局列表。
 

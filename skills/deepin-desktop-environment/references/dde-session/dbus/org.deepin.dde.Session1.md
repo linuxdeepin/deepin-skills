@@ -34,7 +34,7 @@ gdbus call --session \
 
 #### GetSessionPid
 
-获取会话进程 PID。
+获取 DDE 会话进程 PID。该值以本方法为准；`loginctl` 的 `Leader` 是 logind 会话领导进程，`ps` 按名称找到的进程也不保证是同一对象，不能替代此返回值。只读查询不发送信号、不调用 Logout。
 
 - **功能**: 返回当前会话进程的 PID。
 - **触发条件**: 由调用方主动调用触发。
