@@ -1,0 +1,8 @@
+# 图形授权与认证代理
+
+需要特权的服务通过 Polkit 发起授权，由当前用户会话中的认证代理显示对话框。认证代理通常由 `dde-polkit-agent.service` 自动启动，需要图形会话环境。System 总线不意味着所有查询都应使用 root。
+
+- [认证代理运行说明](cli/dde-polkit-agent.md)：核对代理运行方式；不应为普通设置请求重复启动代理。
+- [AuthAgent 窗口关联](dbus/org.deepin.dde.Polkit1.AuthAgent.md)：为待授权动作关联顶层窗口标识，只影响认证对话框的窗口关联，不完成授权。
+
+不要用 AuthAgent 完成授权或代替用户确认，不代填、记录或输出密码。插件扩展开发不在本 Skill 范围内。

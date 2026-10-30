@@ -1,0 +1,4 @@
+interface:
+  display_name: "deepin 桌面使用与配置"
+  short_description: "使用和配置 DDE 外观、电源、设备、账户及桌面会话"
+  default_prompt: "使用 $deepin-desktop-environment 查询或调整 deepin/UOS 桌面设置，按用户意图读取参考资料，探测当前状态并验证变更。"

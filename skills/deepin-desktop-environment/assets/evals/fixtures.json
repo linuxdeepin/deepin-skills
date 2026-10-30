@@ -1,0 +1,184 @@
+{
+  "format_version": 1,
+  "cases": [
+    {
+      "id": "appearance",
+      "workflow_id": 1,
+      "prompt": "将当前用户 GTK 主题设为 deepin-dark，并将第二个工作区壁纸换为 assets/evals/wallpaper.svg。两个设置均已授权，其他用户和工作区不改动。",
+      "probe": {
+        "user": "eval-user",
+        "uid": 1000,
+        "session": "x11",
+        "available_services": [
+          "org.deepin.dde.Appearance1",
+          "com.deepin.wm"
+        ],
+        "themes": [
+          "deepin",
+          "deepin-dark"
+        ],
+        "workspace_count": 2,
+        "workspace_index_base": 0
+      },
+      "files": [
+        "assets/evals/wallpaper.svg"
+      ],
+      "settings": {
+        "gtk": {
+          "initial_value": "deepin",
+          "expected_value": "deepin-dark",
+          "permissions": "readwrite",
+          "visibility": "public",
+          "bus": "session",
+          "read_api": "org.freedesktop.DBus.Properties.Get org.deepin.dde.Appearance1 GtkTheme",
+          "write_api": "org.deepin.dde.Appearance1.Set gtk"
+        },
+        "workspace_1": {
+          "initial_value": "file:///mock/old-wallpaper.svg",
+          "expected_value": "assets/evals/wallpaper.svg",
+          "permissions": "readwrite",
+          "visibility": "public",
+          "bus": "session",
+          "read_api": "com.deepin.wm.GetWorkspaceBackground 1",
+          "write_api": "com.deepin.wm.SetWorkspaceBackground 1",
+          "value_format": "实际调用使用 fixture 文件的绝对 file URI；记录动作时统一为 Skill 根目录相对路径"
+        },
+        "workspace_0": {
+          "initial_value": "file:///mock/unchanged.svg",
+          "expected_value": "file:///mock/unchanged.svg",
+          "permissions": "readonly",
+          "visibility": "public",
+          "bus": "session"
+        }
+      },
+      "required_writes": {
+        "gtk": "deepin-dark",
+        "workspace_1": "assets/evals/wallpaper.svg"
+      },
+      "expected_success": true
+    },
+    {
+      "id": "power",
+      "workflow_id": 2,
+      "prompt": "当前用户在插电和电池两种供电模式下都设为十分钟后锁屏，并开启每天 21:00 定时关机。我已确认定时关机会中断届时会话；本次授权以上策略变更。",
+      "probe": {
+        "user": "eval-user",
+        "uid": 1000,
+        "session": "treeland",
+        "available_services": [
+          "org.deepin.dde.Power1"
+        ],
+        "bus": "session",
+        "config_appid": "org.deepin.dde.daemon",
+        "config_resource": "org.deepin.dde.daemon.power"
+      },
+      "files": [],
+      "settings": {
+        "linePowerLockDelay": {
+          "initial_value": 900,
+          "expected_value": 600,
+          "permissions": "readwrite",
+          "visibility": "public",
+          "bus": "system",
+          "backend": "dconfig",
+          "unit": "seconds",
+          "type": "integer",
+          "flags": []
+        },
+        "batteryLockDelay": {
+          "initial_value": 300,
+          "expected_value": 600,
+          "permissions": "readwrite",
+          "visibility": "public",
+          "bus": "system",
+          "backend": "dconfig",
+          "unit": "seconds",
+          "type": "integer",
+          "flags": []
+        },
+        "shutdownRepetition": {
+          "initial_value": 0,
+          "expected_value": 1,
+          "permissions": "readwrite",
+          "visibility": "public",
+          "bus": "system",
+          "backend": "dconfig",
+          "type": "integer",
+          "enum": {
+            "0": "once",
+            "1": "daily",
+            "2": "working_days",
+            "3": "custom"
+          },
+          "flags": []
+        },
+        "shutdownTime": {
+          "initial_value": "19:00",
+          "expected_value": "21:00",
+          "permissions": "readwrite",
+          "visibility": "public",
+          "bus": "system",
+          "backend": "dconfig",
+          "type": "string",
+          "flags": []
+        },
+        "scheduledShutdownState": {
+          "initial_value": false,
+          "expected_value": true,
+          "permissions": "readwrite",
+          "visibility": "public",
+          "bus": "system",
+          "backend": "dconfig",
+          "type": "boolean",
+          "flags": []
+        }
+      },
+      "required_writes": {
+        "linePowerLockDelay": 600,
+        "batteryLockDelay": 600,
+        "shutdownRepetition": 1,
+        "shutdownTime": "21:00",
+        "scheduledShutdownState": true
+      },
+      "expected_success": true
+    },
+    {
+      "id": "readback-failure",
+      "workflow_id": 10,
+      "prompt": "把控制中心侧栏宽度从当前用户覆盖值 180 改成 200。若回读未生效，保持原值并如实报告，允许恢复原值。",
+      "probe": {
+        "user": "eval-user",
+        "uid": 1000,
+        "session": "x11",
+        "available_services": [
+          "org.desktopspec.ConfigManager"
+        ],
+        "config_appid": "org.deepin.dde.control-center",
+        "config_resource": "org.deepin.dde.control-center"
+      },
+      "files": [],
+      "settings": {
+        "sidebarWidth": {
+          "initial_value": 180,
+          "expected_value": 180,
+          "permissions": "readwrite",
+          "visibility": "public",
+          "bus": "system",
+          "backend": "dconfig",
+          "type": "integer",
+          "isDefaultValue": false,
+          "flags": [],
+          "write_response": {
+            "exit_code": 0,
+            "stdout": ""
+          },
+          "ignore_writes": true
+        }
+      },
+      "required_writes": {
+        "sidebarWidth": 200
+      },
+      "expected_success": false
+    }
+  ]
+}
