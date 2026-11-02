@@ -48,6 +48,7 @@ Choose a skill according to the target system version:
 | [`dde-shell-development`](skills/dde-shell-development/SKILL.md) | deepin/UOS v25 | Use this skill to extend DDE Shell desktop surfaces such as the Dock, top bar, sidebars, and other panels. It guides the selection and implementation of Applet, Containment, and Panel plugins; QML and C++ integration; plugin lifecycle and loading; and LayerShell windows anchored to screen edges on Wayland. |
 | [`dde-control-center-development`](skills/dde-control-center-development/SKILL.md) | deepin/UOS v25 | Use this skill to build system settings modules and plugins for DDE Control Center. It covers the module tree, navigation, and search architecture; C++ and QML APIs for settings pages; D-Bus and data interactions; plus plugin builds, translations, packaging, installation, and local debugging. |
 | [`dde-tray-development`](skills/dde-tray-development/SKILL.md) | deepin/UOS v25 | Use this skill to create DDE taskbar tray plugins, quick-panel controls, and related interactions that follow DDE desktop conventions. It covers tray plugin interfaces and loading behavior, status and messaging protocols, context menus, quick-panel detail pages, and integration points such as taskbar position changes for stable, well-integrated taskbar plugins. |
+| [`deepin-desktop-apps`](skills/deepin-desktop-apps/SKILL.md) | deepin/UOS | Use public interfaces for native apps across calendar, files/search, archives/downloads, packages/fonts, devices/storage, documents/media, mail, OCR/recording, and system tools; follow app prerequisites and verify results. |
 
 ## Community Events
 
@@ -64,6 +65,7 @@ All public skills are grouped under `skills/`, and the installer is stored in `s
 ```text
 deepin-skills/
 ├── skills/
+│   ├── deepin-desktop-apps/
 │   ├── dtk-development/
 │   ├── dde-shell-development/
 │   ├── dde-control-center-development/

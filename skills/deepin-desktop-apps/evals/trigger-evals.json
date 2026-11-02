@@ -1,0 +1,197 @@
+[
+  {
+    "query": "读取文件管理器的最近文件路径列表。只读，不要启动应用、不要修改最近记录。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "用音乐播放器播放用户提供的音频文件，先播放，再暂停，最后继续播放。不要创建或修改任何文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "用音乐播放器播放用户提供的两首音频文件，然后切到下一首，再切回上一首。不要创建或修改任何文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "用音乐播放器播放用户提供的音频文件，然后从当前位置向前跳转 1 秒。不要创建或修改任何文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "通过截图录屏工具提供的系统接口，把当前屏幕截图保存到用户指定的现有输出目录。不要用命令行参数方式，也不要自己用其他工具生成图片；接口返回后文件可能延迟几秒落盘，请等待后再确认。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "通过截图录屏工具提供的系统接口，执行一次滚动截图。不要创建或修改任何文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "用视频播放器按 URI 方式（file:// 开头）打开用户提供的视频文件，向前跳转 10 秒，然后查询当前播放位置和播放状态一起告诉我。不要创建或修改任何文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "通过截图录屏工具的系统接口，依次执行一次滚动截图和一次截图 OCR，并告诉我两次操作的结果。不要创建或修改任何文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "对用户提供的图片做一次文字识别，另外再对当前屏幕做一次截图 OCR，分别把两边的识别结果告诉我。不要修改图片，也不要创建或修改任何文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "同时用视频播放器播放用户提供的视频文件、用音乐播放器播放用户提供的音频文件。两个都开始播放后，先都暂停，再都继续播放。不要创建或修改任何文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "把视频播放器的音量设为 0.5，把音乐播放器的音量设为 0.3，再分别读回确认。注意不要改动系统音量，也不要创建或修改任何文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "通过截图录屏工具的系统接口把当前屏幕截图保存到用户指定的位置，然后用图片查看器打开这张截图查看。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "用 PDF 阅读器先同时打开用户提供的两份 PDF 文件，再单独打开另一份 PDF 文件。不要创建或修改任何文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "截取当前屏幕保存到用户指定的位置，用图片查看器打开它；若画板可用则用画板打开准备标注，不可用则说明并继续；最后用 deepin-ocr 提供的图片文件识别接口（不是截图 OCR）识别图片中的文字：把这张截图交给 OCR 应用处理，并按 skill 说明汇报该接口的返回行为与界面上的识别结果，不要用 read 或其它非 OCR 工具代替文字识别。不要修改任何系统设置。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "用文本编辑器把用户提供的两个文本文件一起在标签页中打开，不要修改文件内容。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "在系统帮助手册里搜索 network 相关的内容，并概述搜索结果。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "读取指定系统日志文件的大小（字节数），并告诉我具体数值。只读，不要导出或删除日志。日志查看器读取系统日志可能需要管理员权限。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "统计指定系统日志文件的行数，并告诉我数值。只读，不要导出或删除日志。日志查看器读取系统日志可能需要管理员权限。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "读取指定系统日志文件的内容，并概述最近几条日志在说什么。只读，不要导出或删除日志。日志查看器读取系统日志可能需要管理员权限。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "用文本编辑器把 一个文本文件放在标签页里打开，同时把另一个文本文件放在新窗口里打开，不要修改文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "检查指定系统日志文件是否存在（用布尔值 true 或 false 回答），并读取它的大小，最后一起告诉我。只读，不要导出或删除日志。日志查看器读取系统日志可能需要管理员权限。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "读取当前 CPU 占用率和内存占用率，并一起汇总。不要修改任何设置。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "做一次系统检查：确认指定系统日志文件是否存在、有多少行，并给出当前 CPU 与内存占用率，最后汇总。只读，不要导出日志，也不要修改设置。日志读取可能需要管理员权限。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "用磁盘管理器查询硬盘的健康状态（SMART 状态），并告诉我结论。只读查询，不要执行任何修复、分区或格式化操作。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "用压缩工具查看用户提供的压缩包 里包含哪些文件，把文件名都列出来。只查看，不要解压或修改压缩包；压缩工具会拉起 GUI，请用 timeout 60 包裹命令并在结束后结束进程。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "用压缩工具把用户提供的压缩包解压到用户指定的目录，然后确认包内的两个文件都已解压出来、内容正确。只解压到该目录；压缩工具会拉起 GUI，请用 timeout 60 包裹命令并在结束后结束进程。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "用压缩工具查看用户提供的压缩包内容，然后打开压缩工具窗口并置于前台。查看完告诉我压缩包里的文件名。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "帮我做一次硬件与存储巡检：用磁盘管理器列出所有磁盘和分区，用设备管理器查询 CPU 硬件信息，最后汇总。只读查询，禁止分区或格式化。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "用极速文件搜索在用户指定的资料目录中找出所有 PDF 文件，然后用压缩工具检查用户提供的压缩包内容和完整性，最后汇总两部分结果。只读操作。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "整理资料并准备字体：用极速文件搜索在用户指定的资料目录中按通配符找出所有 PDF；用压缩工具查看并测试用户提供的压缩包（压缩工具会拉起 GUI，请用 timeout 包裹命令并在结束后结束进程；若命令行无法列出内容，改用系统工具读取并如实说明）；用字体管理器把用户提供的字体文件安装到当前用户。最后汇总三部分结果（PDF 列表、压缩包内容与完整性、字体安装位置）；不要通过安装软件包来补环境，若字体管理器不可用请如实说明。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "用日历应用查询今天的日程和提醒，并打开一条日程详情。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "查看计算器当前模式，并切换到科学模式。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "启动相机应用，开始录像并查询录制状态。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "用 Deb 安装器安装用户提供且已确认可信的本地软件包，并确认安装状态。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "在下载器中创建 URL 下载任务，并打开下载器窗口。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "在邮件客户端中搜索主题包含“会议”的邮件，并汇报搜索结果。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "启动桌面取色器，我会在其界面中选择颜色；不需要读取色值。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "在终端应用窗口中运行只读命令 pwd，并确认终端窗口已打开。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "查询已有的语音笔记列表。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  }
+]
