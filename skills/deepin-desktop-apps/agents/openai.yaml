@@ -1,0 +1,4 @@
+interface:
+  display_name: "deepin 桌面应用操作"
+  short_description: "按公开 D-Bus/CLI 接口操作 deepin/UOS 原生应用及系统工具"
+  default_prompt: "使用 $deepin-desktop-apps 选择对应应用，按参考文档核对服务前置条件、接口参数并验证操作结果。"
