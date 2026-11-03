@@ -1,6 +1,6 @@
 ---
 name: deepin-desktop-environment
-description: 使用和配置 deepin/UOS 的 DDE 桌面与系统设置。按用户意图查询和调整 DDE 全局主题与 Qt/DTK 应用外观、GTK 主题、图标主题、深色模式、壁纸与轮播、字体名称与大小、光标、缩放和窗口效果；查询会话路径与进程 PID、会话锁定状态、窗口管理器、X 设置属性与缩放、已注册应用数量与显示名称和系统版本；管理音量、音频设备与事件音效、亮度、多显示器与分辨率、电源模式、合盖休眠、空闲锁屏和定时关机；调整键盘布局、鼠标、触控板、数位板、快捷键和手势；控制蓝牙配对与飞行模式，探查 polkit 认证代理成员，管理账户、人脸认证、密码策略和登录设置；使用启动器、任务栏、托盘、通知与勿扰模式、剪贴板历史、应用启动和默认关联；配置桌面语言、区域格式、时区与时间；管理锁屏、屏保、会话抑制、注销与关机，使用触屏校准和会话提示界面；打开控制中心、查询设置模块、搜索设置并跳转指定页面；通过公开 DConfig 资源发现、查询、修改和恢复配置，核对用户、权限与作用范围；查询和调整 GRUB 启动配置。用户无需知道组件名称，可通过相关公开 D-Bus、CLI 和 DConfig 控制面完成操作并验证结果。
+description: 使用和配置 deepin/UOS 的 DDE 桌面与系统设置，制作和应用自定义主题包、壁纸与图标。按用户意图查询和调整 DDE 全局主题与 Qt/DTK 应用外观、GTK 主题、图标主题、深色模式、壁纸与轮播、字体名称与大小、光标、缩放和窗口效果；查询会话路径与进程 PID、会话锁定状态、窗口管理器、X 设置属性与缩放、已注册应用数量与显示名称和系统版本；管理音量、音频设备与事件音效、亮度、多显示器与分辨率、电源模式、合盖休眠、空闲锁屏和定时关机；调整键盘布局、鼠标、触控板、数位板、快捷键和手势；控制蓝牙配对与飞行模式，探查 polkit 认证代理成员，管理账户、人脸认证、密码策略和登录设置；使用启动器、任务栏、托盘、通知与勿扰模式、剪贴板历史、应用启动和默认关联；配置桌面语言、区域格式、时区与时间；管理锁屏、屏保、会话抑制、注销与关机，使用触屏校准和会话提示界面；打开控制中心、查询设置模块、搜索设置并跳转指定页面；通过公开 DConfig 资源发现、查询、修改和恢复配置，核对用户、权限与作用范围；查询和调整 GRUB 启动配置。用户无需知道组件名称，可通过相关公开 D-Bus、CLI 和 DConfig 控制面完成操作并验证结果。
 Categories:
   - Settings
 ---
@@ -23,6 +23,7 @@ Categories:
 
 | 用户意图 | 优先读取 | 补充与分流 |
 | --- | --- | --- |
+| 自定义主题包、制作壁纸与图标、修正图标视觉大小、安装和应用主题 | [主题自定义流程](references/dde-appearance/theme-customization.md) | 先区分生成、安装和应用；按需复用现有资源、校准视觉尺寸，再通过 Appearance1 设置并验证 |
 | DDE 全局主题与 Qt/DTK 应用外观、GTK 主题、图标主题 | [Appearance1](references/dde-appearance/dbus/org.deepin.dde.Appearance1.md) | `GlobalTheme` 是 DDE 全局主题，`GtkTheme` 只表示 GTK 主题；Qt 活动色与滚动条策略分别用 `QtActiveColor`、`QtScrollBarPolicy` |
 | 深色模式、壁纸、字体名称与大小、光标、缩放、圆角、背景 URI | [Appearance1](references/dde-appearance/dbus/org.deepin.dde.Appearance1.md) | 读取 `StandardFont`、`FontSize`、`Background` 等属性；工作区与窗口操作读 [appearance 索引](references/dde-appearance/index.md)；轮播、缓存读 [services 索引](references/dde-services/index.md)；`gsettings` 结果可能滞后，不作权威来源 |
 | 音量、音频设备、事件音效 | [Audio1](references/dde-daemon/dbus/org.deepin.dde.Audio1.md)、[SoundEffect1](references/dde-daemon/dbus/org.deepin.dde.SoundEffect1.md) | 底层声音主题播放读 [api 索引](references/dde-api/index.md) |
@@ -52,6 +53,14 @@ Categories:
 | 会话提示、触屏校准、配对确认界面 | [session-ui 索引](references/dde-session-ui/index.md) | 显示界面和执行系统动作分开处理 |
 | GRUB 启动项、引导主题 | [Grub2](references/dde-daemon/dbus/org.deepin.dde.Grub2.md)、[api 索引](references/dde-api/index.md) | 属于高影响系统配置，修改前核对恢复条件 |
 | Portal 设置或与桌面接口的区别 | [Portal 边界](references/xdg-desktop-portal-dde/index.md) | 后端 impl 协议不能代替前端调用与授权 |
+
+## 主题自定义与设置
+
+主题制作和问题修正先读[主题自定义流程](references/dde-appearance/theme-customization.md)；仅切换已有主题或设置壁纸时，直接按 Appearance1 参考页执行，不必加载制作资料。
+
+- **控制范围与成本。** 区分“生成主题包”“安装资源”和“应用到桌面”；未指定的光标、音效、字体等不自动扩展。已有可用主题、继承机制和转换工具优先复用，避免为一次设置另写通用安装器或转换器。先验证少量代表素材，再批量制作。
+- **检查视觉尺寸。** 同样的画布尺寸不代表同样的可见大小。把自定义图标与目标系统图标在相同显示尺寸、缩放下并排比较，检查可见主体、透明留白和视觉重心，兼顾应用图标与文件夹等不同轮廓；不把某个主题的像素值当成通用标准。
+- **完成实际应用。** 用户已要求应用时，沿用已有授权，记录原值后安装并设置；同时验证资源发现、外观回读和界面效果。文件存在、转换成功或预览正常均不能代替桌面生效验证。受限时准确说明失败阶段、已完成内容与最小后续步骤。
 
 ## 操作工作流
 

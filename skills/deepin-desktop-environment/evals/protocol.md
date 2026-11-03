@@ -6,6 +6,8 @@
 
 这三个场景禁止访问真实桌面总线。由评估者或评估运行器按 fixture 提供工具响应；允许 Agent 按需读取 Skill 内资料。其余工作流场景仍用于人工检查边界，不计入这三个场景的通过率。
 
+主题自定义场景为 `workflow-evals.json` 的 15–18，提示词同步收录到 `trigger-evals.json`。按各例的 `expected_references` 和 `assertions` 检查范围控制、小样与视觉尺寸、安装副本同步、资源发现、实际生效验证及受限环境报告。安装和应用使用模拟状态，不访问真实桌面；视觉尺寸检查需提供同显示尺寸的图标渲染对比。未提供图像或桌面观测时只能评价流程选择，不计为实际视觉或桌面验证通过；这些场景不使用现有三个 fixture 的动作检查器。
+
 ## with-skill 与 baseline
 
 1. 在两个独立、无会话历史的隔离会话中使用相同模型、工具权限、prompt 和 fixture 响应。一组提供本 Skill，另一组不提供；均不预先提供 expected_value、required_writes 和 expected_success 等评分答案。
