@@ -223,5 +223,25 @@
     "query": "同时做两件事：读取应用管理器注册的应用数量（至少列出前三个应用 ID），以及读取文件管理器的最近文件路径列表。只读，不要启动应用、不要改最近记录。",
     "should_trigger": true,
     "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "帮我做一套 deepin 森林主题包，包含壁纸和常用图标，先生成，不要安装或应用，尽量快。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "deepin 自定义图标和系统图标标称尺寸一样，但看起来小一圈。请修正并更新已安装版本，其他桌面设置保持不变。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "自定义主题包已经准备好了，请安装并应用到当前用户的桌面，保留能够恢复原来外观的记录。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "我已授权应用 deepin 主题，但当前工具访问会话 D-Bus 被拒绝，主题安装目录也只读。请完成能做的部分并准确说明当前状态；若之后换到了可写且能访问桌面的执行环境，再继续应用。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
   }
 ]
