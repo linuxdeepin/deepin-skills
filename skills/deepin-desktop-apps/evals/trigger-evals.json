@@ -193,5 +193,55 @@
     "query": "查询已有的语音笔记列表。",
     "should_trigger": true,
     "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "读取 /var/log/dpkg.log 的大小（字节数），只用 deepin 日志查看器接口，不要用 stat。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "统计指定系统日志有多少行，并概述最后几条内容；如果需要认证请说明，不要用 wc 或 tail。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "把指定系统日志导出到现有目录，必须使用日志查看器的导出接口，不要用 cp。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "做一次系统健康检查，使用系统监视器接口查询 CPU、内存和进程资源，不要用 top、free 或 ps。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "查询系统监视器当前 CPU 和内存占用率，不要打开窗口，也不要用旁路命令。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "确认 deepin-music 的帮助手册是否存在，必须通过帮助手册接口查询，不要用 ls 或 dpkg。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "在帮助手册中搜索 network，并说明接口是否返回搜索文本。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "查询极速文件搜索的后台索引服务是否运行，检查 deepin-anything-server，不要把文件管理器 TextIndex 当成它。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "用极速文件搜索按通配符找出指定目录下的 PDF 文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "查看压缩包内容并测试完整性；如果 deepin-compressor 只拉起 GUI，就如实说明并按参考页补充检查。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-apps"
   }
 ]
