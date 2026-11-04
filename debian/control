@@ -1,0 +1,18 @@
+Source: deepin-skills
+Section: utils
+Priority: optional
+Maintainer: Deepin Packages Builder <packages@deepin.com>
+Build-Depends:
+ debhelper (>= 9)
+Standards-Version: 3.9.8
+Homepage: https://github.com/linuxdeepin/deepin-skills
+
+Package: deepin-skills
+Architecture: any
+Depends:
+ ${misc:Depends}
+Description: deepin skills for AI agents
+ deepin skills organizes framework knowledge, plugin APIs, engineering
+ guidance and evaluation cases into on-demand skills for building native
+ deepin/UOS applications and DDE desktop plugins.
+ This package installs the default skills used by the UOS AI.
