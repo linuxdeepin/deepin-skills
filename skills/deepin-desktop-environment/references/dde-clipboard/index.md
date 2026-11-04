@@ -30,6 +30,8 @@ DDE 剪贴板守护进程，负责管理剪贴板历史记录和剪贴板事件�
 
 提供剪贴板守护进程的剪贴板数据接收与恢复能力。守护进程注册的服务名为 `org.deepin.dde.daemon.Clipboard1`，实际数据接口由 `org.deepin.dde.ClipboardLoader1` 提供，对象路径 `/org/deepin/dde/ClipboardLoader1`。条目的保存协议由守护进程管理，前端服务不拥有剪贴板内容。
 
+守护进程还注册 `org.deepin.dde.ClipboardLoader1` 供数据接口使用；可通过总线的 `GetNameOwner` 比较两名称的拥有者。前端与守护进程需分别确认，不能根据前端可用推断守护进程的数据接口可用。
+
 详见 [org.deepin.dde.ClipboardLoader1.md](dbus/org.deepin.dde.ClipboardLoader1.md)
 
 ## DConfig 配置项

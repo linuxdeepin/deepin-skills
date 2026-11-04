@@ -223,5 +223,256 @@
     "query": "同时做两件事：读取应用管理器注册的应用数量（至少列出前三个应用 ID），以及读取文件管理器的最近文件路径列表。只读，不要启动应用、不要改最近记录。",
     "should_trigger": true,
     "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "读取当前桌面背景的 URI，以 org.deepin.dde.Appearance1 的 Background 属性为准，原样报告。URI 中的重复斜杠（file:////）可合并为规范形式（file:///）后报告。只查询，不要更换背景，也不要创建文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "查询并原样报告窗口管理器切换接口 WMSwitcher1 的 CurrentWM 兼容标签。注意该标签只反映合成状态（如 deepin wm / deepin metacity），不是实际窗口管理器可执行文件名。不要切换窗口管理器，也不要创建文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "确认剪贴板守护进程服务是否在当前会话总线上可用，并报告它的对象路径和接口名。不要创建文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "查看剪贴板前端服务和剪贴板守护进程这两个服务在会话总线上的对象树，并报告各自暴露的接口名。不要创建文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "通过桌面门户前端读取外观设置命名空间（org.freedesktop.appearance）下可枚举的设置项，并读取其中的配色方案（color-scheme）取值。若该命名空间无法枚举，请如实说明。只读，不要修改设置，也不要创建文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "从桌面门户读取外观命名空间下的配色方案设置，并报告服务返回的结果。不要修改设置，也不要创建文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "确认桌面门户前端是否为应用提供全局快捷键（GlobalShortcuts）能力。若当前部署不提供，请说明原因并保持系统不变；不要直接调用后端 impl 协议，也不要创建文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "读取当前桌面背景的 URI（以 Appearance1 的 Background 属性为准，原样报告该 URI，不要合并或规范化连续的斜杠），以及当前所在工作区的索引（原样报告 GetCurrentWorkspace 返回值）。只读，不要更换背景，也不要创建文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "统计当前键盘启用布局列表（LayoutList，即已启用布局的数量）中的布局数量，给出整数。只做查询，不要添加、删除或切换布局。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "查询系统现有的用户组，报告用户组总数（整数）。不要创建或删除用户和用户组。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "校验用户名 deepintest 是否可用（true/false），只输出一个布尔答案。不要修改任何账户，也不要创建文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "查询本机是否装有电池，用 true/false 回答。不要修改任何电源策略。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "查询当前 NumLock（数字锁定）是否处于开启状态，用 true/false 回答。不要修改任何键盘锁定状态或快捷键配置。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "查询本机内存容量（单位 GB），并报告具体数值。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "读取系统当前的密码安全策略配置，报告最小密码长度和密码校验是否启用（true/false）。不要修改策略。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "先让应用管理器重新加载应用列表，再通过它的应用启动能力启动应用 ID 为 deepin-calculator 的计算器。不要用命令行直接启动程序。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "这台电脑有电池吗？只查看，不调节电源设置。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment",
+    "split": "validation"
+  },
+  {
+    "query": "想知道桌面门户向应用报告的深浅色偏好，不要改主题。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment",
+    "split": "validation"
+  },
+  {
+    "query": "剪贴板界面与后台分别导出了哪些 D-Bus 接口？只探测。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment",
+    "split": "validation"
+  },
+  {
+    "query": "在 deepin 系统监视器里读取当前 CPU 和内存占用率。",
+    "should_trigger": false,
+    "expected_skill": null,
+    "split": "validation"
+  },
+  {
+    "query": "读取日志查看器中 /var/log/dpkg.log 的行数，不导出日志。",
+    "should_trigger": false,
+    "expected_skill": null,
+    "split": "validation"
+  },
+  {
+    "query": "在文件管理器中列出最近文件，不改变记录。",
+    "should_trigger": false,
+    "expected_skill": null,
+    "split": "validation"
+  },
+  {
+    "query": "用 Python 编写一个函数，校验网站注册表单中的用户名，只生成代码。",
+    "should_trigger": false,
+    "expected_skill": null,
+    "split": "validation"
+  },
+  {
+    "query": "为 Qt 应用实现 Portal Settings 监听和颜色切换，不查询本机设置。",
+    "should_trigger": false,
+    "expected_skill": "dtk-development",
+    "split": "validation"
+  },
+  {
+    "query": "只检查 DDE 音频服务是否正在运行，不启动服务，也不调整音量。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment",
+    "split": "validation"
+  },
+  {
+    "query": "查看 DDE 显示服务暴露的对象树与接口，不调整屏幕设置。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment",
+    "split": "validation"
+  },
+  {
+    "query": "读取 DDE 蓝牙接口的当前状态，只查询，不扫描、配对或切换开关。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment",
+    "split": "validation"
+  },
+  {
+    "query": "看看任务栏通知中心支持哪些能力，把能力名称都列出来。不要发送通知，也不要创建文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "帮我看看剪贴板前端和剪贴板守护这两部分各自对外提供了哪些功能。不要创建文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "帮我通过桌面门户查一下当前用户的信息，应用标识用 org.deepin.dde.skillstest。不要修改系统设置，也不要创建文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "帮我汇总控制中心窗口的宽度、高度，以及现在一共有多少个设置模块。只读，不要修改配置，也不要创建文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "帮我看看当前的键盘布局是什么，以及输入法程序有没有在运行（布局名称可能是空的）。只读，不要切换布局，也不要创建文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "数一下我当前启用了几个键盘布局，给我一个整数。只做查询，不要添加、删除或切换布局。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "列出当前显示设置里记录的所有配置项名称，并告诉我一共有多少项（整数）。不要修改任何设置。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "汇总一下键盘布局的信息：系统支持的全部布局有多少个、我当前启用了多少个；另外把所有布局按布局代码从小到大排序后，告诉我排在第一位的那个布局的名称。数量按实际查到的条目算，不要按界面展示的顺序来挑第一个。只做查询，不要切换或删除布局，也不要创建或修改任何文件（包括临时脚本）。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "汇总密码安全策略：密码长度的最小值和最大值、必须满足的校验规则数量、密码校验是否启用（true/false）。不要修改策略。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "帮我打开系统自带的计算器，不要修改计算器的任何设置。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "帮我统计两件事：系统里一共登记了多少个应用（至少列出前三个应用的 ID），以及文件管理器最近打开过哪些文件。只读，不要启动应用，也不要改最近记录。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "先帮我打开终端应用，然后把终端字体大小调成 14、关掉光标闪烁，再确认这两个设置并告诉我。不要改动其他终端设置。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "查询当前 DDE 登录会话的会话路径，只读，不要创建文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "确认桌面门户前端是否支持后台运行和通知能力，只探测，不请求授权、不发送通知、不修改设置。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "查询剪贴板前端和守护进程是否在当前会话中运行，分别报告结果，不启动或停止服务。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "通过桌面门户发送一条测试通知，再撤回同一条通知，不修改通知设置。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "查询系统现有用户组并统计总数，只读，不创建或删除用户组。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "校验用户名 deepintest 是否可用，只返回 true 或 false，不修改账户。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "查询这台电脑是否装有电池，用 true 或 false 回答，不修改电源策略。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "查询这台电脑的物理内存容量，以 GB 报告，不修改设置。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "查询当前是否使用电池供电，用 true 或 false 回答，不修改电源策略。",
+    "should_trigger": true,
+    "expected_skill": "deepin-desktop-environment"
   }
 ]

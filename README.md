@@ -34,6 +34,10 @@ bash <(curl -fsSL https://raw.githubusercontent.com/linuxdeepin/deepin-skills/ma
 
 安装后，在支持 Skill 的 AI 编程 Agent 中打开目标项目，直接用自然语言描述要完成的任务。Agent 会根据任务选择对应的 Skill，并按需读取相关参考资料。
 
+查询桌面状态也可以直接提问，例如：“当前桌面背景 URI 是什么？”或“这台电脑有电池吗？只查询。”这类任务由 `deepin-desktop-environment` 提供接口参考。
+
+若提示未加载 skill，先在新会话的可用技能列表中确认 `deepin-desktop-environment` 是否存在，并核对其路径和描述。仅把仓库或 ZIP 放到磁盘上不等于安装；应将技能安装到所用 Agent 配置的技能目录，并确认其能发现 `deepin-desktop-environment/SKILL.md`。更新后刷新技能列表，宿主未检测到更新时重启会话。评估时应分别检查技能是否被发现、是否自主读取入口及参考页、任务是否完成，详见[评估协议](skills/deepin-desktop-environment/evals/protocol.md)。
+
 - 设计师可以提出：“为 deepin 桌面应用设计一个设置窗口，包含账户、通知和外观三个页面，并按 DTK 规范实现界面和交互。”
 - 项目经理可以提出：“为任务栏开发一个网络状态插件，点击后显示快捷面板，支持查看当前连接状态和打开系统设置。”
 - 研发人员可以提出：“在 DDE 控制中心中新增一个系统设置模块，包含页面导航、配置保存和 D-Bus 数据交互。”
@@ -49,6 +53,7 @@ bash <(curl -fsSL https://raw.githubusercontent.com/linuxdeepin/deepin-skills/ma
 | [`dde-control-center-development`](skills/dde-control-center-development/SKILL.md) | deepin/UOS v25 | 用于为 DDE 控制中心开发系统设置模块和插件。适合需要理解模块树、导航和搜索机制，使用控制中心的 C++ 或 QML API 构建设置页面，处理 D-Bus 与数据交互，以及完成插件构建、翻译、打包、安装和本地调试的开发任务。 |
 | [`dde-tray-development`](skills/dde-tray-development/SKILL.md) | deepin/UOS v25 | 用于开发符合 DDE 桌面交互方式的任务栏托盘插件、快捷面板控件及相关交互功能。该 skill 覆盖托盘插件接口和加载行为、状态与消息协议、右键菜单、快捷面板详情页，以及任务栏位置变化等集成场景，帮助开发者实现稳定、规范的任务栏插件。 |
 | [`deepin-desktop-apps`](skills/deepin-desktop-apps/SKILL.md) | deepin/UOS | 通过公开接口操作原生应用，覆盖日程、文件管理/搜索、压缩/下载、软件包/字体、设备/磁盘、文档与媒体、邮件、OCR/录屏及系统工具；按应用文档核对前置条件并验证结果。 |
+| [`deepin-desktop-environment`](skills/deepin-desktop-environment/SKILL.md) | deepin/UOS | 查询和配置 DDE 桌面与系统状态，探测 D-Bus 服务及桌面门户能力，覆盖外观、输入设备、电源、账户、会话和应用管理器；只读查询同样适用。 |
 
 ## 示例项目
 
@@ -76,6 +81,7 @@ bash <(curl -fsSL https://raw.githubusercontent.com/linuxdeepin/deepin-skills/ma
 deepin-skills/
 ├── skills/
 │   ├── deepin-desktop-apps/
+│   ├── deepin-desktop-environment/
 │   ├── dtk-development/
 │   ├── dde-shell-development/
 │   ├── dde-control-center-development/

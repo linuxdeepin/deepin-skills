@@ -34,6 +34,10 @@ For a local checkout, use `./scripts/install.sh --force`.
 
 After installation, open the target project in an AI coding agent that supports skills and describe the task in natural language. The agent selects the relevant skill and reads only the references needed for the task.
 
+Read-only desktop queries also apply, such as "What is the current desktop background URI?" or "Does this computer have a battery? Only query its state." These tasks use `deepin-desktop-environment`.
+
+If a skill is not loaded, check its name, path and description in a fresh session's available skill list. A checkout or ZIP on disk is not an installation: install the skill in the directory configured for your agent and confirm that it discovers `deepin-desktop-environment/SKILL.md`. Refresh discovery after an update, or restart the session if the host does not detect it. Evaluate discovery, autonomous reading of the skill and references, and task completion separately; see the [evaluation protocol](skills/deepin-desktop-environment/evals/protocol.md).
+
 - A designer can ask: "Design a settings window for a deepin desktop application with Account, Notifications, and Appearance pages, then implement the interface and interactions using DTK conventions."
 - A project manager can ask: "Create a taskbar network-status plugin. It should show a quick panel when clicked, display the current connection state, and open the relevant system settings."
 - A developer can ask: "Add a system settings module to DDE Control Center with page navigation, configuration persistence, and D-Bus data interactions."
@@ -49,6 +53,7 @@ Choose a skill according to the target system version:
 | [`dde-control-center-development`](skills/dde-control-center-development/SKILL.md) | deepin/UOS v25 | Use this skill to build system settings modules and plugins for DDE Control Center. It covers the module tree, navigation, and search architecture; C++ and QML APIs for settings pages; D-Bus and data interactions; plus plugin builds, translations, packaging, installation, and local debugging. |
 | [`dde-tray-development`](skills/dde-tray-development/SKILL.md) | deepin/UOS v25 | Use this skill to create DDE taskbar tray plugins, quick-panel controls, and related interactions that follow DDE desktop conventions. It covers tray plugin interfaces and loading behavior, status and messaging protocols, context menus, quick-panel detail pages, and integration points such as taskbar position changes for stable, well-integrated taskbar plugins. |
 | [`deepin-desktop-apps`](skills/deepin-desktop-apps/SKILL.md) | deepin/UOS | Use public interfaces for native apps across calendar, files/search, archives/downloads, packages/fonts, devices/storage, documents/media, mail, OCR/recording, and system tools; follow app prerequisites and verify results. |
+| [`deepin-desktop-environment`](skills/deepin-desktop-environment/SKILL.md) | deepin/UOS | Query and configure DDE desktop and system state, inspect D-Bus services and desktop portal capabilities, and operate appearance, input devices, power, accounts, sessions and the application manager. Includes read-only queries. |
 
 ## Community Events
 
@@ -66,6 +71,7 @@ All public skills are grouped under `skills/`, and the installer is stored in `s
 deepin-skills/
 ├── skills/
 │   ├── deepin-desktop-apps/
+│   ├── deepin-desktop-environment/
 │   ├── dtk-development/
 │   ├── dde-shell-development/
 │   ├── dde-control-center-development/

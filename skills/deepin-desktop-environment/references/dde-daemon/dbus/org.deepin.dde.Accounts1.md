@@ -125,18 +125,17 @@ pkexec gdbus call --system \
 
 校验用户名是否合法。
 
-- **功能**：校验用户名是否符合系统命名规则，返回是否合法以及建议列表。
+- **功能**：校验用户名是否可用，返回校验结果、原因和错误码；不创建账户。
 - **触发条件**：当用户在创建用户界面输入用户名需要实时校验时调用。
 - **使用场景**：控制中心创建用户界面实时校验用户名合法性。
 
 - **输入参数**: `name`（string, 类型 `s`）：用户名
-- **返回值**: `(bas)`（元组）：是否合法、错误信息和建议列表
+- **返回值**: `bsi`：是否可用（bool）、原因（string）和错误码（int32）。第一个返回项表示校验结果，后两项提供原因与错误码。
 
-权限：
-- requires_sudo: true
+这是只读校验，普通用户可直接调用，不要求客户端统一提权；以当前服务返回的权限错误为准。
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.deepin.dde.Accounts1 \
   --object-path /org/deepin/dde/Accounts1 \
   --method org.deepin.dde.Accounts1.IsUsernameValid "user"
@@ -221,11 +220,10 @@ pkexec gdbus call --system \
 - **输入参数**: 无
 - **返回值**: `as`（string 数组）：组列表
 
-权限：
-- requires_sudo: true
+这是只读列表查询，普通用户可直接调用。返回数组的元素数量表示用户组数量。
 
 ```bash
-pkexec gdbus call --system \
+gdbus call --system \
   --dest org.deepin.dde.Accounts1 \
   --object-path /org/deepin/dde/Accounts1 \
   --method org.deepin.dde.Accounts1.GetGroups

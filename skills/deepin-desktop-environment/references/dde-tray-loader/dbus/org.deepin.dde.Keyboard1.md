@@ -2,7 +2,9 @@
 
 该接口提供当前会话的键盘布局指示器查询和布局选择菜单。`layout` 属性保存指示器显示值；直接写入该属性不修改实际输入布局。用户在菜单中选择布局后才向键盘后端发起切换。
 
-用户明确要求 `org.deepin.dde.Keyboard1.layout` 时读取本接口，不能改读输入设备后端。它不是 `InputDevice1.Keyboard.CurrentLayout` 的别名；空字符串也是合法指示器值，不代表没有可用布局。全部支持布局数量请读 dde-daemon 项目的 `org.deepin.dde.InputDevice1.Keyboard` 接口（`AllLayoutList` 方法），按项目和接口名称查找对应资料。
+`layout` 表示布局指示器文字，空字符串是合法值；`fcitxRunning` 表示该组件记录的 fcitx 运行状态。两者均反映当前会话的键盘指示器状态。
+
+键盘后端 dde-daemon 的 `org.deepin.dde.InputDevice1.Keyboard` 接口 的 `CurrentLayout` 表示实际输入布局，`AllLayoutList` 返回全部支持布局；这些值与指示器文字具有不同语义。
 
 ## 接口信息
 
