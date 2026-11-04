@@ -1,0 +1,6 @@
+deepin-skills (1.0.0) unstable; urgency=medium
+
+  * Initial release.
+  * Install the skills directory into /usr/lib/uos-ai-assistant/skills-default.
+
+ -- zhangyu <zhangyub@uniontech.com>  Wed, 04 Nov 2026 16:35:00 +0800
