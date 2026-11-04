@@ -119,11 +119,11 @@ gdbus call --session \
 
 ### LayoutList
 
-获取布局列表。
+获取按系统语言筛选并合入用户已添加布局的候选字典，不等同于已启用列表。
 
-- **功能**：获取当前用户已添加的键盘布局列表。
-- **触发条件**：当需要展示用户已添加的键盘布局时调用。
-- **使用场景**：控制中心键盘布局列表展示。
+- **功能**：获取按 locale 筛选的候选布局，并包含 `UserLayoutList` 中的布局。
+- **触发条件**：需要展示当前语言环境的候选布局时调用。
+- **使用场景**：控制中心键盘布局候选列表展示。
 - **输入参数**: 无
 - **返回值**: `a{ss}`（字典）：布局 ID 到描述的映射
 
@@ -136,11 +136,16 @@ gdbus call --session \
   --method org.deepin.dde.InputDevice1.Keyboard.LayoutList
 ```
 
+`LayoutList` 字典的键数表示候选布局数量。`UserLayoutList` 是当前用户已添加布局的 `as` 属性，其数组长度表示已添加布局数量。读取示例：
+
+```bash
+busctl --user get-property org.deepin.dde.InputDevices1 \
+  /org/deepin/dde/InputDevice1/Keyboard org.deepin.dde.InputDevice1.Keyboard UserLayoutList
+```
+
 ### AllLayoutList
 
-统计全部支持布局时使用本方法，按返回 `a{ss}` 字典的键计数。`LayoutList` 可能受区域等条件过滤，`UserLayoutList` 是用户选择的子集，均不能默认作为全集；`localectl` 也不代表本接口的返回集合。
-
-获取所有布局列表。
+返回系统支持的完整布局字典，键数表示全部支持布局的数量。`LayoutList` 是按区域等条件筛选的候选集合，`UserLayoutList` 是用户已添加的布局集合。
 
 - **功能**：获取系统支持的所有键盘布局列表。
 - **触发条件**：当需要展示所有可选键盘布局时调用。

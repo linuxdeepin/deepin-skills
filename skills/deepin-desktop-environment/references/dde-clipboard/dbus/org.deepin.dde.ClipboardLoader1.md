@@ -13,6 +13,8 @@
 | Interface | `org.deepin.dde.ClipboardLoader1` |
 | Bus | Session |
 
+同一守护进程还注册 `org.deepin.dde.daemon.Clipboard1`。探测进程服务时可使用该名称，数据对象仍是 `/org/deepin/dde/ClipboardLoader1`，接口仍是 `org.deepin.dde.ClipboardLoader1`；不要从服务名拼接对象路径。前端与守护进程的关系见 [组件索引](../index.md)。
+
 ## 方法
 
 ### dataReborned

@@ -23,7 +23,7 @@ DDE 配置（DConfig）命令行管理工具，用于管理 DTK 提供的配置�
 | 子命令 | 说明 |
 |--------|------|
 | `list` | 列出可配置的应用 ID、配置 ID 及子目录 |
-| `get` | 查询指定配置项的信息 |
+| `get` | 指定 key 时查询配置项；仅指定应用和资源时枚举配置键名 |
 | `set` | 设置配置项的值 |
 | `reset` | 重置配置项的值，清除对应缓存值；若未指定 `-k` 则重置该配置文件的所有缓存值 |
 | `watch` | 监听配置项的更改 |
@@ -44,6 +44,19 @@ DDE 配置（DConfig）命令行管理工具，用于管理 DTK 提供的配置�
 | `-p <prefix>` | 配置策略的工作目录前缀 | 是 |
 | `-m <method>` | 指定配置项字段信息，值为 `name`/`description`/`visibility`/`permissions`/`version`/`isDefaultValue` 之一（get 模式） | 是 |
 | `-l <language>` | 指定语言（get 模式，需同时指定 `-m`） | 是 |
+
+## 配置项枚举
+
+`list` 提供应用 ID、资源 ID 和子目录的发现能力；`get -a <appid> -r <resource>` 不指定 key 时返回目标资源的配置键名。配置项数量为成功枚举得到的键名集合大小，随资源版本及运行环境变化。资源不存在、权限错误和枚举失败不表示配置项数量为零。
+
+```bash
+# 枚举指定应用、资源的配置键名；占位参数需替换为实际 ID
+dde-dconfig get -a "<appid>" -r "<resource>"
+```
+
+D-Bus 对应能力为 [ConfigManager.Manager.keyList](../dbus/org.desktopspec.ConfigManager.Manager.md) 只读属性，类型为 `as`。管理器由 [ConfigManager](../dbus/org.desktopspec.ConfigManager.md) 按用户、应用、资源和子路径创建；键名及计数属于该管理器的配置范围。
+
+安装目录的静态 JSON 描述资源声明，不等同于运行时管理器暴露的完整键名集合。不同 CLI 版本的子命令行为以其帮助和实际返回为准。
 
 ## 使用示例
 

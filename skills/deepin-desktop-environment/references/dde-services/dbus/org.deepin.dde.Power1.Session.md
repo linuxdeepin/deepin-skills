@@ -6,7 +6,7 @@
 
 重置配置会覆盖当前策略；定时关机、低电量动作和合盖动作会影响会话运行。只读查询保持当前用户身份，写操作遵循部署版本的服务端授权策略。
 
-单位与重复类型统一见 [电源配置说明](../../dde-daemon/config/org.deepin.dde.daemon.power.md#单位版本与作用范围)。
+单位与重复类型统一见 dde-daemon 的 `org.deepin.dde.daemon.power` 配置资源说明。
 
 ## 接口信息
 
