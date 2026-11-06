@@ -54,6 +54,7 @@ Choose a skill according to the target system version:
 | [`dde-tray-development`](skills/dde-tray-development/SKILL.md) | deepin/UOS v25 | Use this skill to create DDE taskbar tray plugins, quick-panel controls, and related interactions that follow DDE desktop conventions. It covers tray plugin interfaces and loading behavior, status and messaging protocols, context menus, quick-panel detail pages, and integration points such as taskbar position changes for stable, well-integrated taskbar plugins. |
 | [`deepin-desktop-apps`](skills/deepin-desktop-apps/SKILL.md) | deepin/UOS | Use public interfaces for native apps across calendar, files/search, archives/downloads, packages/fonts, devices/storage, documents/media, mail, OCR/recording, and system tools; follow app prerequisites and verify results. |
 | [`deepin-desktop-environment`](skills/deepin-desktop-environment/SKILL.md) | deepin/UOS | Query and configure DDE desktop and system state, inspect D-Bus services and desktop portal capabilities, and operate appearance, input devices, power, accounts, sessions and the application manager. Includes read-only queries. |
+| [`deepin-theme-guide`](skills/deepin-theme-guide/SKILL.md) | deepin/UOS DDE | Guide to writing a complete DDE global theme using existing application styles, icon themes, fonts and cursor themes. Includes an index.theme template, light/dark configuration rules, previews and wallpapers, and user/system locations. Theme mechanisms and GTK adaptation are separate references to read when needed. |
 
 ## Community Events
 
@@ -72,6 +73,7 @@ deepin-skills/
 ├── skills/
 │   ├── deepin-desktop-apps/
 │   ├── deepin-desktop-environment/
+│   ├── deepin-theme-guide/
 │   ├── dtk-development/
 │   ├── dde-shell-development/
 │   ├── dde-control-center-development/
