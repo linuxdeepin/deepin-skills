@@ -1,0 +1,58 @@
+[
+  {
+    "query": "帮我做一套完整的 deepin 主题，复用已经安装的图标、字体和光标。",
+    "should_trigger": true
+  },
+  {
+    "query": "我要让控制中心多一个自己的主题，index.theme 应该怎么写、放在哪里？",
+    "should_trigger": true
+  },
+  {
+    "query": "deepin 自定义主题中如何选择已有的字体和光标，不需要重新制作它们？",
+    "should_trigger": true
+  },
+  {
+    "query": "请给新的 DDE 主题组织亮暗配置、壁纸和预览，用现有应用样式。",
+    "should_trigger": true
+  },
+  {
+    "query": "组合一套 deepin 全局主题，图标用 bloom、光标用另一套，字体保持现有选择。",
+    "should_trigger": true
+  },
+  {
+    "query": "DefaultTheme=Day、DarkTheme=Night 怎么写？图标和字体在两个模式中可以共用吗？",
+    "should_trigger": true
+  },
+  {
+    "query": "deepin 全局主题和其中引用的图标主题各自放在哪个目录？",
+    "should_trigger": true
+  },
+  {
+    "query": "我在制作 deepin 主题，需要单独了解 Qt 和 GTK 如何配合自定义配色。",
+    "should_trigger": true
+  },
+  {
+    "query": "帮我把当前桌面切到已有的深色主题，再把字体调大。",
+    "should_trigger": false
+  },
+  {
+    "query": "只告诉我当前 GTK 主题名，不创建新主题。",
+    "should_trigger": false
+  },
+  {
+    "query": "从零绘制一个图标主题的全部应用图标，并制作各个尺寸。",
+    "should_trigger": false
+  },
+  {
+    "query": "请设计一套全新的中文字体字形。",
+    "should_trigger": false
+  },
+  {
+    "query": "为这个 DTK 对话框增加图标按钮和信号处理。",
+    "should_trigger": false
+  },
+  {
+    "query": "给网页实现一个可以切换明暗的 CSS 按钮。",
+    "should_trigger": false
+  }
+]

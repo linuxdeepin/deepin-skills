@@ -1,0 +1,24 @@
+[Deepin Theme]
+Name=Aurora
+Name[zh_CN]=极光
+Comment=A desktop theme combining existing appearance resources
+Comment[zh_CN]=组合已有外观资源的桌面主题
+Example=cover.png
+DefaultTheme=DefaultTheme
+DarkTheme=DarkTheme
+Hidden=false
+
+[DefaultTheme]
+AppTheme=deepin
+IconTheme=bloom
+CursorTheme=bloom
+StandardFont=Noto Sans CJK SC
+MonospaceFont=Noto Mono
+FontSize=10.5
+ActiveColor=#1F6EE7
+Wallpaper=wallpapers/light.jpg
+
+[DarkTheme]
+AppTheme=deepin-dark
+ActiveColor=#024CCA
+Wallpaper=wallpapers/dark.jpg

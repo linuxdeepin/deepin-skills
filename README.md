@@ -54,6 +54,7 @@ bash <(curl -fsSL https://raw.githubusercontent.com/linuxdeepin/deepin-skills/ma
 | [`dde-tray-development`](skills/dde-tray-development/SKILL.md) | deepin/UOS v25 | 用于开发符合 DDE 桌面交互方式的任务栏托盘插件、快捷面板控件及相关交互功能。该 skill 覆盖托盘插件接口和加载行为、状态与消息协议、右键菜单、快捷面板详情页，以及任务栏位置变化等集成场景，帮助开发者实现稳定、规范的任务栏插件。 |
 | [`deepin-desktop-apps`](skills/deepin-desktop-apps/SKILL.md) | deepin/UOS | 通过公开接口操作原生应用，覆盖日程、文件管理/搜索、压缩/下载、软件包/字体、设备/磁盘、文档与媒体、邮件、OCR/录屏及系统工具；按应用文档核对前置条件并验证结果。 |
 | [`deepin-desktop-environment`](skills/deepin-desktop-environment/SKILL.md) | deepin/UOS | 查询和配置 DDE 桌面与系统状态，探测 D-Bus 服务及桌面门户能力，覆盖外观、输入设备、电源、账户、会话和应用管理器；只读查询同样适用。 |
+| [`deepin-theme-guide`](skills/deepin-theme-guide/SKILL.md) | deepin/UOS DDE | 指导编写完整的 DDE 全局主题，选用已有应用样式、图标主题、字体和光标主题。包含 index.theme 模板、亮暗配置规则、预览与壁纸组织、用户及系统存放位置；主题生效机制和 GTK 适配方法分别按需读取。 |
 
 ## 示例项目
 
@@ -82,6 +83,7 @@ deepin-skills/
 ├── skills/
 │   ├── deepin-desktop-apps/
 │   ├── deepin-desktop-environment/
+│   ├── deepin-theme-guide/
 │   ├── dtk-development/
 │   ├── dde-shell-development/
 │   ├── dde-control-center-development/

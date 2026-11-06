@@ -1,0 +1,98 @@
+{
+  "skill_name": "deepin-theme-guide",
+  "evals": [
+    {
+      "id": 1,
+      "name": "用已有资源编写完整组合",
+      "prompt": "我要做一套名为极光、ID 为 aurora 的完整 deepin 全局主题。请输出目录安排和可以保存为 index.theme 的完整配置，不安装。可用应用样式是 deepin/deepin-dark，图标用 bloom，光标用 hazy-color，字体用已安装的 Noto Sans CJK SC 和 Noto Mono，字号 10.5。预览和亮暗壁纸已分别准备为 cover.png、wallpapers/light.jpg、wallpapers/dark.jpg。亮暗活动色先用 #1F6EE7 和 #024CCA；其他资源两种模式共用。",
+      "files": [
+        "assets/index.theme"
+      ],
+      "expected_references": [
+        "references/global-theme.md",
+        "references/resources.md"
+      ],
+      "expected_output": "给出 aurora 主题目录安排及完整的 DDE 全局配置，正确引用已有资源并用暗色分组覆盖不同项，明确用户安装位置。",
+      "assertions": [
+        "直接产出完整组合配置，包含元信息、有效默认/暗色分组引用、预览及两种模式的应用样式、活动色和壁纸。",
+        "采用 bloom 图标与 hazy-color 光标，保持独立字段；字体填写指定族名和字号，不编造 FontTheme 字段。",
+        "默认分组包含共用图标、光标和字体，暗色分组可通过继承复用。",
+        "全局主题目录是 aurora，说明用户安装目录以及 aurora.light、aurora.dark 选择值。",
+        "不要求重新制作或复制已有图标、字体和光标，不把示例活动色描述为已经改变 GTK 样式。",
+        "不因普通资源组合任务展开 XSettings、平台插件或进程刷新细节。"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "选择资源与填写名称",
+      "prompt": "我要组合一套新的 deepin 主题，还没选定图标、字体和光标。请说明怎么找到已有的选项，以及 index.theme 分别该填写什么。我希望沿用一套现有主题的资源，不重新制作这些资源。",
+      "files": [],
+      "expected_references": [
+        "references/resources.md"
+      ],
+      "expected_output": "以选择现有资源为主，说明通过 Appearance1 获取可用集合或基础主题组合，并映射到图标、光标、字体及字号字段。",
+      "assertions": [
+        "按名称引用 deepin-desktop-environment 的 Appearance1 外观服务，不提供跨 Skill 文件链接或调用命令。",
+        "区分图标资源名、光标资源名、字体族名和图片路径；不使用字体包名代替字体族名。",
+        "给出 IconTheme、CursorTheme、StandardFont、MonospaceFont、FontSize 的对应关系。",
+        "说明可沿用基础主题组合，暗色只需另填不同项。",
+        "不展开图标尺寸目录、字形设计或光标文件制作规范。"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "工作目录与安装位置",
+      "prompt": "已经选好了应用样式、图标、字体和光标，准备编写新的 forest 主题。请说明工作目录应该有哪些文件，给自己使用和给系统所有用户使用时分别放在哪里。已有资源要不要一起复制进 forest？",
+      "files": [],
+      "expected_references": [
+        "references/global-theme.md",
+        "references/resources.md"
+      ],
+      "expected_output": "给出主配置、预览和壁纸的组织规则以及用户/系统主题位置，说明已有资源保留在各自目录、分发时记录依赖。",
+      "assertions": [
+        "工作目录包含 index.theme、预览及实际需要随主题提供的壁纸，已有持久图片可通过有效路径引用。",
+        "用户主题位置是用户配置目录下的 dde-appearance/deepin-themes/forest，系统位置是 /usr/share/deepin-themes/forest。",
+        "不将全局主题配置放到 GTK themes 目录，也不创建 forest.light、forest.dark 两个全局目录。",
+        "已有图标、字体、光标继续使用各自资源目录；系统分发不能只依赖制作者个人目录。",
+        "使用独立 ID 并列明依赖，保留安装后的相对资源关系。",
+        "按用户要求说明位置，不擅自安装或切换桌面。"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "按需处理 Qt 与 GTK 配色",
+      "prompt": "我的 deepin 组合主题已确定图标、字体、光标和壁纸，现在希望 Qt 与 GTK 都采用新的紫色选中背景。只在亮暗分组修改 ActiveColor 就够了吗？请把这部分的主题编写要求说明白，其他已有资源继续复用。",
+      "files": [],
+      "expected_references": [
+        "references/global-theme.md",
+        "references/gtk-adaptation.md"
+      ],
+      "expected_output": "针对配色需求读取 GTK 适配文档，说明需要匹配的 GTK 样式、亮暗配色和全局配置引用，同时保持既有资源组合。",
+      "assertions": [
+        "指出 ActiveColor 不会自动改写 GTK CSS，统一配色需要实际匹配的 GTK 样式。",
+        "亮暗分组分别引用有效的应用样式和活动色，背景与文字及相关状态需要配套。",
+        "不声称 GTK CSS 可以供 Qt 使用，也不把活动色当作完整 Qt 调色板。",
+        "保持用户已选图标、字体、光标和壁纸，不把主题编写扩展为重新制作这些资源。",
+        "不引用外部材料或把未完成的配色工作描述为已经安装生效。",
+        "围绕 GTK 样式资源、配色覆盖和 AppTheme 接入提出编写要求，不只展开设置发布协议。"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "单独理解主题生效机制",
+      "prompt": "我在组合 deepin 主题，想先理解技术机制：全局主题的 AppTheme 和 ActiveColor 如何被 Qt、GTK 使用？为什么改了同一个主题名下的 CSS，已经运行的应用不一定更新？这次只解释原理，不需要编写或安装 GTK 适配文件。",
+      "files": [],
+      "expected_references": [
+        "references/theme-mechanism.md"
+      ],
+      "expected_output": "使用机制文档解释桌面设置发布、工具包分别加载、活动色映射及刷新条件，不展开 GTK 样式制作流程。",
+      "assertions": [
+        "区分 DDE 全局配置、设置发布和工具包绘制，Qt 使用自身平台集成与调色板，GTK 使用对应样式。",
+        "说明 GTK 3 的 Net/ThemeName 到 gtk-theme-name 映射，以及 ActiveColor 不会自动成为 GTK CSS。",
+        "区分磁盘文件更新与已有进程的实际重载；重复设置同一主题名不保证触发刷新。",
+        "按目标工具包与会话区分支持范围，不推广为所有应用行为相同。",
+        "不生成 GTK 子主题目录或配色文件，也不把 GTK 适配文档作为单纯原理解释的必要输入。"
+      ]
+    }
+  ]
+}
