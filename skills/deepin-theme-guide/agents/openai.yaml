@@ -1,0 +1,4 @@
+interface:
+  display_name: "deepin 主题编写指南"
+  short_description: "指导编写 deepin 主题配置、选用已有资源并组织安装目录"
+  default_prompt: "使用 $deepin-theme-guide 选用已有应用样式、图标、字体和光标，编写包含亮暗配置、壁纸与预览的完整 deepin 全局主题。"
