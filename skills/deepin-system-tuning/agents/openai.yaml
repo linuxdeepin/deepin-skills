@@ -1,0 +1,4 @@
+interface:
+  display_name: "deepin 系统调优"
+  short_description: "按硬件和工作负载生成可回滚调优计划"
+  default_prompt: "使用 $deepin-system-tuning 探测硬件与桌面能力，推荐并执行可回滚的调优方案，读回验证后报告恢复 ID。"

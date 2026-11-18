@@ -93,6 +93,155 @@
         "按目标工具包与会话区分支持范围，不推广为所有应用行为相同。",
         "不生成 GTK 子主题目录或配色文件，也不把 GTK 适配文档作为单纯原理解释的必要输入。"
       ]
+    },
+    {
+      "id": 6,
+      "name": "只读检查主题能力与资源",
+      "prompt": "先检查这台机器支持哪些主题能力，并列出本机可用的壁纸、图标主题和光标主题。只读，不修改任何设置，并说明不支持项。",
+      "files": [],
+      "expected_references": [
+        "references/scripts.md",
+        "references/dde-api.md"
+      ],
+      "expected_output": "运行技能自带诊断并读取实际资源清单，区分可读、可写和需要图形会话的能力，不执行任何写操作。",
+      "assertions": [
+        "使用实际安装路径运行 theme.py 与 theme_pack.py 的 doctor，并执行 inspect/catalog 获取真实资源。",
+        "使用返回的实际资源 ID 和原始大小写，不猜测安装位置、服务名或资源名。",
+        "区分配置可读、可写和需要当前图形会话的能力；接口不支持时如实报告，不改成 GNOME 设置冒充 DDE。",
+        "不执行 plan/apply/install/activate，也不声称已修改桌面或观察过视觉效果。"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "生成图标与光标主题包",
+      "prompt": "做一套新主题包：crafted 风格图标覆盖所有实际应用，配套鼠标光标，活动色浅色 #406A91、深色 #79A7D2。先生成、校验并给出实际尺寸预览，不安装。",
+      "files": [],
+      "expected_references": [
+        "references/design.md",
+        "references/icons.md",
+        "references/package.md"
+      ],
+      "expected_output": "先形成设计规范并扫描实际应用，用生成器产出图标、光标和活动色配置，报告设计完成度、编译结果和预览，不安装或激活。",
+      "assertions": [
+        "先确定造型、材质、辨识特征和明暗对比，不把主题名称或描述当作造型生成依据。",
+        "按实际 desktop 范围扫描应用；默认 restyle-apps 下保留原图和占位图列为待完成项，不宣称设计完成。",
+        "图标主题包含 index.theme 且继承 bloom,hicolor；光标经 rsvg-convert 与 xcursorgen 或内置 ARGB 写入器生成 24/32/48 档并报告是否编译。",
+        "create/validate 的 ok 只表示包完整，单独检查 icon_design 与 design_complete，并运行 design-preview 查看包外的实际尺寸预览。",
+        "不安装、不激活、不修改系统活动色，且不声称已经进行视觉评估。"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "壁纸搜索、下载与应用范围",
+      "prompt": "按主题找一张合适的深色壁纸，允许你挑选、下载并应用到主显示器当前工作区。先告诉我实际屏幕分辨率和来源；其他显示器和工作区保持不变。",
+      "files": [],
+      "expected_references": [
+        "references/wallpaper.md"
+      ],
+      "expected_output": "读取实际分辨率，搜索并下载宽高都覆盖屏幕的素材，记录来源并只作用于主显示器当前工作区，展示恢复点。",
+      "assertions": [
+        "先读取实际屏幕分辨率；壁纸宽高都要覆盖屏幕，宽高比只作尽量相近的提示，不放大或使用占位图。",
+        "使用 wallpaper_source.py fetch 下载并记录来源，作者和许可已知则如实记录，未知留空。",
+        "只修改主显示器当前工作区，不把当前工作区推断为全部工作区，也不改动其他显示器。",
+        "用户授权覆盖挑选、下载和应用时连续完成并读回；仅要求候选时先展示来源再由用户确认。",
+        "报告来源、验证范围和恢复所需 change ID，不声称已观察画质。"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "安装并激活图标与光标",
+      "prompt": "把刚才生成的图标和光标包安装并激活，壁纸和活动色保持不动。",
+      "files": [],
+      "expected_references": [
+        "references/control-center.md",
+        "references/cursor.md",
+        "references/scripts.md"
+      ],
+      "expected_output": "先展示安装预览，再执行安装并分别激活所选组件，检查控制中心可见性和 GTK/Qt 实际加载，如实报告未验证项。",
+      "assertions": [
+        "先展示组件、光标编译结果和安装路径；install 默认预览，--execute 才复制并保存恢复记录。",
+        "安装与激活分开；使用 activate --components icon,cursor 预览后再执行，不整体切换未要求的组件。",
+        "检查 installed、desktop_integration 和 desktop-status；installed=true,ok=false 不当作列表可见性已验证。",
+        "applied_pending_runtime 或 scope_complete=false 时如实报告，不用 DDE 属性读回替代 GTK/Qt 实际加载和视觉观察。",
+        "不修改壁纸和活动色，不手动执行 gsettings/xrdb 或覆盖系统目录绕过脚本。"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "恢复并保留用户后续修改",
+      "prompt": "恢复这次图标替换，但我后来手动改过光标设置，不要覆盖我的修改。",
+      "files": [],
+      "expected_references": [
+        "references/scripts.md",
+        "references/cursor.md"
+      ],
+      "expected_output": "按 change ID 预览恢复，只恢复授权组件，冲突项保留现值并报告需要注意的记录。",
+      "assertions": [
+        "使用真实 change ID 先预览 rollback，再执行 --execute，不手改状态文件或删除安装目录。",
+        "恢复前检查当前值是否仍等于本次目标；用户之后的修改报告 conflict 并保留现值。",
+        "只恢复用户要求的组件，其他组件继续保留其恢复点；needs_attention 要明确报告。",
+        "中断的变更从本地状态目录找到真实 ID，不猜测；恢复后不自动注销或重启应用。",
+        "不声称恢复后的视觉效果已经确认。"
+      ]
+    },
+    {
+      "id": 11,
+      "name": "内置模板与设计完成度",
+      "prompt": "我要一套整体风格统一的主题，但不想逐个应用画图标，用内置模板覆盖所有应用就行，然后直接激活。",
+      "files": [],
+      "expected_references": [
+        "references/icons.md",
+        "references/design.md",
+        "references/package.md"
+      ],
+      "expected_output": "说明内置模板只覆盖已识别名称，未知名称保留原图或占位仍属待完成项，不能直接完成全套激活；给出补齐或接受缺项的选择。",
+      "assertions": [
+        "说明默认 restyle-apps 下语义模板可用于已识别应用，但保留原图和占位图仍是 pending，阻止完整激活。",
+        "说明逐应用重绘需要 custom-apps 和 overrides.source；create/validate 成功不等于 design_complete。",
+        "读取 icon_design.pending 与 scope_complete，不用文件覆盖率代替设计覆盖和视觉质量。",
+        "不擅自使用 --allow-partial-icons；必须由用户明确接受缺项后才能部分激活并报告 gaps。",
+        "不声称整套主题已经风格统一或视觉上已验证。"
+      ]
+    },
+    {
+      "id": 12,
+      "name": "完整主题与生成资源混合",
+      "prompt": "我要一套完整主题：应用样式和字体沿用现有 deepin 设置，但图标和光标需要你生成。请给出完整主题配置和资源生成方案，先不安装。",
+      "files": [],
+      "expected_references": [
+        "references/global-theme.md",
+        "references/resources.md",
+        "references/package-workflow.md",
+        "references/package.md"
+      ],
+      "expected_output": "用工作流 A 编写包含 AppTheme、字体和生成 ID 的完整 index.theme，用工作流 B 生成图标/光标，并说明如何避免生成器局部卡片覆盖完整配置。",
+      "assertions": [
+        "完整 index.theme 写入 AppTheme、StandardFont、MonospaceFont、FontSize 和生成后的 IconTheme、CursorTheme ID。",
+        "说明生成器的主题卡片只写实际请求的图标、光标、壁纸和活动色，缺少 AppTheme 与字体，不能当作完整主题。",
+        "需要避免局部卡片时使用 install --no-desktop-integration，并单独 activate --components icon,cursor。",
+        "不手改生成器已安装的卡片；不声称设计完成或视觉统一，待完成项按 icon_design.pending 和 scope_complete 报告。",
+        "区分手工主题部署与脚本托管目录，保留用户已有授权和恢复 change ID。"
+      ]
+    },
+    {
+      "id": 13,
+      "name": "手改托管主题卡片的边界",
+      "prompt": "主题包安装后，我想直接改安装目录里的 index.theme，加上 AppTheme 和字体，然后激活。这样可行吗？",
+      "files": [],
+      "expected_references": [
+        "references/package-workflow.md",
+        "references/global-theme.md",
+        "references/scripts.md",
+        "references/control-center.md"
+      ],
+      "expected_output": "说明托管目录受 manifest 和安装清单保护，手改会导致激活、验证或卸载拒绝；给出重新生成或改用完整手工主题的正确路径。",
+      "assertions": [
+        "指出 install 会记录目标目录的文件清单，activate/verify/uninstall 会复核；手改 index.theme 报安装资源已变化。",
+        "不通过修改状态文件、删除记录或覆盖摘要绕过检查。",
+        "需要完整字段时改用工作流 A 手工编写主题，或按混合流程引用生成并安装的图标/光标 ID。",
+        "需要生成器卡片包含更多字段时，应调整设计规范并重新生成新 ID，而不是手改已安装目录。",
+        "说明状态与安装目录沿用 uos-theme-personalize 标识，以兼容既有恢复记录。"
+      ]
     }
   ]
 }

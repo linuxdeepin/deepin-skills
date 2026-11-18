@@ -1,0 +1,112 @@
+{
+  "skill_name": "deepin-system-tuning",
+  "evals": [
+    {
+      "id": 1,
+      "name": "只读探测并推荐方案",
+      "prompt": "先看看这台机器的 CPU、内存、GPU、屏幕、电源和数据库情况，推荐适合办公和编程的方案。只检查，不改设置。",
+      "files": [],
+      "expected_references": [
+        "references/hardware.md",
+        "references/profiles.md"
+      ],
+      "expected_output": "执行只读诊断与探测，给出多个候选方案、适合度、代价和前置条件，不生成写入计划。",
+      "assertions": [
+        "运行 tune.py doctor、inspect --summary 和 catalog，使用实际返回值而不是假定分布版本。",
+        "按文档解释探测字段、分类和设备限制；不从型号直接断言游戏、驱动或编译器性能。",
+        "recommend 提供多个选项、适合度、评分理由、root/重启/登录要求；说明评分不是基准测试结果。",
+        "不执行 plan --execute/apply 或写系统设置；缺失的调优守护进程只给建议或跳过。"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "无 root 时生成和执行计划",
+      "prompt": "按编程场景生成调优计划并执行。当前没有免交互 sudo。",
+      "files": [],
+      "expected_references": [
+        "references/cli.md",
+        "references/profiles.md",
+        "references/configs.md"
+      ],
+      "expected_output": "生成计划并识别被阻止的 root 项，提供用户级或经确认的部分执行路径，不手工提权。",
+      "assertions": [
+        "plan 只读取原值并保存计划，绑定当前用户、会话、硬件和 30 分钟有效期。",
+        "无 root 或 sudo -n 时，root 项进入 blocked，execute_ready=false，不手工使用 sudo 绕过。",
+        "提出 --user-only，或在用户明确接受跳过范围后使用 --allow-partial；结果报告 skipped 和 complete=false。",
+        "apply 默认只预览命令数组，--execute 才写入；不解释任意用户字符串为命令。",
+        "不自动安装软件包、不自动重启或注销。"
+      ]
+    },
+    {
+      "id": 3,
+      "name": "显示模式变更与限时确认",
+      "prompt": "把主屏换成 2560x1440、165Hz，如果我看不到画面就自动恢复。",
+      "files": [],
+      "expected_references": [
+        "references/desktop.md"
+      ],
+      "expected_output": "把分辨率和刷新率作为单个受支持显示模式处理，执行后等待用户观察确认，超时回滚整次变更。",
+      "assertions": [
+        "先读取当前模式和支持列表，将分辨率与刷新率作为一个受支持的显示模式选择。",
+        "实际改变显示后启动独立的 30 秒确认窗口，必须由用户观察后执行 confirm-display。",
+        "不用数值读回代替用户确认；确认前 complete=false，并阻止其他计划执行。",
+        "超时尝试回滚整次变更，并说明会话持久化和合成器限制。",
+        "不自动注销、重启或切换 X11/Wayland 会话。"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "区分配置一致与运行态生效",
+      "prompt": "执行调优后，检查 dconfig、sysctl 和服务项是否真的生效。",
+      "files": [],
+      "expected_references": [
+        "references/cli.md",
+        "references/desktop.md"
+      ],
+      "expected_output": "逐项核对配置值、运行态和生效状态，区分待重启、待重新登录、待重启系统与已生效。",
+      "assertions": [
+        "verify 逐项报告 matches、runtime_matches 和 effective，不只看 ok。",
+        "dconfig 只有配置读回时标记 applied_pending_runtime，不宣称消费者运行态已生效。",
+        "待登录项在检测到新登录会话 ID 后才转为 active；待重启项要求新 boot ID；服务项检查服务状态和启动时间。",
+        "部分执行时 verify.complete 仍为 false；检查 complete、pending 和 skipped。",
+        "不自动重启服务或系统，除非用户授权 --allow-service-restart 且操作在允许范围内。"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "恢复全部变更并保留冲突",
+      "prompt": "恢复上次所有调优，但我后来手动改过某个 sysctl 值，保留我的修改。",
+      "files": [],
+      "expected_references": [
+        "references/cli.md",
+        "references/configs.md"
+      ],
+      "expected_output": "按记录逆序预览恢复，冲突项保留现值，驱动和数据库项维持待重启语义，报告未恢复项。",
+      "assertions": [
+        "restore/rollback 先预览恢复内容，--execute 才写入；不手改状态文件或绕过脚本。",
+        "恢复依据变更前保存的原值，不是硬编码出厂默认；用户后续修改报告 conflict 并保留现值。",
+        "只有明确授权处理半写入内容时才使用 --force，并报告覆盖范围。",
+        "驱动设置保持 restored_pending_reboot，数据库设置保持 restored_pending_restart，直到重启和读回确认。",
+        "报告 needs_attention 或未恢复项，不声称全部恢复完成。"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "数据库调优边界",
+      "prompt": "给 MariaDB 调大缓冲池，尽量不停服务。",
+      "files": [],
+      "expected_references": [
+        "references/databases.md",
+        "references/configs.md"
+      ],
+      "expected_output": "只针对已检测到的 MariaDB 生成保守参数，明确重启要求，保留原值并给出恢复方式。",
+      "assertions": [
+        "先确认 MariaDB 已安装且被检测到；SQLite 或 Redis 只给建议，不当作可调优服务。",
+        "按内存和并发公式选择保守参数，不照搬大内存服务器配置。",
+        "需要重启的参数明确说明；未加 --allow-service-restart 时报告 applied_pending_restart。",
+        "按托管块修改配置文件并保存原值，不初始化数据库、不连接业务库、不改口令或数据目录。",
+        "恢复时按服务状态和重启语义报告，不声称配置写入即性能已改善。"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "neon-cyberpunk-cursor-v2",
+  "name": "Neon Cyberpunk Cursor",
+  "description": "Coordinated cyan and magenta cursors for extending an existing cyberpunk desktop theme",
+  "palette": {
+    "light": "#00E5FF",
+    "dark": "#FF2D95",
+    "apply_accent": false
+  },
+  "cursor": {
+    "size": 32,
+    "sizes": [
+      24,
+      32,
+      48
+    ],
+    "compiler": "auto",
+    "style": "neon"
+  }
+}

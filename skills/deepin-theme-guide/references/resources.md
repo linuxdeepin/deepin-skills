@@ -20,6 +20,8 @@
 
 服务使用按 Skill 名称和 Appearance1 服务名称引用，具体接口由 `deepin-desktop-environment` 提供。
 
+本 Skill 的主题包工作流生成并安装的图标和光标同样属于可选资源；在 `IconTheme`、`CursorTheme` 中填写生成包的实际 ID。生成器托管目录不要手工改名、复制成新 ID 或补写主题卡片。
+
 ## 选择结果如何填写
 
 - **应用样式：** 全局 ID 与样式名独立。例如新的 `aurora` 主题仍可使用已有 `deepin`、`deepin-dark`。亮暗名称以实际可用资源为准，不要求为新全局 ID 另建一套样式。

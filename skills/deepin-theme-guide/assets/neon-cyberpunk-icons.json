@@ -1,0 +1,33 @@
+{
+  "id": "neon-cyberpunk-icons-v2",
+  "name": "Neon Cyberpunk Icons v2",
+  "description": "Cyan and magenta neon icons generated for local applications, common desktop names, and the bloom base inventory",
+  "palette": {
+    "light": "#00E5FF",
+    "dark": "#FF2D95",
+    "apply_accent": false
+  },
+  "icon": {
+    "style": "neon",
+    "scope": "base-theme",
+    "base_theme": "bloom",
+    "overrides": {
+      "dde-file-manager": {
+        "template": "folder"
+      },
+      "deepin-file-manager": {
+        "template": "folder"
+      },
+      "chatgpt": {
+        "template": "assistant"
+      },
+      "deepin-app-store": {
+        "template": "store"
+      },
+      "deepin-system-monitor": {
+        "template": "monitor"
+      }
+    },
+    "unknown": "preserve"
+  }
+}

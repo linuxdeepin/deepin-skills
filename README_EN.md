@@ -54,7 +54,8 @@ Choose a skill according to the target system version:
 | [`dde-tray-development`](skills/dde-tray-development/SKILL.md) | deepin/UOS v25 | Use this skill to create DDE taskbar tray plugins, quick-panel controls, and related interactions that follow DDE desktop conventions. It covers tray plugin interfaces and loading behavior, status and messaging protocols, context menus, quick-panel detail pages, and integration points such as taskbar position changes for stable, well-integrated taskbar plugins. |
 | [`deepin-desktop-apps`](skills/deepin-desktop-apps/SKILL.md) | deepin/UOS | Use public interfaces for native apps across calendar, files/search, archives/downloads, packages/fonts, devices/storage, documents/media, mail, OCR/recording, and system tools; follow app prerequisites and verify results. |
 | [`deepin-desktop-environment`](skills/deepin-desktop-environment/SKILL.md) | deepin/UOS | Query and configure DDE desktop and system state, inspect D-Bus services and desktop portal capabilities, and operate appearance, input devices, power, accounts, sessions and the application manager. Includes read-only queries. |
-| [`deepin-theme-guide`](skills/deepin-theme-guide/SKILL.md) | deepin/UOS DDE | Guide to writing a complete DDE global theme using existing application styles, icon themes, fonts and cursor themes. Includes an index.theme template, light/dark configuration rules, previews and wallpapers, and user/system locations. Theme mechanisms and GTK adaptation are separate references to read when needed. |
+| [`deepin-theme-guide`](skills/deepin-theme-guide/SKILL.md) | deepin/UOS DDE | Covers both DDE theme workflows: compose existing application styles, icons, fonts and cursors with a complete index.theme, light/dark configuration, previews and GTK adaptation; or use bundled scripts to generate, install, activate, verify and restore icon, cursor, wallpaper, image slideshow and accent packages. |
+| [`deepin-system-tuning`](skills/deepin-system-tuning/SKILL.md) | deepin/UOS | Inspect CPU, memory, GPU, display, power, storage, desktop session and local databases; recommend profiles for office, programming, performance, battery, gaming and rendering goals; and combine display modes, refresh rate, effects, power, idle behavior, sysctl, kernel and database settings into reversible plans. Root-only items are reported as blocked. |
 
 ## Community Events
 
@@ -74,6 +75,7 @@ deepin-skills/
 │   ├── deepin-desktop-apps/
 │   ├── deepin-desktop-environment/
 │   ├── deepin-theme-guide/
+│   ├── deepin-system-tuning/
 │   ├── dtk-development/
 │   ├── dde-shell-development/
 │   ├── dde-control-center-development/

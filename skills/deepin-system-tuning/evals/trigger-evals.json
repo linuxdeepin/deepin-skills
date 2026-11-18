@@ -1,0 +1,82 @@
+[
+  {
+    "query": "这台笔记本续航太短，按办公场景给我几个省电方案，并生成可回滚的调优计划。",
+    "should_trigger": true,
+    "expected_skill": "deepin-system-tuning"
+  },
+  {
+    "query": "开发机编译时卡顿，调高 inotify 和文件句柄上限，先给我看计划。",
+    "should_trigger": true,
+    "expected_skill": "deepin-system-tuning"
+  },
+  {
+    "query": "玩游戏帧率不稳定，给出低延迟方案，并说明哪些项需要 root。",
+    "should_trigger": true,
+    "expected_skill": "deepin-system-tuning"
+  },
+  {
+    "query": "屏幕刷新率没到最高，换成原生分辨率和高刷新率；显示异常时要能自动恢复。",
+    "should_trigger": true,
+    "expected_skill": "deepin-system-tuning"
+  },
+  {
+    "query": "关闭桌面窗口动画，并把电源模式切到性能优先。",
+    "should_trigger": true,
+    "expected_skill": "deepin-system-tuning"
+  },
+  {
+    "query": "给已安装的 PostgreSQL 做保守的内存参数调优，先说明会重启哪些服务。",
+    "should_trigger": true,
+    "expected_skill": "deepin-system-tuning"
+  },
+  {
+    "query": "看看我的 CPU、内存、GPU 和供电方式，推荐适合编程的整机配置。",
+    "should_trigger": true,
+    "expected_skill": "deepin-system-tuning"
+  },
+  {
+    "query": "恢复上一次系统调优的全部改动，回到调优前的值。",
+    "should_trigger": true,
+    "expected_skill": "deepin-system-tuning"
+  },
+  {
+    "query": "只做不需要 sudo 的用户级调优，别动系统文件。",
+    "should_trigger": true,
+    "expected_skill": "deepin-system-tuning"
+  },
+  {
+    "query": "检查刚才写入的 dconfig 调优项是否真正生效，还是只写了配置。",
+    "should_trigger": true,
+    "expected_skill": "deepin-system-tuning"
+  },
+  {
+    "query": "把屏幕亮度调到 50%，音量也调低一点。",
+    "should_trigger": false,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "查询这台电脑有没有电池，用 true 或 false 回答。",
+    "should_trigger": false,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "生成一套深色图标和光标主题包，安装后切换桌面。",
+    "should_trigger": false,
+    "expected_skill": "deepin-theme-guide"
+  },
+  {
+    "query": "用 DTK6 开发一个系统监视器界面。",
+    "should_trigger": false,
+    "expected_skill": "dtk-development"
+  },
+  {
+    "query": "打开日志查看器，读取最近 100 行系统日志。",
+    "should_trigger": false,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "给 dde-shell 写一个显示 CPU 温度的顶栏插件。",
+    "should_trigger": false,
+    "expected_skill": "dde-shell-development"
+  }
+]

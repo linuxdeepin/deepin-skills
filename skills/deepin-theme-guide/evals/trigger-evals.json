@@ -1,54 +1,151 @@
 [
   {
     "query": "帮我做一套完整的 deepin 主题，复用已经安装的图标、字体和光标。",
-    "should_trigger": true
+    "should_trigger": true,
+    "expected_skill": "deepin-theme-guide"
   },
   {
     "query": "我要让控制中心多一个自己的主题，index.theme 应该怎么写、放在哪里？",
-    "should_trigger": true
+    "should_trigger": true,
+    "expected_skill": "deepin-theme-guide"
   },
   {
     "query": "deepin 自定义主题中如何选择已有的字体和光标，不需要重新制作它们？",
-    "should_trigger": true
+    "should_trigger": true,
+    "expected_skill": "deepin-theme-guide"
   },
   {
     "query": "请给新的 DDE 主题组织亮暗配置、壁纸和预览，用现有应用样式。",
-    "should_trigger": true
+    "should_trigger": true,
+    "expected_skill": "deepin-theme-guide"
   },
   {
     "query": "组合一套 deepin 全局主题，图标用 bloom、光标用另一套，字体保持现有选择。",
-    "should_trigger": true
+    "should_trigger": true,
+    "expected_skill": "deepin-theme-guide"
   },
   {
     "query": "DefaultTheme=Day、DarkTheme=Night 怎么写？图标和字体在两个模式中可以共用吗？",
-    "should_trigger": true
+    "should_trigger": true,
+    "expected_skill": "deepin-theme-guide"
   },
   {
     "query": "deepin 全局主题和其中引用的图标主题各自放在哪个目录？",
-    "should_trigger": true
+    "should_trigger": true,
+    "expected_skill": "deepin-theme-guide"
   },
   {
     "query": "我在制作 deepin 主题，需要单独了解 Qt 和 GTK 如何配合自定义配色。",
-    "should_trigger": true
-  },
-  {
-    "query": "帮我把当前桌面切到已有的深色主题，再把字体调大。",
-    "should_trigger": false
-  },
-  {
-    "query": "只告诉我当前 GTK 主题名，不创建新主题。",
-    "should_trigger": false
+    "should_trigger": true,
+    "expected_skill": "deepin-theme-guide"
   },
   {
     "query": "从零绘制一个图标主题的全部应用图标，并制作各个尺寸。",
-    "should_trigger": false
+    "should_trigger": true,
+    "expected_skill": "deepin-theme-guide"
   },
   {
-    "query": "请设计一套全新的中文字体字形。",
-    "should_trigger": false
+    "query": "帮我生成一套霓虹赛博朋克风格的图标和鼠标光标主题包，安装后切换到桌面。",
+    "should_trigger": true,
+    "expected_skill": "deepin-theme-guide"
   },
   {
-    "query": "为这个 DTK 对话框增加图标按钮和信号处理。",
+    "query": "把这台机器上所有应用的图标重画成圆角线性风格，逐个应用补齐后再激活。",
+    "should_trigger": true,
+    "expected_skill": "deepin-theme-guide"
+  },
+  {
+    "query": "按当前屏幕分辨率找一张合适的深蓝星空壁纸，下载并应用到主显示器当前工作区。",
+    "should_trigger": true,
+    "expected_skill": "deepin-theme-guide"
+  },
+  {
+    "query": "参考这张图做一套配套的图标、光标、壁纸和图片屏保，先给我看实际尺寸预览。",
+    "should_trigger": true,
+    "expected_skill": "deepin-theme-guide"
+  },
+  {
+    "query": "给现有图标主题补齐缺失的应用图标，并检查 GTK 和 Qt 是否都实际命中。",
+    "should_trigger": true,
+    "expected_skill": "deepin-theme-guide"
+  },
+  {
+    "query": "换掉整个 DDE 图标主题和鼠标光标，保留现在的壁纸和活动色。",
+    "should_trigger": true,
+    "expected_skill": "deepin-theme-guide"
+  },
+  {
+    "query": "给这套新主题分别设置浅色和深色活动色 #406A91 和 #79A7D2。",
+    "should_trigger": true,
+    "expected_skill": "deepin-theme-guide"
+  },
+  {
+    "query": "把现有图标、光标和活动色一起切换，先给我一个可回滚的预览。",
+    "should_trigger": true,
+    "expected_skill": "deepin-theme-guide"
+  },
+  {
+    "query": "恢复上一次主题变更，但保留我之后手动改过的项目。",
+    "should_trigger": true,
+    "expected_skill": "deepin-theme-guide"
+  },
+  {
+    "query": "生成一个主题包并注册到控制中心主题列表，先不要激活桌面。",
+    "should_trigger": true,
+    "expected_skill": "deepin-theme-guide"
+  },
+  {
+    "query": "图标目录缺 index.theme 和回退主题，帮我生成并校验这套图标。",
+    "should_trigger": true,
+    "expected_skill": "deepin-theme-guide"
+  },
+  {
+    "query": "我要一套完整主题：应用样式和字体沿用现有 deepin 设置，但图标和光标需要你生成。",
+    "should_trigger": true,
+    "expected_skill": "deepin-theme-guide"
+  },
+  {
+    "query": "帮我做一套主题，但先不要生成新资源，只组合系统里已安装的应用样式、图标和字体。",
+    "should_trigger": true,
+    "expected_skill": "deepin-theme-guide"
+  },
+  {
+    "query": "只把桌面切到已经安装好的深色主题，再把字体调大。",
+    "should_trigger": false,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "查询当前桌面的壁纸 URI 和图标主题名称，只读。",
+    "should_trigger": false,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "只告诉我当前 GTK 主题名，不创建新主题。",
+    "should_trigger": false,
+    "expected_skill": "deepin-desktop-environment"
+  },
+  {
+    "query": "用 DTK6 写一个桌面应用，并让它跟随系统亮暗主题切换。",
+    "should_trigger": false,
+    "expected_skill": "dtk-development"
+  },
+  {
+    "query": "给 DDE 控制中心新增一个外观设置模块。",
+    "should_trigger": false,
+    "expected_skill": "dde-control-center-development"
+  },
+  {
+    "query": "这台笔记本续航太短，按办公场景生成可回滚的省电方案。",
+    "should_trigger": false,
+    "expected_skill": "deepin-system-tuning"
+  },
+  {
+    "query": "用图片查看器打开刚才生成的主题预览图，只看图不修改设置。",
+    "should_trigger": false,
+    "expected_skill": "deepin-desktop-apps"
+  },
+  {
+    "query": "请设计一套全新的中文字体字形，并生成字体文件。",
     "should_trigger": false
   },
   {

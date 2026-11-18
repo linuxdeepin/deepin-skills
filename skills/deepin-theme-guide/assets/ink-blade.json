@@ -1,0 +1,28 @@
+{
+  "id": "ink-blade-design",
+  "name": "Ink Blade Icon and Cursor Design Example",
+  "description": "Ink lacquer, warm-white symbols, and cinnabar accents; icons and cursors only, without wallpaper or screensaver",
+  "required_components": [
+    "icon",
+    "cursor"
+  ],
+  "palette": {
+    "light": "#B84445",
+    "dark": "#D97168",
+    "apply_accent": false
+  },
+  "icon": {
+    "style": "ink",
+    "scope": "desktop",
+    "unknown": "preserve"
+  },
+  "cursor": {
+    "style": "ink",
+    "size": 32,
+    "sizes": [
+      24,
+      32,
+      48
+    ]
+  }
+}

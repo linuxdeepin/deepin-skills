@@ -1,0 +1,17 @@
+{
+  "id": "aurora-blue",
+  "name": "Aurora Blue",
+  "description": "A basic desktop theme with muted blue tones and clear outlines",
+  "palette": {
+    "light": "#406A91",
+    "dark": "#79A7D2"
+  },
+  "icon": {
+    "style": "crafted",
+    "unknown": "preserve"
+  },
+  "cursor": {
+    "size": 32,
+    "style": "crafted"
+  }
+}
